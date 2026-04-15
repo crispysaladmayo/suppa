@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Resep — Suppa</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/tokens.css" /><link rel="stylesheet" href="css/components.css" />
+</head>
+<body>
+<div class="app-frame">
+  <header class="top-bar">
+    <h1 class="top-bar__title">Resep</h1>
+    <a href="add-recipe.html" class="top-bar__icon-btn" aria-label="Tambah resep">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+    </a>
+  </header>
+
+  <div class="search-field">
+    <svg class="search-field__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    <input type="search" id="recipe-search" placeholder="Cari resep…" aria-label="Cari resep" />
+  </div>
+
+  <main>
+    <div class="tab-bar" role="tablist" aria-label="Filter resep">
+      <button class="tab-btn" role="tab" aria-selected="true" aria-controls="panel-all" id="tab-all">Semua</button>
+      <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-iron" id="tab-iron">Kaya Iron</button>
+      <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-zinc" id="tab-zinc">Kaya Zinc</button>
+      <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-protein" id="tab-protein">Protein</button>
+      <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-mine" id="tab-mine">Milikku</button>
+    </div>
+
+    <div id="panel-all" role="tabpanel" aria-labelledby="tab-all">
+      <a class="recipe-card" href="recipe-detail.html"><span class="recipe-card__thumb" aria-hidden="true">🍲</span><div class="recipe-card__body"><h3 class="recipe-card__title">Nasi Tim Hati Ayam</h3><p class="recipe-card__meta">25 menit · 6–12 bln</p><div class="badge-row"><span class="badge badge--gap">Kaya iron</span><span class="badge badge--safe">Aman Nara</span></div></div><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--text-muted);flex-shrink:0;" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></a>
+      <a class="recipe-card" href="recipe-detail.html"><span class="recipe-card__thumb" aria-hidden="true">🥘</span><div class="recipe-card__body"><h3 class="recipe-card__title">Bubur Tempe Sapi Cincang</h3><p class="recipe-card__meta">30 menit · 1–3 tahun</p><div class="badge-row"><span class="badge badge--gap">Kaya zinc</span><span class="badge badge--safe">Aman Nara</span></div></div><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--text-muted);flex-shrink:0;" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></a>
+      <a class="recipe-card" href="recipe-detail.html"><span class="recipe-card__thumb" aria-hidden="true">🥬</span><div class="recipe-card__body"><h3 class="recipe-card__title">Sup Bayam Ikan Teri</h3><p class="recipe-card__meta">20 menit · 6 bln+</p><div class="badge-row"><span class="badge badge--gap">Kaya iron</span><span class="badge badge--safe">Aman Nara</span></div></div><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--text-muted);flex-shrink:0;" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></a>
+      <a class="recipe-card" href="recipe-detail.html"><span class="recipe-card__thumb" aria-hidden="true">🌽</span><div class="recipe-card__body"><h3 class="recipe-card__title">Tim Ayam Wortel Jagung</h3><p class="recipe-card__meta">25 menit · 1–5 tahun</p><div class="badge-row"><span class="badge badge--emphasis">Protein</span><span class="badge badge--safe">Aman Nara</span></div></div><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--text-muted);flex-shrink:0;" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></a>
+      <a class="recipe-card" href="recipe-detail.html"><span class="recipe-card__thumb" aria-hidden="true">🥚</span><div class="recipe-card__body"><h3 class="recipe-card__title">Orak-arik Telur Brokoli</h3><p class="recipe-card__meta">15 menit · 8 bln+</p><div class="badge-row"><span class="badge badge--emphasis">Protein</span><span class="badge badge--safe">Aman Nara</span></div></div><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--text-muted);flex-shrink:0;" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></a>
+    </div>
+    <div id="panel-iron" role="tabpanel" aria-labelledby="tab-iron" hidden>
+      <a class="recipe-card" href="recipe-detail.html"><span class="recipe-card__thumb" aria-hidden="true">🍲</span><div class="recipe-card__body"><h3 class="recipe-card__title">Nasi Tim Hati Ayam</h3><p class="recipe-card__meta">25 menit</p><div class="badge-row"><span class="badge badge--gap">Kaya iron</span><span class="badge badge--safe">Aman Nara</span></div></div><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--text-muted);flex-shrink:0;" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></a>
+      <a class="recipe-card" href="recipe-detail.html"><span class="recipe-card__thumb" aria-hidden="true">🥬</span><div class="recipe-card__body"><h3 class="recipe-card__title">Sup Bayam Ikan Teri</h3><p class="recipe-card__meta">20 menit</p><div class="badge-row"><span class="badge badge--gap">Kaya iron</span><span class="badge badge--safe">Aman Nara</span></div></div><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--text-muted);flex-shrink:0;" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></a>
+    </div>
+    <div id="panel-zinc" role="tabpanel" aria-labelledby="tab-zinc" hidden>
+      <a class="recipe-card" href="recipe-detail.html"><span class="recipe-card__thumb" aria-hidden="true">🥘</span><div class="recipe-card__body"><h3 class="recipe-card__title">Bubur Tempe Sapi Cincang</h3><p class="recipe-card__meta">30 menit</p><div class="badge-row"><span class="badge badge--gap">Kaya zinc</span><span class="badge badge--safe">Aman Nara</span></div></div><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--text-muted);flex-shrink:0;" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></a>
+    </div>
+    <div id="panel-protein" role="tabpanel" aria-labelledby="tab-protein" hidden>
+      <a class="recipe-card" href="recipe-detail.html"><span class="recipe-card__thumb" aria-hidden="true">🌽</span><div class="recipe-card__body"><h3 class="recipe-card__title">Tim Ayam Wortel Jagung</h3><p class="recipe-card__meta">25 menit</p><div class="badge-row"><span class="badge badge--emphasis">Protein</span><span class="badge badge--safe">Aman Nara</span></div></div><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--text-muted);flex-shrink:0;" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></a>
+    </div>
+    <div id="panel-mine" role="tabpanel" aria-labelledby="tab-mine" hidden>
+      <div class="card" style="text-align:center;padding:var(--space-8) var(--space-5);">
+        <p style="font-size:2rem;margin:0 0 0.75rem;">📝</p>
+        <p class="title" style="font-size:1rem;">Belum ada resep milikmu</p>
+        <p class="body-muted" style="margin-bottom:var(--space-5);">Simpan resep favoritmu di sini.</p>
+        <a class="btn btn--primary" href="add-recipe.html" style="width:auto;padding:0.75rem 1.5rem;">Tambah resep</a>
+      </div>
+    </div>
+  </main>
+</div>
+
+<nav class="bottom-nav" aria-label="Navigasi utama">
+  <a href="today.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/></svg>Log Harian</a>
+  <a href="fridge.html" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Masak</a>
+  <a href="edukasi.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>Edukasi</a>
+</nav>
+<div id="toast" class="toast" aria-live="polite"></div>
+<script src="js/tokens.js"></script><script src="js/profile.js"></script><script src="js/api.js"></script><script src="js/ui.js"></script><script src="js/app.js"></script>
+</body>
+</html>

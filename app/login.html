@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Masuk — Suppa</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/tokens.css" /><link rel="stylesheet" href="css/components.css" />
+</head>
+<body>
+<div class="app-frame app-frame--auth">
+  <header class="top-bar">
+    <a class="top-bar__icon-btn" href="index.html" aria-label="Kembali">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+    </a>
+    <a class="brand-lockup brand-lockup--auth" href="index.html" style="margin:0;">
+      <img class="brand-lockup__mark" src="assets/suppa-logo.svg" alt="" aria-hidden="true" />
+      <span class="brand-lockup__name">Suppa</span>
+    </a>
+    <div style="width:44px"></div>
+  </header>
+  <main style="flex:1;">
+    <h1 class="title">Selamat datang kembali</h1>
+    <p class="body-muted" style="margin-bottom:1.5rem;">Masuk untuk melanjutkan pantauan gizi si kecil.</p>
+    <form id="login-form" novalidate>
+      <div class="field">
+        <label for="email">Alamat email</label>
+        <input type="email" id="email" name="email" autocomplete="email" inputmode="email" aria-required="true" aria-describedby="login-error" />
+        <p class="field__error" id="login-error" role="alert" aria-live="polite"></p>
+      </div>
+      <div class="field">
+        <label for="password">Kata sandi</label>
+        <input type="password" id="password" name="password" autocomplete="current-password" aria-required="true" />
+      </div>
+      <div style="text-align:right;margin:-0.5rem 0 1rem;"><a href="forgot-password.html" style="font-size:0.875rem;">Lupa kata sandi?</a></div>
+      <button type="submit" class="btn btn--primary">Masuk</button>
+    </form>
+    <p style="text-align:center;margin-top:1.5rem;font-size:0.9375rem;">
+      Belum punya akun? <a href="signup.html">Daftar</a>
+    </p>
+  </main>
+</div>
+<script src="js/tokens.js"></script><script src="js/profile.js"></script><script src="js/api.js"></script><script src="js/ui.js"></script><script src="js/app.js"></script>
+<script>
+document.getElementById('login-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  var email = document.getElementById('email').value.trim();
+  var pw = document.getElementById('password').value;
+  var errEl = document.getElementById('login-error');
+  errEl.style.display = ''; errEl.textContent = '';
+  if (!email || !pw) { errEl.textContent = 'Email dan kata sandi wajib diisi.'; errEl.style.display = 'block'; return; }
+  window.location.href = 'today.html';
+});
+</script>
+</body>
+</html>

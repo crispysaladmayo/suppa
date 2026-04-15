@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Makanan Kaya Zat Besi — Suppa</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/tokens.css" /><link rel="stylesheet" href="css/components.css" />
+  <style>
+    .article-body h2 { font-family:var(--font-display);font-size:1.125rem;font-weight:600;margin:1.5rem 0 0.75rem; }
+    .article-body p { font-size:0.9375rem;line-height:1.65;margin:0 0 0.875rem;color:var(--text-primary); }
+    .article-body ul { padding-left:1.25rem;margin:0 0 0.875rem; }
+    .article-body li { font-size:0.9375rem;line-height:1.65;margin-bottom:0.375rem; }
+    .callout { background:var(--info-soft-bg);border-left:3px solid #f59e0b;padding:0.875rem 1rem;border-radius:0 10px 10px 0;margin-bottom:var(--space-5); }
+    .callout p { font-size:0.875rem;color:var(--info-soft-text);margin:0;line-height:1.5; }
+    .quiz-card { background:var(--surface);border-radius:var(--radius-card);box-shadow:var(--shadow-card);padding:var(--space-5);margin-bottom:var(--space-5); }
+    .quiz-option { display:flex;align-items:center;gap:0.75rem;padding:0.75rem 1rem;background:var(--bg-page);border:2px solid var(--border-subtle);border-radius:10px;cursor:pointer;margin-bottom:0.5rem;font-size:0.9375rem; }
+    .quiz-option:hover { border-color:var(--accent); }
+    .quiz-option.correct { background:var(--success-soft-bg);border-color:var(--success-soft-text);color:var(--success-soft-text); }
+    .quiz-option.wrong { background:#fef2f2;border-color:var(--error-text);color:var(--error-text); }
+  </style>
+</head>
+<body>
+<div class="app-frame">
+  <header class="top-bar">
+    <a class="top-bar__icon-btn" href="edukasi.html" aria-label="Kembali"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg></a>
+    <p class="top-bar__title" style="font-size:0.9375rem;">Edukasi</p>
+    <button type="button" class="top-bar__icon-btn" aria-label="Bagikan artikel" id="share-article">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+    </button>
+  </header>
+  <main>
+    <p class="overline" style="margin-bottom:0.5rem;">Nutrisi · 4 menit</p>
+    <h1 class="title" style="margin-bottom:1rem;">Makanan Kaya Zat Besi untuk Bayi dan Anak</h1>
+    <div class="article-body">
+      <div class="callout"><p><strong>Ingat:</strong> Semua angka dalam artikel ini adalah perkiraan. Selalu diskusikan dengan dokter anak untuk kebutuhan spesifik si kecil.</p></div>
+      <p>Zat besi adalah salah satu mineral paling penting untuk tumbuh kembang anak. Kekurangan zat besi dapat mempengaruhi perkembangan otak dan kemampuan belajar. Kabar baiknya, banyak makanan sehari-hari yang kaya zat besi dan mudah disiapkan.</p>
+      <h2>Makanan kaya zat besi</h2>
+      <ul>
+        <li><strong>Daging merah dan ayam:</strong> Sumber zat besi heme yang mudah diserap tubuh</li>
+        <li><strong>Hati ayam atau hati sapi:</strong> Sangat kaya zat besi, bagus untuk MPASI</li>
+        <li><strong>Ikan teri:</strong> Mudah didapat, bisa ditambahkan ke berbagai masakan</li>
+        <li><strong>Bayam dan sayuran hijau:</strong> Zat besi non-heme, serap lebih baik dengan vitamin C</li>
+        <li><strong>Tempe dan tahu:</strong> Sumber zat besi nabati yang ekonomis</li>
+        <li><strong>Kacang merah dan kacang hitam:</strong> Bagus untuk anak yang tidak makan daging</li>
+      </ul>
+      <h2>Tips menyerap zat besi lebih baik</h2>
+      <p>Kombinasikan makanan kaya zat besi dengan sumber vitamin C seperti tomat, paprika, atau jeruk nipis. Hindari memberikan susu atau teh berbarengan dengan makanan kaya zat besi karena dapat menghambat penyerapan.</p>
+    </div>
+
+    <!-- Quiz -->
+    <div class="quiz-card" aria-label="Kuis singkat">
+      <h2 class="heading-sm" style="margin-bottom:0.75rem;">Cek pemahaman kamu</h2>
+      <p style="font-size:0.9375rem;margin-bottom:0.875rem;">Makanan apa yang mengandung zat besi heme yang mudah diserap?</p>
+      <div id="quiz-options">
+        <button type="button" class="quiz-option" data-correct="true">🥩 Daging ayam cincang</button>
+        <button type="button" class="quiz-option">🥦 Brokoli</button>
+        <button type="button" class="quiz-option">🍚 Nasi putih</button>
+      </div>
+      <p id="quiz-feedback" aria-live="polite" style="font-size:0.875rem;margin-top:0.75rem;display:none;"></p>
+    </div>
+
+    <div style="margin-bottom:var(--space-6);">
+      <button type="button" class="btn btn--whatsapp" id="share-wa">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="opacity:0.9;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.999 1C5.926 1 1 5.925 1 12c0 1.914.506 3.71 1.392 5.258L1 23l5.896-1.391A10.954 10.954 0 0012 23c6.075 0 11-4.925 11-11S18.075 1 12 1zm0 20a9 9 0 01-4.621-1.278l-.332-.197-3.494.823.836-3.421-.216-.353A8.98 8.98 0 013 12c0-4.962 4.037-9 9-9s9 4.038 9 9-4.037 9-9 9z"/></svg>
+        Bagikan ke WhatsApp
+      </button>
+    </div>
+
+    <p class="caption" style="text-align:center;padding-bottom:var(--space-8);">Sumber: IDAI (Ikatan Dokter Anak Indonesia) · Konten bersifat edukatif, bukan saran medis.</p>
+  </main>
+</div>
+<nav class="bottom-nav" aria-label="Navigasi utama">
+  <a href="today.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/></svg>Log Harian</a>
+  <a href="fridge.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Masak</a>
+  <a href="edukasi.html" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/><line x1="9" y1="7" x2="15" y2="7"/><line x1="9" y1="11" x2="13" y2="11"/></svg>Edukasi</a>
+</nav>
+<div id="toast" class="toast" aria-live="polite"></div>
+<script src="js/tokens.js"></script><script src="js/profile.js"></script><script src="js/api.js"></script><script src="js/ui.js"></script><script src="js/app.js"></script>
+<script>
+document.querySelectorAll('.quiz-option').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    document.querySelectorAll('.quiz-option').forEach(function(b) { b.disabled = true; });
+    var fb = document.getElementById('quiz-feedback');
+    if (btn.dataset.correct === 'true') {
+      btn.classList.add('correct');
+      fb.textContent = '✓ Benar! Daging mengandung zat besi heme yang lebih mudah diserap daripada zat besi dari nabati.';
+    } else {
+      btn.classList.add('wrong');
+      document.querySelector('[data-correct="true"]').classList.add('correct');
+      fb.textContent = 'Belum tepat — jawaban yang benar adalah daging ayam cincang, yang mengandung zat besi heme.';
+    }
+    fb.style.display = 'block';
+  });
+});
+
+document.getElementById('share-wa').addEventListener('click', function() {
+  window.open('https://wa.me/?text=' + encodeURIComponent('Baca artikel gizi ini dari Suppa: ' + window.location.href));
+});
+</script>
+</body>
+</html>

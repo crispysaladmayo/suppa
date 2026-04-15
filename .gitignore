@@ -1,0 +1,17 @@
+# Dependencies
+api/node_modules/
+
+# Runtime database (seeded automatically on first start)
+api/db.json
+
+# Environment secrets
+.env
+api/.env
+
+# macOS
+.DS_Store
+**/.DS_Store
+
+# Editor
+.cursor/
+*.log

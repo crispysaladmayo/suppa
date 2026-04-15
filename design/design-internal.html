@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Schema CRUD Console — Suppa Internal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    /* Internal tool tokens — cool-tinted, distinct from consumer */
+    :root {
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --text: #0f172a;
+      --text-secondary: #475569;
+      --text-muted: #94a3b8;
+      --border: #e2e8f0;
+      --accent: #6366f1;
+      --accent-hover: #4f46e5;
+      --accent-tint: #eef2ff;
+      --danger: #ef4444;
+      --danger-tint: #fef2f2;
+      --success: #22c55e;
+      --success-tint: #f0fdf4;
+      --shadow: 0 1px 3px rgba(0,0,0,0.07);
+      --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
+      --radius: 10px;
+      --radius-sm: 6px;
+      --radius-pill: 9999px;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; font-family: "Inter", system-ui, sans-serif; background: var(--bg); color: var(--text); font-size: 14px; line-height: 1.5; }
+
+    /* Review label */
+    .review-label { background:#1c1917;color:#fff;font-size:11px;font-weight:500;padding:5px 16px;text-align:center;letter-spacing:0.04em; }
+    .review-nav { background:var(--surface);border-bottom:1px solid var(--border);padding:8px 16px;display:flex;gap:12px;font-size:12px; }
+    .review-nav a { color:var(--accent); }
+
+    /* Shell */
+    .shell { max-width: 1100px; margin: 0 auto; padding: 24px 16px 48px; }
+
+    /* Topbar */
+    .topbar {
+      display: flex; align-items: center; justify-content: space-between;
+      background: var(--surface); border-radius: var(--radius); padding: 16px 20px;
+      box-shadow: var(--shadow); margin-bottom: 20px;
+      gap: 12px; flex-wrap: wrap;
+    }
+    .topbar__left { display: flex; align-items: center; gap: 10px; }
+    .topbar__logo {
+      width: 32px; height: 32px; border-radius: 8px; background: var(--accent);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .topbar__logo svg { width: 18px; height: 18px; color: #fff; }
+    .topbar__title { font-weight: 600; font-size: 15px; margin: 0; }
+    .topbar__subtitle { font-size: 12px; color: var(--text-muted); margin: 0; }
+    .topbar__actions { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+    .badge-env {
+      padding: 3px 10px; border-radius: var(--radius-pill); font-size: 11px; font-weight: 600;
+      background: var(--success-tint); color: #15803d;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 7px 14px; border: none; border-radius: 8px;
+      font-size: 13px; font-weight: 500; font-family: inherit;
+      cursor: pointer; transition: background 0.12s; white-space: nowrap;
+    }
+    .btn svg { width: 15px; height: 15px; }
+    .btn-primary { background: var(--accent); color: #fff; }
+    .btn-primary:hover { background: var(--accent-hover); }
+    .btn-secondary { background: var(--surface); color: var(--text); border: 1.5px solid var(--border); }
+    .btn-secondary:hover { background: var(--bg); }
+    .btn-danger { background: var(--danger-tint); color: var(--danger); }
+    .btn-danger:hover { background: #fee2e2; }
+    .btn-ghost { background: none; color: var(--text-secondary); padding: 6px 8px; }
+    .btn-ghost:hover { background: var(--bg); color: var(--text); }
+    .btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+    /* Search + filter bar */
+    .toolbar {
+      display: flex; gap: 10px; align-items: center; flex-wrap: wrap;
+      margin-bottom: 14px;
+    }
+    .search-wrap { position: relative; flex: 1; min-width: 200px; }
+    .search-wrap input {
+      width: 100%; padding: 7px 10px 7px 34px;
+      border: 1.5px solid var(--border); border-radius: 8px;
+      font-size: 13px; font-family: inherit; background: var(--surface);
+    }
+    .search-wrap input:focus { border-color: var(--accent); outline: none; box-shadow: 0 0 0 3px rgba(99,102,241,0.15); }
+    .search-wrap__icon { position: absolute; left: 10px; top: 50%; transform: translateY(-50%); color: var(--text-muted); pointer-events: none; }
+    .search-wrap__icon svg { width: 16px; height: 16px; }
+
+    /* Entity tabs */
+    .entity-tabs {
+      display: flex; gap: 0; background: var(--bg);
+      border: 1.5px solid var(--border); border-radius: var(--radius);
+      overflow: hidden; margin-bottom: 16px;
+    }
+    .entity-tab {
+      flex: 1; background: none; border: none; border-right: 1.5px solid var(--border);
+      padding: 10px 8px; font-size: 12px; font-weight: 500; font-family: inherit;
+      cursor: pointer; color: var(--text-secondary); text-align: center;
+      transition: background 0.1s; white-space: nowrap;
+    }
+    .entity-tab:last-child { border-right: none; }
+    .entity-tab:hover { background: var(--accent-tint); color: var(--accent); }
+    .entity-tab.active { background: var(--accent); color: #fff; }
+    .entity-tab .count {
+      display: inline-block; background: rgba(255,255,255,0.25); border-radius: 10px;
+      padding: 1px 6px; font-size: 11px; margin-left: 4px;
+    }
+    .entity-tab:not(.active) .count { background: var(--border); color: var(--text-muted); }
+
+    /* Card */
+    .card { background: var(--surface); border-radius: var(--radius); box-shadow: var(--shadow); margin-bottom: 16px; overflow: hidden; }
+    .card__header { padding: 14px 16px; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    .card__title { font-weight: 600; font-size: 14px; margin: 0; }
+    .card__body { padding: 16px; }
+
+    /* Table */
+    .table-wrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    thead tr { background: var(--bg); }
+    th {
+      padding: 9px 12px; text-align: left; font-weight: 600; font-size: 11px;
+      letter-spacing: 0.04em; text-transform: uppercase; color: var(--text-muted);
+      border-bottom: 1.5px solid var(--border); white-space: nowrap;
+    }
+    td { padding: 10px 12px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: var(--bg); }
+
+    .id-cell { font-family: monospace; font-size: 11px; color: var(--text-muted); white-space: nowrap; }
+    .inline-edit {
+      background: none; border: none; padding: 2px 4px; font-family: inherit; font-size: 13px;
+      color: var(--text); cursor: pointer; border-radius: 4px; width: 100%;
+      text-align: left;
+    }
+    .inline-edit:hover { background: var(--accent-tint); }
+    .inline-edit:focus { outline: 1.5px solid var(--accent); background: var(--accent-tint); }
+    .inline-edit.editing { background: var(--accent-tint); outline: 1.5px solid var(--accent); }
+
+    .action-btns { display: flex; gap: 4px; }
+
+    /* Form */
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    @media (max-width: 600px) { .form-grid { grid-template-columns: 1fr; } }
+    .form-field label { display: block; font-size: 12px; font-weight: 500; margin-bottom: 5px; color: var(--text-secondary); }
+    .form-field input, .form-field select {
+      width: 100%; padding: 7px 10px; border: 1.5px solid var(--border); border-radius: 7px;
+      font-size: 13px; font-family: inherit; background: var(--surface);
+    }
+    .form-field input:focus, .form-field select:focus { border-color: var(--accent); outline: none; box-shadow: 0 0 0 3px rgba(99,102,241,0.15); }
+    .form-actions { grid-column: 1 / -1; display: flex; gap: 8px; margin-top: 4px; }
+
+    /* Delete modal */
+    .modal-overlay {
+      position: fixed; inset: 0; background: rgba(0,0,0,0.35); z-index: 500;
+      display: flex; align-items: center; justify-content: center; padding: 16px;
+    }
+    .modal {
+      background: var(--surface); border-radius: 14px; padding: 24px;
+      max-width: 360px; width: 100%; box-shadow: var(--shadow-md);
+    }
+    .modal__icon { font-size: 2rem; margin-bottom: 10px; }
+    .modal__title { font-weight: 700; font-size: 16px; margin: 0 0 8px; }
+    .modal__body { font-size: 13px; color: var(--text-secondary); margin: 0 0 20px; }
+    .modal__actions { display: flex; gap: 10px; }
+    .modal__actions .btn { flex: 1; justify-content: center; }
+
+    /* Toast */
+    .toast {
+      position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%) translateY(8px);
+      background: var(--text); color: #fff; padding: 8px 18px;
+      border-radius: var(--radius-pill); font-size: 13px; font-weight: 500;
+      opacity: 0; pointer-events: none; z-index: 600; transition: all 0.15s;
+      white-space: nowrap;
+    }
+    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+    /* Schema pills */
+    .schema-fields { display: flex; flex-wrap: wrap; gap: 6px; }
+    .schema-pill {
+      padding: 3px 10px; border-radius: var(--radius-pill); font-size: 11px; font-weight: 500;
+      background: var(--accent-tint); color: var(--accent); border: 1px solid #c7d2fe;
+    }
+
+    /* Footer */
+    .footer-hint { text-align: center; font-size: 11px; color: var(--text-muted); padding: 16px 0 8px; }
+    .kbd { background: var(--border); border-radius: 4px; padding: 1px 6px; font-family: monospace; font-size: 11px; }
+  </style>
+</head>
+<body>
+<div class="review-label">Design Review — Internal CRUD Console (M2)</div>
+<div class="review-nav">
+  <a href="design-landing.html">Consumer: Landing</a>
+  <a href="design-today.html">Today</a>
+  <a href="design-settings.html">Settings</a>
+</div>
+
+<div class="shell">
+  <!-- Topbar -->
+  <div class="topbar">
+    <div class="topbar__left">
+      <div class="topbar__logo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+      </div>
+      <div>
+        <p class="topbar__title">Suppa Internal</p>
+        <p class="topbar__subtitle">Schema CRUD Console</p>
+      </div>
+    </div>
+    <div class="topbar__actions">
+      <span class="badge-env">● localhost:8787</span>
+      <button class="btn btn-secondary" id="btn-reset">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 102.13-9.36L1 10"/></svg>
+        Reset Demo Data
+      </button>
+    </div>
+  </div>
+
+  <!-- Schema overview (collapsed-style) -->
+  <div class="card">
+    <div class="card__header">
+      <h2 class="card__title">Data Schema</h2>
+      <button class="btn btn-ghost" id="schema-toggle">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="16" height="16"><polyline points="6 9 12 15 18 9"/></svg>
+        Show
+      </button>
+    </div>
+    <div class="card__body" id="schema-body" hidden>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;">
+        <div>
+          <p style="font-weight:600;font-size:12px;margin:0 0 6px;">households</p>
+          <div class="schema-fields">
+            <span class="schema-pill">id</span><span class="schema-pill">name</span><span class="schema-pill">country</span><span class="schema-pill">city</span><span class="schema-pill">created_at</span>
+          </div>
+        </div>
+        <div>
+          <p style="font-weight:600;font-size:12px;margin:0 0 6px;">children</p>
+          <div class="schema-fields">
+            <span class="schema-pill">id</span><span class="schema-pill">household_id</span><span class="schema-pill">name</span><span class="schema-pill">age_band</span><span class="schema-pill">sex</span><span class="schema-pill">allergies_csv</span>
+          </div>
+        </div>
+        <div>
+          <p style="font-weight:600;font-size:12px;margin:0 0 6px;">recipes</p>
+          <div class="schema-fields">
+            <span class="schema-pill">id</span><span class="schema-pill">household_id</span><span class="schema-pill">title</span><span class="schema-pill">ingredients_csv</span><span class="schema-pill">macro_emphasis</span><span class="schema-pill">total_minutes</span>
+          </div>
+        </div>
+        <div>
+          <p style="font-weight:600;font-size:12px;margin:0 0 6px;">meal_logs</p>
+          <div class="schema-fields">
+            <span class="schema-pill">id</span><span class="schema-pill">child_id</span><span class="schema-pill">meal_name</span><span class="schema-pill">food_groups_csv</span><span class="schema-pill">portion</span><span class="schema-pill">logged_at</span>
+          </div>
+        </div>
+        <div>
+          <p style="font-weight:600;font-size:12px;margin:0 0 6px;">growth_entries</p>
+          <div class="schema-fields">
+            <span class="schema-pill">id</span><span class="schema-pill">child_id</span><span class="schema-pill">recorded_on</span><span class="schema-pill">weight_kg</span><span class="schema-pill">height_cm</span><span class="schema-pill">measurement_type</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Entity tabs -->
+  <div class="entity-tabs" role="tablist" aria-label="Entities" id="entity-tabs">
+    <button class="entity-tab active" role="tab" aria-selected="true" data-entity="households">Households <span class="count">1</span></button>
+    <button class="entity-tab" role="tab" aria-selected="false" data-entity="children">Children <span class="count">1</span></button>
+    <button class="entity-tab" role="tab" aria-selected="false" data-entity="recipes">Recipes <span class="count">1</span></button>
+    <button class="entity-tab" role="tab" aria-selected="false" data-entity="meal_logs">Meal Logs <span class="count">1</span></button>
+    <button class="entity-tab" role="tab" aria-selected="false" data-entity="growth_entries">Growth <span class="count">1</span></button>
+  </div>
+
+  <!-- Toolbar -->
+  <div class="toolbar">
+    <div class="search-wrap">
+      <span class="search-wrap__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span>
+      <input type="search" id="table-search" placeholder="Search records…" aria-label="Search records" />
+    </div>
+    <button class="btn btn-primary" id="btn-new">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      New Record
+    </button>
+  </div>
+
+  <!-- Data table -->
+  <div class="card">
+    <div class="table-wrap">
+      <table id="data-table" aria-label="households records">
+        <thead id="table-head"></thead>
+        <tbody id="table-body"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Create / Edit form -->
+  <div class="card" id="form-card">
+    <div class="card__header">
+      <h2 class="card__title" id="form-title">Create record</h2>
+      <button class="btn btn-ghost" id="form-cancel" aria-label="Cancel">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="16" height="16"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="card__body">
+      <form id="record-form" class="form-grid"></form>
+    </div>
+  </div>
+
+  <p class="footer-hint">
+    <kbd class="kbd">N</kbd> New record &nbsp;·&nbsp; <kbd class="kbd">Esc</kbd> Cancel &nbsp;·&nbsp; Click a cell to inline-edit &nbsp;·&nbsp; v1.0 · Suppa Internal
+  </p>
+</div>
+
+<!-- Delete confirm modal -->
+<div class="modal-overlay" id="delete-modal" hidden>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="delete-title">
+    <p class="modal__icon">🗑️</p>
+    <h2 class="modal__title" id="delete-title">Delete this record?</h2>
+    <p class="modal__body" id="delete-body">This action cannot be undone.</p>
+    <div class="modal__actions">
+      <button class="btn btn-secondary" id="delete-cancel">Cancel</button>
+      <button class="btn btn-danger" id="delete-confirm">Delete</button>
+    </div>
+  </div>
+</div>
+
+<div id="toast" class="toast" aria-live="polite"></div>
+
+<script>
+  const API_BASE = window.SUPPA_API_BASE || 'http://localhost:8787/api';
+
+  const SEED = {
+    households: [{ id:'hh_1', name:'Keluarga Nanda', country:'ID', city:'Bandung', created_at:'2026-04-01' }],
+    children: [{ id:'ch_1', household_id:'hh_1', name:'Nara', age_band:'1-2', sex:'female', allergies_csv:'peanut,egg' }],
+    recipes: [{ id:'rc_1', household_id:'hh_1', title:'Chicken Rice Bowl', ingredients_csv:'chicken,rice,carrot', macro_emphasis:'protein', total_minutes:'25' }],
+    meal_logs: [{ id:'ml_1', child_id:'ch_1', meal_name:'Sarapan bubur', food_groups_csv:'grains,protein', portion:'medium', logged_at:'2026-04-07T08:00:00Z' }],
+    growth_entries: [{ id:'gr_1', child_id:'ch_1', recorded_on:'2026-04-03', weight_kg:'10.2', height_cm:'78.1', measurement_type:'standing_height' }]
+  };
+
+  let currentEntity = 'households';
+  let db = JSON.parse(JSON.stringify(SEED));
+  let editingId = null;
+  let deleteTarget = null;
+
+  function toast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 2800);
+  }
+
+  function getFields() {
+    const schemas = {
+      households: ['id','name','country','city','created_at'],
+      children: ['id','household_id','name','age_band','sex','allergies_csv'],
+      recipes: ['id','household_id','title','ingredients_csv','macro_emphasis','total_minutes'],
+      meal_logs: ['id','child_id','meal_name','food_groups_csv','portion','logged_at'],
+      growth_entries: ['id','child_id','recorded_on','weight_kg','height_cm','measurement_type']
+    };
+    return schemas[currentEntity];
+  }
+
+  function renderTable(q) {
+    const rows = db[currentEntity].filter(r => {
+      if (!q) return true;
+      return Object.values(r).some(v => String(v).toLowerCase().includes(q.toLowerCase()));
+    });
+    const fields = getFields();
+
+    // Head
+    document.getElementById('table-head').innerHTML = `<tr>${fields.map(f => `<th>${f}</th>`).join('')}<th>Actions</th></tr>`;
+
+    // Body
+    const tbody = document.getElementById('table-body');
+    if (!rows.length) {
+      tbody.innerHTML = `<tr><td colspan="${fields.length + 1}" style="text-align:center;color:var(--text-muted);padding:24px;">No records found</td></tr>`;
+      return;
+    }
+    tbody.innerHTML = rows.map(r => `
+      <tr data-id="${r.id}">
+        ${fields.map(f => `
+          <td class="${f === 'id' ? 'id-cell' : ''}">
+            ${f === 'id' ? r[f] : `<button class="inline-edit" data-field="${f}" data-id="${r.id}">${r[f] ?? ''}</button>`}
+          </td>
+        `).join('')}
+        <td>
+          <div class="action-btns">
+            <button class="btn btn-ghost btn-edit" data-id="${r.id}" title="Edit record" aria-label="Edit ${r.id}">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+            </button>
+            <button class="btn btn-danger btn-delete" data-id="${r.id}" title="Delete record" aria-label="Delete ${r.id}">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4a1 1 0 011-1h4a1 1 0 011 1v2"/></svg>
+            </button>
+          </div>
+        </td>
+      </tr>
+    `).join('');
+
+    // Update tab count
+    document.querySelectorAll('.entity-tab').forEach(t => {
+      if (t.dataset.entity === currentEntity) {
+        t.querySelector('.count').textContent = rows.length;
+      }
+    });
+  }
+
+  function renderForm(record) {
+    const fields = getFields().filter(f => f !== 'id');
+    const title = document.getElementById('form-title');
+    title.textContent = record ? `Edit — ${record.id}` : 'Create record';
+    editingId = record ? record.id : null;
+
+    document.getElementById('record-form').innerHTML = fields.map(f => `
+      <div class="form-field">
+        <label for="f-${f}">${f}</label>
+        <input type="text" id="f-${f}" name="${f}" value="${record ? (record[f] ?? '') : ''}" autocomplete="off" />
+      </div>
+    `).join('') + `
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary">${record ? 'Update' : 'Create'}</button>
+        <button type="button" class="btn btn-secondary" id="form-cancel-inner">Cancel</button>
+      </div>
+    `;
+
+    document.getElementById('form-cancel-inner').addEventListener('click', () => {
+      renderForm(null);
+      document.getElementById('form-title').textContent = 'Create record';
+      editingId = null;
+    });
+  }
+
+  // Entity tab switching
+  document.querySelectorAll('.entity-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.entity-tab').forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
+      tab.classList.add('active'); tab.setAttribute('aria-selected','true');
+      currentEntity = tab.dataset.entity;
+      renderTable(document.getElementById('table-search').value);
+      renderForm(null);
+    });
+  });
+
+  // Search
+  document.getElementById('table-search').addEventListener('input', e => renderTable(e.target.value));
+
+  // New record
+  document.getElementById('btn-new').addEventListener('click', () => renderForm(null));
+
+  // Edit + Delete buttons (event delegation)
+  document.getElementById('table-body').addEventListener('click', e => {
+    const editBtn = e.target.closest('.btn-edit');
+    const deleteBtn = e.target.closest('.btn-delete');
+    const inlineBtn = e.target.closest('.inline-edit');
+
+    if (editBtn) {
+      const id = editBtn.dataset.id;
+      const record = db[currentEntity].find(r => r.id === id);
+      if (record) renderForm(record);
+    }
+    if (deleteBtn) {
+      const id = deleteBtn.dataset.id;
+      deleteTarget = id;
+      document.getElementById('delete-body').textContent = `Delete "${id}" from ${currentEntity}? This cannot be undone.`;
+      document.getElementById('delete-modal').hidden = false;
+    }
+    if (inlineBtn && !inlineBtn.classList.contains('editing')) {
+      inlineBtn.classList.add('editing');
+      inlineBtn.setAttribute('contenteditable','true');
+      inlineBtn.focus();
+      inlineBtn.addEventListener('blur', function save() {
+        const id = inlineBtn.dataset.id;
+        const field = inlineBtn.dataset.field;
+        const val = inlineBtn.textContent;
+        const record = db[currentEntity].find(r => r.id === id);
+        if (record) { record[field] = val; toast(`Updated ${field} for ${id}`); }
+        inlineBtn.classList.remove('editing');
+        inlineBtn.removeAttribute('contenteditable');
+        inlineBtn.removeEventListener('blur', save);
+      }, { once: true });
+      inlineBtn.addEventListener('keydown', function(ke) {
+        if (ke.key === 'Enter') { ke.preventDefault(); inlineBtn.blur(); }
+        if (ke.key === 'Escape') { inlineBtn.blur(); }
+      });
+    }
+  });
+
+  // Form submit
+  document.getElementById('record-form').addEventListener('submit', e => {
+    e.preventDefault();
+    const fields = getFields().filter(f => f !== 'id');
+    const payload = {};
+    fields.forEach(f => { payload[f] = document.getElementById('f-' + f).value; });
+
+    if (editingId) {
+      const rec = db[currentEntity].find(r => r.id === editingId);
+      if (rec) Object.assign(rec, payload);
+      toast(`Updated record ${editingId}`);
+    } else {
+      payload.id = currentEntity.slice(0,2) + '_' + Date.now().toString(36);
+      db[currentEntity].push(payload);
+      toast(`Created ${payload.id}`);
+    }
+    renderTable(document.getElementById('table-search').value);
+    renderForm(null);
+    editingId = null;
+  });
+
+  // Form cancel
+  document.getElementById('form-cancel').addEventListener('click', () => { renderForm(null); editingId = null; });
+
+  // Delete confirm/cancel
+  document.getElementById('delete-cancel').addEventListener('click', () => { document.getElementById('delete-modal').hidden = true; });
+  document.getElementById('delete-modal').addEventListener('click', e => { if (e.target === e.currentTarget) e.currentTarget.hidden = true; });
+  document.getElementById('delete-confirm').addEventListener('click', () => {
+    db[currentEntity] = db[currentEntity].filter(r => r.id !== deleteTarget);
+    toast(`Deleted ${deleteTarget}`);
+    document.getElementById('delete-modal').hidden = true;
+    deleteTarget = null;
+    renderTable(document.getElementById('table-search').value);
+  });
+
+  // Reset
+  document.getElementById('btn-reset').addEventListener('click', () => {
+    db = JSON.parse(JSON.stringify(SEED));
+    renderTable('');
+    toast('Demo data reset');
+  });
+
+  // Schema toggle
+  document.getElementById('schema-toggle').addEventListener('click', function() {
+    const body = document.getElementById('schema-body');
+    body.hidden = !body.hidden;
+    this.innerHTML = body.hidden
+      ? `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="16" height="16"><polyline points="6 9 12 15 18 9"/></svg> Show`
+      : `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="16" height="16"><polyline points="18 15 12 9 6 15"/></svg> Hide`;
+  });
+
+  // Keyboard shortcut
+  document.addEventListener('keydown', e => {
+    if (e.key === 'n' && !e.target.matches('input,textarea,[contenteditable]')) renderForm(null);
+    if (e.key === 'Escape') document.getElementById('delete-modal').hidden = true;
+  });
+
+  // Init
+  renderTable('');
+  renderForm(null);
+</script>
+</body>
+</html>

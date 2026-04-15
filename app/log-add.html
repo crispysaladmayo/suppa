@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Catat makan — Suppa</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/tokens.css" /><link rel="stylesheet" href="css/components.css" />
+  <style>
+    .selected-groups { display:flex;flex-wrap:wrap;gap:0.375rem;min-height:36px;padding:0.5rem;background:var(--accent-tint);border-radius:10px;margin-bottom:0.75rem; }
+    .selected-group-tag { display:inline-flex;align-items:center;gap:0.375rem;background:var(--accent);color:#fff;padding:0.25rem 0.625rem;border-radius:var(--radius-pill);font-size:0.8125rem;font-weight:500; }
+    .selected-group-tag button { background:none;border:none;color:#fff;cursor:pointer;padding:0;width:16px;height:16px;display:flex;align-items:center;justify-content:center;opacity:0.8; }
+    .selected-group-tag button:hover { opacity:1; }
+  </style>
+</head>
+<body>
+<div class="app-frame">
+  <header class="top-bar">
+    <a class="top-bar__icon-btn" href="today.html" aria-label="Kembali">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+    </a>
+    <h1 class="top-bar__title">Catat makan</h1>
+    <div style="width:44px"></div>
+  </header>
+  <main>
+    <div class="card" style="background:var(--info-soft-bg);box-shadow:none;border:1px solid #fde68a;margin-bottom:var(--space-4);">
+      <p style="font-size:0.8125rem;color:var(--info-soft-text);margin:0;line-height:1.5;"><strong>Pilih kelompok makanan</strong> yang dimakan si kecil. Suppa akan menghitung perkiraan makro dari kelompok + porsi.</p>
+    </div>
+
+    <p style="font-size:0.875rem;font-weight:600;margin:0 0 0.5rem;">Kelompok dipilih:</p>
+    <div class="selected-groups" id="selected-groups" role="list" aria-label="Kelompok makanan dipilih" aria-live="polite"></div>
+
+    <form id="log-form" novalidate>
+      <p style="font-size:0.875rem;font-weight:600;margin:0.875rem 0 0.625rem;">Pilih kelompok makanan:</p>
+      <div class="food-group-grid" role="group" aria-label="Kelompok makanan">
+        <button type="button" class="food-group-btn" aria-pressed="false" data-group="Serealia &amp; Umbi">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2a5 5 0 015 5c0 4-5 12-5 12S7 11 7 7a5 5 0 015-5z"/></svg>
+          Serealia &amp; Umbi
+        </button>
+        <button type="button" class="food-group-btn" aria-pressed="false" data-group="Kacang-kacangan">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="12" rx="8" ry="5"/><path d="M4 12c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+          Kacang-kacangan
+        </button>
+        <button type="button" class="food-group-btn" aria-pressed="false" data-group="Susu &amp; Produk Susu">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2h8l2 4H6L8 2z"/><path d="M6 6v12a2 2 0 002 2h8a2 2 0 002-2V6"/><path d="M10 11h4"/></svg>
+          Susu &amp; Produk Susu
+        </button>
+        <button type="button" class="food-group-btn" aria-pressed="false" data-group="Daging &amp; Ikan">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8a6 6 0 00-12 0c0 7 6 13 6 13s6-6 6-13z"/></svg>
+          Daging &amp; Ikan
+        </button>
+        <button type="button" class="food-group-btn" aria-pressed="false" data-group="Telur">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="13" rx="7" ry="9"/></svg>
+          Telur
+        </button>
+        <button type="button" class="food-group-btn" aria-pressed="false" data-group="Sayur Vit A">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2C6 2 2 8 2 12s10 10 10 10 10-6 10-10S18 2 12 2z"/></svg>
+          Sayur Vit A
+        </button>
+        <button type="button" class="food-group-btn" aria-pressed="false" data-group="Sayur &amp; Buah">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 4v4M12 16v4M4 12h4M16 12h4"/></svg>
+          Sayur &amp; Buah
+        </button>
+        <button type="button" class="food-group-btn" aria-pressed="false" data-group="Minyak &amp; Lemak">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v20M6 6l6 4 6-4M6 18l6-4 6 4"/></svg>
+          Minyak &amp; Lemak
+        </button>
+        <button type="button" class="food-group-btn" aria-pressed="false" data-group="Minuman">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h14l-3 8H8L5 3z"/><path d="M8 11l1 8a1 1 0 001 1h4a1 1 0 001-1l1-8"/></svg>
+          Minuman
+        </button>
+      </div>
+
+      <p style="font-size:0.875rem;font-weight:600;margin:0 0 0.625rem;">Porsi:</p>
+      <div class="portion-selector" role="group" aria-label="Pilih porsi">
+        <button type="button" class="portion-btn" aria-pressed="false" data-portion="sedikit">Sedikit<br><span style="font-size:0.75rem;font-weight:400;color:var(--text-muted);">¼–½ mangkuk</span></button>
+        <button type="button" class="portion-btn" aria-pressed="true" data-portion="sedang">Sedang<br><span style="font-size:0.75rem;font-weight:400;color:var(--text-muted);">½–1 mangkuk</span></button>
+        <button type="button" class="portion-btn" aria-pressed="false" data-portion="banyak">Banyak<br><span style="font-size:0.75rem;font-weight:400;color:var(--text-muted);">&gt;1 mangkuk</span></button>
+      </div>
+
+      <div class="field">
+        <label for="meal-name">Nama makan (opsional)</label>
+        <input type="text" id="meal-name" placeholder="cth. Sarapan bubur nasi" autocomplete="off" />
+      </div>
+
+      <p class="field__error" id="log-error" role="alert" aria-live="polite" style="display:none;margin-bottom:0.75rem;"></p>
+      <button type="submit" class="btn btn--primary" style="margin-bottom:var(--space-6);">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+        Simpan catatan
+      </button>
+    </form>
+  </main>
+</div>
+
+<nav class="bottom-nav" aria-label="Navigasi utama">
+  <a href="today.html" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="13" y2="16"/></svg>Log Harian</a>
+  <a href="fridge.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Masak</a>
+  <a href="edukasi.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/><line x1="9" y1="7" x2="15" y2="7"/><line x1="9" y1="11" x2="13" y2="11"/></svg>Edukasi</a>
+</nav>
+<div id="toast" class="toast" aria-live="polite"></div>
+<script src="js/tokens.js"></script><script src="js/profile.js"></script><script src="js/api.js"></script><script src="js/ui.js"></script><script src="js/app.js"></script>
+<script>
+(function() {
+  var selectedGroups = new Set();
+  var container = document.getElementById('selected-groups');
+
+  function renderTags() {
+    container.innerHTML = '';
+    if (!selectedGroups.size) { container.innerHTML = '<span style="color:var(--text-muted);font-size:0.8125rem;align-self:center;">Belum ada kelompok dipilih</span>'; return; }
+    selectedGroups.forEach(function(g) {
+      var tag = document.createElement('div');
+      tag.className = 'selected-group-tag'; tag.setAttribute('role', 'listitem');
+      tag.innerHTML = g + '<button type="button" aria-label="Hapus ' + g + '"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>';
+      tag.querySelector('button').addEventListener('click', function() {
+        selectedGroups.delete(g);
+        var btn = document.querySelector('[data-group="' + g.replace(/&amp;/g,'&') + '"]') || document.querySelector('[data-group="' + g + '"]');
+        if (btn) btn.setAttribute('aria-pressed', 'false');
+        renderTags();
+      });
+      container.appendChild(tag);
+    });
+  }
+
+  document.querySelectorAll('.food-group-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var group = btn.dataset.group;
+      var pressed = btn.getAttribute('aria-pressed') === 'true';
+      btn.setAttribute('aria-pressed', pressed ? 'false' : 'true');
+      if (pressed) selectedGroups.delete(group); else selectedGroups.add(group);
+      var errEl = document.getElementById('log-error');
+      if (errEl) { errEl.textContent = ''; errEl.style.display = 'none'; }
+      renderTags();
+    });
+  });
+
+  renderTags();
+})();
+</script>
+</body>
+</html>

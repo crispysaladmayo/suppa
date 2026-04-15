@@ -1,0 +1,63 @@
+/* Suppa M2 — Design Tokens */
+:root {
+  /* Color */
+  --bg-page: #faf8f5;
+  --surface: #ffffff;
+  --text-primary: #1c1917;
+  --text-secondary: #57534e;
+  --text-muted: #78716c;
+  --border-subtle: #e7e5e4;
+  --accent: #c45c3e;
+  --accent-hover: #a34a32;
+  --accent-tint: #fef3f2;
+  --accent-light: #f5ddd8;
+  --success-soft-bg: #ecfdf5;
+  --success-soft-text: #047857;
+  --info-soft-bg: #fffbeb;
+  --info-soft-text: #b45309;
+  --warning-soft-bg: #fef9c3;
+  --warning-soft-text: #92400e;
+  --error-text: #b91c1c;
+  --focus-ring: #2563eb;
+  --shadow-card: 0 1px 3px rgba(0,0,0,0.08);
+  --shadow-sheet: 0 -4px 24px rgba(0,0,0,0.12);
+  --shadow-modal: 0 8px 32px rgba(0,0,0,0.16);
+
+  /* Spacing */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-page: 16px;
+
+  /* Radius */
+  --radius-card: 16px;
+  --radius-input: 10px;
+  --radius-btn: 12px;
+  --radius-chip: 8px;
+  --radius-pill: 9999px;
+
+  /* Layout */
+  --max-width: 480px;
+  --max-width-recipe: 720px;
+
+  /* Typography */
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "Inter", system-ui, sans-serif;
+
+  /* Transition */
+  --transition-fast: 150ms ease;
+  --transition-base: 200ms ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
