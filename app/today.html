@@ -67,16 +67,16 @@
         <div class="macro-bar__head"><span class="macro-bar__label">Lemak</span><span class="macro-bar__vals" id="macro-fat-val"><span class="macro-bar__tilde">~</span>0 / 44 g</span></div>
         <div class="macro-bar__track" aria-hidden="true"><div class="macro-bar__fill" id="macro-fat-fill" style="width:0%"></div></div>
       </div>
-      <p class="caption" style="margin-top:0.875rem;padding-top:0.75rem;border-top:1px solid var(--border-subtle);">
-        🌈 Nara sudah makan 5 dari 8 kelompok minggu ini · <a href="log-week.html" style="color:var(--accent);text-decoration:none;font-weight:500;">Lihat detail</a>
+      <p class="caption macro-card__footer">
+        🌈 Nara sudah makan 5 dari 8 kelompok minggu ini · <a href="log-week.html">Lihat detail</a>
       </p>
     </section>
 
     <!-- Single gap nudge -->
-    <div id="gap-nudge" role="status" aria-label="Saran gizi minggu ini" style="display:flex;align-items:center;gap:0.625rem;background:var(--info-soft-bg);border-radius:10px;padding:0.625rem 0.875rem;font-size:0.8125rem;color:var(--info-soft-text);">
+    <div id="gap-nudge" class="gap-nudge" role="status" aria-label="Saran gizi minggu ini">
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink:0;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-      <span style="flex:1;">Zinc minggu ini rendah · coba tempe atau daging sapi</span>
-      <button type="button" data-dismiss="gap-nudge" aria-label="Tutup saran" style="background:none;border:none;cursor:pointer;padding:0;color:var(--info-soft-text);opacity:0.6;display:flex;align-items:center;">
+      <span class="gap-nudge__text">Zinc minggu ini rendah · coba tempe atau daging sapi</span>
+      <button type="button" class="gap-nudge__dismiss" data-dismiss="gap-nudge" aria-label="Tutup saran">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
       </button>
     </div>

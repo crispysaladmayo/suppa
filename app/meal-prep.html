@@ -6,16 +6,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/tokens.css" /><link rel="stylesheet" href="css/components.css" />
-  <style>
-    .prep-grid { display:grid; grid-template-columns:80px 1fr 1fr 1fr; gap:0; margin-bottom:var(--space-5); border:1px solid var(--border-subtle); border-radius:var(--radius-card); overflow:hidden; }
-    .prep-grid__header { font-size:0.75rem; font-weight:600; letter-spacing:0.04em; text-transform:uppercase; color:var(--text-muted); padding:0.625rem 0.5rem; background:var(--bg-page); border-bottom:1px solid var(--border-subtle); text-align:center; }
-    .prep-grid__day { font-size:0.8125rem; font-weight:600; padding:0.75rem 0.625rem; background:var(--bg-page); border-bottom:1px solid var(--border-subtle); color:var(--text-secondary); }
-    .prep-grid__slot { padding:0.75rem 0.5rem; border-bottom:1px solid var(--border-subtle); border-left:1px solid var(--border-subtle); min-height:52px; font-size:0.8125rem; cursor:pointer; color:var(--text-muted); transition:background var(--transition-fast); }
-    .prep-grid__slot:hover { background:var(--accent-tint); color:var(--accent); }
-    .prep-grid__slot.filled { color:var(--text-primary); background:var(--success-soft-bg); }
-    .prep-grid__row:last-child .prep-grid__day,
-    .prep-grid__row:last-child .prep-grid__slot { border-bottom:none; }
-  </style>
 </head>
 <body>
 <div class="app-frame">

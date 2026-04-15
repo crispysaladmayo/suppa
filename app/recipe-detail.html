@@ -6,21 +6,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/tokens.css" /><link rel="stylesheet" href="css/components.css" />
-  <style>
-    .recipe-hero { padding:var(--space-5) 0; }
-    .recipe-hero__emoji { font-size:4rem; display:block; margin-bottom:0.75rem; }
-    .recipe-meta { display:flex; flex-wrap:wrap; gap:0.5rem; margin-bottom:1rem; }
-    .recipe-section { margin-bottom:var(--space-5); }
-    .recipe-section h2 { font-family:var(--font-display); font-size:1.0625rem; font-weight:600; margin:0 0 0.625rem; }
-    .ingredient-list { list-style:none; padding:0; margin:0; }
-    .ingredient-list li { padding:0.5rem 0; border-bottom:1px solid var(--border-subtle); font-size:0.9375rem; }
-    .ingredient-list li:last-child { border-bottom:none; }
-    .instruction-list { padding-left:1.25rem; margin:0; }
-    .instruction-list li { margin-bottom:0.75rem; font-size:0.9375rem; line-height:1.6; }
-    .macro-line { display:flex; gap:0.5rem; flex-wrap:wrap; padding:0.75rem; background:var(--bg-page); border-radius:10px; margin-bottom:var(--space-4); }
-    .macro-pill { font-size:0.8125rem; font-weight:500; color:var(--text-secondary); }
-    .macro-pill strong { color:var(--text-primary); }
-  </style>
 </head>
 <body>
 <div class="app-frame app-frame--wide">
@@ -43,11 +28,11 @@
       </div>
       <div class="macro-line" aria-label="Perkiraan makro per sajian">
         <span class="macro-pill"><strong>~110</strong> kkal</span>
-        <span class="macro-pill" style="color:var(--border-subtle);">·</span>
+        <span class="macro-pill macro-pill--sep">·</span>
         <span class="macro-pill"><strong>~8 g</strong> protein</span>
-        <span class="macro-pill" style="color:var(--border-subtle);">·</span>
+        <span class="macro-pill macro-pill--sep">·</span>
         <span class="macro-pill"><strong>~14 g</strong> karbo</span>
-        <span class="macro-pill" style="color:var(--border-subtle);">·</span>
+        <span class="macro-pill macro-pill--sep">·</span>
         <span class="macro-pill"><strong>~3 g</strong> lemak</span>
       </div>
       <p class="caption" style="margin-bottom:0.5rem;">⏱ 25 menit · 🍽 1–2 porsi · Usia: 6 bulan+</p>
@@ -85,8 +70,8 @@
 
     <section class="recipe-section">
       <h2>Catatan keamanan</h2>
-      <div class="card" style="background:var(--success-soft-bg);box-shadow:none;border:1px solid #a7f3d0;">
-        <p style="font-size:0.875rem;color:var(--success-soft-text);margin:0;line-height:1.5;">
+      <div class="card card--success">
+        <p class="caption" style="color:var(--success-soft-text);line-height:1.5;">
           ✓ Tidak mengandung kacang, telur, atau bahan yang dipantang Nara. Pastikan hati ayam dimasak hingga benar-benar matang.
         </p>
       </div>

@@ -453,3 +453,223 @@ textarea:focus-visible, [tabindex]:focus-visible {
   .app-frame { padding-bottom: var(--space-page) !important; max-width: none !important; }
   body { background: #fff !important; }
 }
+
+/* ── Prose (terms / privacy) ──────────────────────────────── */
+.prose { font-size: 0.9375rem; line-height: 1.65; color: var(--text-primary); }
+.prose h2 { font-family: var(--font-display); font-size: 1.0625rem; font-weight: 600; margin: 1.5rem 0 0.625rem; }
+.prose p, .prose li { margin-bottom: 0.75rem; }
+.prose ul { padding-left: 1.25rem; }
+
+/* ── Card variants ────────────────────────────────────────── */
+.card--info    { background: var(--info-soft-bg);     box-shadow: none; border: 1px solid #fde68a; }
+.card--success { background: var(--success-soft-bg);  box-shadow: none; border: 1px solid #a7f3d0; }
+
+/* ── Gap Nudge (condensed single-line nutritional hint) ───── */
+.gap-nudge {
+  display: flex; align-items: center; gap: 0.625rem;
+  background: var(--info-soft-bg); border-radius: 10px;
+  padding: 0.625rem 0.875rem; font-size: 0.8125rem;
+  color: var(--info-soft-text); margin-bottom: var(--space-4);
+}
+.gap-nudge__text { flex: 1; }
+.gap-nudge__dismiss {
+  background: none; border: none; cursor: pointer; padding: 0;
+  color: var(--info-soft-text); opacity: 0.6;
+  display: flex; align-items: center; flex-shrink: 0;
+}
+.gap-nudge__dismiss:hover { opacity: 1; }
+
+/* ── Macro card footer (pelangi / week summary line) ─────── */
+.macro-card__footer {
+  margin-top: 0.875rem; padding-top: 0.75rem;
+  border-top: 1px solid var(--border-subtle);
+}
+.macro-card__footer a { color: var(--accent); text-decoration: none; font-weight: 500; }
+
+/* ── Grid utilities ───────────────────────────────────────── */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+
+/* ── Auth helpers ─────────────────────────────────────────── */
+.auth-switch { text-align: center; margin-top: 1.5rem; font-size: 0.9375rem; }
+.forgot-row  { text-align: right; margin: -0.5rem 0 1rem; }
+.forgot-row a { font-size: 0.875rem; }
+
+/* ── Log Add: selected food group tags ────────────────────── */
+.selected-groups {
+  display: flex; flex-wrap: wrap; gap: 0.375rem;
+  min-height: 36px; padding: 0.5rem;
+  background: var(--accent-tint); border-radius: 10px; margin-bottom: 0.75rem;
+}
+.selected-group-tag {
+  display: inline-flex; align-items: center; gap: 0.375rem;
+  background: var(--accent); color: #fff;
+  padding: 0.25rem 0.625rem; border-radius: var(--radius-pill);
+  font-size: 0.8125rem; font-weight: 500;
+}
+.selected-group-tag button {
+  background: none; border: none; color: #fff; cursor: pointer; padding: 0;
+  width: 16px; height: 16px; display: flex; align-items: center;
+  justify-content: center; opacity: 0.8;
+}
+.selected-group-tag button:hover { opacity: 1; }
+
+/* ── Log Week: day rows ───────────────────────────────────── */
+.day-row {
+  display: flex; align-items: center; gap: 0.75rem;
+  padding: 0.75rem 0; border-bottom: 1px solid var(--border-subtle);
+}
+.day-row:last-child { border-bottom: none; }
+.day-row__label { width: 72px; font-size: 0.875rem; font-weight: 600; color: var(--text-secondary); }
+.day-row__groups { display: flex; gap: 4px; flex: 1; }
+.day-row__group { width: 20px; height: 20px; border-radius: 4px; background: var(--border-subtle); }
+.day-row__group.filled { background: var(--accent); }
+.day-row__count { font-size: 0.75rem; color: var(--text-muted); }
+
+/* ── Growth: entry list ───────────────────────────────────── */
+.growth-entry {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 0.75rem 0; border-bottom: 1px solid var(--border-subtle); font-size: 0.9375rem;
+}
+.growth-entry:last-child { border-bottom: none; }
+.growth-entry__date { color: var(--text-muted); font-size: 0.8125rem; }
+.growth-value { font-weight: 600; }
+
+/* ── Add Recipe: macro emphasis selector ──────────────────── */
+.emphasis-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; margin-bottom: 1rem; }
+.emphasis-option {
+  display: flex; flex-direction: column; align-items: center; gap: 0.375rem;
+  padding: 0.875rem 0.5rem; background: var(--surface);
+  border: 2px solid var(--border-subtle); border-radius: var(--radius-card);
+  cursor: pointer; font-size: 0.8125rem; font-weight: 500;
+  font-family: var(--font-body); color: var(--text-secondary);
+  transition: all var(--transition-fast); min-height: 64px;
+}
+.emphasis-option:has(input:checked) { border-color: var(--accent); background: var(--accent-tint); color: var(--accent); }
+.emphasis-option input { position: absolute; opacity: 0; pointer-events: none; }
+.collapsible-trigger {
+  background: none; border: none; cursor: pointer;
+  font-size: 0.875rem; font-weight: 500; color: var(--accent);
+  padding: 0; text-decoration: underline;
+}
+
+/* ── Recipe Detail ────────────────────────────────────────── */
+.recipe-hero { padding: var(--space-5) 0; }
+.recipe-hero__emoji { font-size: 4rem; display: block; margin-bottom: 0.75rem; }
+.recipe-meta { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; }
+.recipe-section { margin-bottom: var(--space-5); }
+.recipe-section h2 { font-family: var(--font-display); font-size: 1.0625rem; font-weight: 600; margin: 0 0 0.625rem; }
+.ingredient-list { list-style: none; padding: 0; margin: 0; }
+.ingredient-list li { padding: 0.5rem 0; border-bottom: 1px solid var(--border-subtle); font-size: 0.9375rem; }
+.ingredient-list li:last-child { border-bottom: none; }
+.instruction-list { padding-left: 1.25rem; margin: 0; }
+.instruction-list li { margin-bottom: 0.75rem; font-size: 0.9375rem; line-height: 1.6; }
+.macro-line {
+  display: flex; gap: 0.5rem; flex-wrap: wrap; padding: 0.75rem;
+  background: var(--bg-page); border-radius: 10px; margin-bottom: var(--space-4);
+}
+.macro-pill { font-size: 0.8125rem; font-weight: 500; color: var(--text-secondary); }
+.macro-pill strong { color: var(--text-primary); }
+.macro-pill--sep { color: var(--border-subtle); }
+
+/* ── Onboarding ───────────────────────────────────────────── */
+.step { display: none; }
+.step.is-active { display: block; }
+.radio-group { display: flex; flex-direction: column; gap: 0.5rem; }
+.radio-option {
+  display: flex; align-items: center; gap: 0.75rem;
+  padding: 0.75rem 1rem; background: var(--surface);
+  border: 2px solid var(--border-subtle); border-radius: var(--radius-input);
+  cursor: pointer; transition: all var(--transition-fast);
+}
+.radio-option:has(input:checked) { border-color: var(--accent); background: var(--accent-tint); }
+.radio-option input { accent-color: var(--accent); width: 18px; height: 18px; cursor: pointer; }
+
+/* ── Fridge input ─────────────────────────────────────────── */
+.fridge-input-row { display: flex; gap: 0.5rem; margin-bottom: 0.875rem; }
+.fridge-input-row input {
+  flex: 1; min-height: 44px; padding: 0.625rem 0.75rem;
+  border: 1.5px solid var(--border-subtle); border-radius: var(--radius-input);
+  font-family: var(--font-body); font-size: 1rem; background: var(--surface);
+}
+.fridge-input-row input:focus { border-color: var(--accent); outline: none; box-shadow: 0 0 0 3px rgba(196,92,62,0.12); }
+.fridge-input-row button { flex-shrink: 0; }
+#fridge-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.75rem; min-height: 44px; }
+
+/* ── Education article ────────────────────────────────────── */
+.article-body h2 { font-family: var(--font-display); font-size: 1.125rem; font-weight: 600; margin: 1.5rem 0 0.75rem; }
+.article-body p  { font-size: 0.9375rem; line-height: 1.65; margin: 0 0 0.875rem; color: var(--text-primary); }
+.article-body ul { padding-left: 1.25rem; margin: 0 0 0.875rem; }
+.article-body li { font-size: 0.9375rem; line-height: 1.65; margin-bottom: 0.375rem; }
+.callout {
+  background: var(--info-soft-bg); border-left: 3px solid #f59e0b;
+  padding: 0.875rem 1rem; border-radius: 0 10px 10px 0; margin-bottom: var(--space-5);
+}
+.callout p { font-size: 0.875rem; color: var(--info-soft-text); margin: 0; line-height: 1.5; }
+.quiz-card { background: var(--surface); border-radius: var(--radius-card); box-shadow: var(--shadow-card); padding: var(--space-5); margin-bottom: var(--space-5); }
+.quiz-option {
+  display: flex; align-items: center; gap: 0.75rem;
+  padding: 0.75rem 1rem; background: var(--bg-page);
+  border: 2px solid var(--border-subtle); border-radius: 10px;
+  cursor: pointer; margin-bottom: 0.5rem; font-size: 0.9375rem;
+}
+.quiz-option:hover { border-color: var(--accent); }
+.quiz-option.correct { background: var(--success-soft-bg); border-color: var(--success-soft-text); color: var(--success-soft-text); }
+.quiz-option.wrong   { background: #fef2f2; border-color: var(--error-text); color: var(--error-text); }
+
+/* ── Meal Prep grid ───────────────────────────────────────── */
+.prep-grid {
+  display: grid; grid-template-columns: 80px 1fr 1fr 1fr; gap: 0;
+  margin-bottom: var(--space-5); border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-card); overflow: hidden;
+}
+.prep-grid__header {
+  font-size: 0.75rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase;
+  color: var(--text-muted); padding: 0.625rem 0.5rem;
+  background: var(--bg-page); border-bottom: 1px solid var(--border-subtle); text-align: center;
+}
+.prep-grid__day {
+  font-size: 0.8125rem; font-weight: 600; padding: 0.75rem 0.625rem;
+  background: var(--bg-page); border-bottom: 1px solid var(--border-subtle); color: var(--text-secondary);
+}
+.prep-grid__slot {
+  padding: 0.75rem 0.5rem; border-bottom: 1px solid var(--border-subtle);
+  border-left: 1px solid var(--border-subtle); min-height: 52px;
+  font-size: 0.8125rem; cursor: pointer; color: var(--text-muted);
+  transition: background var(--transition-fast);
+}
+.prep-grid__slot:hover { background: var(--accent-tint); color: var(--accent); }
+.prep-grid__slot.filled { color: var(--text-primary); background: var(--success-soft-bg); }
+.prep-grid__row:last-child .prep-grid__day,
+.prep-grid__row:last-child .prep-grid__slot { border-bottom: none; }
+
+/* ── Settings: mindful eating card ───────────────────────── */
+.mindful-card { background: var(--surface); border-radius: var(--radius-card); box-shadow: var(--shadow-card); padding: var(--space-5); margin-bottom: var(--space-4); }
+.mindful-card__title { font-family: var(--font-display); font-size: 1.0625rem; font-weight: 600; margin: 0 0 0.25rem; }
+.mindful-card__desc  { font-size: 0.8125rem; color: var(--text-secondary); margin: 0 0 1rem; }
+.mindful-row { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 0.625rem 0; border-bottom: 1px solid var(--border-subtle); }
+.mindful-row:last-of-type { border-bottom: none; }
+.mindful-row__label { font-size: 0.9375rem; font-weight: 500; }
+.mindful-row__unit  { font-size: 0.8125rem; color: var(--text-muted); }
+.mindful-input {
+  width: 80px; text-align: right; padding: 0.375rem 0.625rem;
+  font-size: 0.9375rem; font-family: var(--font-body); font-weight: 500;
+  border: 1.5px solid var(--border-subtle); border-radius: var(--radius-input);
+  background: var(--surface); color: var(--text-primary);
+}
+.mindful-input:focus { border-color: var(--accent); outline: none; box-shadow: 0 0 0 3px rgba(196,92,62,0.12); }
+
+/* ── Settings: profile card ───────────────────────────────── */
+.profile-card { background: var(--surface); border-radius: var(--radius-card); box-shadow: var(--shadow-card); padding: var(--space-5); margin-bottom: var(--space-4); display: flex; align-items: center; gap: 1rem; }
+.profile-card__info { flex: 1; }
+.profile-card__name { font-weight: 600; margin: 0 0 0.2rem; }
+.profile-card__meta { font-size: 0.8125rem; color: var(--text-muted); margin: 0; }
+
+/* ── Settings: sign-out modal ─────────────────────────────── */
+.modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 400; display: flex; align-items: center; justify-content: center; padding: var(--space-4); }
+.modal-overlay[hidden] { display: none; }
+.modal { background: var(--surface); border-radius: var(--radius-card); padding: var(--space-6); max-width: 360px; width: 100%; box-shadow: var(--shadow-modal); }
+.modal__icon  { font-size: 2.5rem; margin-bottom: 0.75rem; }
+.modal__title { font-family: var(--font-display); font-size: 1.125rem; font-weight: 600; margin: 0 0 0.5rem; }
+.modal__body  { font-size: 0.9375rem; color: var(--text-secondary); margin: 0 0 1.5rem; }
+.modal__actions { display: flex; gap: 0.75rem; }
+.modal__actions .btn { flex: 1; }
