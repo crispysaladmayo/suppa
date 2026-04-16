@@ -1,4 +1,5 @@
 # Suppa — Design Brief
+
 **Version:** M2 · April 2026  
 **Governs:** All consumer-facing screens and internal tooling UI
 
@@ -7,12 +8,14 @@
 ## 1. Brand Identity
 
 ### Name & Wordmark
+
 - **Product name:** Suppa (Indonesian slang for "super" — also echoes *suapan* / "spoonful")
 - **Wordmark:** "Suppa" set in Fraunces 600, letter-spacing −0.02em. Always lowercase. Never all-caps.
 - **Logo mark:** Soft warm-tinted circle with terracotta accent strokes (SVG asset). Sits left of wordmark in brand lockup.
 - **Tagline:** *Gizi hari ini, lebih jelas.* (Today's nutrition, clearer.)
 
 ### Brand Personality
+
 - **Warm** — feels like a knowledgeable older sister, not a clinical app
 - **Honest** — estimates are estimates; disclaimers are always present but never alarming
 - **Grounded** — rooted in real Indonesian food culture, MPASI context, everyday ingredients
@@ -24,46 +27,55 @@
 
 ### Base Palette
 
-| Token | Value | Usage |
-|---|---|---|
-| `--bg-page` | `#faf8f5` | Page background — warm off-white |
-| `--surface` | `#ffffff` | Card / sheet / input surface |
-| `--text-primary` | `#1c1917` | Body copy, headings |
-| `--text-secondary` | `#57534e` | Supporting copy, labels |
-| `--text-muted` | `#78716c` | Captions, overlines, meta |
-| `--border-subtle` | `#e7e5e4` | Card borders, dividers, input borders |
+
+| Token              | Value     | Usage                                 |
+| ------------------ | --------- | ------------------------------------- |
+| `--bg-page`        | `#faf8f5` | Page background — warm off-white      |
+| `--surface`        | `#ffffff` | Card / sheet / input surface          |
+| `--text-primary`   | `#1c1917` | Body copy, headings                   |
+| `--text-secondary` | `#57534e` | Supporting copy, labels               |
+| `--text-muted`     | `#78716c` | Captions, overlines, meta             |
+| `--border-subtle`  | `#e7e5e4` | Card borders, dividers, input borders |
+
 
 ### Accent — Terracotta
 
-| Token | Value | Usage |
-|---|---|---|
-| `--accent` | `#c45c3e` | Primary buttons, links, active nav, key badges |
-| `--accent-hover` | `#a34a32` | Button hover/press state |
-| `--accent-tint` | `#fef3f2` | Accent surface tint for info chips, badge bg |
-| `--accent-light` | `#f5ddd8` | Selected chip bg, light accent fill |
+
+| Token            | Value     | Usage                                          |
+| ---------------- | --------- | ---------------------------------------------- |
+| `--accent`       | `#c45c3e` | Primary buttons, links, active nav, key badges |
+| `--accent-hover` | `#a34a32` | Button hover/press state                       |
+| `--accent-tint`  | `#fef3f2` | Accent surface tint for info chips, badge bg   |
+| `--accent-light` | `#f5ddd8` | Selected chip bg, light accent fill            |
+
 
 ### Semantic Surfaces (non-alarming)
 
-| Token | Value | Usage |
-|---|---|---|
-| `--success-soft-bg` | `#ecfdf5` | Positive weekly summary, safe badge bg |
-| `--success-soft-text` | `#047857` | Text on success surfaces |
-| `--info-soft-bg` | `#fffbeb` | Gap hint bg (zinc, general), callout bg |
-| `--info-soft-text` | `#b45309` | Text on info surfaces |
-| `--warning-soft-bg` | `#fef9c3` | Gap hint bg (iron, higher urgency) |
-| `--warning-soft-text` | `#92400e` | Text on warning-soft surfaces |
-| `--error-text` | `#b91c1c` | Form validation errors only |
+
+| Token                 | Value     | Usage                                   |
+| --------------------- | --------- | --------------------------------------- |
+| `--success-soft-bg`   | `#ecfdf5` | Positive weekly summary, safe badge bg  |
+| `--success-soft-text` | `#047857` | Text on success surfaces                |
+| `--info-soft-bg`      | `#fffbeb` | Gap hint bg (zinc, general), callout bg |
+| `--info-soft-text`    | `#b45309` | Text on info surfaces                   |
+| `--warning-soft-bg`   | `#fef9c3` | Gap hint bg (iron, higher urgency)      |
+| `--warning-soft-text` | `#92400e` | Text on warning-soft surfaces           |
+| `--error-text`        | `#b91c1c` | Form validation errors only             |
+
 
 ### Focus & Interaction
 
-| Token | Value | Usage |
-|---|---|---|
-| `--focus-ring` | `#2563eb` | Keyboard focus outline (2px, offset 2px) |
-| `--shadow-card` | `0 1px 3px rgba(0,0,0,0.08)` | Card elevation |
-| `--shadow-sheet` | `0 -4px 24px rgba(0,0,0,0.12)` | Bottom sheet shadow |
-| `--shadow-modal` | `0 8px 32px rgba(0,0,0,0.16)` | Modal overlay |
+
+| Token            | Value                          | Usage                                    |
+| ---------------- | ------------------------------ | ---------------------------------------- |
+| `--focus-ring`   | `#2563eb`                      | Keyboard focus outline (2px, offset 2px) |
+| `--shadow-card`  | `0 1px 3px rgba(0,0,0,0.08)`   | Card elevation                           |
+| `--shadow-sheet` | `0 -4px 24px rgba(0,0,0,0.12)` | Bottom sheet shadow                      |
+| `--shadow-modal` | `0 8px 32px rgba(0,0,0,0.16)`  | Modal overlay                            |
+
 
 ### Color Rules
+
 - **Never** use pure red (#ff0000) for nutrition feedback — use `--info-soft` or `--warning-soft`
 - **Never** convey nutrition status by color alone — always pair with text label
 - Macro bars use terracotta fill (`--accent`) on `--border-subtle` track, not traffic-light colors
@@ -74,27 +86,33 @@
 ## 3. Typography
 
 ### Typefaces
-| Role | Family | Weight | Source |
-|---|---|---|---|
-| Display / Wordmark | Fraunces | 600 | Google Fonts (`opsz,wght@9..144,600`) |
-| Body / UI | Inter | 400, 500, 600 | Google Fonts (`wght@400;500;600`) |
-| Fallbacks | Display: Georgia, serif · Body: system-ui, sans-serif | | |
+
+
+| Role               | Family                                                | Weight        | Source                                |
+| ------------------ | ----------------------------------------------------- | ------------- | ------------------------------------- |
+| Display / Wordmark | Fraunces                                              | 600           | Google Fonts (`opsz,wght@9..144,600`) |
+| Body / UI          | Inter                                                 | 400, 500, 600 | Google Fonts (`wght@400;500;600`)     |
+| Fallbacks          | Display: Georgia, serif · Body: system-ui, sans-serif |               |                                       |
+
 
 ### Scale
 
-| Token/Class | Size | Weight | Line-height | Usage |
-|---|---|---|---|---|
-| `.display` | `clamp(1.75rem, 5vw, 2rem)` | 600 | 1.2 | Fraunces. Landing hero, section titles |
-| `.title` | `1.375rem` | 600 | 1.2 | Fraunces. Card headings, screen titles |
-| `.heading-sm` | `1.125rem` | 600 | 1.3 | Fraunces. Sub-headings within cards |
-| `body` (default) | `1rem` | 400 | 1.5 | Inter. All body copy |
-| `.body-strong` | `1rem` | 600 | 1.5 | Inter. Emphasized body copy |
-| `.body-muted` | `0.875rem` | 400 | 1.5 | Inter. Supporting copy, descriptions |
-| `.overline` | `0.75rem` | 500 | 1.2 | Inter + letter-spacing 0.06em + uppercase. Section headers |
-| `.caption` | `0.75rem` | 400 | 1.4 | Inter. Timestamps, meta, disclaimers |
-| `.label` | `0.875rem` | 500 | 1.4 | Inter. Form labels, chip text |
+
+| Token/Class      | Size                        | Weight | Line-height | Usage                                                      |
+| ---------------- | --------------------------- | ------ | ----------- | ---------------------------------------------------------- |
+| `.display`       | `clamp(1.75rem, 5vw, 2rem)` | 600    | 1.2         | Fraunces. Landing hero, section titles                     |
+| `.title`         | `1.375rem`                  | 600    | 1.2         | Fraunces. Card headings, screen titles                     |
+| `.heading-sm`    | `1.125rem`                  | 600    | 1.3         | Fraunces. Sub-headings within cards                        |
+| `body` (default) | `1rem`                      | 400    | 1.5         | Inter. All body copy                                       |
+| `.body-strong`   | `1rem`                      | 600    | 1.5         | Inter. Emphasized body copy                                |
+| `.body-muted`    | `0.875rem`                  | 400    | 1.5         | Inter. Supporting copy, descriptions                       |
+| `.overline`      | `0.75rem`                   | 500    | 1.2         | Inter + letter-spacing 0.06em + uppercase. Section headers |
+| `.caption`       | `0.75rem`                   | 400    | 1.4         | Inter. Timestamps, meta, disclaimers                       |
+| `.label`         | `0.875rem`                  | 500    | 1.4         | Inter. Form labels, chip text                              |
+
 
 ### Rules
+
 - Headings always Fraunces; UI chrome always Inter
 - Minimum font size on screen: 0.75rem (12px) — captions only
 - Body text minimum: 0.875rem (14px) for readability on small screens
@@ -104,6 +122,7 @@
 ## 4. Spacing & Layout
 
 ### Grid
+
 - **Mobile viewport:** 375px default; centered with `max-width: 480px`
 - **Recipe detail only:** `max-width: 720px`
 - **Page padding:** `--space-page: 16px` (mobile), `--space-page-md: 24px` (≥480px)
@@ -111,29 +130,34 @@
 
 ### Spacing Tokens
 
-| Token | Value |
-|---|---|
-| `--space-1` | `4px` |
-| `--space-2` | `8px` |
-| `--space-3` | `12px` |
-| `--space-4` | `16px` |
-| `--space-5` | `20px` |
-| `--space-6` | `24px` |
-| `--space-8` | `32px` |
+
+| Token        | Value  |
+| ------------ | ------ |
+| `--space-1`  | `4px`  |
+| `--space-2`  | `8px`  |
+| `--space-3`  | `12px` |
+| `--space-4`  | `16px` |
+| `--space-5`  | `20px` |
+| `--space-6`  | `24px` |
+| `--space-8`  | `32px` |
 | `--space-10` | `40px` |
+
 
 ### Border Radius
 
-| Token | Value | Usage |
-|---|---|---|
-| `--radius-card` | `16px` | Cards, sheets |
-| `--radius-input` | `10px` | Form inputs, selects, textareas |
-| `--radius-btn` | `12px` | Buttons |
-| `--radius-chip` | `8px` | Allergy chips, food group chips |
-| `--radius-pill` | `9999px` | Badge pills, bottom nav tabs |
-| `--radius-circle` | `50%` | Avatars, logo mark |
+
+| Token             | Value    | Usage                           |
+| ----------------- | -------- | ------------------------------- |
+| `--radius-card`   | `16px`   | Cards, sheets                   |
+| `--radius-input`  | `10px`   | Form inputs, selects, textareas |
+| `--radius-btn`    | `12px`   | Buttons                         |
+| `--radius-chip`   | `8px`    | Allergy chips, food group chips |
+| `--radius-pill`   | `9999px` | Badge pills, bottom nav tabs    |
+| `--radius-circle` | `50%`    | Avatars, logo mark              |
+
 
 ### Touch Targets
+
 - **Minimum:** 44×44px for all interactive elements
 - Bottom nav items: 64px height
 - Chips: `min-height: 40px`, `min-width: 44px`
@@ -144,26 +168,30 @@
 
 ### Buttons
 
-| Variant | Background | Text | Usage |
-|---|---|---|---|
-| `.btn--primary` | `--accent` | `#fff` | Main CTA (log, save, proceed) |
-| `.btn--secondary` | `--surface` + 2px accent border | `--accent` | Secondary actions |
-| `.btn--ghost` | transparent | `--accent` | Tertiary / navigation links |
-| `.btn--destructive` | transparent | `--error-text` | Delete, sign out |
-| `.btn--whatsapp` | `#25d366` | `#fff` | WhatsApp share |
+
+| Variant             | Background                      | Text           | Usage                         |
+| ------------------- | ------------------------------- | -------------- | ----------------------------- |
+| `.btn--primary`     | `--accent`                      | `#fff`         | Main CTA (log, save, proceed) |
+| `.btn--secondary`   | `--surface` + 2px accent border | `--accent`     | Secondary actions             |
+| `.btn--ghost`       | transparent                     | `--accent`     | Tertiary / navigation links   |
+| `.btn--destructive` | transparent                     | `--error-text` | Delete, sign out              |
+| `.btn--whatsapp`    | `#25d366`                       | `#fff`         | WhatsApp share                |
+
 
 Full-width by default on mobile. Auto-width with `width: auto` override.
 
 ### Cards
 
-| Variant | Description |
-|---|---|
-| `.card` | White bg, `--shadow-card`, `--radius-card`, `--space-4` padding |
+
+| Variant                    | Description                                                       |
+| -------------------------- | ----------------------------------------------------------------- |
+| `.card`                    | White bg, `--shadow-card`, `--radius-card`, `--space-4` padding   |
 | `.gap-hint.gap-hint--zinc` | Info-soft bg (amber), dismissible, icon + title + food list + CTA |
-| `.gap-hint.gap-hint--iron` | Warning-soft bg (deeper amber), same structure |
-| `.meal-idea-card` | Horizontal scroll card: thumb emoji + title + badge row |
-| `.article-card` | Education list card: category chip + title + read time |
-| `.schema-card` | Internal tools: entity field list |
+| `.gap-hint.gap-hint--iron` | Warning-soft bg (deeper amber), same structure                    |
+| `.meal-idea-card`          | Horizontal scroll card: thumb emoji + title + badge row           |
+| `.article-card`            | Education list card: category chip + title + read time            |
+| `.schema-card`             | Internal tools: entity field list                                 |
+
 
 ### Macro Bars
 
@@ -199,6 +227,7 @@ Full-width by default on mobile. Auto-width with `width: auto` override.
 ### Bottom Navigation
 
 3-tab authenticated nav (Today, Masak, Edukasi):
+
 ```
 nav.bottom-nav[aria-label="Navigasi utama"]
   a[href][aria-current="page" on active]
@@ -296,6 +325,7 @@ Always rendered in DOM. Never hidden entirely.
 ```
 
 ### Internal Tools Route
+
 ```
 http://localhost:8787/   → CRUD Console
 http://localhost:8787/api/... → REST API
@@ -306,6 +336,7 @@ http://localhost:8787/api/... → REST API
 ## 7. Copy Voice & Tone Guide
 
 ### Voice Pillars
+
 1. **Peer, not professor.** Write as an older sister who knows her nutrition, not a textbook.
 2. **Warm, not clinical.** Say "sedikit rendah" not "deficient." Say "membantu" not "diperlukan secara medis."
 3. **Direct address.** Use "kamu" and "Mama" — never "Pengguna" or formal "Anda" in UI copy.
@@ -313,18 +344,22 @@ http://localhost:8787/api/... → REST API
 
 ### Tone by Context
 
-| Context | Tone | Example |
-|---|---|---|
-| Greeting | Warm, time-sensitive | "Selamat sore, Mama Dimas" |
-| Gap hints | Helpful, never alarming | "Zinc minggu ini sedikit rendah — ini makanannya" |
-| Disclaimer | Clear, unobtrusive | "Suppa membagikan ide makanan umum, bukan saran medis." |
-| Empty states | Encouraging | "Belum ada catatan hari ini — yuk mulai dari satu suapan." |
-| Errors | Direct, no blame | "Nama anak belum diisi." |
-| Success toasts | Short, celebratory | "Makan tercatat ✓" |
-| CTA buttons | Action verbs | "Catat makan" · "Cari resep" · "Simpan" |
+
+| Context        | Tone                    | Example                                                    |
+| -------------- | ----------------------- | ---------------------------------------------------------- |
+| Greeting       | Warm, time-sensitive    | "Selamat sore, Mama Dimas"                                 |
+| Gap hints      | Helpful, never alarming | "Zinc minggu ini sedikit rendah — ini makanannya"          |
+| Disclaimer     | Clear, unobtrusive      | "Suppa membagikan ide makanan umum, bukan saran medis."    |
+| Empty states   | Encouraging             | "Belum ada catatan hari ini — yuk mulai dari satu suapan." |
+| Errors         | Direct, no blame        | "Nama anak belum diisi."                                   |
+| Success toasts | Short, celebratory      | "Makan tercatat ✓"                                         |
+| CTA buttons    | Action verbs            | "Catat makan" · "Cari resep" · "Simpan"                    |
+
 
 ### Forbidden Words
+
 Never use in product copy:
+
 - defisiensi / deficient
 - diagnosis / diagnosa  
 - kurang gizi / malnutrisi (in an alarming frame)
@@ -333,6 +368,7 @@ Never use in product copy:
 - supplement dosing numbers
 
 ### Disclaimer Wording (canonical)
+
 Short: *"Suppa membagikan ide makanan umum, bukan saran medis."*  
 Full: *"Suppa tidak mendiagnosis atau mengobati kondisi medis. Untuk kekhawatiran MPASI atau alergi, diskusikan dengan dokter anak atau ahli gizi terdaftar."*
 
@@ -341,6 +377,7 @@ Full: *"Suppa tidak mendiagnosis atau mengobati kondisi medis. Untuk kekhawatira
 ## 8. Iconography
 
 ### Rules
+
 - SVG inline icons only — no emoji in navigation, gap hints, or interactive UI
 - All decorative icons: `aria-hidden="true"`
 - All meaningful icons: `aria-label` on the parent interactive element
@@ -349,46 +386,50 @@ Full: *"Suppa tidak mendiagnosis atau mengobati kondisi medis. Untuk kekhawatira
 
 ### Required Icons (navigation + core UI)
 
-| Name | Usage | Lucide ref |
-|---|---|---|
-| clipboard-list | Today tab | clipboard-list |
-| utensils | Masak tab | utensils |
-| book-open | Edukasi tab | book-open |
-| settings | Settings link in top bar | settings |
-| x | Dismiss, close | x |
-| chevron-right | Row navigation | chevron-right |
-| chevron-left | Back navigation | chevron-left |
-| plus | Add action | plus |
-| check | Confirm, success | check |
-| search | Search input | search |
-| trash-2 | Delete action | trash-2 |
-| edit-2 | Edit action | edit-2 |
-| share-2 | Share action | share-2 |
-| printer | Print action | printer |
-| info | Tooltip trigger | info |
-| trending-up | Growth chart | trending-up |
+
+| Name           | Usage                    | Lucide ref     |
+| -------------- | ------------------------ | -------------- |
+| clipboard-list | Today tab                | clipboard-list |
+| utensils       | Masak tab                | utensils       |
+| book-open      | Edukasi tab              | book-open      |
+| settings       | Settings link in top bar | settings       |
+| x              | Dismiss, close           | x              |
+| chevron-right  | Row navigation           | chevron-right  |
+| chevron-left   | Back navigation          | chevron-left   |
+| plus           | Add action               | plus           |
+| check          | Confirm, success         | check          |
+| search         | Search input             | search         |
+| trash-2        | Delete action            | trash-2        |
+| edit-2         | Edit action              | edit-2         |
+| share-2        | Share action             | share-2        |
+| printer        | Print action             | printer        |
+| info           | Tooltip trigger          | info           |
+| trending-up    | Growth chart             | trending-up    |
+
 
 ---
 
 ## 9. Accessibility Commitments (WCAG 2.1 AA)
 
-| Requirement | Implementation |
-|---|---|
-| Color contrast ≥4.5:1 (text) | All text/bg pairs verified against tokens |
-| Color contrast ≥3:1 (UI components) | Buttons, input borders, macro bars tested |
-| No color-only information | All macro bars + status badges have text labels |
-| Keyboard navigation | All interactive elements focusable; tab order logical |
-| Focus visible | `--focus-ring` 2px blue outline on all focusable elements |
-| ARIA landmarks | `<header>`, `<main>`, `<nav>`, `<footer>` on every page |
-| Heading hierarchy | h1 → h2 → h3, no skips |
-| Form validation | `aria-live="polite"` error regions; `aria-describedby` on inputs |
-| No `alert()` dialogs | All confirmations via inline modal or `aria-live` region |
-| Touch targets ≥44px | All buttons, chips, nav items, form controls |
-| Reduced motion | `@media (prefers-reduced-motion: reduce)` disables all transitions |
-| Bottom sheet focus trap | Focus locked inside sheet when open; Escape closes |
-| Tab widget | `role="tablist"` + `role="tab"` + `aria-selected` + `aria-controls` |
-| Images | All `<img>` with `alt` or `aria-hidden` if decorative |
-| Language | `lang="id"` on `<html>`; inline `lang` override on English phrases |
+
+| Requirement                         | Implementation                                                      |
+| ----------------------------------- | ------------------------------------------------------------------- |
+| Color contrast ≥4.5:1 (text)        | All text/bg pairs verified against tokens                           |
+| Color contrast ≥3:1 (UI components) | Buttons, input borders, macro bars tested                           |
+| No color-only information           | All macro bars + status badges have text labels                     |
+| Keyboard navigation                 | All interactive elements focusable; tab order logical               |
+| Focus visible                       | `--focus-ring` 2px blue outline on all focusable elements           |
+| ARIA landmarks                      | `<header>`, `<main>`, `<nav>`, `<footer>` on every page             |
+| Heading hierarchy                   | h1 → h2 → h3, no skips                                              |
+| Form validation                     | `aria-live="polite"` error regions; `aria-describedby` on inputs    |
+| No `alert()` dialogs                | All confirmations via inline modal or `aria-live` region            |
+| Touch targets ≥44px                 | All buttons, chips, nav items, form controls                        |
+| Reduced motion                      | `@media (prefers-reduced-motion: reduce)` disables all transitions  |
+| Bottom sheet focus trap             | Focus locked inside sheet when open; Escape closes                  |
+| Tab widget                          | `role="tablist"` + `role="tab"` + `aria-selected` + `aria-controls` |
+| Images                              | All `<img>` with `alt` or `aria-hidden` if decorative               |
+| Language                            | `lang="id"` on `<html>`; inline `lang` override on English phrases  |
+
 
 ---
 
@@ -421,6 +462,7 @@ No bounce, no spring, no parallax. Animations serve orientation (show/hide), not
 The internal CRUD console targets the Suppa team, not consumers. It uses a clean, utility-first design distinct from the consumer brand.
 
 ### Design Tokens (Internal)
+
 - Background: `#f8fafc` (cool-tinted, vs consumer warm)
 - Surface: `#ffffff`
 - Text: `#0f172a` / `#475569` / `#94a3b8`
@@ -430,6 +472,7 @@ The internal CRUD console targets the Suppa team, not consumers. It uses a clean
 - Font: Inter only (no Fraunces)
 
 ### Key UX Improvements over M1
+
 1. **Search/filter** across all entities — live as you type
 2. **Inline edit** — click a cell to edit in place; Tab to next field; Enter to save
 3. **Delete confirm modal** — "Hapus [entity] ini?" with Cancel/Hapus destructive button
@@ -443,6 +486,7 @@ The internal CRUD console targets the Suppa team, not consumers. It uses a clean
 ## 12. File Organization
 
 ### Consumer CSS Architecture
+
 ```
 app/css/
   tokens.css        ← all CSS custom properties (this brief §2–4)
@@ -462,6 +506,7 @@ app/css/
 ```
 
 ### Consumer JS Architecture
+
 ```
 app/js/
   tokens.js         ← shared constants (API_BASE, age band labels)
@@ -472,3 +517,4 @@ app/js/
   disclaimer.js     ← initDisclaimer
   app.js            ← DOMContentLoaded orchestrator — imports all above
 ```
+

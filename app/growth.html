@@ -4,83 +4,101 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Tumbuh kembang — Suppa</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&family=Be+Vietnam+Pro:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
+  <script>tailwind.config={darkMode:"class",theme:{extend:{colors:{background:"#fff6e2",surface:"#ffffff","surface-bright":"#fff6e2","surface-container-low":"#f9f0db","surface-container":"#f1e7d1","surface-container-high":"#ebe2ca","surface-container-highest":"#e6dcc3","surface-dim":"#ded4ba",primary:"#7b5400","primary-container":"#feb300","on-primary":"#fff1df","on-primary-container":"#523700",secondary:"#b7004d","secondary-container":"#ffc2cc","on-secondary":"#ffeff0",tertiary:"#176a21","tertiary-container":"#9df197","on-tertiary":"#d1ffc8",error:"#b02500","error-container":"#f95630","on-surface":"#332e22","on-surface-variant":"#605b4c",outline:"#7c7666","outline-variant":"#b4ad9b"},borderRadius:{DEFAULT:"1rem",lg:"2rem",xl:"3rem",full:"9999px"},fontFamily:{headline:["Plus Jakarta Sans","sans-serif"],body:["Be Vietnam Pro","sans-serif"]}}}}</script>
+  <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="css/tokens.css" /><link rel="stylesheet" href="css/components.css" />
-  <style>
-    .growth-entry { display:flex; justify-content:space-between; align-items:center; padding:0.75rem 0; border-bottom:1px solid var(--border-subtle); font-size:0.9375rem; }
-    .growth-entry:last-child { border-bottom:none; }
-    .growth-entry__date { color:var(--text-muted); font-size:0.8125rem; }
-    .growth-value { font-weight:600; }
-  </style>
 </head>
-<body>
-<div class="app-frame">
-  <header class="top-bar">
-    <a class="top-bar__icon-btn" href="settings.html" aria-label="Kembali"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg></a>
-    <h1 class="top-bar__title">Tumbuh kembang</h1>
-    <div style="width:44px"></div>
-  </header>
-  <main>
-    <div class="disclaimer" data-disclaimer>
+<body class="bg-background font-body text-on-surface">
+
+<header class="fixed top-0 inset-x-0 z-40 bg-surface-bright/80 backdrop-blur-md shadow-[0_1px_0_rgba(51,46,34,0.06)]">
+  <div class="max-w-[480px] mx-auto flex items-center gap-3 px-4 h-16" style="padding-top:env(safe-area-inset-top,0)">
+    <a href="settings.html" class="w-9 h-9 flex items-center justify-center rounded-full bg-surface-container-low flex-shrink-0" aria-label="Kembali">
+      <span class="material-symbols-outlined text-[20px] text-on-surface">arrow_back</span>
+    </a>
+    <h1 class="flex-1 font-headline font-bold text-lg text-on-surface">Tumbuh Kembang</h1>
+  </div>
+</header>
+
+<div class="app-frame min-h-dvh max-w-[480px] mx-auto">
+  <main class="pt-20 pb-28 px-4 space-y-4">
+
+    <!-- Disclaimer -->
+    <div data-disclaimer class="text-sm text-on-surface-variant leading-relaxed px-4 py-3 bg-surface-container-low rounded-2xl">
       <span>Data ini untuk membantu kamu memantau pertumbuhan si kecil, bukan penilaian klinis.
-        <button type="button" class="disclaimer__expand" data-disclaimer-expand aria-expanded="false">Baca selengkapnya</button>
+        <button type="button" class="text-primary underline bg-transparent border-0 p-0 text-sm cursor-pointer" data-disclaimer-expand aria-expanded="false">Baca selengkapnya</button>
       </span>
-      <div class="disclaimer__full" data-disclaimer-full hidden>
+      <div data-disclaimer-full hidden class="mt-2 text-xs text-on-surface-variant">
         Grafik pertumbuhan WHO digunakan sebagai referensi umum. Konsultasikan dengan dokter anak untuk evaluasi tumbuh kembang yang akurat.
       </div>
     </div>
 
     <!-- Chart placeholder -->
-    <div class="growth-chart-placeholder" aria-label="Grafik berat badan Nara — data terbatas">
-      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="margin-bottom:0.5rem;"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-      <p style="margin:0;font-size:0.875rem;">Grafik pertumbuhan tersedia setelah 2+ catatan</p>
+    <div class="bg-surface-container-low rounded-2xl p-5 flex flex-col items-center justify-center gap-3 min-h-[160px] text-center" aria-label="Grafik berat badan — data terbatas">
+      <span class="material-symbols-outlined text-[40px] text-outline">show_chart</span>
+      <p class="text-sm text-on-surface-variant">Grafik pertumbuhan tersedia setelah 2+ catatan</p>
     </div>
 
     <!-- Entry history -->
-    <div class="card">
-      <h2 class="heading-sm" style="margin-bottom:0.75rem;">Riwayat pengukuran</h2>
-      <div class="growth-entry">
-        <div><span class="growth-value">10.2 kg</span> · <span class="growth-value">78.1 cm</span></div>
-        <span class="growth-entry__date">1 Apr 2026</span>
+    <div class="bg-surface-container-low rounded-2xl p-4 space-y-3">
+      <h2 class="font-headline font-bold text-base text-on-surface">Riwayat pengukuran</h2>
+      <div class="flex items-center justify-between py-2.5 border-b border-outline-variant/40">
+        <div>
+          <span class="font-semibold text-on-surface text-sm">10.2 kg</span>
+          <span class="text-on-surface-variant text-sm"> · </span>
+          <span class="font-semibold text-on-surface text-sm">78.1 cm</span>
+        </div>
+        <span class="text-xs text-on-surface-variant">1 Apr 2026</span>
       </div>
+      <p class="text-xs text-on-surface-variant italic">Belum ada catatan lain.</p>
     </div>
 
-    <!-- Entry form -->
-    <div class="card">
-      <h2 class="heading-sm" style="margin-bottom:0.75rem;">Catat pengukuran baru</h2>
-      <form id="growth-form" novalidate>
-        <div class="field">
-          <label for="recorded-on">Tanggal</label>
-          <input type="date" id="recorded-on" name="recorded-on" />
+    <!-- Form -->
+    <div class="bg-surface-container-low rounded-2xl p-4">
+      <h2 class="font-headline font-bold text-base text-on-surface mb-4">Catat pengukuran baru</h2>
+      <form id="growth-form" novalidate class="space-y-3">
+        <div>
+          <label for="recorded-on" class="block text-sm font-semibold text-on-surface mb-1.5">Tanggal</label>
+          <input type="date" id="recorded-on" name="recorded-on"
+            class="w-full min-h-[48px] px-4 py-3 rounded-2xl bg-surface-container border border-outline-variant/50 text-sm text-on-surface focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10" />
         </div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;">
-          <div class="field" style="margin:0;">
-            <label for="weight">Berat (kg) <span style="color:var(--error-text)">*</span></label>
-            <input type="number" id="weight" name="weight" step="0.1" min="0" aria-required="true" aria-describedby="weight-error" />
-            <p class="field__error" id="weight-error" role="alert" aria-live="polite"></p>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label for="weight" class="block text-sm font-semibold text-on-surface mb-1.5">Berat (kg) <span class="text-error">*</span></label>
+            <input type="number" id="weight" name="weight" step="0.1" min="0" aria-required="true" aria-describedby="weight-error"
+              class="w-full min-h-[48px] px-4 py-3 rounded-2xl bg-surface-container border border-outline-variant/50 text-sm text-on-surface focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10" />
+            <p class="field__error text-xs" id="weight-error" role="alert" aria-live="polite"></p>
           </div>
-          <div class="field" style="margin:0;">
-            <label for="height">Tinggi (cm)</label>
-            <input type="number" id="height" name="height" step="0.1" min="0" />
+          <div>
+            <label for="height" class="block text-sm font-semibold text-on-surface mb-1.5">Tinggi (cm)</label>
+            <input type="number" id="height" name="height" step="0.1" min="0"
+              class="w-full min-h-[48px] px-4 py-3 rounded-2xl bg-surface-container border border-outline-variant/50 text-sm text-on-surface focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10" />
           </div>
         </div>
-        <button type="submit" class="btn btn--primary" style="margin-top:1rem;">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+        <button type="submit" class="w-full py-3.5 rounded-full bg-primary text-on-primary font-headline font-bold text-base shadow-[0_4px_16px_rgba(123,84,0,0.3)] active:scale-[0.98] transition-transform flex items-center justify-center gap-2 mt-2">
+          <span class="material-symbols-outlined text-[20px]">check</span>
           Simpan
         </button>
       </form>
     </div>
+
   </main>
 </div>
-<nav class="bottom-nav" aria-label="Navigasi utama">
-  <a href="today.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/></svg>Log Harian</a>
-  <a href="fridge.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Masak</a>
-  <a href="edukasi.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>Edukasi</a>
+
+<!-- Bottom nav -->
+<nav class="fixed bottom-0 inset-x-0 z-50 bg-white/95 backdrop-blur-md rounded-t-[2rem] shadow-[0_-2px_20px_rgba(51,46,34,0.08)]" aria-label="Navigasi utama">
+  <div class="max-w-[480px] mx-auto flex items-start pt-3" style="padding-bottom:calc(0.75rem + env(safe-area-inset-bottom,0))">
+    <a href="today.html" class="flex-1 flex flex-col items-center gap-0.5"><span class="flex items-center justify-center px-5 py-1"><span class="material-symbols-outlined text-[22px] text-on-surface-variant">home</span></span><span class="text-[11px] font-medium text-on-surface-variant">Beranda</span></a>
+    <a href="log-add.html" class="flex-1 flex flex-col items-center gap-0.5"><span class="flex items-center justify-center px-5 py-1"><span class="material-symbols-outlined text-[22px] text-on-surface-variant">edit_note</span></span><span class="text-[11px] font-medium text-on-surface-variant">Catat</span></a>
+    <a href="edukasi.html" class="flex-1 flex flex-col items-center gap-0.5"><span class="flex items-center justify-center px-5 py-1"><span class="material-symbols-outlined text-[22px] text-on-surface-variant">menu_book</span></span><span class="text-[11px] font-medium text-on-surface-variant">Panduan</span></a>
+    <a href="settings.html" class="flex-1 flex flex-col items-center gap-0.5"><span class="flex items-center justify-center px-5 py-1 rounded-full bg-surface-container"><span class="material-symbols-outlined text-[22px] text-primary" style="font-variation-settings:'FILL' 1">person</span></span><span class="text-[11px] font-semibold text-primary">Profil</span></a>
+  </div>
 </nav>
+
 <div id="toast" class="toast" aria-live="polite"></div>
 <script src="js/tokens.js"></script><script src="js/profile.js"></script><script src="js/api.js"></script><script src="js/ui.js"></script><script src="js/app.js"></script>
 <script>
-// Set today's date as default
 var d = document.getElementById('recorded-on');
 if (d) d.value = new Date().toISOString().slice(0,10);
 </script>

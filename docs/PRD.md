@@ -1,4 +1,5 @@
 # Suppa — Product Requirements Document
+
 **Version:** M2 · April 2026  
 **Status:** Approved for Design Brief
 
@@ -19,6 +20,7 @@ The MPASI (Makanan Pendamping ASI) period — roughly 6 months to 2 years — is
 ## 2. User Personas
 
 ### Primary: Mama Muda (Urban, First Child)
+
 - **Age:** 25–34, urban Indonesia (Jakarta, Bandung, Surabaya, Medan)
 - **Child age:** 6 months – 3 years (active MPASI)
 - **Tech profile:** WhatsApp-native, shops on Shopee/Tokopedia, uses Instagram daily, not a "health app" user
@@ -27,6 +29,7 @@ The MPASI (Makanan Pendamping ASI) period — roughly 6 months to 2 years — is
 - **Quote:** *"Aku cuma mau tahu, anak aku hari ini udah makan cukup belum?"*
 
 ### Secondary: Mama Senior (Urban, Multiple Children)
+
 - **Age:** 30–40, established household
 - **Child age:** 3–10 years (solid foods, school-age concerns)
 - **Tech profile:** Comfortable with apps; uses meal prep and planning features; values consistency
@@ -34,6 +37,7 @@ The MPASI (Makanan Pendamping ASI) period — roughly 6 months to 2 years — is
 - **Goal:** Plan meals for the week so nutrition stays consistent without daily reinvention
 
 ### Tertiary: Internal Ops / Team
+
 - **Role:** Suppa team members managing recipe library, seed data, and demo household configurations
 - **Need:** Fast CRUD access to backend entities (households, children, recipes, meal logs, growth entries) without a production database UI
 
@@ -57,12 +61,14 @@ The MPASI (Makanan Pendamping ASI) period — roughly 6 months to 2 years — is
 ### P0 — Core (MVP must-haves)
 
 **F01: Authentication**
+
 - Email + password sign-up and login (min 8 characters)
 - Forgot password → email reset flow (demo: check-email → reset-password)
 - Session via localStorage token
 - Acceptance: user can register, log in, log out, reset password
 
 **F02: Onboarding**
+
 - 5-step wizard: (1) country/city, (2) child name + age band, (3) allergies/dislikes, (4) mindful eating preferences, (5) confirmation
 - Inline validation — no `alert()` — `aria-live` error regions
 - Skip allowed from step 2 onward
@@ -70,6 +76,7 @@ The MPASI (Makanan Pendamping ASI) period — roughly 6 months to 2 years — is
 - Acceptance: onboarding saves household_id and child_id to localStorage; no browser dialogs
 
 **F03: Today Dashboard**
+
 - Greeting: time-of-day Indonesian salutation + "Mama [child name]"
 - Weekly adequacy bar ("Minggu ini sudah cukup baik untuk [child]")
 - Daily macro snapshot: energy, protein, carbs, fat — progress bars with `~` prefix, vs age-appropriate reference target
@@ -83,6 +90,7 @@ The MPASI (Makanan Pendamping ASI) period — roughly 6 months to 2 years — is
 - Acceptance: all elements present; disclaimer always visible; gap hints dismissable; greeting updates with real child name from localStorage
 
 **F04: Quick Meal Log**
+
 - Food group selection chips (8 WHO groups + Minum)
 - Portion selector: sedikit / sedang / banyak
 - Optional meal name text field
@@ -91,17 +99,20 @@ The MPASI (Makanan Pendamping ASI) period — roughly 6 months to 2 years — is
 - Acceptance: log posts to API; toast visible ≥2.8s; no double-submit on back navigation
 
 **F05: Weekly Log History**
+
 - 7-day scrollable bar chart (food groups covered per day)
 - Per-day tap expands to logged meals list
 - Acceptance: renders from local seed data; no empty state crash
 
 **F06: Recipe Library**
+
 - Browsable list with search + "emphasis" filter tabs: Protein, Iron, Zinc, Karbo, Lemak, All
 - Tab navigation: proper `role="tablist"` + `role="tab"` + `aria-selected` + panel association
 - Recipe cards: title, macro emphasis pill, safe badge (per child's allergy profile)
 - Acceptance: tab switch shows correct panel; keyboard navigation works; safe badge reflects child's allergy chips from localStorage
 
 **F07: Recipe Detail**
+
 - Title, macro line (when present), ingredient list, instructions
 - Share sheet: Copy link, Print/PDF, Copy recipe text, Close
 - "Revoke share link" visible only for user-created recipes (`?mine=1`)
@@ -109,12 +120,14 @@ The MPASI (Makanan Pendamping ASI) period — roughly 6 months to 2 years — is
 - Acceptance: share sheet opens/closes correctly; revoke only shown for `?mine=1`
 
 **F08: Add Recipe**
+
 - Title, ingredients (freetext), instructions, macro emphasis selector
 - Optional: per-serving macro estimate fields (collapsible)
 - Posts to API; success → recipe detail page
 - Acceptance: recipe saved to API; macro emphasis pill reflected in library view
 
 **F09: Fridge → Recipes**
+
 - Ingredient chips entry (add/remove)
 - "Cari resep" → results page filtered by ingredients
 - Deep-link guard: opening fridge-results.html without ingredients in sessionStorage redirects to fridge.html
@@ -122,6 +135,7 @@ The MPASI (Makanan Pendamping ASI) period — roughly 6 months to 2 years — is
 - Acceptance: empty ingredients shows inline error (no submit); results page never reachable without ingredients
 
 **F10: Settings**
+
 - Household/child profile section — links to editable forms (not placeholder `#`)
 - Mindful eating guides: sodium (mg/day) + added sugar (g/day), Reset to defaults
 - Growth screen link — wired
@@ -133,12 +147,14 @@ The MPASI (Makanan Pendamping ASI) period — roughly 6 months to 2 years — is
 ### P1 — Important
 
 **F11: Meal Prep Planner**
+
 - Weekly grid (Mon–Sun × 3 meals)
 - Assign recipes to slots
 - Print/export option
 - Acceptance: grid renders; recipes assignable from library; print view clean
 
 **F12: Growth Tracking**
+
 - Weight + height entry form with date
 - Simple timeline chart (mock data rendered)
 - WHO weight-for-age / height-for-age reference bands shown as context (not diagnosis)
@@ -146,6 +162,7 @@ The MPASI (Makanan Pendamping ASI) period — roughly 6 months to 2 years — is
 - Acceptance: entry saves to API; chart renders; disclaimer present
 
 **F13: Education Hub (Mode Edukasi)**
+
 - Article list with topic chips (MPASI, Iron, Zinc, Alergi, Vitamin D, etc.)
 - Article detail: headers, callout boxes, inline quiz (shame-free)
 - IDAI attribution footer
@@ -153,6 +170,7 @@ The MPASI (Makanan Pendamping ASI) period — roughly 6 months to 2 years — is
 - Acceptance: topic chips filter list; quiz runs without page reload; disclaimer present
 
 **F14: Public / Share Recipe View**
+
 - Print-friendly standalone page (`public-recipe.html`)
 - `?print=1` triggers `window.print()` on load
 - Acceptance: page renders without nav chrome; print auto-triggers on param
@@ -162,21 +180,25 @@ The MPASI (Makanan Pendamping ASI) period — roughly 6 months to 2 years — is
 ### P2 — Nice-to-have
 
 **F15: Child Profile Quick Switch**
+
 - Tap child pill on Today → bottom sheet listing household children
 - Switch updates greeting + all child-specific rendering
 - Real in M3 (stub toast in M2)
 
 **F16: Infant Today Variant**
+
 - Separate today-infant.html for 0–5 month age band
 - Milk log only: volume + time; no macro bars
 - Browse safe recipes strip (age-appropriate, no solids)
 
 **F17: Safety Banner (Profile Updated)**
+
 - Dismissible banner on Today after allergy profile change
 - "Profil Dimas diperbarui — resep sudah disesuaikan"
 - Session-shown once after settings save
 
 **F18: Forgot Password + Reset Flow**
+
 - Forgot password form → check-email state
 - Reset password form with token param
 - Demo flow fully navigable
@@ -197,28 +219,32 @@ The MPASI (Makanan Pendamping ASI) period — roughly 6 months to 2 years — is
 
 ## 6. Success Metrics
 
-| Metric | Target (M2 demo) | How measured |
-|---|---|---|
-| Onboarding completion rate | ≥80% of sessions reaching Today | sessionStorage flag |
-| Daily log action | ≥1 log per session for returning users | localStorage log count |
-| Recipe saves | ≥1 add-recipe per active household | API meal_logs count |
-| Gap hint interaction | ≥30% click-through to recipe from gap hint | Link click events |
-| Disclaimer read rate | ≥15% expand disclaimer | Button click events |
-| Crash-free sessions | 100% (no unhandled JS errors) | Console error monitoring |
+
+| Metric                     | Target (M2 demo)                           | How measured             |
+| -------------------------- | ------------------------------------------ | ------------------------ |
+| Onboarding completion rate | ≥80% of sessions reaching Today            | sessionStorage flag      |
+| Daily log action           | ≥1 log per session for returning users     | localStorage log count   |
+| Recipe saves               | ≥1 add-recipe per active household         | API meal_logs count      |
+| Gap hint interaction       | ≥30% click-through to recipe from gap hint | Link click events        |
+| Disclaimer read rate       | ≥15% expand disclaimer                     | Button click events      |
+| Crash-free sessions        | 100% (no unhandled JS errors)              | Console error monitoring |
+
 
 ---
 
 ## 7. Tech Stack
 
-| Layer | Choice | Rationale |
-|---|---|---|
-| Consumer app | Static HTML + vanilla JS + Vite build | Proven in M1; zero framework overhead; fast on low-end Android; easy to hand off |
-| Styles | Split CSS: `tokens.css` + `components.css` | Eliminates 2133-line monolith; cacheable; per-screen additions stay small |
-| Backend API | Express.js (Node) | Replaces bare `http` module; proper router, middleware, error handling |
-| Validation | Manual schema validation in routes | No Zod/Joi dependency overhead for simple flat schema |
-| Logging | `pino`-style JSON console logs | Structured; grepped in production; no `console.log` |
-| Data | `db.json` flat file | No DB dependency for demo/prototype phase; easy to seed and reset |
-| Internal tools | Vanilla JS + enhanced CSS | No framework needed for CRUD console; fast to load |
+
+| Layer          | Choice                                     | Rationale                                                                        |
+| -------------- | ------------------------------------------ | -------------------------------------------------------------------------------- |
+| Consumer app   | Static HTML + vanilla JS + Vite build      | Proven in M1; zero framework overhead; fast on low-end Android; easy to hand off |
+| Styles         | Split CSS: `tokens.css` + `components.css` | Eliminates 2133-line monolith; cacheable; per-screen additions stay small        |
+| Backend API    | Express.js (Node)                          | Replaces bare `http` module; proper router, middleware, error handling           |
+| Validation     | Manual schema validation in routes         | No Zod/Joi dependency overhead for simple flat schema                            |
+| Logging        | `pino`-style JSON console logs             | Structured; grepped in production; no `console.log`                              |
+| Data           | `db.json` flat file                        | No DB dependency for demo/prototype phase; easy to seed and reset                |
+| Internal tools | Vanilla JS + enhanced CSS                  | No framework needed for CRUD console; fast to load                               |
+
 
 ---
 
@@ -256,18 +282,21 @@ CORS: `*` for demo environment.
 
 ## 10. Known Issues from M1 (all fixed in M2)
 
-| # | Issue | Fix |
-|---|---|---|
-| 1 | Settings rows use `href="#"` | All rows wired to real destinations |
-| 2 | Onboarding uses `alert()` | Replaced with `aria-live` inline errors |
-| 3 | Recipe tabs: no `role="tab"` or panel association | Full ARIA tablist pattern |
-| 4 | Gear icon is Unicode emoji | Replaced with SVG |
-| 5 | Food group emojis vary by platform | Replaced with consistent SVG icons |
-| 6 | Fridge results page reachable without ingredients | sessionStorage guard + redirect |
-| 7 | Toast + navigation race (2200ms) | Increased to 2800ms |
-| 8 | Safety banner never demonstrated | Demo path added via `?profile_updated=1` |
-| 9 | Stale "Yours" recipe bait-and-switch | Add-recipe posts to API; detail loads from API |
-| 10 | Checkbox sizing on disclaimer | Custom control with proper sizing |
-| 11 | Legal footer links are `href="#"` | Privacy/Terms pages added (stub content) |
-| 12 | Pelangi tooltip not dismissible on outside click | Outside click handler added |
-| 13 | Primary caregiver name omitted in greeting | `data-child-first` pattern hydrated from localStorage |
+
+| #   | Issue                                             | Fix                                                   |
+| --- | ------------------------------------------------- | ----------------------------------------------------- |
+| 1   | Settings rows use `href="#"`                      | All rows wired to real destinations                   |
+| 2   | Onboarding uses `alert()`                         | Replaced with `aria-live` inline errors               |
+| 3   | Recipe tabs: no `role="tab"` or panel association | Full ARIA tablist pattern                             |
+| 4   | Gear icon is Unicode emoji                        | Replaced with SVG                                     |
+| 5   | Food group emojis vary by platform                | Replaced with consistent SVG icons                    |
+| 6   | Fridge results page reachable without ingredients | sessionStorage guard + redirect                       |
+| 7   | Toast + navigation race (2200ms)                  | Increased to 2800ms                                   |
+| 8   | Safety banner never demonstrated                  | Demo path added via `?profile_updated=1`              |
+| 9   | Stale "Yours" recipe bait-and-switch              | Add-recipe posts to API; detail loads from API        |
+| 10  | Checkbox sizing on disclaimer                     | Custom control with proper sizing                     |
+| 11  | Legal footer links are `href="#"`                 | Privacy/Terms pages added (stub content)              |
+| 12  | Pelangi tooltip not dismissible on outside click  | Outside click handler added                           |
+| 13  | Primary caregiver name omitted in greeting        | `data-child-first` pattern hydrated from localStorage |
+
+

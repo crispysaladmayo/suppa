@@ -1,44 +1,66 @@
-/* Suppa M2 — Design Tokens */
+/* Suppa — Tropical Harvest Design Tokens */
 :root {
-  /* Color */
-  --bg-page: #faf8f5;
+  /* Semantic color tokens */
+  --background: #fff6e2;
   --surface: #ffffff;
-  --text-primary: #1c1917;
-  --text-secondary: #57534e;
-  --text-muted: #78716c;
-  --border-subtle: #e7e5e4;
-  --accent: #c45c3e;
-  --accent-hover: #a34a32;
-  --accent-tint: #fef3f2;
-  --accent-light: #f5ddd8;
-  --success-soft-bg: #ecfdf5;
-  --success-soft-text: #047857;
-  --info-soft-bg: #fffbeb;
-  --info-soft-text: #b45309;
-  --warning-soft-bg: #fef9c3;
-  --warning-soft-text: #92400e;
-  --error-text: #b91c1c;
-  --focus-ring: #2563eb;
-  --shadow-card: 0 1px 3px rgba(0,0,0,0.08);
-  --shadow-sheet: 0 -4px 24px rgba(0,0,0,0.12);
-  --shadow-modal: 0 8px 32px rgba(0,0,0,0.16);
+  --surface-bright: #fff6e2;
+  --surface-container-low: #f9f0db;
+  --surface-container: #f1e7d1;
+  --surface-container-high: #ebe2ca;
+  --surface-container-highest: #e6dcc3;
+  --surface-dim: #ded4ba;
+  --primary: #7b5400;
+  --primary-container: #feb300;
+  --on-primary: #fff1df;
+  --on-primary-container: #523700;
+  --secondary: #b7004d;
+  --secondary-container: #ffc2cc;
+  --on-secondary: #ffeff0;
+  --on-secondary-container: #91003c;
+  --tertiary: #176a21;
+  --tertiary-container: #9df197;
+  --on-tertiary: #d1ffc8;
+  --on-tertiary-container: #005c15;
+  --error: #b02500;
+  --error-container: #f95630;
+  --on-surface: #332e22;
+  --on-surface-variant: #605b4c;
+  --outline: #7c7666;
+  --outline-variant: #b4ad9b;
+
+  /* Legacy alias tokens (used in inline styles across app) */
+  --accent: #7b5400;
+  --accent-hover: #5e3f00;
+  --accent-tint: #f9f0db;
+  --accent-light: #f1e7d1;
+  --text-primary: #332e22;
+  --text-secondary: #605b4c;
+  --text-muted: #7c7666;
+  --bg-page: #fff6e2;
+  --border-subtle: #b4ad9b;
+  --surface-color: #ffffff;
+  --success-soft-bg: #d1ffc8;
+  --success-soft-text: #176a21;
+  --info-soft-bg: #f9f0db;
+  --info-soft-text: #523700;
+  --warning-soft-bg: #ffc2cc;
+  --warning-soft-text: #91003c;
+  --error-text: #b02500;
+  --focus-ring: #7b5400;
+  --shadow-card: 0 2px 12px rgba(51,46,34,0.06);
+  --shadow-sheet: 0 -4px 24px rgba(51,46,34,0.12);
+  --shadow-modal: 0 8px 32px rgba(51,46,34,0.16);
 
   /* Spacing */
-  --space-1: 4px;
-  --space-2: 8px;
-  --space-3: 12px;
-  --space-4: 16px;
-  --space-5: 20px;
-  --space-6: 24px;
-  --space-8: 32px;
-  --space-10: 40px;
+  --space-1: 4px;  --space-2: 8px;  --space-3: 12px; --space-4: 16px;
+  --space-5: 20px; --space-6: 24px; --space-8: 32px; --space-10: 40px;
   --space-page: 16px;
 
   /* Radius */
   --radius-card: 16px;
-  --radius-input: 10px;
-  --radius-btn: 12px;
-  --radius-chip: 8px;
+  --radius-input: 12px;
+  --radius-btn: 9999px;
+  --radius-chip: 9999px;
   --radius-pill: 9999px;
 
   /* Layout */
@@ -46,18 +68,10 @@
   --max-width-recipe: 720px;
 
   /* Typography */
-  --font-display: "Fraunces", Georgia, serif;
-  --font-body: "Inter", system-ui, sans-serif;
+  --font-display: "Plus Jakarta Sans", sans-serif;
+  --font-body:    "Be Vietnam Pro", sans-serif;
 
   /* Transition */
   --transition-fast: 150ms ease;
   --transition-base: 200ms ease;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
 }
