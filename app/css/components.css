@@ -98,7 +98,7 @@ body {
   text-align: left;
   font-family: "Be Vietnam Pro", sans-serif;
 }
-.sheet__action:hover { color: #7b5400; }
+.sheet__action:hover { color: #523700; }
 .sheet__action:last-of-type { border-bottom: none; }
 
 /* ── Modal Overlay ─────────────────────────────────────── */
@@ -146,7 +146,7 @@ body {
   border: none;
   padding: 0;
   font-size: 0.8125rem;
-  color: #7b5400;
+  color: #523700;
   cursor: pointer;
   text-decoration: underline;
   min-height: 0;
@@ -178,14 +178,14 @@ body {
   user-select: none;
   font-family: "Be Vietnam Pro", sans-serif;
 }
-.chip:hover { background: #f9f0db; border-color: #7b5400; color: #7b5400; }
-.chip.is-active { background: #f9f0db; border-color: #7b5400; color: #7b5400; }
+.chip:hover { background: #f9f0db; border-color: #FFB300; color: #523700; }
+.chip.is-active { background: #f9f0db; border-color: #FFB300; color: #523700; }
 
 /* Topic chips (edukasi) */
 .topic-chip.is-active {
-  background: #7b5400 !important;
-  color: #fff1df !important;
-  border-color: #7b5400 !important;
+  background: #FFB300 !important;
+  color: #523700 !important;
+  border-color: #FFB300 !important;
 }
 
 /* ── Food group buttons (JS uses aria-pressed) ─────────── */
@@ -207,11 +207,11 @@ body {
   min-height: 72px;
   width: 100%;
 }
-.food-group-btn:hover { border-color: #7b5400; color: #7b5400; background: #f9f0db; }
+.food-group-btn:hover { border-color: #FFB300; color: #523700; background: #f9f0db; }
 .food-group-btn[aria-pressed="true"] {
   background: #f9f0db;
-  border-color: #7b5400;
-  color: #7b5400;
+  border-color: #FFB300;
+  color: #523700;
 }
 
 /* ── Portion buttons (JS uses aria-pressed) ────────────── */
@@ -230,11 +230,11 @@ body {
   min-height: 52px;
   text-align: center;
 }
-.portion-btn:hover { border-color: #7b5400; color: #7b5400; }
+.portion-btn:hover { border-color: #FFB300; color: #523700; }
 .portion-btn[aria-pressed="true"] {
-  background: #7b5400;
-  border-color: #7b5400;
-  color: #fff1df;
+  background: #FFB300;
+  border-color: #FFB300;
+  color: #523700;
 }
 
 /* ── Tab bar (recipes/edukasi) ─────────────────────────── */
@@ -253,11 +253,11 @@ body {
   white-space: nowrap;
   transition: all 150ms ease;
 }
-.tab-btn[aria-selected="true"] { background: #7b5400; color: #fff1df; }
-.tab-btn:hover:not([aria-selected="true"]) { background: #f9f0db; color: #7b5400; }
+.tab-btn[aria-selected="true"] { background: #FFB300; color: #523700; }
+.tab-btn:hover:not([aria-selected="true"]) { background: #f9f0db; color: #523700; }
 
 /* ── Macro bar fills (updated via JS) ──────────────────── */
-.macro-fill-energy  { background: #7b5400; }
+.macro-fill-energy  { background: #FFB300; }
 .macro-fill-protein { background: #176a21; }
 .macro-fill-carbs   { background: #523700; }
 .macro-fill-fat     { background: #7c7666; }

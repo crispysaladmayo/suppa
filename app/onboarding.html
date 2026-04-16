@@ -6,7 +6,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&family=Be+Vietnam+Pro:wght@400;500;600&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
-  <script>tailwind.config={darkMode:"class",theme:{extend:{colors:{background:"#fff6e2",surface:"#ffffff","surface-bright":"#fff6e2","surface-container-low":"#f9f0db","surface-container":"#f1e7d1","surface-container-high":"#ebe2ca","surface-container-highest":"#e6dcc3","surface-dim":"#ded4ba",primary:"#7b5400","primary-container":"#feb300","on-primary":"#fff1df","on-primary-container":"#523700",secondary:"#b7004d","secondary-container":"#ffc2cc","on-secondary":"#ffeff0",tertiary:"#176a21","tertiary-container":"#9df197","on-tertiary":"#d1ffc8",error:"#b02500","error-container":"#f95630","on-surface":"#332e22","on-surface-variant":"#605b4c",outline:"#7c7666","outline-variant":"#b4ad9b"},borderRadius:{DEFAULT:"1rem",lg:"2rem",xl:"3rem",full:"9999px"},fontFamily:{headline:["Plus Jakarta Sans","sans-serif"],body:["Be Vietnam Pro","sans-serif"]}}}}</script>
+  <script>tailwind.config={darkMode:"class",theme:{extend:{colors:{background:"#fff6e2",surface:"#ffffff","surface-bright":"#fff6e2","surface-container-low":"#f9f0db","surface-container":"#f1e7d1","surface-container-high":"#ebe2ca","surface-container-highest":"#e6dcc3","surface-dim":"#ded4ba",primary:"#FFB300","primary-container":"#7b5400","on-primary":"#523700","on-primary-container":"#fff1df",secondary:"#b7004d","secondary-container":"#ffc2cc","on-secondary":"#ffeff0",tertiary:"#176a21","tertiary-container":"#9df197","on-tertiary":"#d1ffc8",error:"#b02500","error-container":"#f95630","on-surface":"#332e22","on-surface-variant":"#605b4c",outline:"#7c7666","outline-variant":"#b4ad9b"},borderRadius:{DEFAULT:"1rem",lg:"2rem",xl:"3rem",full:"9999px"},fontFamily:{headline:["Plus Jakarta Sans","sans-serif"],body:["Be Vietnam Pro","sans-serif"]}}}}</script>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="css/tokens.css" /><link rel="stylesheet" href="css/components.css" />
 </head>
@@ -24,22 +24,22 @@
 
   <!-- Pill progress bar -->
   <div class="flex gap-1.5 mb-7" role="progressbar" aria-valuenow="1" aria-valuemin="1" aria-valuemax="5" aria-label="Langkah pengaturan awal" id="progress-bar">
-    <div class="h-1.5 flex-1 rounded-full bg-primary onboarding-step is-active" id="s1"></div>
-    <div class="h-1.5 flex-1 rounded-full bg-surface-container-high onboarding-step" id="s2"></div>
-    <div class="h-1.5 flex-1 rounded-full bg-surface-container-high onboarding-step" id="s3"></div>
-    <div class="h-1.5 flex-1 rounded-full bg-surface-container-high onboarding-step" id="s4"></div>
-    <div class="h-1.5 flex-1 rounded-full bg-surface-container-high onboarding-step" id="s5"></div>
+    <div class="h-1.5 flex-1 rounded-full onboarding-step is-active" id="s1"></div>
+    <div class="h-1.5 flex-1 rounded-full bg-surface-container-high onboarding-step" style="opacity:1" id="s2"></div>
+    <div class="h-1.5 flex-1 rounded-full bg-surface-container-high onboarding-step" style="opacity:1" id="s3"></div>
+    <div class="h-1.5 flex-1 rounded-full bg-surface-container-high onboarding-step" style="opacity:1" id="s4"></div>
+    <div class="h-1.5 flex-1 rounded-full bg-surface-container-high onboarding-step" style="opacity:1" id="s5"></div>
   </div>
   <style>
     .onboarding-step { transition: background-color 200ms ease; }
-    .onboarding-step.is-done { background-color: #feb300; }
-    .onboarding-step.is-active { background-color: #7b5400; }
+    .onboarding-step.is-done { background-color: #FFB300; opacity: 0.55; }
+    .onboarding-step.is-active { background-color: #FFB300; opacity: 1; }
   </style>
 
   <form id="onboarding-form" novalidate class="flex-1">
 
     <!-- Step 1: Location -->
-    <div class="step is-active" id="step-1">
+    <div id="step-1">
       <h1 class="font-headline font-extrabold text-3xl text-on-surface mb-1.5">Di mana kamu tinggal?</h1>
       <p class="text-sm text-on-surface-variant mb-6">Kami hanya mendukung Indonesia saat ini.</p>
       <input type="hidden" id="country" name="country" value="ID" />
@@ -55,13 +55,13 @@
         </select>
       </div>
       <div class="space-y-3">
-        <button type="button" id="next-1" class="w-full py-3.5 rounded-full bg-primary text-on-primary font-headline font-bold text-base shadow-[0_4px_16px_rgba(123,84,0,0.3)]">Lanjut</button>
+        <button type="button" id="next-1" class="w-full py-3.5 rounded-full bg-primary text-on-primary font-headline font-bold text-base shadow-[0_4px_16px_rgba(255,179,0,0.4)]">Lanjut</button>
         <button type="button" id="skip-1" class="w-full py-3.5 rounded-full bg-surface-container-high text-on-surface font-semibold text-sm">Lewati</button>
       </div>
     </div>
 
     <!-- Step 2: Child profile -->
-    <div class="step" id="step-2">
+    <div hidden id="step-2">
       <h1 class="font-headline font-extrabold text-3xl text-on-surface mb-1.5">Tentang si kecil</h1>
       <p class="text-sm text-on-surface-variant mb-6">Suppa akan menyesuaikan saran gizi berdasarkan usia anak.</p>
       <div class="mb-4">
@@ -97,11 +97,11 @@
         </div>
         <p class="field__error text-xs" id="age-error" role="alert" aria-live="polite"></p>
       </div>
-      <button type="button" id="next-2" class="w-full py-3.5 rounded-full bg-primary text-on-primary font-headline font-bold text-base shadow-[0_4px_16px_rgba(123,84,0,0.3)]">Lanjut</button>
+      <button type="button" id="next-2" class="w-full py-3.5 rounded-full bg-primary text-on-primary font-headline font-bold text-base shadow-[0_4px_16px_rgba(255,179,0,0.4)]">Lanjut</button>
     </div>
 
     <!-- Step 3: Allergies -->
-    <div class="step" id="step-3">
+    <div hidden id="step-3">
       <h1 class="font-headline font-extrabold text-3xl text-on-surface mb-1.5">Ada alergi atau pantangan?</h1>
       <p class="text-sm text-on-surface-variant mb-6">Suppa akan menandai resep yang mengandung bahan-bahan ini.</p>
       <div class="flex flex-wrap gap-2 mb-5" role="group" aria-label="Pilih alergi">
@@ -124,13 +124,13 @@
         <span class="text-sm text-on-surface">Tidak ada alergi yang diketahui</span>
       </label>
       <div class="space-y-3">
-        <button type="button" id="next-3" class="w-full py-3.5 rounded-full bg-primary text-on-primary font-headline font-bold text-base shadow-[0_4px_16px_rgba(123,84,0,0.3)]">Lanjut</button>
+        <button type="button" id="next-3" class="w-full py-3.5 rounded-full bg-primary text-on-primary font-headline font-bold text-base shadow-[0_4px_16px_rgba(255,179,0,0.4)]">Lanjut</button>
         <button type="button" id="skip-3" class="w-full py-3.5 rounded-full bg-surface-container-high text-on-surface font-semibold text-sm">Lewati</button>
       </div>
     </div>
 
     <!-- Step 4: Mindful eating -->
-    <div class="step" id="step-4">
+    <div hidden id="step-4">
       <h1 class="font-headline font-extrabold text-3xl text-on-surface mb-1.5">Panduan makan bijak</h1>
       <p class="text-sm text-on-surface-variant mb-6">Suppa akan menandai resep dengan catatan lembut jika melebihi batas ini. Bisa diubah kapan saja di Pengaturan.</p>
       <div class="mb-4">
@@ -144,13 +144,13 @@
           class="w-full min-h-[48px] px-4 py-3 rounded-2xl bg-surface-container border border-outline-variant/50 text-sm text-on-surface focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10" />
       </div>
       <div class="space-y-3">
-        <button type="button" id="next-4" class="w-full py-3.5 rounded-full bg-primary text-on-primary font-headline font-bold text-base shadow-[0_4px_16px_rgba(123,84,0,0.3)]">Lanjut</button>
+        <button type="button" id="next-4" class="w-full py-3.5 rounded-full bg-primary text-on-primary font-headline font-bold text-base shadow-[0_4px_16px_rgba(255,179,0,0.4)]">Lanjut</button>
         <button type="button" id="skip-4" class="w-full py-3.5 rounded-full bg-surface-container-high text-on-surface font-semibold text-sm">Lewati</button>
       </div>
     </div>
 
     <!-- Step 5: Confirm -->
-    <div class="step" id="step-5">
+    <div hidden id="step-5">
       <div class="text-center py-6">
         <div class="w-20 h-20 rounded-full bg-primary-container flex items-center justify-center mx-auto mb-5">
           <span class="text-4xl">🎉</span>
@@ -168,7 +168,7 @@
             Suppa tidak mendiagnosis atau mengobati kondisi medis. Untuk kekhawatiran MPASI atau alergi, diskusikan dengan dokter anak atau ahli gizi terdaftar.
           </div>
         </div>
-        <button type="submit" class="w-full py-3.5 rounded-full bg-primary text-on-primary font-headline font-bold text-base shadow-[0_4px_16px_rgba(123,84,0,0.3)]">Mulai pantau gizi</button>
+        <button type="submit" class="w-full py-3.5 rounded-full bg-primary text-on-primary font-headline font-bold text-base shadow-[0_4px_16px_rgba(255,179,0,0.4)]">Mulai pantau gizi</button>
       </div>
     </div>
 
@@ -182,15 +182,26 @@
   var totalSteps = 5;
 
   function showStep(n) {
-    document.querySelectorAll('.step').forEach(function(s) { s.classList.remove('is-active'); });
+    for (var i = 1; i <= totalSteps; i++) {
+      var s = document.getElementById('step-' + i);
+      if (s) s.hidden = (i !== n);
+    }
     var el = document.getElementById('step-' + n);
-    if (el) el.classList.add('is-active');
     document.getElementById('step-label').textContent = 'Langkah ' + n + ' dari ' + totalSteps;
     document.getElementById('progress-bar').setAttribute('aria-valuenow', n);
     for (var i = 1; i <= totalSteps; i++) {
       var dot = document.getElementById('s' + i);
       if (!dot) continue;
-      dot.className = 'h-1.5 flex-1 rounded-full onboarding-step' + (i < n ? ' is-done' : i === n ? ' is-active' : '');
+      if (i < n) {
+        dot.className = 'h-1.5 flex-1 rounded-full onboarding-step is-done';
+        dot.style.opacity = '';
+      } else if (i === n) {
+        dot.className = 'h-1.5 flex-1 rounded-full onboarding-step is-active';
+        dot.style.opacity = '';
+      } else {
+        dot.className = 'h-1.5 flex-1 rounded-full bg-surface-container-high onboarding-step';
+        dot.style.opacity = '1';
+      }
     }
     currentStep = n;
     document.getElementById('back-btn').style.visibility = n === 1 ? 'hidden' : 'visible';
