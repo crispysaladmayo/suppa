@@ -4,30 +4,81 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Hasil cari resep — Suppa</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&family=Be+Vietnam+Pro:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
+  <script>tailwind.config={darkMode:"class",theme:{extend:{colors:{background:"#fff6e2",surface:"#ffffff","surface-bright":"#fff6e2","surface-container-low":"#f9f0db","surface-container":"#f1e7d1","surface-container-high":"#ebe2ca","surface-container-highest":"#e6dcc3","surface-dim":"#ded4ba",primary:"#7b5400","primary-container":"#feb300","on-primary":"#fff1df","on-primary-container":"#523700",secondary:"#b7004d","secondary-container":"#ffc2cc","on-secondary":"#ffeff0",tertiary:"#176a21","tertiary-container":"#9df197","on-tertiary":"#d1ffc8",error:"#b02500","error-container":"#f95630","on-surface":"#332e22","on-surface-variant":"#605b4c",outline:"#7c7666","outline-variant":"#b4ad9b"},borderRadius:{DEFAULT:"1rem",lg:"2rem",xl:"3rem",full:"9999px"},fontFamily:{headline:["Plus Jakarta Sans","sans-serif"],body:["Be Vietnam Pro","sans-serif"]}}}}</script>
+  <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="css/tokens.css" /><link rel="stylesheet" href="css/components.css" />
 </head>
-<body>
-<div class="app-frame">
-  <header class="top-bar">
-    <a class="top-bar__icon-btn" href="fridge.html" aria-label="Kembali ke kulkas">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+<body class="bg-background font-body text-on-surface">
+
+<header class="fixed top-0 inset-x-0 z-40 bg-surface-bright/80 backdrop-blur-md shadow-[0_1px_0_rgba(51,46,34,0.06)]">
+  <div class="max-w-[480px] mx-auto flex items-center gap-3 px-4 h-16" style="padding-top:env(safe-area-inset-top,0)">
+    <a href="fridge.html" class="w-9 h-9 flex items-center justify-center rounded-full bg-surface-container-low flex-shrink-0" aria-label="Kembali ke kulkas">
+      <span class="material-symbols-outlined text-[20px] text-on-surface">arrow_back</span>
     </a>
-    <h1 class="top-bar__title">Resep dari kulkasmu</h1>
-    <div style="width:44px"></div>
-  </header>
-  <main>
-    <p class="body-muted" id="ingredients-label" style="margin-bottom:var(--space-4);">Bahan: <strong></strong></p>
-    <a class="recipe-card" href="recipe-detail.html"><span class="recipe-card__thumb" aria-hidden="true">🍲</span><div class="recipe-card__body"><h3 class="recipe-card__title">Nasi Tim Hati Ayam</h3><p class="recipe-card__meta">Cocok dengan bahanmu</p><div class="badge-row"><span class="badge badge--gap">Kaya iron</span><span class="badge badge--gap">Gap boost zinc</span><span class="badge badge--safe">Aman Nara</span></div></div><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--text-muted);flex-shrink:0;" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></a>
-    <a class="recipe-card" href="recipe-detail.html"><span class="recipe-card__thumb" aria-hidden="true">🥘</span><div class="recipe-card__body"><h3 class="recipe-card__title">Bubur Tempe Sapi Cincang</h3><p class="recipe-card__meta">Cocok dengan bahanmu</p><div class="badge-row"><span class="badge badge--gap">Kaya zinc</span><span class="badge badge--safe">Aman Nara</span></div></div><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--text-muted);flex-shrink:0;" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></a>
-    <a class="recipe-card" href="recipe-detail.html"><span class="recipe-card__thumb" aria-hidden="true">🥬</span><div class="recipe-card__body"><h3 class="recipe-card__title">Sup Bayam Ikan Teri</h3><p class="recipe-card__meta">Cocok dengan bahanmu</p><div class="badge-row"><span class="badge badge--gap">Kaya iron</span><span class="badge badge--safe">Aman Nara</span></div></div><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--text-muted);flex-shrink:0;" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></a>
+    <h1 class="flex-1 font-headline font-bold text-lg text-on-surface">Resep dari Kulkasmu</h1>
+  </div>
+</header>
+
+<div class="app-frame min-h-dvh max-w-[480px] mx-auto">
+  <main class="pt-20 pb-28 px-4 space-y-4">
+
+    <p class="text-sm text-on-surface-variant" id="ingredients-label">Bahan: <strong></strong></p>
+
+    <a href="recipe-detail.html" class="flex items-center gap-3 bg-surface-container-low rounded-2xl px-4 py-3.5 shadow-[0_1px_4px_rgba(51,46,34,0.04)]">
+      <div class="w-14 h-14 rounded-xl bg-surface-container flex items-center justify-center text-3xl flex-shrink-0">🍲</div>
+      <div class="flex-1 min-w-0">
+        <h3 class="font-semibold text-on-surface text-sm leading-tight">Nasi Tim Hati Ayam</h3>
+        <p class="text-xs text-on-surface-variant mt-0.5">Cocok dengan bahanmu</p>
+        <div class="flex gap-1.5 mt-1.5">
+          <span class="px-2 py-0.5 rounded-full bg-error-container/30 text-error text-[10px] font-semibold">Kaya iron</span>
+          <span class="px-2 py-0.5 rounded-full bg-primary-container/40 text-on-primary-container text-[10px] font-semibold">Boost zinc</span>
+          <span class="px-2 py-0.5 rounded-full bg-tertiary-container/40 text-tertiary text-[10px] font-semibold">Aman Nara</span>
+        </div>
+      </div>
+      <span class="material-symbols-outlined text-[20px] text-on-surface-variant flex-shrink-0">chevron_right</span>
+    </a>
+
+    <a href="recipe-detail.html" class="flex items-center gap-3 bg-surface-container-low rounded-2xl px-4 py-3.5 shadow-[0_1px_4px_rgba(51,46,34,0.04)]">
+      <div class="w-14 h-14 rounded-xl bg-surface-container flex items-center justify-center text-3xl flex-shrink-0">🥘</div>
+      <div class="flex-1 min-w-0">
+        <h3 class="font-semibold text-on-surface text-sm leading-tight">Bubur Tempe Sapi Cincang</h3>
+        <p class="text-xs text-on-surface-variant mt-0.5">Cocok dengan bahanmu</p>
+        <div class="flex gap-1.5 mt-1.5">
+          <span class="px-2 py-0.5 rounded-full bg-primary-container/40 text-on-primary-container text-[10px] font-semibold">Kaya zinc</span>
+          <span class="px-2 py-0.5 rounded-full bg-tertiary-container/40 text-tertiary text-[10px] font-semibold">Aman Nara</span>
+        </div>
+      </div>
+      <span class="material-symbols-outlined text-[20px] text-on-surface-variant flex-shrink-0">chevron_right</span>
+    </a>
+
+    <a href="recipe-detail.html" class="flex items-center gap-3 bg-surface-container-low rounded-2xl px-4 py-3.5 shadow-[0_1px_4px_rgba(51,46,34,0.04)]">
+      <div class="w-14 h-14 rounded-xl bg-surface-container flex items-center justify-center text-3xl flex-shrink-0">🥬</div>
+      <div class="flex-1 min-w-0">
+        <h3 class="font-semibold text-on-surface text-sm leading-tight">Sup Bayam Ikan Teri</h3>
+        <p class="text-xs text-on-surface-variant mt-0.5">Cocok dengan bahanmu</p>
+        <div class="flex gap-1.5 mt-1.5">
+          <span class="px-2 py-0.5 rounded-full bg-error-container/30 text-error text-[10px] font-semibold">Kaya iron</span>
+          <span class="px-2 py-0.5 rounded-full bg-tertiary-container/40 text-tertiary text-[10px] font-semibold">Aman Nara</span>
+        </div>
+      </div>
+      <span class="material-symbols-outlined text-[20px] text-on-surface-variant flex-shrink-0">chevron_right</span>
+    </a>
+
   </main>
 </div>
-<nav class="bottom-nav" aria-label="Navigasi utama">
-  <a href="today.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/></svg>Log Harian</a>
-  <a href="fridge.html" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Masak</a>
-  <a href="edukasi.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>Edukasi</a>
+
+<!-- Bottom nav -->
+<nav class="fixed bottom-0 inset-x-0 z-50 bg-white/95 backdrop-blur-md rounded-t-[2rem] shadow-[0_-2px_20px_rgba(51,46,34,0.08)]" aria-label="Navigasi utama">
+  <div class="max-w-[480px] mx-auto flex items-start pt-3" style="padding-bottom:calc(0.75rem + env(safe-area-inset-bottom,0))">
+    <a href="today.html" class="flex-1 flex flex-col items-center gap-0.5"><span class="flex items-center justify-center px-5 py-1"><span class="material-symbols-outlined text-[22px] text-on-surface-variant">home</span></span><span class="text-[11px] font-medium text-on-surface-variant">Beranda</span></a>
+    <a href="log-add.html" class="flex-1 flex flex-col items-center gap-0.5"><span class="flex items-center justify-center px-5 py-1"><span class="material-symbols-outlined text-[22px] text-on-surface-variant">edit_note</span></span><span class="text-[11px] font-medium text-on-surface-variant">Catat</span></a>
+    <a href="edukasi.html" class="flex-1 flex flex-col items-center gap-0.5"><span class="flex items-center justify-center px-5 py-1"><span class="material-symbols-outlined text-[22px] text-on-surface-variant">menu_book</span></span><span class="text-[11px] font-medium text-on-surface-variant">Panduan</span></a>
+    <a href="settings.html" class="flex-1 flex flex-col items-center gap-0.5"><span class="flex items-center justify-center px-5 py-1"><span class="material-symbols-outlined text-[22px] text-on-surface-variant">person</span></span><span class="text-[11px] font-medium text-on-surface-variant">Profil</span></a>
+  </div>
 </nav>
+
 <div id="toast" class="toast" aria-live="polite"></div>
 <script src="js/tokens.js"></script><script src="js/profile.js"></script><script src="js/api.js"></script><script src="js/ui.js"></script><script src="js/app.js"></script>
 <script>

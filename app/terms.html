@@ -4,30 +4,47 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Syarat Layanan — Suppa</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&family=Be+Vietnam+Pro:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
+  <script>tailwind.config={darkMode:"class",theme:{extend:{colors:{background:"#fff6e2",surface:"#ffffff","surface-bright":"#fff6e2","surface-container-low":"#f9f0db","surface-container":"#f1e7d1","surface-container-high":"#ebe2ca","surface-container-highest":"#e6dcc3","surface-dim":"#ded4ba",primary:"#7b5400","primary-container":"#feb300","on-primary":"#fff1df","on-primary-container":"#523700",secondary:"#b7004d","secondary-container":"#ffc2cc","on-secondary":"#ffeff0",tertiary:"#176a21","tertiary-container":"#9df197","on-tertiary":"#d1ffc8",error:"#b02500","error-container":"#f95630","on-surface":"#332e22","on-surface-variant":"#605b4c",outline:"#7c7666","outline-variant":"#b4ad9b"},borderRadius:{DEFAULT:"1rem",lg:"2rem",xl:"3rem",full:"9999px"},fontFamily:{headline:["Plus Jakarta Sans","sans-serif"],body:["Be Vietnam Pro","sans-serif"]}}}}</script>
+  <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="css/tokens.css" /><link rel="stylesheet" href="css/components.css" />
+  <style>
+    .prose h2 { font-family: "Plus Jakarta Sans", sans-serif; font-size: 1rem; font-weight: 700; color: #332e22; margin: 1.5rem 0 0.5rem; }
+    .prose p  { font-size: 0.9375rem; line-height: 1.7; color: #605b4c; margin-bottom: 0.75rem; }
+    .prose ul { padding-left: 1.25rem; margin-bottom: 0.75rem; }
+    .prose li { font-size: 0.9375rem; line-height: 1.7; color: #605b4c; margin-bottom: 0.25rem; }
+  </style>
 </head>
-<body>
-<div class="app-frame" style="padding-bottom:var(--space-page);">
-  <header class="top-bar">
-    <a class="top-bar__icon-btn" href="settings.html" aria-label="Kembali"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg></a>
-    <h1 class="top-bar__title">Syarat Layanan</h1>
-    <div style="width:44px"></div>
-  </header>
-  <main class="prose">
-    <p>Terakhir diperbarui: April 2026</p>
-    <h2>Penggunaan yang diperbolehkan</h2>
-    <p>Suppa adalah alat bantu gizi non-klinis untuk orang tua. Kamu boleh menggunakan Suppa untuk mencatat makanan anak dan mendapatkan ide resep.</p>
-    <h2>Batasan</h2>
-    <ul>
-      <li>Suppa bukan alat diagnosis medis.</li>
-      <li>Jangan menggantikan konsultasi dokter anak dengan Suppa.</li>
-      <li>Ini adalah prototipe — fitur dapat berubah tanpa pemberitahuan.</li>
-    </ul>
-    <h2>Pengabaian tanggung jawab</h2>
-    <p>Suppa tidak bertanggung jawab atas keputusan medis yang dibuat berdasarkan konten aplikasi ini.</p>
+<body class="bg-background font-body text-on-surface">
+
+<header class="fixed top-0 inset-x-0 z-40 bg-surface-bright/80 backdrop-blur-md shadow-[0_1px_0_rgba(51,46,34,0.06)]">
+  <div class="max-w-[480px] mx-auto flex items-center gap-3 px-4 h-16" style="padding-top:env(safe-area-inset-top,0)">
+    <a href="settings.html" class="w-9 h-9 flex items-center justify-center rounded-full bg-surface-container-low flex-shrink-0" aria-label="Kembali">
+      <span class="material-symbols-outlined text-[20px] text-on-surface">arrow_back</span>
+    </a>
+    <h1 class="flex-1 font-headline font-bold text-lg text-on-surface">Syarat Layanan</h1>
+  </div>
+</header>
+
+<div class="app-frame min-h-dvh max-w-[480px] mx-auto">
+  <main class="pt-20 pb-16 px-4">
+    <div class="prose">
+      <p class="text-xs text-on-surface-variant mt-1 mb-4">Terakhir diperbarui: April 2026</p>
+      <h2>Penggunaan yang diperbolehkan</h2>
+      <p>Suppa adalah alat bantu gizi non-klinis untuk orang tua. Kamu boleh menggunakan Suppa untuk mencatat makanan anak dan mendapatkan ide resep.</p>
+      <h2>Batasan</h2>
+      <ul>
+        <li>Suppa bukan alat diagnosis medis.</li>
+        <li>Jangan menggantikan konsultasi dokter anak dengan Suppa.</li>
+        <li>Ini adalah prototipe — fitur dapat berubah tanpa pemberitahuan.</li>
+      </ul>
+      <h2>Pengabaian tanggung jawab</h2>
+      <p>Suppa tidak bertanggung jawab atas keputusan medis yang dibuat berdasarkan konten aplikasi ini.</p>
+    </div>
   </main>
 </div>
+
 <script src="js/tokens.js"></script><script src="js/profile.js"></script><script src="js/api.js"></script><script src="js/ui.js"></script><script src="js/app.js"></script>
 </body>
 </html>

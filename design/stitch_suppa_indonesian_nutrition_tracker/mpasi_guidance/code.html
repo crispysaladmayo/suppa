@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Suppa - MPASI Journey</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;family=Be+Vietnam+Pro:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary": "#b7004d",
+                        "surface-container-low": "#f9f0db",
+                        "surface": "#fff6e2",
+                        "tertiary": "#176a21",
+                        "surface-bright": "#fff6e2",
+                        "secondary-dim": "#a00043",
+                        "inverse-primary": "#feb300",
+                        "on-background": "#332e22",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed-variant": "#a20044",
+                        "surface-variant": "#e6dcc3",
+                        "outline-variant": "#b4ad9b",
+                        "secondary-fixed": "#ffc2cc",
+                        "surface-container": "#f1e7d1",
+                        "on-tertiary-container": "#005c15",
+                        "surface-tint": "#7b5400",
+                        "on-primary-container": "#523700",
+                        "background": "#fff6e2",
+                        "on-secondary-container": "#91003c",
+                        "on-tertiary-fixed-variant": "#12661e",
+                        "on-tertiary-fixed": "#00460e",
+                        "primary-dim": "#6b4900",
+                        "secondary-container": "#ffc2cc",
+                        "secondary-fixed-dim": "#ffadbc",
+                        "on-secondary-fixed": "#6d002b",
+                        "error": "#b02500",
+                        "primary": "#7b5400",
+                        "primary-container": "#feb300",
+                        "on-secondary": "#ffeff0",
+                        "on-error-container": "#520c00",
+                        "outline": "#7c7666",
+                        "error-container": "#f95630",
+                        "on-tertiary": "#d1ffc8",
+                        "on-surface-variant": "#605b4c",
+                        "on-error": "#ffefec",
+                        "primary-fixed-dim": "#eda600",
+                        "error-dim": "#b92902",
+                        "inverse-on-surface": "#a39c8b",
+                        "tertiary-fixed-dim": "#90e28a",
+                        "surface-container-highest": "#e6dcc3",
+                        "on-primary-fixed": "#382400",
+                        "surface-container-high": "#ebe2ca",
+                        "inverse-surface": "#110e04",
+                        "on-primary": "#fff1df",
+                        "surface-dim": "#ded4ba",
+                        "tertiary-dim": "#025d16",
+                        "on-surface": "#332e22",
+                        "primary-fixed": "#feb300",
+                        "tertiary-fixed": "#9df197",
+                        "tertiary-container": "#9df197",
+                        "on-primary-fixed-variant": "#5e4000"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Plus Jakarta Sans"],
+                        "body": ["Be Vietnam Pro"],
+                        "label": ["Be Vietnam Pro"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Be Vietnam Pro', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        h1, h2, h3 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background selection:bg-primary-container">
+<!-- TopAppBar -->
+<nav class="fixed top-0 w-full z-50 bg-[#fff6e2]/80 dark:bg-stone-950/80 backdrop-blur-md shadow-[0px_0px_24px_rgba(51,46,34,0.06)] flex justify-between items-center px-6 py-4 w-full">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden bg-surface-container-high ring-2 ring-primary/10">
+<img alt="Bunda's Profile" class="w-full h-full object-cover" data-alt="close-up portrait of a smiling young Indonesian woman in a bright room with warm natural light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7Rt_fQtXkrXYHUm2fL77u44fa7Rzzh8LVmJ_BmRLnHAwuxxmQvxyTN1KYnD1rcX0uge8JMb3m4gqAlg9tgAICRTiK6LAg7atD4QX6OrOf8OJx646pEz0592eWyhCfkH_s6KEptQ6viFI1QTOTOFUTGkxNyB5vW0rW8X4WKjVW-zvsHVhvPd-Z2mEuy2Y2lgDfEfprKZR4EYIT-k8jyNUbVQvGOOYGvTAfozubJrtM_cplBo7ekUMI9OVVD7C9rxKTqPTDU6R_D0JJ"/>
+</div>
+<span class="text-2xl font-black text-[#7b5400] dark:text-[#ffb300] tracking-tight">Suppa</span>
+</div>
+<button class="w-10 h-10 flex items-center justify-center text-[#7b5400] dark:text-[#ffb300] hover:opacity-80 transition-opacity active:scale-95 duration-200">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+</nav>
+<main class="pt-24 pb-32 px-6 max-w-2xl mx-auto">
+<!-- Title & Journey Selector -->
+<header class="mb-8">
+<h1 class="text-3xl font-extrabold text-on-surface mb-6 tracking-tight">MPASI Journey</h1>
+<div class="flex gap-3 overflow-x-auto hide-scrollbar -mx-2 px-2">
+<button class="whitespace-nowrap px-6 py-3 rounded-full bg-primary text-on-primary font-bold text-sm shadow-sm transition-all active:scale-95">6-8 months</button>
+<button class="whitespace-nowrap px-6 py-3 rounded-full bg-surface-container-low text-on-surface-variant font-semibold text-sm hover:bg-surface-container-high transition-all active:scale-95">9-11 months</button>
+<button class="whitespace-nowrap px-6 py-3 rounded-full bg-surface-container-low text-on-surface-variant font-semibold text-sm hover:bg-surface-container-high transition-all active:scale-95">12+ months</button>
+</div>
+</header>
+<!-- Hero Card: Current Stage Summary -->
+<section class="mb-10 relative overflow-hidden bg-surface-container-lowest rounded-xl p-8 shadow-[0px_0px_24px_rgba(51,46,34,0.06)] border-b-4 border-primary-container/20">
+<div class="absolute top-0 right-0 -mr-8 -mt-8 opacity-10">
+<span class="material-symbols-outlined text-[120px]" style="font-variation-settings: 'FILL' 1;">restaurant_menu</span>
+</div>
+<div class="relative z-10">
+<div class="flex items-center gap-2 mb-2">
+<span class="bg-tertiary-container text-on-tertiary-container text-[10px] font-bold uppercase tracking-widest px-2 py-1 rounded">Active Stage</span>
+</div>
+<h2 class="text-2xl font-bold mb-2">Smoothing into Solids</h2>
+<p class="text-on-surface-variant text-sm mb-6 leading-relaxed">Introducing gentle textures and rich nutrients to support rapid growth and brain development.</p>
+<div class="grid grid-cols-1 gap-5">
+<div class="space-y-2">
+<div class="flex justify-between text-xs font-bold uppercase tracking-wider text-on-surface/60">
+<span>Carbohydrates</span>
+<span>45%</span>
+</div>
+<div class="h-3 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary-container rounded-full" style="width: 45%;"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-xs font-bold uppercase tracking-wider text-on-surface/60">
+<span>Protein</span>
+<span>35%</span>
+</div>
+<div class="h-3 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-tertiary rounded-full" style="width: 35%;"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-xs font-bold uppercase tracking-wider text-on-surface/60">
+<span>Healthy Fats</span>
+<span>20%</span>
+</div>
+<div class="h-3 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-secondary rounded-full" style="width: 20%;"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Pediatric Tips: Editorial List -->
+<section class="mb-10">
+<div class="flex items-baseline justify-between mb-6">
+<h3 class="text-xl font-bold">Pediatric Tips</h3>
+<span class="text-xs font-bold text-primary uppercase tracking-widest">See All</span>
+</div>
+<div class="space-y-4">
+<div class="group flex items-center gap-5 p-4 rounded-lg bg-surface-container-low hover:bg-surface-container-lowest transition-all duration-300 cursor-pointer">
+<div class="w-16 h-16 rounded-xl bg-primary/10 flex-shrink-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-3xl">child_care</span>
+</div>
+<div class="flex-grow">
+<h4 class="font-bold text-on-surface group-hover:text-primary transition-colors">Dealing with picky eating</h4>
+<p class="text-sm text-on-surface-variant line-clamp-1">Don't force it, Bunda. Try these 5 gentle strategies...</p>
+</div>
+<span class="material-symbols-outlined text-outline-variant">chevron_right</span>
+</div>
+<div class="group flex items-center gap-5 p-4 rounded-lg bg-surface-container-low hover:bg-surface-container-lowest transition-all duration-300 cursor-pointer">
+<div class="w-16 h-16 rounded-xl bg-tertiary/10 flex-shrink-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary text-3xl">nutrition</span>
+</div>
+<div class="flex-grow">
+<h4 class="font-bold text-on-surface group-hover:text-tertiary transition-colors">Introducing textures</h4>
+<p class="text-sm text-on-surface-variant line-clamp-1">Moving from thin puree to mashed textures safely.</p>
+</div>
+<span class="material-symbols-outlined text-outline-variant">chevron_right</span>
+</div>
+<div class="group flex items-center gap-5 p-4 rounded-lg bg-surface-container-low hover:bg-surface-container-lowest transition-all duration-300 cursor-pointer">
+<div class="w-16 h-16 rounded-xl bg-secondary/10 flex-shrink-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary text-3xl">verified_user</span>
+</div>
+<div class="flex-grow">
+<h4 class="font-bold text-on-surface group-hover:text-secondary transition-colors">The First 1000 Days</h4>
+<p class="text-sm text-on-surface-variant line-clamp-1">Why early nutrition is the best gift for their future.</p>
+</div>
+<span class="material-symbols-outlined text-outline-variant">chevron_right</span>
+</div>
+</div>
+</section>
+<!-- Recipe Ideas: Bento-style Grid -->
+<section class="mb-6">
+<h3 class="text-xl font-bold mb-6">Recipe Ideas</h3>
+<div class="grid grid-cols-2 gap-4">
+<!-- Recipe 1 (Large) -->
+<div class="col-span-2 relative group rounded-xl overflow-hidden aspect-[16/10]">
+<img alt="Recipe Image" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="vibrant bowl of blended orange sweet potato and carrot puree on a wooden table with soft morning light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJtPTAxYVFLqFQETFN4DzGPCknpH_x7hcDigQMsdRMPEhN4h56_IDMdGSZVzQSx73GWHkzDI9wYXQcAf1AhddZEtsMbjJk-OWooi9x6gSl2aX6P924ZofLAiEIEsimDVxgQFMXWpSTIcgwcIkF5DNEGGClRDGGWaW63oy59udCH80y0490jX2ueroTe12cG2Q9eRvZnVWOui_U3ODtgkQ02Bf7tYKa7Sf8fTmQ-cDc859igqodk5AT12gPZCEQqHLaXwp2X3np5ZU4"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-6">
+<div class="flex items-center gap-2 mb-2">
+<span class="bg-primary-container text-on-primary-container text-[10px] font-bold px-2 py-0.5 rounded-full">MUST TRY</span>
+</div>
+<h4 class="text-white text-xl font-bold">Bubur Saring Hati Ayam</h4>
+<p class="text-white/80 text-sm">Rich in iron and vitamin A</p>
+</div>
+</div>
+<!-- Recipe 2 -->
+<div class="relative group rounded-xl overflow-hidden aspect-square">
+<img alt="Recipe Image" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="close up of a smooth mashed avocado in a small child friendly bamboo bowl on a sunny kitchen counter" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdFyNjuNRFeQ-8ytf_f9s_5FHBmYnCmGcaZ31kVkp1f-M1WoNgH9MOn01HcPJYsHpY2giIOKIXoVS6rYEWgyeDYevg08_-X62K9v7pqetAvy85nsN80saqLH7iaWbODTDlO3cShgxa-1Qq-i1hpdXSd8Bi19rS6cvtWlIXjv2UZX4uzaYjXEcSzFtRLHOROp44E-6bjEpwfXn8xquUwPPRpam8AV69NI_3AyJNXAmJErEiMxJUzmLPDLSR5zpw8H5IOSVTqmGl4NIE"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-4">
+<h4 class="text-white font-bold leading-tight">Puree Alpukat</h4>
+<div class="flex items-center gap-1 text-white/70 text-[10px] mt-1">
+<span class="material-symbols-outlined text-[12px]">timer</span>
+<span>5 mins</span>
+</div>
+</div>
+</div>
+<!-- Recipe 3 -->
+<div class="relative group rounded-xl overflow-hidden aspect-square">
+<img alt="Recipe Image" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="overhead shot of a colorful vegetable soup with finely chopped soft carrots and potatoes in a ceramic pot" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-U-o_tmMK0FxWKy4yw0xCDEgghzrSRzb1mgbXIx5AITy9qVU44FnGmppkWKVhd9ohWJw98N3rL9xjf-N8EpRUhDsjheRgxd8HbgtwmKdMIWE2jt4BYc-vo0xHY30B_RhkYxkfPIw_McFoANr7mpz9-KcP4l3Az0kdSF4Zo3gntHJZ60vywvPLBsMV1odZVbIJvcmd3gELpVwkODfyKLISiL6EeBGFaisFgLsrMHTOwDZWtXJ3ExDP3-38xJLOtbH37BlGJY_huXTi"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-4">
+<h4 class="text-white font-bold leading-tight">Sup Sayur Lembut</h4>
+<div class="flex items-center gap-1 text-white/70 text-[10px] mt-1">
+<span class="material-symbols-outlined text-[12px]">timer</span>
+<span>15 mins</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-3 bg-white dark:bg-stone-900 rounded-t-[3rem] z-50 shadow-[0px_-4px_24px_rgba(51,46,34,0.04)]">
+<a class="flex flex-col items-center justify-center text-[#332e22]/50 dark:text-stone-400 px-5 py-2 hover:text-[#7b5400] dark:hover:text-[#ffb300] active:scale-[0.98] transition-all" href="#">
+<span class="material-symbols-outlined mb-1">home</span>
+<span class="font-['Be_Vietnam_Pro'] text-[10px] font-bold uppercase tracking-wider">Beranda</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#332e22]/50 dark:text-stone-400 px-5 py-2 hover:text-[#7b5400] dark:hover:text-[#ffb300] active:scale-[0.98] transition-all" href="#">
+<span class="material-symbols-outlined mb-1">add_a_photo</span>
+<span class="font-['Be_Vietnam_Pro'] text-[10px] font-bold uppercase tracking-wider">Catat</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-[#f9f0db] dark:bg-stone-800 text-[#7b5400] rounded-full px-5 py-2 active:scale-[0.98] transition-all" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">menu_book</span>
+<span class="font-['Be_Vietnam_Pro'] text-[10px] font-bold uppercase tracking-wider">Panduan</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#332e22]/50 dark:text-stone-400 px-5 py-2 hover:text-[#7b5400] dark:hover:text-[#ffb300] active:scale-[0.98] transition-all" href="#">
+<span class="material-symbols-outlined mb-1">child_care</span>
+<span class="font-['Be_Vietnam_Pro'] text-[10px] font-bold uppercase tracking-wider">Profil</span>
+</a>
+</nav>
+</body></html>

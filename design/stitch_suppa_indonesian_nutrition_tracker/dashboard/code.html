@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+
+<html lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Suppa - Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;family=Be+Vietnam+Pro:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary": "#b7004d",
+                    "surface-container-low": "#f9f0db",
+                    "surface": "#fff6e2",
+                    "tertiary": "#176a21",
+                    "surface-bright": "#fff6e2",
+                    "secondary-dim": "#a00043",
+                    "inverse-primary": "#feb300",
+                    "on-background": "#332e22",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary-fixed-variant": "#a20044",
+                    "surface-variant": "#e6dcc3",
+                    "outline-variant": "#b4ad9b",
+                    "secondary-fixed": "#ffc2cc",
+                    "surface-container": "#f1e7d1",
+                    "on-tertiary-container": "#005c15",
+                    "surface-tint": "#7b5400",
+                    "on-primary-container": "#523700",
+                    "background": "#fff6e2",
+                    "on-secondary-container": "#91003c",
+                    "on-tertiary-fixed-variant": "#12661e",
+                    "on-tertiary-fixed": "#00460e",
+                    "primary-dim": "#6b4900",
+                    "secondary-container": "#ffc2cc",
+                    "secondary-fixed-dim": "#ffadbc",
+                    "on-secondary-fixed": "#6d002b",
+                    "error": "#b02500",
+                    "primary": "#7b5400",
+                    "primary-container": "#feb300",
+                    "on-secondary": "#ffeff0",
+                    "on-error-container": "#520c00",
+                    "outline": "#7c7666",
+                    "error-container": "#f95630",
+                    "on-tertiary": "#d1ffc8",
+                    "on-surface-variant": "#605b4c",
+                    "on-error": "#ffefec",
+                    "primary-fixed-dim": "#eda600",
+                    "error-dim": "#b92902",
+                    "inverse-on-surface": "#a39c8b",
+                    "tertiary-fixed-dim": "#90e28a",
+                    "surface-container-highest": "#e6dcc3",
+                    "on-primary-fixed": "#382400",
+                    "surface-container-high": "#ebe2ca",
+                    "inverse-surface": "#110e04",
+                    "on-primary": "#fff1df",
+                    "surface-dim": "#ded4ba",
+                    "tertiary-dim": "#025d16",
+                    "on-surface": "#332e22",
+                    "primary-fixed": "#feb300",
+                    "tertiary-fixed": "#9df197",
+                    "tertiary-container": "#9df197",
+                    "on-primary-fixed-variant": "#5e4000"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Plus Jakarta Sans"],
+                    "body": ["Be Vietnam Pro"],
+                    "label": ["Be Vietnam Pro"]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #fff6e2;
+            font-family: 'Be Vietnam Pro', sans-serif;
+            color: #332e22;
+        }
+        .rainbow-arc {
+            stroke-dasharray: 100;
+            stroke-linecap: round;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#fff6e2]/80 dark:bg-stone-950/80 backdrop-blur-md shadow-[0px_0px_24px_rgba(51,46,34,0.06)] flex justify-between items-center px-6 py-4 w-full">
+<div class="flex items-center gap-3">
+<img alt="Bunda's Profile" class="w-10 h-10 rounded-full border-2 border-primary-container" data-alt="Close up portrait of a kind smiling Indonesian woman wearing a stylish hijab, soft natural lighting indoors" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBsi6EwY9ou1B1Y6dHGqVoSseO3ARaieELfjiTpghgluCQNtXIzNgNIqNjMFlD4SBx1QxezQBdh_FnigXhC78Hq9LEDZu55g1nWyD0hDjAtzPrMop84ysTs8nbpHXz5qeLbF4jts9cwL6sXx7I0RrSVlVVc85atcUmdsI-wg-IpwYOAgLWVxcWiV5mDjHnc0Zf38e5DBk2sjI5A9PqiS3kedFh6C7qk-Nq4DlAFfinipi1XTYTDEv2Pq9kNAEtdoGvysQHa8VodwmHt"/>
+</div>
+<h1 class="text-2xl font-black text-[#7b5400] dark:text-[#ffb300] tracking-tight font-['Plus_Jakarta_Sans']">Suppa</h1>
+<button class="text-[#7b5400] dark:text-[#ffb300] hover:opacity-80 transition-opacity active:scale-95 duration-200">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+</header>
+<main class="pt-24 px-5 space-y-8">
+<!-- Hero Section: Rainbow Eating Tracker -->
+<section class="relative bg-surface-container-low rounded-xl p-8 overflow-hidden">
+<div class="relative z-10 flex flex-col items-center">
+<h2 class="font-headline text-on-surface text-lg font-bold mb-1">Makan Pelangi Hari Ini</h2>
+<p class="font-body text-on-surface-variant text-sm mb-6">4 dari 6 kelompok nutrisi terpenuhi</p>
+<div class="relative w-64 h-32 flex justify-center">
+<!-- Progress Arc Implementation -->
+<svg class="w-full h-full" viewbox="0 0 100 50">
+<path d="M 10 50 A 40 40 0 0 1 90 50" fill="none" stroke="#f1e7d1" stroke-width="8"></path>
+<!-- Red: Fruit -->
+<path d="M 10 50 A 40 40 0 0 1 25 22" fill="none" stroke="#b7004d" stroke-linecap="round" stroke-width="10"></path>
+<!-- Yellow: Grains -->
+<path d="M 28 18 A 40 40 0 0 1 50 10" fill="none" stroke="#feb300" stroke-linecap="round" stroke-width="10"></path>
+<!-- Green: Veggies -->
+<path d="M 53 10 A 40 40 0 0 1 75 22" fill="none" stroke="#176a21" stroke-linecap="round" stroke-width="10"></path>
+<!-- Orange: Protein -->
+<path d="M 78 26 A 40 40 0 0 1 90 50" fill="none" stroke="#f95630" stroke-linecap="round" stroke-width="10"></path>
+</svg>
+<div class="absolute bottom-0 text-center">
+<span class="text-4xl font-black text-primary">65%</span>
+</div>
+</div>
+<!-- Labels -->
+<div class="flex flex-wrap justify-center gap-3 mt-4">
+<span class="bg-secondary/10 text-on-secondary-container px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">Buah</span>
+<span class="bg-primary-container/20 text-on-primary-container px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">Karbo</span>
+<span class="bg-tertiary/10 text-on-tertiary-container px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">Sayur</span>
+<span class="bg-error-container/20 text-on-error-container px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">Protein</span>
+</div>
+</div>
+<!-- Joy Motif Overlay -->
+<div class="absolute -right-4 -bottom-4 w-24 h-24 opacity-20 rotate-12">
+<span class="material-symbols-outlined text-8xl text-primary" data-icon="restaurant">restaurant</span>
+</div>
+</section>
+<!-- Bunda's Tip Card -->
+<section class="bg-surface-container-lowest rounded-lg p-5 flex items-start gap-4 shadow-[0px_4px_24px_rgba(51,46,34,0.04)] border border-outline-variant/15">
+<div class="bg-primary-container w-12 h-12 rounded-full flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-on-primary-container" data-icon="tips_and_updates">tips_and_updates</span>
+</div>
+<div>
+<h3 class="font-headline font-bold text-on-surface text-base">Bunda's Tip</h3>
+<p class="font-body text-on-surface-variant text-sm mt-1 leading-relaxed">Almost there! Satu lagi porsi sayuran hijau untuk melengkapi pelangi nutrisi si kecil hari ini! ✨</p>
+</div>
+</section>
+<!-- Recent Meals Section -->
+<section class="space-y-4">
+<div class="flex justify-between items-end px-1">
+<div>
+<h3 class="font-headline font-bold text-xl text-on-surface tracking-tight">Recent Meals</h3>
+<p class="text-xs text-on-surface-variant font-medium">Apa yang dimakan si kecil hari ini?</p>
+</div>
+<button class="text-primary text-xs font-bold uppercase tracking-widest">See All</button>
+</div>
+<div class="flex overflow-x-auto pb-4 gap-4 no-scrollbar -mx-5 px-5">
+<!-- Meal Card 1 -->
+<div class="min-w-[160px] bg-surface-container rounded-lg p-3 flex flex-col gap-3">
+<img class="w-full h-32 object-cover rounded-md" data-alt="Close-up of Indonesian chicken porridge with scallions, fried shallots, and yellow broth in a ceramic bowl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBsSFruY_99so636Renl8gPh5McvV1j69Q3sQFgyERIdeHMKG3USE-KzcY4pPldzMVQLLrtMe-oYwmZYm5SjqfAbxGezpZkko9aZfhIaDni1496kOUITTW6GeuOvCsQ_eZFJCPIlbU1m3zBl0djm_09DGX00V_Mm1L0n1Ot_ruIso5GesTFrkFOj3MxgYfMeaBwUhcfL46VA9NrZtoRLX17AZhXX0mqyKYszrXqH8cmA9xn3UMZNoKK2Ok9G8fdc59HyO_iNH_HVs7a"/>
+<div>
+<p class="font-headline font-bold text-sm text-on-surface">Bubur Ayam</p>
+<p class="font-body text-[10px] text-on-surface-variant">Sarapan • 08:30</p>
+</div>
+</div>
+<!-- Meal Card 2 -->
+<div class="min-w-[160px] bg-surface-container rounded-lg p-3 flex flex-col gap-3">
+<img class="w-full h-32 object-cover rounded-md" data-alt="Freshly sliced ripe orange papaya chunks arranged neatly on a wooden plate, natural daylight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAUdMpfAtBcdVdes9G8SEBTzfi4hOA-gRF4yihiAd4TZXsc80ntXCdWg3Z4aBlxlHPWpr5QXKUVxqMmLpJT8vghVyJGjlVdoNOXXL58cYUi4L05Ww2XCTf4LkgDaFi_i0FMf8gI0CipsevU4lQsFtkq1B9gqmxo2XuKbNl1FN2N0viosrshVA791O3X1QNDu-_hhpdsLL7bxify9ZyNOwKpOFNj26uNlFQLGmPoU7MohCFLMY4i4A6gxDBGJ4jZwUx6sIg3SXIGXB5Y"/>
+<div>
+<p class="font-headline font-bold text-sm text-on-surface">Papaya Slices</p>
+<p class="font-body text-[10px] text-on-surface-variant">Snack • 10:15</p>
+</div>
+</div>
+<!-- Meal Card 3 -->
+<div class="min-w-[160px] bg-surface-container rounded-lg p-3 flex flex-col gap-3">
+<img class="w-full h-32 object-cover rounded-md" data-alt="Traditional Indonesian rice dish with colorful side vegetables, soft steam rising, warm home kitchen lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBreFj63Vj2ToEGo-4zq9zos35rfY2kud-gjp7npzz-7zGrE2Oe8Yq3PpB1bdj3mfetos-fQzGY4E-ECvmHs8SOJNNabj0O1P20uwSPkmLPJwREJSqxzpRizyHkwCCnL09ZMkg4XAedoD1FQ2DzZ4K6iGZOFTYHnZwQroGFxlbqnvTMn3EIlei2aVbtn6ZLxSjATvCJ2Iipej5GwevxGG-99leIa7PL2V46QJ6dEGIx9xgTw0oF2MvHrwhoSwe-iy4uSvf4pUaIBG8d"/>
+<div>
+<p class="font-headline font-bold text-sm text-on-surface">Nasi Campur</p>
+<p class="font-body text-[10px] text-on-surface-variant">Lunch • 12:45</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Gap Hints Section -->
+<section class="space-y-4">
+<h3 class="font-headline font-bold text-xl text-on-surface tracking-tight px-1">Isi Celah Nutrisi</h3>
+<div class="grid grid-cols-1 gap-4">
+<div class="bg-tertiary-container/30 rounded-xl p-5 flex items-center justify-between group active:scale-[0.98] transition-transform">
+<div class="flex items-center gap-4">
+<div class="w-14 h-14 rounded-full overflow-hidden border-2 border-tertiary">
+<img class="w-full h-full object-cover" data-alt="Stir-fried fermented soybean cake known as Tempe Orek, glistening with sweet soy sauce and chili, close-up shot" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDZ9bScMYids1LO8kZlE2pnPeqTuvrZF7miwpcFZinXZ1wG1yLOjPxGY8-T9XcV45GE9NUpfPixkVt67J7O724L2JKLI0gKNICmv9JHVxC_32PBUUu-R1002XEpIWLxW5D-tWLLG_bxx04tKXcAqhbjU77clY3VUbPKqnQDSlXuk__Pe8f5SUwaxE3UziqOcVz-IMk9a1CkMYxQPIpepOz1vkX2XTyigugOPOYpCzfTBOWGybKfKgqPrH6Y-EjNgQthfAVw0NmrQae"/>
+</div>
+<div>
+<p class="font-headline font-bold text-on-tertiary-container">Tempe Orek</p>
+<p class="font-body text-xs text-on-tertiary-fixed-variant">Tambah protein nabati</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-tertiary" data-icon="add_circle">add_circle</span>
+</div>
+<div class="bg-secondary-container/30 rounded-xl p-5 flex items-center justify-between group active:scale-[0.98] transition-transform">
+<div class="flex items-center gap-4">
+<div class="w-14 h-14 rounded-full overflow-hidden border-2 border-secondary">
+<img class="w-full h-full object-cover" data-alt="Fresh purple dragon fruit slices arranged on a white ceramic plate, vibrant pink and purple colors" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAzRrp26ApN7SeEqlMNGAz8pxy6ZpcHzJLu3dGaWZvbPjYwNs0b2zQBLQpJaLNkpf_XPSipvudaeJQBFZPRc5Q3efD7ms-18P8AgymeLh8NuHfHfRj2wa9fJV4kmS6Bg4fLi8Yk_jaM9NkJUeqyEVYo1IHYcWqYR7D0I4Jngu5syCDoAGMNdvEmRGfL4fXopWfWhbC6WU6MFqe4nGjlZIizK1XC-fY-EsqCQnXt7pRJHUuD_zLVERcB59KBlFFEGE-7ZmJWwPkn3Nq9"/>
+</div>
+<div>
+<p class="font-headline font-bold text-on-secondary-container">Buah Naga</p>
+<p class="font-body text-xs text-on-secondary-fixed-variant">Tingkatkan antioksidan</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-secondary" data-icon="add_circle">add_circle</span>
+</div>
+</div>
+</section>
+</main>
+<!-- FAB for quick action -->
+<button class="fixed bottom-28 right-6 w-14 h-14 bg-primary text-on-primary rounded-full shadow-[0px_8px_24px_rgba(123,84,0,0.3)] flex items-center justify-center active:scale-90 transition-transform z-40">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+</button>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-3 bg-white dark:bg-stone-900 rounded-t-[3rem] shadow-[0px_-4px_24px_rgba(51,46,34,0.04)] z-50">
+<a class="flex flex-col items-center justify-center bg-[#f9f0db] dark:bg-stone-800 text-[#7b5400] rounded-full px-5 py-2 active:scale-[0.98] duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="home" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-['Be_Vietnam_Pro'] text-[10px] font-bold uppercase tracking-wider mt-1">Beranda</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#332e22]/50 dark:text-stone-400 px-5 py-2 hover:text-[#7b5400] dark:hover:text-[#ffb300] active:scale-[0.98] duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="add_a_photo">add_a_photo</span>
+<span class="font-['Be_Vietnam_Pro'] text-[10px] font-bold uppercase tracking-wider mt-1">Catat</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#332e22]/50 dark:text-stone-400 px-5 py-2 hover:text-[#7b5400] dark:hover:text-[#ffb300] active:scale-[0.98] duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="menu_book">menu_book</span>
+<span class="font-['Be_Vietnam_Pro'] text-[10px] font-bold uppercase tracking-wider mt-1">Panduan</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#332e22]/50 dark:text-stone-400 px-5 py-2 hover:text-[#7b5400] dark:hover:text-[#ffb300] active:scale-[0.98] duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="child_care">child_care</span>
+<span class="font-['Be_Vietnam_Pro'] text-[10px] font-bold uppercase tracking-wider mt-1">Profil</span>
+</a>
+</nav>
+</body></html>

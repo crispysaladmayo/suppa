@@ -2,39 +2,241 @@
 <html lang="id">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Edukasi — Suppa</title>
+  <title>Panduan MPASI — Suppa</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&family=Be+Vietnam+Pro:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
+  <script>tailwind.config={darkMode:"class",theme:{extend:{colors:{background:"#fff6e2",surface:"#ffffff","surface-bright":"#fff6e2","surface-container-low":"#f9f0db","surface-container":"#f1e7d1","surface-container-high":"#ebe2ca","surface-container-highest":"#e6dcc3","surface-dim":"#ded4ba",primary:"#7b5400","primary-container":"#feb300","on-primary":"#fff1df","on-primary-container":"#523700",secondary:"#b7004d","secondary-container":"#ffc2cc","on-secondary":"#ffeff0",tertiary:"#176a21","tertiary-container":"#9df197","on-tertiary":"#d1ffc8",error:"#b02500","error-container":"#f95630","on-surface":"#332e22","on-surface-variant":"#605b4c",outline:"#7c7666","outline-variant":"#b4ad9b"},borderRadius:{DEFAULT:"1rem",lg:"2rem",xl:"3rem",full:"9999px"},fontFamily:{headline:["Plus Jakarta Sans","sans-serif"],body:["Be Vietnam Pro","sans-serif"]}}}}</script>
+  <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="css/tokens.css" /><link rel="stylesheet" href="css/components.css" />
 </head>
-<body>
-<div class="app-frame">
-  <header class="top-bar">
-    <h1 class="top-bar__title">Edukasi</h1>
-    <div style="width:44px"></div>
-  </header>
-  <main>
-    <div class="chip-group" role="group" aria-label="Filter topik" style="margin-bottom:var(--space-4);">
-      <button type="button" class="chip topic-chip is-active" aria-pressed="true">Semua</button>
-      <button type="button" class="chip topic-chip" aria-pressed="false">MPASI</button>
-      <button type="button" class="chip topic-chip" aria-pressed="false">Zat Besi</button>
-      <button type="button" class="chip topic-chip" aria-pressed="false">Zinc</button>
-      <button type="button" class="chip topic-chip" aria-pressed="false">Alergi</button>
-      <button type="button" class="chip topic-chip" aria-pressed="false">Vitamin D</button>
+<body class="bg-background font-body text-on-surface">
+
+<!-- Fixed top bar -->
+<header class="fixed top-0 inset-x-0 z-40 bg-surface-bright/80 backdrop-blur-md shadow-[0_1px_0_rgba(51,46,34,0.06)]">
+  <div class="max-w-[480px] mx-auto flex items-center justify-between px-4 h-16" style="padding-top:env(safe-area-inset-top,0)">
+    <div class="w-9 h-9 rounded-full bg-primary-container flex items-center justify-center flex-shrink-0">
+      <span class="font-headline font-bold text-xs text-on-primary-container">N</span>
+    </div>
+    <span class="font-headline font-black text-2xl text-primary tracking-tight">Suppa</span>
+    <button class="w-9 h-9 flex items-center justify-center rounded-full bg-surface-container-low" aria-label="Notifikasi">
+      <span class="material-symbols-outlined text-[20px] text-on-surface-variant">notifications</span>
+    </button>
+  </div>
+</header>
+
+<div class="app-frame min-h-dvh max-w-[480px] mx-auto">
+  <main class="pt-20 pb-28 px-4 space-y-5">
+
+    <h1 class="font-headline font-extrabold text-3xl text-on-surface">MPASI Journey</h1>
+
+    <!-- Age stage pills -->
+    <div class="flex gap-2 overflow-x-auto pb-1" role="group" aria-label="Pilih tahap usia" style="scrollbar-width:none;-webkit-overflow-scrolling:touch;">
+      <button type="button" class="topic-chip chip flex-shrink-0 is-active" aria-pressed="true">6–8 bulan</button>
+      <button type="button" class="topic-chip chip flex-shrink-0" aria-pressed="false">9–11 bulan</button>
+      <button type="button" class="topic-chip chip flex-shrink-0" aria-pressed="false">12+ bulan</button>
     </div>
 
-    <a class="article-card" href="edukasi-article.html"><p class="article-card__category">MPASI</p><h2 class="article-card__title">Panduan MPASI: Kapan dan Bagaimana Memulai?</h2><p class="article-card__meta">5 menit · Tips &amp; Panduan</p></a>
-    <a class="article-card" href="edukasi-article.html"><p class="article-card__category">Zat Besi</p><h2 class="article-card__title">Makanan Kaya Zat Besi untuk Bayi dan Anak</h2><p class="article-card__meta">4 menit · Nutrisi</p></a>
-    <a class="article-card" href="edukasi-article.html"><p class="article-card__category">Zinc</p><h2 class="article-card__title">Mengapa Zinc Penting untuk Tumbuh Kembang Anak?</h2><p class="article-card__meta">3 menit · Nutrisi</p></a>
-    <a class="article-card" href="edukasi-article.html"><p class="article-card__category">Alergi</p><h2 class="article-card__title">Cara Mengenalkan Makanan Alergen dengan Aman</h2><p class="article-card__meta">6 menit · Keamanan</p></a>
-    <a class="article-card" href="edukasi-article.html"><p class="article-card__category">Vitamin D</p><h2 class="article-card__title">Vitamin D untuk Bayi: Sumber Alami dan Suplementasi</h2><p class="article-card__meta">4 menit · Nutrisi</p></a>
+    <!-- Active Stage card -->
+    <div class="bg-surface-container-low rounded-2xl p-5 relative overflow-hidden shadow-[0_2px_12px_rgba(51,46,34,0.06)] border border-primary-container/20">
+      <!-- Decorative icon -->
+      <span class="material-symbols-outlined absolute bottom-2 right-3 text-[72px] text-on-surface/5 select-none pointer-events-none" aria-hidden="true" style="font-variation-settings:'FILL' 1">restaurant_menu</span>
+
+      <span class="inline-block px-2.5 py-0.5 rounded-full bg-primary-container/40 text-on-primary-container text-[11px] font-bold uppercase tracking-wide mb-2">Active Stage</span>
+      <h2 class="font-headline font-bold text-xl text-on-surface mb-1">Smoothing into Solids</h2>
+      <p class="text-sm text-on-surface-variant mb-4 leading-relaxed">Perkenalkan tekstur baru secara bertahap. Bubur halus ke bubur kasar, lalu makanan cincang.</p>
+
+      <!-- Macro bars -->
+      <div class="space-y-3">
+        <div>
+          <div class="flex justify-between text-xs mb-1">
+            <span class="font-semibold text-on-surface">Karbohidrat</span>
+            <span class="text-on-surface-variant">55–65%</span>
+          </div>
+          <div class="h-2 rounded-full bg-surface-container-high overflow-hidden">
+            <div class="h-full rounded-full bg-primary-container" style="width:60%"></div>
+          </div>
+        </div>
+        <div>
+          <div class="flex justify-between text-xs mb-1">
+            <span class="font-semibold text-on-surface">Protein</span>
+            <span class="text-on-surface-variant">10–15%</span>
+          </div>
+          <div class="h-2 rounded-full bg-surface-container-high overflow-hidden">
+            <div class="h-full rounded-full bg-tertiary" style="width:12%"></div>
+          </div>
+        </div>
+        <div>
+          <div class="flex justify-between text-xs mb-1">
+            <span class="font-semibold text-on-surface">Lemak</span>
+            <span class="text-on-surface-variant">30–40%</span>
+          </div>
+          <div class="h-2 rounded-full bg-surface-container-high overflow-hidden">
+            <div class="h-full rounded-full bg-secondary" style="width:35%"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pediatric Tips -->
+    <div>
+      <div class="flex items-center justify-between mb-3">
+        <h3 class="font-headline font-bold text-base text-on-surface">Pediatric Tips</h3>
+        <button type="button" class="text-xs font-semibold text-primary">Lihat semua</button>
+      </div>
+      <div class="space-y-2">
+        <a href="edukasi-article.html" class="flex items-center gap-3 bg-surface-container-low rounded-2xl px-4 py-3 shadow-[0_1px_4px_rgba(51,46,34,0.04)]">
+          <div class="w-14 h-14 rounded-xl bg-primary-container/40 flex items-center justify-center flex-shrink-0">
+            <span class="material-symbols-outlined text-[24px] text-primary" style="font-variation-settings:'FILL' 1">psychology</span>
+          </div>
+          <div class="flex-1 min-w-0">
+            <p class="text-sm font-semibold text-on-surface leading-tight">Anak Pilih-pilih Makan?</p>
+            <p class="text-xs text-on-surface-variant mt-0.5">Tips picky eating untuk si kecil</p>
+          </div>
+          <span class="material-symbols-outlined text-[20px] text-on-surface-variant">chevron_right</span>
+        </a>
+        <a href="edukasi-article.html" class="flex items-center gap-3 bg-surface-container-low rounded-2xl px-4 py-3 shadow-[0_1px_4px_rgba(51,46,34,0.04)]">
+          <div class="w-14 h-14 rounded-xl bg-tertiary-container/50 flex items-center justify-center flex-shrink-0">
+            <span class="material-symbols-outlined text-[24px] text-tertiary" style="font-variation-settings:'FILL' 1">texture</span>
+          </div>
+          <div class="flex-1 min-w-0">
+            <p class="text-sm font-semibold text-on-surface leading-tight">Perkenalkan Tekstur Baru</p>
+            <p class="text-xs text-on-surface-variant mt-0.5">Dari halus ke kasar bertahap</p>
+          </div>
+          <span class="material-symbols-outlined text-[20px] text-on-surface-variant">chevron_right</span>
+        </a>
+        <a href="edukasi-article.html" class="flex items-center gap-3 bg-surface-container-low rounded-2xl px-4 py-3 shadow-[0_1px_4px_rgba(51,46,34,0.04)]">
+          <div class="w-14 h-14 rounded-xl bg-secondary-container/50 flex items-center justify-center flex-shrink-0">
+            <span class="material-symbols-outlined text-[24px] text-secondary" style="font-variation-settings:'FILL' 1">star</span>
+          </div>
+          <div class="flex-1 min-w-0">
+            <p class="text-sm font-semibold text-on-surface leading-tight">First 1000 Days</p>
+            <p class="text-xs text-on-surface-variant mt-0.5">Nutrisi di 1000 hari pertama kehidupan</p>
+          </div>
+          <span class="material-symbols-outlined text-[20px] text-on-surface-variant">chevron_right</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Artikel & Topik -->
+    <div>
+      <div class="flex items-center justify-between mb-3">
+        <h3 class="font-headline font-bold text-base text-on-surface">Artikel Terbaru</h3>
+      </div>
+
+      <!-- Filter chips -->
+      <div class="flex gap-2 overflow-x-auto pb-2 mb-3" style="scrollbar-width:none;-webkit-overflow-scrolling:touch;">
+        <button type="button" class="topic-chip chip flex-shrink-0 is-active" aria-pressed="true">Semua</button>
+        <button type="button" class="topic-chip chip flex-shrink-0" aria-pressed="false">MPASI</button>
+        <button type="button" class="topic-chip chip flex-shrink-0" aria-pressed="false">Zat Besi</button>
+        <button type="button" class="topic-chip chip flex-shrink-0" aria-pressed="false">Zinc</button>
+        <button type="button" class="topic-chip chip flex-shrink-0" aria-pressed="false">Alergi</button>
+        <button type="button" class="topic-chip chip flex-shrink-0" aria-pressed="false">Vitamin D</button>
+      </div>
+
+      <div class="space-y-3">
+        <a href="edukasi-article.html" class="block bg-surface-container-low rounded-2xl p-4 shadow-[0_1px_4px_rgba(51,46,34,0.04)]">
+          <span class="text-[11px] font-bold text-primary uppercase tracking-wider">MPASI</span>
+          <h4 class="font-headline font-bold text-base text-on-surface mt-1 mb-1">Panduan MPASI: Kapan dan Bagaimana Memulai?</h4>
+          <p class="text-xs text-on-surface-variant">5 menit · Tips &amp; Panduan</p>
+        </a>
+        <a href="edukasi-article.html" class="block bg-surface-container-low rounded-2xl p-4 shadow-[0_1px_4px_rgba(51,46,34,0.04)]">
+          <span class="text-[11px] font-bold text-error uppercase tracking-wider">Zat Besi</span>
+          <h4 class="font-headline font-bold text-base text-on-surface mt-1 mb-1">Makanan Kaya Zat Besi untuk Bayi dan Anak</h4>
+          <p class="text-xs text-on-surface-variant">4 menit · Nutrisi</p>
+        </a>
+        <a href="edukasi-article.html" class="block bg-surface-container-low rounded-2xl p-4 shadow-[0_1px_4px_rgba(51,46,34,0.04)]">
+          <span class="text-[11px] font-bold text-on-primary-container uppercase tracking-wider">Zinc</span>
+          <h4 class="font-headline font-bold text-base text-on-surface mt-1 mb-1">Mengapa Zinc Penting untuk Tumbuh Kembang Anak?</h4>
+          <p class="text-xs text-on-surface-variant">3 menit · Nutrisi</p>
+        </a>
+        <a href="edukasi-article.html" class="block bg-surface-container-low rounded-2xl p-4 shadow-[0_1px_4px_rgba(51,46,34,0.04)]">
+          <span class="text-[11px] font-bold text-secondary uppercase tracking-wider">Alergi</span>
+          <h4 class="font-headline font-bold text-base text-on-surface mt-1 mb-1">Cara Mengenalkan Makanan Alergen dengan Aman</h4>
+          <p class="text-xs text-on-surface-variant">6 menit · Keamanan</p>
+        </a>
+        <a href="edukasi-article.html" class="block bg-surface-container-low rounded-2xl p-4 shadow-[0_1px_4px_rgba(51,46,34,0.04)]">
+          <span class="text-[11px] font-bold text-tertiary uppercase tracking-wider">Vitamin D</span>
+          <h4 class="font-headline font-bold text-base text-on-surface mt-1 mb-1">Vitamin D untuk Bayi: Sumber Alami dan Suplementasi</h4>
+          <p class="text-xs text-on-surface-variant">4 menit · Nutrisi</p>
+        </a>
+      </div>
+    </div>
+
+    <!-- Recipe Ideas bento -->
+    <div>
+      <h3 class="font-headline font-bold text-base text-on-surface mb-3">Ide Resep</h3>
+      <div class="grid grid-cols-2 gap-3">
+        <!-- Hero recipe (wide) -->
+        <a href="recipe-detail.html" class="col-span-2 relative rounded-2xl overflow-hidden bg-surface-container-high" style="min-height:140px;">
+          <div class="absolute inset-0 bg-gradient-to-t from-on-surface/70 to-transparent z-10"></div>
+          <div class="absolute inset-0 flex items-center justify-center text-6xl">🥣</div>
+          <div class="absolute bottom-0 left-0 right-0 p-4 z-20">
+            <span class="inline-block px-2 py-0.5 rounded-full bg-secondary text-on-secondary text-[10px] font-bold uppercase mb-1.5">MUST TRY</span>
+            <p class="font-headline font-bold text-white text-sm leading-tight">Bubur Saring Hati Ayam</p>
+            <p class="text-[11px] text-white/70 mt-0.5">25 menit · 6–8 bulan</p>
+          </div>
+        </a>
+        <!-- Small recipe 1 -->
+        <a href="recipe-detail.html" class="relative rounded-2xl overflow-hidden bg-surface-container-high" style="min-height:100px;">
+          <div class="absolute inset-0 bg-gradient-to-t from-on-surface/60 to-transparent z-10"></div>
+          <div class="absolute inset-0 flex items-center justify-center text-4xl">🥑</div>
+          <div class="absolute bottom-0 left-0 right-0 p-3 z-20">
+            <p class="font-semibold text-white text-xs leading-tight">Puree Alpukat</p>
+            <div class="flex items-center gap-1 mt-0.5">
+              <span class="material-symbols-outlined text-[12px] text-white/70">timer</span>
+              <span class="text-[10px] text-white/70">10 menit</span>
+            </div>
+          </div>
+        </a>
+        <!-- Small recipe 2 -->
+        <a href="recipe-detail.html" class="relative rounded-2xl overflow-hidden bg-surface-container-high" style="min-height:100px;">
+          <div class="absolute inset-0 bg-gradient-to-t from-on-surface/60 to-transparent z-10"></div>
+          <div class="absolute inset-0 flex items-center justify-center text-4xl">🥣</div>
+          <div class="absolute bottom-0 left-0 right-0 p-3 z-20">
+            <p class="font-semibold text-white text-xs leading-tight">Sup Sayur Lembut</p>
+            <div class="flex items-center gap-1 mt-0.5">
+              <span class="material-symbols-outlined text-[12px] text-white/70">timer</span>
+              <span class="text-[10px] text-white/70">20 menit</span>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+
   </main>
 </div>
-<nav class="bottom-nav" aria-label="Navigasi utama">
-  <a href="today.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/></svg>Log Harian</a>
-  <a href="fridge.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Masak</a>
-  <a href="edukasi.html" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/><line x1="9" y1="7" x2="15" y2="7"/><line x1="9" y1="11" x2="13" y2="11"/></svg>Edukasi</a>
+
+<!-- Bottom nav -->
+<nav class="fixed bottom-0 inset-x-0 z-50 bg-white/95 backdrop-blur-md rounded-t-[2rem] shadow-[0_-2px_20px_rgba(51,46,34,0.08)]" aria-label="Navigasi utama">
+  <div class="max-w-[480px] mx-auto flex items-start pt-3" style="padding-bottom:calc(0.75rem + env(safe-area-inset-bottom,0))">
+    <a href="today.html" class="flex-1 flex flex-col items-center gap-0.5">
+      <span class="flex items-center justify-center px-5 py-1">
+        <span class="material-symbols-outlined text-[22px] text-on-surface-variant">home</span>
+      </span>
+      <span class="text-[11px] font-medium text-on-surface-variant">Beranda</span>
+    </a>
+    <a href="log-add.html" class="flex-1 flex flex-col items-center gap-0.5">
+      <span class="flex items-center justify-center px-5 py-1">
+        <span class="material-symbols-outlined text-[22px] text-on-surface-variant">edit_note</span>
+      </span>
+      <span class="text-[11px] font-medium text-on-surface-variant">Catat</span>
+    </a>
+    <a href="edukasi.html" class="flex-1 flex flex-col items-center gap-0.5" aria-current="page">
+      <span class="flex items-center justify-center px-5 py-1 rounded-full bg-surface-container-low">
+        <span class="material-symbols-outlined text-[22px] text-primary" style="font-variation-settings:'FILL' 1">menu_book</span>
+      </span>
+      <span class="text-[11px] font-semibold text-primary">Panduan</span>
+    </a>
+    <a href="settings.html" class="flex-1 flex flex-col items-center gap-0.5">
+      <span class="flex items-center justify-center px-5 py-1">
+        <span class="material-symbols-outlined text-[22px] text-on-surface-variant">person</span>
+      </span>
+      <span class="text-[11px] font-medium text-on-surface-variant">Profil</span>
+    </a>
+  </div>
 </nav>
+
 <div id="toast" class="toast" aria-live="polite"></div>
 <script src="js/tokens.js"></script><script src="js/profile.js"></script><script src="js/api.js"></script><script src="js/ui.js"></script><script src="js/app.js"></script>
 </body>

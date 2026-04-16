@@ -4,37 +4,48 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Pengaturan awal — Suppa</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&family=Be+Vietnam+Pro:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
+  <script>tailwind.config={darkMode:"class",theme:{extend:{colors:{background:"#fff6e2",surface:"#ffffff","surface-bright":"#fff6e2","surface-container-low":"#f9f0db","surface-container":"#f1e7d1","surface-container-high":"#ebe2ca","surface-container-highest":"#e6dcc3","surface-dim":"#ded4ba",primary:"#7b5400","primary-container":"#feb300","on-primary":"#fff1df","on-primary-container":"#523700",secondary:"#b7004d","secondary-container":"#ffc2cc","on-secondary":"#ffeff0",tertiary:"#176a21","tertiary-container":"#9df197","on-tertiary":"#d1ffc8",error:"#b02500","error-container":"#f95630","on-surface":"#332e22","on-surface-variant":"#605b4c",outline:"#7c7666","outline-variant":"#b4ad9b"},borderRadius:{DEFAULT:"1rem",lg:"2rem",xl:"3rem",full:"9999px"},fontFamily:{headline:["Plus Jakarta Sans","sans-serif"],body:["Be Vietnam Pro","sans-serif"]}}}}</script>
+  <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="css/tokens.css" /><link rel="stylesheet" href="css/components.css" />
 </head>
-<body>
-<div class="app-frame" style="padding-bottom:var(--space-page);">
-  <header class="top-bar">
-    <button class="top-bar__icon-btn" id="back-btn" aria-label="Kembali ke langkah sebelumnya">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
-    </button>
-    <p class="overline" style="margin:0;" id="step-label">Langkah 1 dari 5</p>
-    <div style="width:44px"></div>
-  </header>
+<body class="bg-background font-body text-on-surface min-h-dvh">
 
-  <div class="onboarding-progress" role="progressbar" aria-valuenow="1" aria-valuemin="1" aria-valuemax="5" aria-label="Langkah pengaturan awal" id="progress-bar">
-    <div class="onboarding-step is-active" id="s1"></div>
-    <div class="onboarding-step" id="s2"></div>
-    <div class="onboarding-step" id="s3"></div>
-    <div class="onboarding-step" id="s4"></div>
-    <div class="onboarding-step" id="s5"></div>
+<div class="app-frame min-h-dvh max-w-[480px] mx-auto flex flex-col px-6 pb-10" style="padding-top:calc(env(safe-area-inset-top,0) + 1rem)">
+  <!-- Top bar -->
+  <div class="flex items-center justify-between mb-5">
+    <button class="w-9 h-9 flex items-center justify-center rounded-full bg-surface-container-low" id="back-btn" aria-label="Kembali ke langkah sebelumnya">
+      <span class="material-symbols-outlined text-[20px] text-on-surface">arrow_back</span>
+    </button>
+    <span class="text-sm font-semibold text-on-surface-variant" id="step-label">Langkah 1 dari 5</span>
+    <div class="w-9"></div>
   </div>
 
-  <form id="onboarding-form" novalidate>
+  <!-- Pill progress bar -->
+  <div class="flex gap-1.5 mb-7" role="progressbar" aria-valuenow="1" aria-valuemin="1" aria-valuemax="5" aria-label="Langkah pengaturan awal" id="progress-bar">
+    <div class="h-1.5 flex-1 rounded-full bg-primary onboarding-step is-active" id="s1"></div>
+    <div class="h-1.5 flex-1 rounded-full bg-surface-container-high onboarding-step" id="s2"></div>
+    <div class="h-1.5 flex-1 rounded-full bg-surface-container-high onboarding-step" id="s3"></div>
+    <div class="h-1.5 flex-1 rounded-full bg-surface-container-high onboarding-step" id="s4"></div>
+    <div class="h-1.5 flex-1 rounded-full bg-surface-container-high onboarding-step" id="s5"></div>
+  </div>
+  <style>
+    .onboarding-step { transition: background-color 200ms ease; }
+    .onboarding-step.is-done { background-color: #feb300; }
+    .onboarding-step.is-active { background-color: #7b5400; }
+  </style>
+
+  <form id="onboarding-form" novalidate class="flex-1">
 
     <!-- Step 1: Location -->
     <div class="step is-active" id="step-1">
-      <h1 class="title">Di mana kamu tinggal?</h1>
-      <p class="body-muted" style="margin-bottom:1.25rem;">Kami hanya mendukung Indonesia saat ini.</p>
+      <h1 class="font-headline font-extrabold text-3xl text-on-surface mb-1.5">Di mana kamu tinggal?</h1>
+      <p class="text-sm text-on-surface-variant mb-6">Kami hanya mendukung Indonesia saat ini.</p>
       <input type="hidden" id="country" name="country" value="ID" />
-      <div class="field">
-        <label for="city">Kota / Kabupaten</label>
-        <select id="city" name="city">
+      <div class="mb-6">
+        <label for="city" class="block text-sm font-semibold text-on-surface mb-1.5">Kota / Kabupaten</label>
+        <select id="city" name="city" class="w-full min-h-[48px] px-4 py-3 rounded-2xl bg-surface-container border border-outline-variant/50 text-sm text-on-surface focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 appearance-none bg-[url('data:image/svg+xml,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'%23605b4c\' stroke-width=\'2\'><polyline points=\'6 9 12 15 18 9\'/></svg>')] bg-[right_1rem_center] bg-no-repeat bg-[size:1.125rem]">
           <option value="">Pilih kota…</option>
           <option>Jakarta Pusat</option><option>Jakarta Selatan</option><option>Jakarta Barat</option>
           <option>Bandung</option><option>Surabaya</option><option>Medan</option>
@@ -43,40 +54,57 @@
           <option>Yogyakarta</option><option>Solo</option><option>Malang</option>
         </select>
       </div>
-      <button type="button" class="btn btn--primary" id="next-1">Lanjut</button>
-      <button type="button" class="btn btn--ghost" id="skip-1" style="width:100%;justify-content:center;margin-top:0.5rem;">Lewati</button>
+      <div class="space-y-3">
+        <button type="button" id="next-1" class="w-full py-3.5 rounded-full bg-primary text-on-primary font-headline font-bold text-base shadow-[0_4px_16px_rgba(123,84,0,0.3)]">Lanjut</button>
+        <button type="button" id="skip-1" class="w-full py-3.5 rounded-full bg-surface-container-high text-on-surface font-semibold text-sm">Lewati</button>
+      </div>
     </div>
 
     <!-- Step 2: Child profile -->
     <div class="step" id="step-2">
-      <h1 class="title">Tentang si kecil</h1>
-      <p class="body-muted" style="margin-bottom:1.25rem;">Suppa akan menyesuaikan saran gizi berdasarkan usia anak.</p>
-      <div class="field">
-        <label for="child-name">Nama anak <span style="color:var(--error-text)">*</span></label>
-        <input type="text" id="child-name" name="child-name" autocomplete="off" placeholder="cth. Nara" aria-required="true" aria-describedby="name-error" />
-        <p class="field__error" id="name-error" role="alert" aria-live="polite"></p>
+      <h1 class="font-headline font-extrabold text-3xl text-on-surface mb-1.5">Tentang si kecil</h1>
+      <p class="text-sm text-on-surface-variant mb-6">Suppa akan menyesuaikan saran gizi berdasarkan usia anak.</p>
+      <div class="mb-4">
+        <label for="child-name" class="block text-sm font-semibold text-on-surface mb-1.5">Nama anak <span class="text-error">*</span></label>
+        <input type="text" id="child-name" name="child-name" autocomplete="off" placeholder="cth. Nara" aria-required="true" aria-describedby="name-error"
+          class="w-full min-h-[48px] px-4 py-3 rounded-2xl bg-surface-container border border-outline-variant/50 text-sm text-on-surface placeholder:text-on-surface-variant/50 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10" />
+        <p class="field__error text-xs" id="name-error" role="alert" aria-live="polite"></p>
       </div>
-      <div class="field">
-        <label>Usia anak <span style="color:var(--error-text)">*</span></label>
-        <div class="radio-group" role="radiogroup" aria-required="true" aria-describedby="age-error">
-          <label class="radio-option"><input type="radio" name="age" value="0-5" /> 0–5 bulan</label>
-          <label class="radio-option"><input type="radio" name="age" value="6-12" /> 6–12 bulan</label>
-          <label class="radio-option"><input type="radio" name="age" value="1-2" checked /> 1–2 tahun</label>
-          <label class="radio-option"><input type="radio" name="age" value="3-5" /> 3–5 tahun</label>
-          <label class="radio-option"><input type="radio" name="age" value="6-8" /> 6–8 tahun</label>
-          <label class="radio-option"><input type="radio" name="age" value="9-11" /> 9–11 tahun</label>
-          <label class="radio-option"><input type="radio" name="age" value="12" /> 12 tahun</label>
+      <div class="mb-6">
+        <label class="block text-sm font-semibold text-on-surface mb-2">Usia anak <span class="text-error">*</span></label>
+        <div class="flex flex-col gap-2" role="radiogroup" aria-required="true" aria-describedby="age-error">
+          <label class="flex items-center gap-3 px-4 py-3 rounded-2xl bg-surface-container border border-outline-variant/50 cursor-pointer has-[:checked]:border-primary has-[:checked]:bg-surface-container-low">
+            <input type="radio" name="age" value="0-5" class="accent-primary w-4 h-4" /> <span class="text-sm font-medium text-on-surface">0–5 bulan</span>
+          </label>
+          <label class="flex items-center gap-3 px-4 py-3 rounded-2xl bg-surface-container border border-outline-variant/50 cursor-pointer has-[:checked]:border-primary has-[:checked]:bg-surface-container-low">
+            <input type="radio" name="age" value="6-12" class="accent-primary w-4 h-4" /> <span class="text-sm font-medium text-on-surface">6–12 bulan</span>
+          </label>
+          <label class="flex items-center gap-3 px-4 py-3 rounded-2xl bg-surface-container border border-outline-variant/50 cursor-pointer has-[:checked]:border-primary has-[:checked]:bg-surface-container-low">
+            <input type="radio" name="age" value="1-2" checked class="accent-primary w-4 h-4" /> <span class="text-sm font-medium text-on-surface">1–2 tahun</span>
+          </label>
+          <label class="flex items-center gap-3 px-4 py-3 rounded-2xl bg-surface-container border border-outline-variant/50 cursor-pointer has-[:checked]:border-primary has-[:checked]:bg-surface-container-low">
+            <input type="radio" name="age" value="3-5" class="accent-primary w-4 h-4" /> <span class="text-sm font-medium text-on-surface">3–5 tahun</span>
+          </label>
+          <label class="flex items-center gap-3 px-4 py-3 rounded-2xl bg-surface-container border border-outline-variant/50 cursor-pointer has-[:checked]:border-primary has-[:checked]:bg-surface-container-low">
+            <input type="radio" name="age" value="6-8" class="accent-primary w-4 h-4" /> <span class="text-sm font-medium text-on-surface">6–8 tahun</span>
+          </label>
+          <label class="flex items-center gap-3 px-4 py-3 rounded-2xl bg-surface-container border border-outline-variant/50 cursor-pointer has-[:checked]:border-primary has-[:checked]:bg-surface-container-low">
+            <input type="radio" name="age" value="9-11" class="accent-primary w-4 h-4" /> <span class="text-sm font-medium text-on-surface">9–11 tahun</span>
+          </label>
+          <label class="flex items-center gap-3 px-4 py-3 rounded-2xl bg-surface-container border border-outline-variant/50 cursor-pointer has-[:checked]:border-primary has-[:checked]:bg-surface-container-low">
+            <input type="radio" name="age" value="12" class="accent-primary w-4 h-4" /> <span class="text-sm font-medium text-on-surface">12 tahun</span>
+          </label>
         </div>
-        <p class="field__error" id="age-error" role="alert" aria-live="polite"></p>
+        <p class="field__error text-xs" id="age-error" role="alert" aria-live="polite"></p>
       </div>
-      <button type="button" class="btn btn--primary" id="next-2">Lanjut</button>
+      <button type="button" id="next-2" class="w-full py-3.5 rounded-full bg-primary text-on-primary font-headline font-bold text-base shadow-[0_4px_16px_rgba(123,84,0,0.3)]">Lanjut</button>
     </div>
 
     <!-- Step 3: Allergies -->
     <div class="step" id="step-3">
-      <h1 class="title">Ada alergi atau pantangan?</h1>
-      <p class="body-muted" style="margin-bottom:1.25rem;">Suppa akan menandai resep yang mengandung bahan-bahan ini.</p>
-      <div class="chip-group" role="group" aria-label="Pilih alergi">
+      <h1 class="font-headline font-extrabold text-3xl text-on-surface mb-1.5">Ada alergi atau pantangan?</h1>
+      <p class="text-sm text-on-surface-variant mb-6">Suppa akan menandai resep yang mengandung bahan-bahan ini.</p>
+      <div class="flex flex-wrap gap-2 mb-5" role="group" aria-label="Pilih alergi">
         <button type="button" class="chip" data-allergy-chip aria-pressed="false">Kacang tanah</button>
         <button type="button" class="chip" data-allergy-chip aria-pressed="false">Telur</button>
         <button type="button" class="chip" data-allergy-chip aria-pressed="false">Susu sapi</button>
@@ -86,57 +114,67 @@
         <button type="button" class="chip" data-allergy-chip aria-pressed="false">Udang / seafood</button>
         <button type="button" class="chip" data-allergy-chip aria-pressed="false">Kacang pohon</button>
       </div>
-      <div class="field" style="margin-top:0.875rem;">
-        <label for="allergy-other">Alergi lainnya (opsional)</label>
-        <input type="text" id="allergy-other" name="allergy-other" placeholder="cth. Wijen" />
+      <div class="mb-5">
+        <label for="allergy-other" class="block text-sm font-semibold text-on-surface mb-1.5">Alergi lainnya (opsional)</label>
+        <input type="text" id="allergy-other" name="allergy-other" placeholder="cth. Wijen"
+          class="w-full min-h-[44px] px-4 py-2.5 rounded-2xl bg-surface-container border border-outline-variant/50 text-sm text-on-surface placeholder:text-on-surface-variant/50 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10" />
       </div>
-      <label class="radio-option" style="margin-bottom:1rem;">
-        <input type="checkbox" id="no-allergy" style="accent-color:var(--accent);width:18px;height:18px;" />
-        <span>Tidak ada alergi yang diketahui</span>
+      <label class="flex items-center gap-3 mb-5 cursor-pointer">
+        <input type="checkbox" id="no-allergy" class="accent-primary w-4 h-4 rounded" />
+        <span class="text-sm text-on-surface">Tidak ada alergi yang diketahui</span>
       </label>
-      <button type="button" class="btn btn--primary" id="next-3">Lanjut</button>
-      <button type="button" class="btn btn--ghost" id="skip-3" style="width:100%;justify-content:center;margin-top:0.5rem;">Lewati</button>
+      <div class="space-y-3">
+        <button type="button" id="next-3" class="w-full py-3.5 rounded-full bg-primary text-on-primary font-headline font-bold text-base shadow-[0_4px_16px_rgba(123,84,0,0.3)]">Lanjut</button>
+        <button type="button" id="skip-3" class="w-full py-3.5 rounded-full bg-surface-container-high text-on-surface font-semibold text-sm">Lewati</button>
+      </div>
     </div>
 
     <!-- Step 4: Mindful eating -->
     <div class="step" id="step-4">
-      <h1 class="title">Panduan makan bijak</h1>
-      <p class="body-muted" style="margin-bottom:1.25rem;">Suppa akan menandai resep dengan catatan lembut jika melebihi batas ini. Bisa diubah kapan saja di Pengaturan.</p>
-      <div class="field">
-        <label for="sodium-val">Natrium maks. per hari (mg)</label>
-        <input type="number" id="sodium-val" name="sodium" value="800" min="0" max="9999" />
+      <h1 class="font-headline font-extrabold text-3xl text-on-surface mb-1.5">Panduan makan bijak</h1>
+      <p class="text-sm text-on-surface-variant mb-6">Suppa akan menandai resep dengan catatan lembut jika melebihi batas ini. Bisa diubah kapan saja di Pengaturan.</p>
+      <div class="mb-4">
+        <label for="sodium-val" class="block text-sm font-semibold text-on-surface mb-1.5">Natrium maks. per hari (mg)</label>
+        <input type="number" id="sodium-val" name="sodium" value="800" min="0" max="9999"
+          class="w-full min-h-[48px] px-4 py-3 rounded-2xl bg-surface-container border border-outline-variant/50 text-sm text-on-surface focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10" />
       </div>
-      <div class="field">
-        <label for="sugar-val">Gula tambahan maks. per hari (g)</label>
-        <input type="number" id="sugar-val" name="sugar" value="12" min="0" max="999" />
+      <div class="mb-6">
+        <label for="sugar-val" class="block text-sm font-semibold text-on-surface mb-1.5">Gula tambahan maks. per hari (g)</label>
+        <input type="number" id="sugar-val" name="sugar" value="12" min="0" max="999"
+          class="w-full min-h-[48px] px-4 py-3 rounded-2xl bg-surface-container border border-outline-variant/50 text-sm text-on-surface focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10" />
       </div>
-      <button type="button" class="btn btn--primary" id="next-4">Lanjut</button>
-      <button type="button" class="btn btn--ghost" id="skip-4" style="width:100%;justify-content:center;margin-top:0.5rem;">Lewati</button>
+      <div class="space-y-3">
+        <button type="button" id="next-4" class="w-full py-3.5 rounded-full bg-primary text-on-primary font-headline font-bold text-base shadow-[0_4px_16px_rgba(123,84,0,0.3)]">Lanjut</button>
+        <button type="button" id="skip-4" class="w-full py-3.5 rounded-full bg-surface-container-high text-on-surface font-semibold text-sm">Lewati</button>
+      </div>
     </div>
 
     <!-- Step 5: Confirm -->
     <div class="step" id="step-5">
-      <div style="text-align:center;padding:var(--space-5) 0;">
-        <p style="font-size:3rem;margin:0 0 1rem;" aria-hidden="true">🎉</p>
-        <h1 class="title">Siap memulai!</h1>
-        <p class="body-muted" style="margin-bottom:1.5rem;" id="confirm-text">
+      <div class="text-center py-6">
+        <div class="w-20 h-20 rounded-full bg-primary-container flex items-center justify-center mx-auto mb-5">
+          <span class="text-4xl">🎉</span>
+        </div>
+        <h1 class="font-headline font-extrabold text-3xl text-on-surface mb-2">Siap memulai!</h1>
+        <p class="text-sm text-on-surface-variant mb-6" id="confirm-text">
           Profil si kecil sudah tersimpan. Mari pantau gizi hariannya bersama Suppa.
         </p>
-        <div class="disclaimer" data-disclaimer style="margin:0 0 1.5rem;text-align:left;">
+        <div data-disclaimer class="text-left mb-6">
           <span>
             Suppa membagikan ide makanan umum, bukan saran medis.
-            <button type="button" class="disclaimer__expand" data-disclaimer-expand aria-expanded="false">Baca selengkapnya</button>
+            <button type="button" data-disclaimer-expand aria-expanded="false">Baca selengkapnya</button>
           </span>
-          <div class="disclaimer__full" data-disclaimer-full hidden>
+          <div data-disclaimer-full hidden class="mt-1">
             Suppa tidak mendiagnosis atau mengobati kondisi medis. Untuk kekhawatiran MPASI atau alergi, diskusikan dengan dokter anak atau ahli gizi terdaftar.
           </div>
         </div>
-        <button type="submit" class="btn btn--primary">Mulai pantau gizi</button>
+        <button type="submit" class="w-full py-3.5 rounded-full bg-primary text-on-primary font-headline font-bold text-base shadow-[0_4px_16px_rgba(123,84,0,0.3)]">Mulai pantau gizi</button>
       </div>
     </div>
 
   </form>
 </div>
+
 <script src="js/tokens.js"></script><script src="js/profile.js"></script><script src="js/api.js"></script><script src="js/ui.js"></script><script src="js/app.js"></script>
 <script>
 (function() {
@@ -152,12 +190,10 @@
     for (var i = 1; i <= totalSteps; i++) {
       var dot = document.getElementById('s' + i);
       if (!dot) continue;
-      dot.className = 'onboarding-step' + (i < n ? ' is-done' : i === n ? ' is-active' : '');
+      dot.className = 'h-1.5 flex-1 rounded-full onboarding-step' + (i < n ? ' is-done' : i === n ? ' is-active' : '');
     }
     currentStep = n;
     document.getElementById('back-btn').style.visibility = n === 1 ? 'hidden' : 'visible';
-
-    // Update confirm text
     if (n === 5) {
       var name = document.getElementById('child-name').value.trim() || 'si kecil';
       document.getElementById('confirm-text').textContent = 'Profil ' + name + ' sudah tersimpan. Mari pantau gizi hariannya bersama Suppa.';
@@ -166,11 +202,9 @@
 
   function goNext() { if (currentStep < totalSteps) showStep(currentStep + 1); }
 
-  // Step 1
   document.getElementById('next-1').addEventListener('click', goNext);
   document.getElementById('skip-1').addEventListener('click', goNext);
 
-  // Step 2
   document.getElementById('next-2').addEventListener('click', function() {
     var name = document.getElementById('child-name').value.trim();
     var ageRadio = document.querySelector('input[name="age"]:checked');
@@ -182,13 +216,11 @@
     goNext();
   });
 
-  // Steps 3, 4
   document.getElementById('next-3').addEventListener('click', goNext);
   document.getElementById('skip-3').addEventListener('click', goNext);
   document.getElementById('next-4').addEventListener('click', goNext);
   document.getElementById('skip-4').addEventListener('click', goNext);
 
-  // Back
   document.getElementById('back-btn').addEventListener('click', function() {
     if (currentStep > 1) showStep(currentStep - 1);
     else window.location.href = 'signup.html';

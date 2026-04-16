@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+
+<html lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;family=Be+Vietnam+Pro:wght@300;400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary": "#b7004d",
+                        "surface-container-low": "#f9f0db",
+                        "surface": "#fff6e2",
+                        "tertiary": "#176a21",
+                        "surface-bright": "#fff6e2",
+                        "secondary-dim": "#a00043",
+                        "inverse-primary": "#feb300",
+                        "on-background": "#332e22",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed-variant": "#a20044",
+                        "surface-variant": "#e6dcc3",
+                        "outline-variant": "#b4ad9b",
+                        "secondary-fixed": "#ffc2cc",
+                        "surface-container": "#f1e7d1",
+                        "on-tertiary-container": "#005c15",
+                        "surface-tint": "#7b5400",
+                        "on-primary-container": "#523700",
+                        "background": "#fff6e2",
+                        "on-secondary-container": "#91003c",
+                        "on-tertiary-fixed-variant": "#12661e",
+                        "on-tertiary-fixed": "#00460e",
+                        "primary-dim": "#6b4900",
+                        "secondary-container": "#ffc2cc",
+                        "secondary-fixed-dim": "#ffadbc",
+                        "on-secondary-fixed": "#6d002b",
+                        "error": "#b02500",
+                        "primary": "#7b5400",
+                        "primary-container": "#feb300",
+                        "on-secondary": "#ffeff0",
+                        "on-error-container": "#520c00",
+                        "outline": "#7c7666",
+                        "error-container": "#f95630",
+                        "on-tertiary": "#d1ffc8",
+                        "on-surface-variant": "#605b4c",
+                        "on-error": "#ffefec",
+                        "primary-fixed-dim": "#eda600",
+                        "error-dim": "#b92902",
+                        "inverse-on-surface": "#a39c8b",
+                        "tertiary-fixed-dim": "#90e28a",
+                        "surface-container-highest": "#e6dcc3",
+                        "on-primary-fixed": "#382400",
+                        "surface-container-high": "#ebe2ca",
+                        "inverse-surface": "#110e04",
+                        "on-primary": "#fff1df",
+                        "surface-dim": "#ded4ba",
+                        "tertiary-dim": "#025d16",
+                        "on-surface": "#332e22",
+                        "primary-fixed": "#feb300",
+                        "tertiary-fixed": "#9df197",
+                        "tertiary-container": "#9df197",
+                        "on-primary-fixed-variant": "#5e4000"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Plus Jakarta Sans"],
+                        "body": ["Be Vietnam Pro"],
+                        "label": ["Be Vietnam Pro"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Be Vietnam Pro', sans-serif; }
+        h1, h2, h3 { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#fff6e2]/80 dark:bg-stone-950/80 backdrop-blur-md shadow-[0px_0px_24px_rgba(51,46,34,0.06)] flex justify-between items-center px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary-container">
+<img alt="Bunda's Profile" class="w-full h-full object-cover" data-alt="close-up portrait of a smiling Indonesian woman with warm lighting and a soft natural background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAofmIvAxwuYRnhia9O9HiSlAzjrjr8C3LZCQ328WaLxf869YwPYL00qk_GkENu4SDqOX3pX-lnRb7KHjTgU-fkodaySVXl-IVdAM4Lz2Wr6Zsf7atw9xcsMceuggaG-r6IVklzqgyKpQDnxGlsbza7L1SmubTs8NQqLKF2RSUaA4S9vim0DgnTb0dNAn7CdSDj5Rpk4iUQ2oAbhu7QVsB0eeaFJ1AhPn0r78swqGg11HUPqsIVXoBgjzwDcHDhNmcnS3UNvEw6nqsQ"/>
+</div>
+<span class="text-[#7b5400] font-['Plus_Jakarta_Sans'] font-bold text-xl">Si Kecil's Profile</span>
+</div>
+<button class="text-[#7b5400] dark:text-[#ffb300] hover:opacity-80 transition-opacity active:scale-95 duration-200">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+</header>
+<main class="pt-24 px-6 space-y-8">
+<!-- Profile Card: Asymmetric Layout -->
+<section class="relative">
+<div class="bg-surface-container-lowest rounded-xl p-8 flex flex-col md:flex-row items-center gap-6 shadow-[0px_24px_48px_rgba(51,46,34,0.04)] overflow-hidden">
+<div class="relative">
+<div class="w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-secondary-container p-1 overflow-hidden">
+<img alt="Rara's Profile" class="w-full h-full object-cover rounded-full" data-alt="portrait of a happy Indonesian toddler with curly hair smiling in a sunlit nursery setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAis-eONgshgh-SmbHu9I7tGHUO7TISwvDZf4xeiF2x8J881m3IGiA9mMwsMKsBoS-WjQDLNHqAS3Mc7eDhTPsWGv-uVQTq-fZiNF1UN0yJNoOylqv1hW9LS2ft4xFbglch60pELhNYSlKRpssmpbP7qV6O4rb40Hh3ZmRYYBcYZJWbOP4gx3vxl62xZVHplNsrKB_6B_PXuy9VzFWOZmsZtIjoPYA4UGNSLFKVsz0Um7J9Kz8vEE9UrEQISymo5sX_rR0aaKMU5_sx"/>
+</div>
+<div class="absolute -bottom-2 -right-2 bg-secondary text-on-secondary w-10 h-10 rounded-full flex items-center justify-center border-4 border-white">
+<span class="material-symbols-outlined text-sm" data-icon="edit">edit</span>
+</div>
+</div>
+<div class="text-center md:text-left">
+<h2 class="text-4xl font-extrabold text-primary mb-1 tracking-tight">Rara</h2>
+<p class="text-on-surface-variant font-medium flex items-center justify-center md:justify-start gap-2">
+<span class="material-symbols-outlined text-secondary" data-icon="cake">cake</span>
+                        8 months old
+                    </p>
+<div class="mt-4 flex flex-wrap gap-2 justify-center md:justify-start">
+<span class="px-3 py-1 bg-tertiary-container text-on-tertiary-container rounded-full text-xs font-bold uppercase tracking-wider">Level 3: Crawler</span>
+<span class="px-3 py-1 bg-secondary-container text-on-secondary-container rounded-full text-xs font-bold uppercase tracking-wider">Happy Eater</span>
+</div>
+</div>
+<!-- Organic overlapping motif -->
+<div class="absolute -top-6 -right-6 w-24 h-24 bg-primary-container/20 rounded-full blur-2xl"></div>
+</div>
+</section>
+<!-- Weekly Variety: Bento Grid Style -->
+<section class="space-y-4">
+<h3 class="text-xl font-bold text-on-surface flex items-center gap-2 px-1">
+                Weekly Variety
+                <span class="material-symbols-outlined text-secondary" data-icon="auto_awesome">auto_awesome</span>
+</h3>
+<div class="bg-surface-container-low rounded-lg p-6 space-y-6">
+<div class="flex justify-between items-end gap-2 h-32">
+<!-- Custom Bar Chart -->
+<div class="flex-1 flex flex-col items-center gap-2 group">
+<div class="w-full bg-secondary h-[40%] rounded-t-full transition-all group-hover:opacity-80"></div>
+<span class="text-[10px] font-bold text-on-surface-variant">MON</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-2 group">
+<div class="w-full bg-primary-container h-[80%] rounded-t-full transition-all group-hover:opacity-80"></div>
+<span class="text-[10px] font-bold text-on-surface-variant">TUE</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-2 group">
+<div class="w-full bg-tertiary h-[60%] rounded-t-full transition-all group-hover:opacity-80"></div>
+<span class="text-[10px] font-bold text-on-surface-variant">WED</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-2 group">
+<div class="w-full bg-secondary-container h-[100%] rounded-t-full transition-all group-hover:opacity-80"></div>
+<span class="text-[10px] font-bold text-on-surface-variant">THU</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-2 group">
+<div class="w-full bg-primary h-[50%] rounded-t-full transition-all group-hover:opacity-80"></div>
+<span class="text-[10px] font-bold text-on-surface-variant">FRI</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-2 group">
+<div class="w-full bg-tertiary-container h-[30%] rounded-t-full transition-all group-hover:opacity-80"></div>
+<span class="text-[10px] font-bold text-on-surface-variant">SAT</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-2 group">
+<div class="w-full bg-outline-variant h-[20%] rounded-t-full transition-all group-hover:opacity-80"></div>
+<span class="text-[10px] font-bold text-on-surface-variant">SUN</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-4 flex items-center gap-4">
+<div class="bg-tertiary-container p-3 rounded-full">
+<span class="material-symbols-outlined text-on-tertiary-container" data-icon="restaurant_menu">restaurant_menu</span>
+</div>
+<div>
+<p class="text-sm font-bold text-on-surface">5 Rainbow Days!</p>
+<p class="text-xs text-on-surface-variant">Bunda, Rara has explored 12 different ingredients this week.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Preferences Section: Side-by-side Bento -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Likes -->
+<div class="bg-surface-container-low p-6 rounded-lg space-y-4">
+<h4 class="text-lg font-bold text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary" data-icon="favorite" style="font-variation-settings: 'FILL' 1;">favorite</span>
+                    Loves to Eat
+                </h4>
+<div class="flex flex-wrap gap-2">
+<div class="flex items-center gap-2 px-4 py-2 bg-surface-container-lowest rounded-full text-sm font-medium border border-outline-variant/10 shadow-sm">
+<span class="material-symbols-outlined text-primary-fixed-dim" data-icon="nutrition">nutrition</span>
+                        Mashed Papaya
+                    </div>
+<div class="flex items-center gap-2 px-4 py-2 bg-surface-container-lowest rounded-full text-sm font-medium border border-outline-variant/10 shadow-sm">
+<span class="material-symbols-outlined text-secondary" data-icon="eco">eco</span>
+                        Spinach Puree
+                    </div>
+<div class="flex items-center gap-2 px-4 py-2 bg-surface-container-lowest rounded-full text-sm font-medium border border-outline-variant/10 shadow-sm">
+<span class="material-symbols-outlined text-tertiary" data-icon="lunch_dining">lunch_dining</span>
+                        Sweet Potato
+                    </div>
+</div>
+</div>
+<!-- Dislikes -->
+<div class="bg-surface-container-low p-6 rounded-lg space-y-4">
+<h4 class="text-lg font-bold text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-error" data-icon="sentiment_dissatisfied">sentiment_dissatisfied</span>
+                    Not a Fan (Yet)
+                </h4>
+<div class="flex flex-wrap gap-2">
+<div class="flex items-center gap-2 px-4 py-2 bg-surface-container-lowest rounded-full text-sm font-medium border border-outline-variant/10 shadow-sm">
+<span class="material-symbols-outlined text-outline" data-icon="emergency">emergency</span>
+                        Broccoli
+                    </div>
+<div class="flex items-center gap-2 px-4 py-2 bg-surface-container-lowest rounded-full text-sm font-medium border border-outline-variant/10 shadow-sm">
+<span class="material-symbols-outlined text-outline" data-icon="egg">egg</span>
+                        Boiled Egg
+                    </div>
+</div>
+<p class="text-[10px] text-on-surface-variant italic mt-2 italic">*Expert tip: Try 10+ times for acceptance!</p>
+</div>
+</div>
+<!-- Settings / Edit Actions -->
+<section class="space-y-4 pt-4">
+<button class="w-full bg-primary text-on-primary py-5 rounded-full font-bold text-lg flex items-center justify-center gap-2 shadow-[0px_12px_24px_rgba(123,84,0,0.2)] active:scale-[0.98] transition-transform">
+<span class="material-symbols-outlined" data-icon="person_add">person_add</span>
+                Add Another Child
+            </button>
+<button class="w-full bg-surface-container-highest text-on-surface py-4 rounded-full font-bold flex items-center justify-center gap-2 active:scale-[0.98] transition-transform">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+                Nutrition Settings
+            </button>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-3 bg-white dark:bg-stone-900 rounded-t-[3rem] z-50 shadow-[0px_-4px_24px_rgba(51,46,34,0.04)]">
+<a class="flex flex-col items-center justify-center text-[#332e22]/50 dark:text-stone-400 px-5 py-2 hover:text-[#7b5400] dark:hover:text-[#ffb300] active:scale-[0.98] duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-['Be_Vietnam_Pro'] text-[10px] font-bold uppercase tracking-wider mt-1">Beranda</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#332e22]/50 dark:text-stone-400 px-5 py-2 hover:text-[#7b5400] dark:hover:text-[#ffb300] active:scale-[0.98] duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="add_a_photo">add_a_photo</span>
+<span class="font-['Be_Vietnam_Pro'] text-[10px] font-bold uppercase tracking-wider mt-1">Catat</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#332e22]/50 dark:text-stone-400 px-5 py-2 hover:text-[#7b5400] dark:hover:text-[#ffb300] active:scale-[0.98] duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="menu_book">menu_book</span>
+<span class="font-['Be_Vietnam_Pro'] text-[10px] font-bold uppercase tracking-wider mt-1">Panduan</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-[#f9f0db] dark:bg-stone-800 text-[#7b5400] rounded-full px-5 py-2 active:scale-[0.98] duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="child_care">child_care</span>
+<span class="font-['Be_Vietnam_Pro'] text-[10px] font-bold uppercase tracking-wider mt-1">Profil</span>
+</a>
+</nav>
+</body></html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+
+<html lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;family=Be_Vietnam_Pro:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "secondary": "#b7004d",
+                "surface-container-low": "#f9f0db",
+                "surface": "#fff6e2",
+                "tertiary": "#176a21",
+                "surface-bright": "#fff6e2",
+                "secondary-dim": "#a00043",
+                "inverse-primary": "#feb300",
+                "on-background": "#332e22",
+                "surface-container-lowest": "#ffffff",
+                "on-secondary-fixed-variant": "#a20044",
+                "surface-variant": "#e6dcc3",
+                "outline-variant": "#b4ad9b",
+                "secondary-fixed": "#ffc2cc",
+                "surface-container": "#f1e7d1",
+                "on-tertiary-container": "#005c15",
+                "surface-tint": "#7b5400",
+                "on-primary-container": "#523700",
+                "background": "#fff6e2",
+                "on-secondary-container": "#91003c",
+                "on-tertiary-fixed-variant": "#12661e",
+                "on-tertiary-fixed": "#00460e",
+                "primary-dim": "#6b4900",
+                "secondary-container": "#ffc2cc",
+                "secondary-fixed-dim": "#ffadbc",
+                "on-secondary-fixed": "#6d002b",
+                "error": "#b02500",
+                "primary": "#7b5400",
+                "primary-container": "#feb300",
+                "on-secondary": "#ffeff0",
+                "on-error-container": "#520c00",
+                "outline": "#7c7666",
+                "error-container": "#f95630",
+                "on-tertiary": "#d1ffc8",
+                "on-surface-variant": "#605b4c",
+                "on-error": "#ffefec",
+                "primary-fixed-dim": "#eda600",
+                "error-dim": "#b92902",
+                "inverse-on-surface": "#a39c8b",
+                "tertiary-fixed-dim": "#90e28a",
+                "surface-container-highest": "#e6dcc3",
+                "on-primary-fixed": "#382400",
+                "surface-container-high": "#ebe2ca",
+                "inverse-surface": "#110e04",
+                "on-primary": "#fff1df",
+                "surface-dim": "#ded4ba",
+                "tertiary-dim": "#025d16",
+                "on-surface": "#332e22",
+                "primary-fixed": "#feb300",
+                "tertiary-fixed": "#9df197",
+                "tertiary-container": "#9df197",
+                "on-primary-fixed-variant": "#5e4000"
+            },
+            "borderRadius": {
+                "DEFAULT": "1rem",
+                "lg": "2rem",
+                "xl": "3rem",
+                "full": "9999px"
+            },
+            "fontFamily": {
+                "headline": ["Plus Jakarta Sans"],
+                "body": ["Be Vietnam Pro"],
+                "label": ["Be Vietnam Pro"]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      body {
+        font-family: 'Be Vietnam Pro', sans-serif;
+        background-color: #fff6e2;
+      }
+      .glass-nav {
+        background: rgba(255, 246, 226, 0.8);
+        backdrop-filter: blur(20px);
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="text-on-surface selection:bg-primary-container min-h-screen pb-32">
+<!-- Top Navigation (Contextual Suppression of Main Shell) -->
+<header class="fixed top-0 w-full z-50 bg-[#fff6e2]/80 dark:bg-stone-950/80 backdrop-blur-md px-6 py-4 flex items-center justify-between shadow-[0px_0px_24px_rgba(51,46,34,0.06)]">
+<button class="w-10 h-10 flex items-center justify-center bg-surface-container-lowest rounded-full text-primary hover:opacity-80 transition-opacity active:scale-95 duration-200">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h1 class="font-headline font-bold text-xl text-[#7b5400] dark:text-[#ffb300]">Log a Meal</h1>
+<div class="w-10"></div> <!-- Spacer for centering title -->
+</header>
+<main class="pt-24 px-6 space-y-8 max-w-md mx-auto">
+<!-- Primary Action: Photo Capture -->
+<section class="space-y-4">
+<div class="relative group">
+<div class="absolute -top-4 -right-2 z-10">
+<span class="bg-secondary text-on-secondary text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full shadow-lg">New Win!</span>
+</div>
+<button class="w-full aspect-[4/3] bg-surface-container-lowest rounded-xl flex flex-col items-center justify-center gap-4 text-primary border-2 border-dashed border-outline-variant/30 hover:bg-surface-container-low transition-all active:scale-[0.98] duration-150">
+<div class="w-20 h-20 bg-primary-container rounded-full flex items-center justify-center shadow-inner">
+<span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'FILL' 1;">add_a_photo</span>
+</div>
+<div class="text-center">
+<span class="font-headline font-bold text-lg block">Take a Photo</span>
+<span class="text-on-surface-variant text-sm">Let AI detect your nutrients</span>
+</div>
+</button>
+</div>
+<button class="w-full py-4 px-6 bg-surface-container-high text-primary font-bold rounded-full flex items-center justify-center gap-3 hover:opacity-90 active:scale-95 transition-all">
+<span class="material-symbols-outlined">gallery_thumbnail</span>
+                Upload from Gallery
+            </button>
+</section>
+<!-- Preview Area (Dynamic State) -->
+<section class="bg-surface-container-low p-6 rounded-xl space-y-4">
+<div class="flex justify-between items-center">
+<h3 class="font-headline font-bold text-[#7b5400]">Preview</h3>
+<span class="material-symbols-outlined text-tertiary">eco</span>
+</div>
+<div class="aspect-video bg-surface-variant/30 rounded-lg overflow-hidden flex items-center justify-center border border-outline-variant/10">
+<div class="text-center p-8">
+<img class="rounded-lg shadow-sm mb-4" data-alt="Appetizing Indonesian soup with fresh vegetables and warm broth in a handcrafted ceramic bowl on a wooden table" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsCHLzV-Fxo8YtDrvbD9dsfgUlOG4eNTRF8kLE-uEX5GbqzMa-BD_ib4hwDMt5hFV8Cr1vFUcn3LjDmP_fT8ko1orCOvLvzPWgs8Bad2gViFX7VcvKfJcdOiIXnYOUWTcBILJn_98Zt7Avj0kX6AClaXFAA4dafd-4ubZ6O3njyaG_kBzRqAmc2R_8r44fJvjK92gYAy9taMNqOBfGD5TyFBgiwyO6JOtHfn224Zm5y0OVJ-HIfUlnRopioXJDQXbs-rrhlVRpMPr2"/>
+<p class="text-xs text-on-surface-variant font-medium italic">"Sop Sayur Bunda" detected</p>
+</div>
+</div>
+</section>
+<!-- Text Input Alternative -->
+<section class="space-y-4">
+<h3 class="font-headline font-bold text-[#7b5400] px-1">Or type meal name</h3>
+<div class="flex gap-2">
+<div class="relative flex-grow">
+<input class="w-full bg-surface-container-lowest border-none rounded-full px-6 py-4 text-on-surface placeholder:text-on-surface-variant/50 focus:ring-2 focus:ring-primary-fixed-dim outline-none transition-all" placeholder="e.g. Nasi Tim Ayam" type="text"/>
+</div>
+<button class="bg-primary text-on-primary w-14 h-14 rounded-full flex items-center justify-center shadow-lg active:scale-90 transition-transform">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</section>
+<!-- Recent Suggestions (Chips) -->
+<section class="space-y-4">
+<h3 class="font-headline font-bold text-[#7b5400] px-1">Cepat Pilih</h3>
+<div class="flex flex-wrap gap-2">
+<button class="px-5 py-2.5 bg-surface-container-lowest text-on-surface-variant font-medium rounded-full text-sm hover:bg-primary-container hover:text-on-primary-container active:scale-95 transition-all shadow-sm">Nasi Tim</button>
+<button class="px-5 py-2.5 bg-surface-container-lowest text-on-surface-variant font-medium rounded-full text-sm hover:bg-primary-container hover:text-on-primary-container active:scale-95 transition-all shadow-sm">Sop Sayur</button>
+<button class="px-5 py-2.5 bg-surface-container-lowest text-on-surface-variant font-medium rounded-full text-sm hover:bg-primary-container hover:text-on-primary-container active:scale-95 transition-all shadow-sm">Pisang Rebus</button>
+<button class="px-5 py-2.5 bg-surface-container-lowest text-on-surface-variant font-medium rounded-full text-sm hover:bg-primary-container hover:text-on-primary-container active:scale-95 transition-all shadow-sm">Bubur Kacang Ijo</button>
+<button class="px-5 py-2.5 bg-surface-container-lowest text-on-surface-variant font-medium rounded-full text-sm hover:bg-primary-container hover:text-on-primary-container active:scale-95 transition-all shadow-sm">Pepes Ikan</button>
+</div>
+</section>
+<!-- Save Button -->
+<div class="pt-4 pb-8">
+<button class="w-full py-5 bg-secondary text-on-secondary font-headline font-extrabold text-lg rounded-xl shadow-[0px_8px_24px_rgba(183,0,77,0.2)] active:scale-[0.98] transition-all">
+                Simpan Jurnal Makan
+            </button>
+</div>
+</main>
+<!-- Bottom Navigation Bar (Predicted Component) -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-3 bg-white dark:bg-stone-900 rounded-t-[3rem] z-50 shadow-[0px_-4px_24px_rgba(51,46,34,0.04)]">
+<a class="flex flex-col items-center justify-center text-[#332e22]/50 dark:text-stone-400 px-5 py-2 hover:text-[#7b5400] dark:hover:text-[#ffb300] transition-opacity" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="home">home</span>
+<span class="font-['Be_Vietnam_Pro'] text-[10px] font-bold uppercase tracking-wider">Beranda</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-[#f9f0db] dark:bg-stone-800 text-[#7b5400] rounded-full px-5 py-2 active:scale-[0.98] duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="add_a_photo" style="font-variation-settings: 'FILL' 1;">add_a_photo</span>
+<span class="font-['Be_Vietnam_Pro'] text-[10px] font-bold uppercase tracking-wider">Catat</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#332e22]/50 dark:text-stone-400 px-5 py-2 hover:text-[#7b5400] dark:hover:text-[#ffb300] transition-opacity" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="menu_book">menu_book</span>
+<span class="font-['Be_Vietnam_Pro'] text-[10px] font-bold uppercase tracking-wider">Panduan</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#332e22]/50 dark:text-stone-400 px-5 py-2 hover:text-[#7b5400] dark:hover:text-[#ffb300] transition-opacity" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="child_care">child_care</span>
+<span class="font-['Be_Vietnam_Pro'] text-[10px] font-bold uppercase tracking-wider">Profil</span>
+</a>
+</nav>
+</body></html>
