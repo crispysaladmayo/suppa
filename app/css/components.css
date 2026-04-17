@@ -18,6 +18,21 @@ body {
   background: var(--background);
 }
 
+/* ── Elevated surface: soft blush + warmth (cards, strips — use with rounded-2xl / rounded-xl) */
+.suppa-card-elevated {
+  background-color: #fff7f5;
+  background: linear-gradient(
+    155deg,
+    #ffffff 0%,
+    color-mix(in srgb, var(--secondary-container) 22%, #ffffff) 40%,
+    color-mix(in srgb, var(--primary-container) 11%, #ffffff) 100%
+  );
+  border: 1px solid color-mix(in srgb, var(--secondary) 13%, var(--outline-variant));
+  box-shadow:
+    0 6px 28px color-mix(in srgb, var(--secondary) 7%, transparent),
+    0 2px 8px rgba(123, 84, 0, 0.045);
+}
+
 /* ── Nutrition arc “head” nodes (today.html SVG) ───────── */
 .arc-node-wrap {
   transition: transform 0.6s ease;
