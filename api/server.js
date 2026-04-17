@@ -34,6 +34,7 @@ const SCHEMA = {
   recipes: ["id", "household_id", "title", "ingredients_csv", "macro_emphasis", "total_minutes"],
   meal_logs: ["id", "child_id", "meal_name", "food_groups_csv", "portion", "logged_at"],
   growth_entries: ["id", "child_id", "recorded_on", "weight_kg", "height_cm", "measurement_type"],
+  allergens: ["id", "name", "order"],
 };
 
 const VALID_ENTITIES = new Set(Object.keys(SCHEMA));
@@ -53,6 +54,16 @@ function seedData() {
       { id: "ml_2", child_id: "ch_1", meal_name: "Makan siang", food_groups_csv: "grains,protein,vegetables", portion: "medium", logged_at: "2026-04-15T12:30:00Z" },
     ],
     growth_entries: [{ id: "gr_1", child_id: "ch_1", recorded_on: "2026-04-01", weight_kg: "10.2", height_cm: "78.1", measurement_type: "standing_height" }],
+    allergens: [
+      { id: "al_1", name: "Kacang tanah",   order: 1 },
+      { id: "al_2", name: "Telur",          order: 2 },
+      { id: "al_3", name: "Susu sapi",      order: 3 },
+      { id: "al_4", name: "Kedelai",        order: 4 },
+      { id: "al_5", name: "Gandum",         order: 5 },
+      { id: "al_6", name: "Ikan",           order: 6 },
+      { id: "al_7", name: "Udang / seafood",order: 7 },
+      { id: "al_8", name: "Kacang pohon",   order: 8 },
+    ],
   };
 }
 

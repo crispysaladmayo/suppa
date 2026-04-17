@@ -256,6 +256,12 @@
             <span class="schema-pill">id</span><span class="schema-pill">child_id</span><span class="schema-pill">recorded_on</span><span class="schema-pill">weight_kg</span><span class="schema-pill">height_cm</span><span class="schema-pill">measurement_type</span>
           </div>
         </div>
+        <div>
+          <p style="font-weight:600;font-size:12px;margin:0 0 6px;">allergens</p>
+          <div class="schema-fields">
+            <span class="schema-pill">id</span><span class="schema-pill">name</span><span class="schema-pill">order</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -267,6 +273,7 @@
     <button class="entity-tab" role="tab" aria-selected="false" data-entity="recipes">Recipes <span class="count">1</span></button>
     <button class="entity-tab" role="tab" aria-selected="false" data-entity="meal_logs">Meal Logs <span class="count">1</span></button>
     <button class="entity-tab" role="tab" aria-selected="false" data-entity="growth_entries">Growth <span class="count">1</span></button>
+    <button class="entity-tab" role="tab" aria-selected="false" data-entity="allergens">Allergens <span class="count">8</span></button>
   </div>
 
   <!-- Toolbar -->
@@ -332,7 +339,17 @@
     children: [{ id:'ch_1', household_id:'hh_1', name:'Nara', age_band:'1-2', sex:'female', allergies_csv:'peanut,egg' }],
     recipes: [{ id:'rc_1', household_id:'hh_1', title:'Chicken Rice Bowl', ingredients_csv:'chicken,rice,carrot', macro_emphasis:'protein', total_minutes:'25' }],
     meal_logs: [{ id:'ml_1', child_id:'ch_1', meal_name:'Sarapan bubur', food_groups_csv:'grains,protein', portion:'medium', logged_at:'2026-04-07T08:00:00Z' }],
-    growth_entries: [{ id:'gr_1', child_id:'ch_1', recorded_on:'2026-04-03', weight_kg:'10.2', height_cm:'78.1', measurement_type:'standing_height' }]
+    growth_entries: [{ id:'gr_1', child_id:'ch_1', recorded_on:'2026-04-03', weight_kg:'10.2', height_cm:'78.1', measurement_type:'standing_height' }],
+    allergens: [
+      { id:'al_1', name:'Kacang tanah',    order:'1' },
+      { id:'al_2', name:'Telur',           order:'2' },
+      { id:'al_3', name:'Susu sapi',       order:'3' },
+      { id:'al_4', name:'Kedelai',         order:'4' },
+      { id:'al_5', name:'Gandum',          order:'5' },
+      { id:'al_6', name:'Ikan',            order:'6' },
+      { id:'al_7', name:'Udang / seafood', order:'7' },
+      { id:'al_8', name:'Kacang pohon',    order:'8' }
+    ]
   };
 
   let currentEntity = 'households';
@@ -353,7 +370,8 @@
       children: ['id','household_id','name','age_band','sex','allergies_csv'],
       recipes: ['id','household_id','title','ingredients_csv','macro_emphasis','total_minutes'],
       meal_logs: ['id','child_id','meal_name','food_groups_csv','portion','logged_at'],
-      growth_entries: ['id','child_id','recorded_on','weight_kg','height_cm','measurement_type']
+      growth_entries: ['id','child_id','recorded_on','weight_kg','height_cm','measurement_type'],
+      allergens: ['id','name','order']
     };
     return schemas[currentEntity];
   }
@@ -492,10 +510,18 @@
     if (editingId) {
       const rec = db[currentEntity].find(r => r.id === editingId);
       if (rec) Object.assign(rec, payload);
+      if (currentEntity === 'allergens') {
+        fetch(API_BASE + '/allergens/' + editingId, { method: 'PUT', headers: {'Content-Type':'application/json'}, body: JSON.stringify({...payload, id: editingId}) })
+          .catch(() => {});
+      }
       toast(`Updated record ${editingId}`);
     } else {
       payload.id = currentEntity.slice(0,2) + '_' + Date.now().toString(36);
       db[currentEntity].push(payload);
+      if (currentEntity === 'allergens') {
+        fetch(API_BASE + '/allergens', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify(payload) })
+          .catch(() => {});
+      }
       toast(`Created ${payload.id}`);
     }
     renderTable(document.getElementById('table-search').value);
@@ -511,6 +537,9 @@
   document.getElementById('delete-modal').addEventListener('click', e => { if (e.target === e.currentTarget) e.currentTarget.hidden = true; });
   document.getElementById('delete-confirm').addEventListener('click', () => {
     db[currentEntity] = db[currentEntity].filter(r => r.id !== deleteTarget);
+    if (currentEntity === 'allergens') {
+      fetch(API_BASE + '/allergens/' + deleteTarget, { method: 'DELETE' }).catch(() => {});
+    }
     toast(`Deleted ${deleteTarget}`);
     document.getElementById('delete-modal').hidden = true;
     deleteTarget = null;
@@ -538,6 +567,21 @@
     if (e.key === 'n' && !e.target.matches('input,textarea,[contenteditable]')) renderForm(null);
     if (e.key === 'Escape') document.getElementById('delete-modal').hidden = true;
   });
+
+  // Sync allergens from real API on load (allergens are the only entity managed live)
+  fetch(API_BASE + '/allergens')
+    .then(r => r.ok ? r.json() : Promise.reject())
+    .then(res => {
+      if (Array.isArray(res.data) && res.data.length) {
+        db.allergens = res.data;
+        if (currentEntity === 'allergens') renderTable(document.getElementById('table-search').value);
+        // Update count badge
+        document.querySelectorAll('.entity-tab').forEach(t => {
+          if (t.dataset.entity === 'allergens') t.querySelector('.count').textContent = res.data.length;
+        });
+      }
+    })
+    .catch(() => {});
 
   // Init
   renderTable('');

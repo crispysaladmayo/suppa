@@ -12,7 +12,7 @@
 </head>
 <body class="bg-background font-body text-on-surface min-h-dvh">
 
-<div class="app-frame min-h-dvh max-w-[480px] mx-auto flex flex-col px-6 pb-10" style="padding-top:calc(env(safe-area-inset-top,0) + 1rem)">
+<div class="app-frame min-h-dvh max-w-[480px] mx-auto flex flex-col px-6" style="padding-top:calc(env(safe-area-inset-top,0) + 1rem);padding-bottom:calc(env(safe-area-inset-bottom,0) + 1.5rem)">
   <!-- Top bar -->
   <div class="flex items-center justify-between mb-5">
     <button class="w-9 h-9 flex items-center justify-center rounded-full bg-surface-container-low" id="back-btn" aria-label="Kembali ke langkah sebelumnya">
@@ -36,22 +36,70 @@
     .onboarding-step.is-active { background-color: #FFB300; opacity: 1; }
   </style>
 
-  <form id="onboarding-form" novalidate class="flex-1">
+  <form id="onboarding-form" novalidate class="flex-1 flex flex-col min-h-0">
 
     <!-- Step 1: Location -->
     <div id="step-1">
       <h1 class="font-headline font-extrabold text-3xl text-on-surface mb-1.5">Di mana kamu tinggal?</h1>
-      <p class="text-sm text-on-surface-variant mb-6">Kami hanya mendukung Indonesia saat ini.</p>
+      <p class="text-sm text-on-surface-variant mb-6">Informasi kota akan digunakan untuk rekomendasi bahan baku dan resep</p>
       <input type="hidden" id="country" name="country" value="ID" />
       <div class="mb-6">
         <label for="city" class="block text-sm font-semibold text-on-surface mb-1.5">Kota / Kabupaten</label>
         <select id="city" name="city" class="w-full min-h-[48px] px-4 py-3 rounded-2xl bg-surface-container border border-outline-variant/50 text-sm text-on-surface focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 appearance-none bg-[url('data:image/svg+xml,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'%23605b4c\' stroke-width=\'2\'><polyline points=\'6 9 12 15 18 9\'/></svg>')] bg-[right_1rem_center] bg-no-repeat bg-[size:1.125rem]">
           <option value="">Pilih kota…</option>
-          <option>Jakarta Pusat</option><option>Jakarta Selatan</option><option>Jakarta Barat</option>
-          <option>Bandung</option><option>Surabaya</option><option>Medan</option>
-          <option>Bekasi</option><option>Tangerang</option><option>Depok</option>
-          <option>Semarang</option><option>Makassar</option><option>Palembang</option>
-          <option>Yogyakarta</option><option>Solo</option><option>Malang</option>
+          <option>Jakarta Pusat</option>
+          <option>Jakarta Selatan</option>
+          <option>Jakarta Barat</option>
+          <option>Jakarta Timur</option>
+          <option>Jakarta Utara</option>
+          <option>Surabaya</option>
+          <option>Bandung</option>
+          <option>Medan</option>
+          <option>Bekasi</option>
+          <option>Tangerang</option>
+          <option>Depok</option>
+          <option>Semarang</option>
+          <option>Palembang</option>
+          <option>Tangerang Selatan</option>
+          <option>Makassar</option>
+          <option>Batam</option>
+          <option>Pekanbaru</option>
+          <option>Bogor</option>
+          <option>Bandar Lampung</option>
+          <option>Malang</option>
+          <option>Padang</option>
+          <option>Denpasar</option>
+          <option>Samarinda</option>
+          <option>Tasikmalaya</option>
+          <option>Pontianak</option>
+          <option>Jambi</option>
+          <option>Serang</option>
+          <option>Banjarmasin</option>
+          <option>Balikpapan</option>
+          <option>Manado</option>
+          <option>Mataram</option>
+          <option>Cimahi</option>
+          <option>Cirebon</option>
+          <option>Yogyakarta</option>
+          <option>Surakarta</option>
+          <option>Sukabumi</option>
+          <option>Kediri</option>
+          <option>Probolinggo</option>
+          <option>Madiun</option>
+          <option>Blitar</option>
+          <option>Pasuruan</option>
+          <option>Mojokerto</option>
+          <option>Magelang</option>
+          <option>Kupang</option>
+          <option>Ambon</option>
+          <option>Jayapura</option>
+          <option>Palu</option>
+          <option>Kendari</option>
+          <option>Gorontalo</option>
+          <option>Manokwari</option>
+          <option>Ternate</option>
+          <option>Sorong</option>
+          <option>Merauke</option>
         </select>
       </div>
       <div class="space-y-3">
@@ -61,68 +109,61 @@
     </div>
 
     <!-- Step 2: Child profile -->
-    <div hidden id="step-2">
-      <h1 class="font-headline font-extrabold text-3xl text-on-surface mb-1.5">Tentang si kecil</h1>
-      <p class="text-sm text-on-surface-variant mb-6">Suppa akan menyesuaikan saran gizi berdasarkan usia anak.</p>
-      <div class="mb-4">
-        <label for="child-name" class="block text-sm font-semibold text-on-surface mb-1.5">Nama anak <span class="text-error">*</span></label>
-        <input type="text" id="child-name" name="child-name" autocomplete="off" placeholder="cth. Nara" aria-required="true" aria-describedby="name-error"
-          class="w-full min-h-[48px] px-4 py-3 rounded-2xl bg-surface-container border border-outline-variant/50 text-sm text-on-surface placeholder:text-on-surface-variant/50 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10" />
-        <p class="field__error text-xs" id="name-error" role="alert" aria-live="polite"></p>
-      </div>
-      <div class="mb-6">
-        <label class="block text-sm font-semibold text-on-surface mb-2">Usia anak <span class="text-error">*</span></label>
-        <div class="flex flex-col gap-2" role="radiogroup" aria-required="true" aria-describedby="age-error">
-          <label class="flex items-center gap-3 px-4 py-3 rounded-2xl bg-surface-container border border-outline-variant/50 cursor-pointer has-[:checked]:border-primary has-[:checked]:bg-surface-container-low">
-            <input type="radio" name="age" value="0-5" class="accent-primary w-4 h-4" /> <span class="text-sm font-medium text-on-surface">0–5 bulan</span>
-          </label>
-          <label class="flex items-center gap-3 px-4 py-3 rounded-2xl bg-surface-container border border-outline-variant/50 cursor-pointer has-[:checked]:border-primary has-[:checked]:bg-surface-container-low">
-            <input type="radio" name="age" value="6-12" class="accent-primary w-4 h-4" /> <span class="text-sm font-medium text-on-surface">6–12 bulan</span>
-          </label>
-          <label class="flex items-center gap-3 px-4 py-3 rounded-2xl bg-surface-container border border-outline-variant/50 cursor-pointer has-[:checked]:border-primary has-[:checked]:bg-surface-container-low">
-            <input type="radio" name="age" value="1-2" checked class="accent-primary w-4 h-4" /> <span class="text-sm font-medium text-on-surface">1–2 tahun</span>
-          </label>
-          <label class="flex items-center gap-3 px-4 py-3 rounded-2xl bg-surface-container border border-outline-variant/50 cursor-pointer has-[:checked]:border-primary has-[:checked]:bg-surface-container-low">
-            <input type="radio" name="age" value="3-5" class="accent-primary w-4 h-4" /> <span class="text-sm font-medium text-on-surface">3–5 tahun</span>
-          </label>
-          <label class="flex items-center gap-3 px-4 py-3 rounded-2xl bg-surface-container border border-outline-variant/50 cursor-pointer has-[:checked]:border-primary has-[:checked]:bg-surface-container-low">
-            <input type="radio" name="age" value="6-8" class="accent-primary w-4 h-4" /> <span class="text-sm font-medium text-on-surface">6–8 tahun</span>
-          </label>
-          <label class="flex items-center gap-3 px-4 py-3 rounded-2xl bg-surface-container border border-outline-variant/50 cursor-pointer has-[:checked]:border-primary has-[:checked]:bg-surface-container-low">
-            <input type="radio" name="age" value="9-11" class="accent-primary w-4 h-4" /> <span class="text-sm font-medium text-on-surface">9–11 tahun</span>
-          </label>
-          <label class="flex items-center gap-3 px-4 py-3 rounded-2xl bg-surface-container border border-outline-variant/50 cursor-pointer has-[:checked]:border-primary has-[:checked]:bg-surface-container-low">
-            <input type="radio" name="age" value="12" class="accent-primary w-4 h-4" /> <span class="text-sm font-medium text-on-surface">12 tahun</span>
-          </label>
+    <div hidden id="step-2" class="flex flex-col flex-1 min-h-0">
+      <div class="flex-1 overflow-y-auto pb-4">
+        <h1 class="font-headline font-extrabold text-3xl text-on-surface mb-1.5">Tentang si kecil</h1>
+        <p class="text-sm text-on-surface-variant mb-6">Suppa akan menyesuaikan saran gizi berdasarkan usia anak.</p>
+        <div class="mb-4">
+          <label for="child-name" class="block text-sm font-semibold text-on-surface mb-1.5">Nama anak <span class="text-error">*</span></label>
+          <input type="text" id="child-name" name="child-name" autocomplete="off" placeholder="cth. Nara" aria-required="true" aria-describedby="name-error"
+            class="w-full min-h-[48px] px-4 py-3 rounded-2xl bg-surface-container border border-outline-variant/50 text-sm text-on-surface placeholder:text-on-surface-variant/50 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10" />
+          <p class="field__error text-xs" id="name-error" role="alert" aria-live="polite"></p>
         </div>
-        <p class="field__error text-xs" id="age-error" role="alert" aria-live="polite"></p>
+        <div class="mb-4">
+          <label class="block text-sm font-semibold text-on-surface mb-2">Usia anak <span class="text-error">*</span></label>
+          <div class="flex flex-col gap-2" role="radiogroup" aria-required="true" aria-describedby="age-error">
+            <label class="flex items-center gap-3 px-4 py-3 rounded-2xl bg-surface-container border border-outline-variant/50 cursor-pointer has-[:checked]:border-primary has-[:checked]:bg-surface-container-low">
+              <input type="radio" name="age" value="0-5" class="accent-primary w-4 h-4" /> <span class="text-sm font-medium text-on-surface">0–5 bulan</span>
+            </label>
+            <label class="flex items-center gap-3 px-4 py-3 rounded-2xl bg-surface-container border border-outline-variant/50 cursor-pointer has-[:checked]:border-primary has-[:checked]:bg-surface-container-low">
+              <input type="radio" name="age" value="6-12" class="accent-primary w-4 h-4" /> <span class="text-sm font-medium text-on-surface">6–12 bulan</span>
+            </label>
+            <label class="flex items-center gap-3 px-4 py-3 rounded-2xl bg-surface-container border border-outline-variant/50 cursor-pointer has-[:checked]:border-primary has-[:checked]:bg-surface-container-low">
+              <input type="radio" name="age" value="1-2" checked class="accent-primary w-4 h-4" /> <span class="text-sm font-medium text-on-surface">1–2 tahun</span>
+            </label>
+            <label class="flex items-center gap-3 px-4 py-3 rounded-2xl bg-surface-container border border-outline-variant/50 cursor-pointer has-[:checked]:border-primary has-[:checked]:bg-surface-container-low">
+              <input type="radio" name="age" value="3-5" class="accent-primary w-4 h-4" /> <span class="text-sm font-medium text-on-surface">3–5 tahun</span>
+            </label>
+            <label class="flex items-center gap-3 px-4 py-3 rounded-2xl bg-surface-container border border-outline-variant/50 cursor-pointer has-[:checked]:border-primary has-[:checked]:bg-surface-container-low">
+              <input type="radio" name="age" value="6-8" class="accent-primary w-4 h-4" /> <span class="text-sm font-medium text-on-surface">6–8 tahun</span>
+            </label>
+            <label class="flex items-center gap-3 px-4 py-3 rounded-2xl bg-surface-container border border-outline-variant/50 cursor-pointer has-[:checked]:border-primary has-[:checked]:bg-surface-container-low">
+              <input type="radio" name="age" value="9-11" class="accent-primary w-4 h-4" /> <span class="text-sm font-medium text-on-surface">9–11 tahun</span>
+            </label>
+            <label class="flex items-center gap-3 px-4 py-3 rounded-2xl bg-surface-container border border-outline-variant/50 cursor-pointer has-[:checked]:border-primary has-[:checked]:bg-surface-container-low">
+              <input type="radio" name="age" value="12" class="accent-primary w-4 h-4" /> <span class="text-sm font-medium text-on-surface">12 tahun</span>
+            </label>
+          </div>
+          <p class="field__error text-xs" id="age-error" role="alert" aria-live="polite"></p>
+        </div>
       </div>
-      <button type="button" id="next-2" class="w-full py-3.5 rounded-full bg-primary text-on-primary font-headline font-bold text-base shadow-[0_4px_16px_rgba(255,179,0,0.4)]">Lanjut</button>
+      <div class="pt-3 bg-background">
+        <button type="button" id="next-2" class="w-full py-3.5 rounded-full bg-primary text-on-primary font-headline font-bold text-base shadow-[0_4px_16px_rgba(255,179,0,0.4)]">Lanjut</button>
+      </div>
     </div>
 
     <!-- Step 3: Allergies -->
     <div hidden id="step-3">
       <h1 class="font-headline font-extrabold text-3xl text-on-surface mb-1.5">Ada alergi atau pantangan?</h1>
       <p class="text-sm text-on-surface-variant mb-6">Suppa akan menandai resep yang mengandung bahan-bahan ini.</p>
-      <div class="flex flex-wrap gap-2 mb-5" role="group" aria-label="Pilih alergi">
-        <button type="button" class="chip" data-allergy-chip aria-pressed="false">Kacang tanah</button>
-        <button type="button" class="chip" data-allergy-chip aria-pressed="false">Telur</button>
-        <button type="button" class="chip" data-allergy-chip aria-pressed="false">Susu sapi</button>
-        <button type="button" class="chip" data-allergy-chip aria-pressed="false">Kedelai</button>
-        <button type="button" class="chip" data-allergy-chip aria-pressed="false">Gandum</button>
-        <button type="button" class="chip" data-allergy-chip aria-pressed="false">Ikan</button>
-        <button type="button" class="chip" data-allergy-chip aria-pressed="false">Udang / seafood</button>
-        <button type="button" class="chip" data-allergy-chip aria-pressed="false">Kacang pohon</button>
+      <div class="flex flex-wrap gap-2 mb-5" id="allergy-chips-container" role="group" aria-label="Pilih alergi">
+        <!-- Chips loaded dynamically from API; fallback below is rendered by JS -->
       </div>
       <div class="mb-5">
         <label for="allergy-other" class="block text-sm font-semibold text-on-surface mb-1.5">Alergi lainnya (opsional)</label>
         <input type="text" id="allergy-other" name="allergy-other" placeholder="cth. Wijen"
           class="w-full min-h-[44px] px-4 py-2.5 rounded-2xl bg-surface-container border border-outline-variant/50 text-sm text-on-surface placeholder:text-on-surface-variant/50 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10" />
       </div>
-      <label class="flex items-center gap-3 mb-5 cursor-pointer">
-        <input type="checkbox" id="no-allergy" class="accent-primary w-4 h-4 rounded" />
-        <span class="text-sm text-on-surface">Tidak ada alergi yang diketahui</span>
-      </label>
       <div class="space-y-3">
         <button type="button" id="next-3" class="w-full py-3.5 rounded-full bg-primary text-on-primary font-headline font-bold text-base shadow-[0_4px_16px_rgba(255,179,0,0.4)]">Lanjut</button>
         <button type="button" id="skip-3" class="w-full py-3.5 rounded-full bg-surface-container-high text-on-surface font-semibold text-sm">Lewati</button>
@@ -137,11 +178,13 @@
         <label for="sodium-val" class="block text-sm font-semibold text-on-surface mb-1.5">Natrium maks. per hari (mg)</label>
         <input type="number" id="sodium-val" name="sodium" value="800" min="0" max="9999"
           class="w-full min-h-[48px] px-4 py-3 rounded-2xl bg-surface-container border border-outline-variant/50 text-sm text-on-surface focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10" />
+        <p class="text-xs text-on-surface-variant mt-1.5" id="sodium-idai-hint"></p>
       </div>
       <div class="mb-6">
         <label for="sugar-val" class="block text-sm font-semibold text-on-surface mb-1.5">Gula tambahan maks. per hari (g)</label>
         <input type="number" id="sugar-val" name="sugar" value="12" min="0" max="999"
           class="w-full min-h-[48px] px-4 py-3 rounded-2xl bg-surface-container border border-outline-variant/50 text-sm text-on-surface focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10" />
+        <p class="text-xs text-on-surface-variant mt-1.5" id="sugar-idai-hint"></p>
       </div>
       <div class="space-y-3">
         <button type="button" id="next-4" class="w-full py-3.5 rounded-full bg-primary text-on-primary font-headline font-bold text-base shadow-[0_4px_16px_rgba(255,179,0,0.4)]">Lanjut</button>
@@ -178,8 +221,56 @@
 <script src="js/tokens.js"></script><script src="js/profile.js"></script><script src="js/api.js"></script><script src="js/ui.js"></script><script src="js/app.js"></script>
 <script>
 (function() {
+  /* ---------- Allergen chip loading ---------- */
+  var FALLBACK_ALLERGENS = ['Kacang tanah','Telur','Susu sapi','Kedelai','Gandum','Ikan','Udang / seafood','Kacang pohon'];
+
+  function renderAllergenChips(names) {
+    var container = document.getElementById('allergy-chips-container');
+    if (!container) return;
+    container.innerHTML = '';
+    names.forEach(function(name) {
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'chip';
+      btn.setAttribute('data-allergy-chip', '');
+      btn.setAttribute('aria-pressed', 'false');
+      btn.textContent = name;
+      btn.addEventListener('click', function() {
+        var pressed = btn.getAttribute('aria-pressed') === 'true';
+        btn.setAttribute('aria-pressed', pressed ? 'false' : 'true');
+        if (pressed) btn.classList.remove('is-selected'); else btn.classList.add('is-selected');
+      });
+      container.appendChild(btn);
+    });
+  }
+
+  (SUPPA.api ? SUPPA.api.get('allergens') : Promise.reject())
+    .then(function(res) {
+      var names = (res.data || []).map(function(a) { return a.name; }).filter(Boolean);
+      renderAllergenChips(names.length ? names : FALLBACK_ALLERGENS);
+    })
+    .catch(function() { renderAllergenChips(FALLBACK_ALLERGENS); });
+})();
+
+(function() {
   var currentStep = 1;
   var totalSteps = 5;
+
+  function updateIdaiHints() {
+    var ageRadio = document.querySelector('input[name="age"]:checked');
+    var ageBand = ageRadio ? ageRadio.value : '1-2';
+    var limits = (SUPPA.IDAI_LIMITS || {})[ageBand] || { sodium: 800, sugar: 12 };
+    var sodiumHint = document.getElementById('sodium-idai-hint');
+    var sugarHint = document.getElementById('sugar-idai-hint');
+    if (sodiumHint) sodiumHint.textContent = 'Rekomendasi IDAI untuk usia ini: maks. ' + limits.sodium + ' mg / hari';
+    if (sugarHint) sugarHint.textContent = limits.sugar === 0
+      ? 'Rekomendasi IDAI untuk usia ini: hindari gula tambahan'
+      : 'Rekomendasi IDAI untuk usia ini: maks. ' + limits.sugar + ' g / hari';
+    var sodiumInput = document.getElementById('sodium-val');
+    var sugarInput = document.getElementById('sugar-val');
+    if (sodiumInput && !sodiumInput.dataset.touched) sodiumInput.value = limits.sodium;
+    if (sugarInput && !sugarInput.dataset.touched) sugarInput.value = limits.sugar;
+  }
 
   function showStep(n) {
     for (var i = 1; i <= totalSteps; i++) {
@@ -189,6 +280,7 @@
     var el = document.getElementById('step-' + n);
     document.getElementById('step-label').textContent = 'Langkah ' + n + ' dari ' + totalSteps;
     document.getElementById('progress-bar').setAttribute('aria-valuenow', n);
+    if (n === 4) updateIdaiHints();
     for (var i = 1; i <= totalSteps; i++) {
       var dot = document.getElementById('s' + i);
       if (!dot) continue;
@@ -231,6 +323,10 @@
   document.getElementById('skip-3').addEventListener('click', goNext);
   document.getElementById('next-4').addEventListener('click', goNext);
   document.getElementById('skip-4').addEventListener('click', goNext);
+  ['sodium-val','sugar-val'].forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) el.addEventListener('input', function() { el.dataset.touched = '1'; });
+  });
 
   document.getElementById('back-btn').addEventListener('click', function() {
     if (currentStep > 1) showStep(currentStep - 1);

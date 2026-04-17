@@ -126,12 +126,18 @@
         showError("log-error", "Pilih minimal satu kelompok makanan.");
         return;
       }
+      var mealName = document.getElementById("meal-name");
+      var mealNameVal = mealName ? mealName.value.trim() : "";
+      if (!mealNameVal) {
+        showError("log-error", "Nama makan wajib diisi.");
+        if (mealName) mealName.focus();
+        return;
+      }
       var portionBtn = document.querySelector(".portion-btn[aria-pressed='true']");
       var portion = portionBtn ? portionBtn.getAttribute("data-portion") : "sedang";
-      var mealName = document.getElementById("meal-name");
       var payload = {
         child_id: SUPPA.profile.getChildId(),
-        meal_name: mealName ? mealName.value.trim() || "Makan" : "Makan",
+        meal_name: mealNameVal,
         food_groups_csv: selected.join(","),
         portion: portion,
         logged_at: new Date().toISOString(),
@@ -140,11 +146,22 @@
       var submitBtn = form.querySelector('[type="submit"]');
       if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = "Menyimpan…"; }
 
+      function saveToRecentMeals(name) {
+        try {
+          var key = 'suppa_recent_meals';
+          var recent = JSON.parse(localStorage.getItem(key) || '[]');
+          recent = recent.filter(function(n) { return n !== name; });
+          recent.unshift(name);
+          localStorage.setItem(key, JSON.stringify(recent.slice(0, 20)));
+        } catch(e) {}
+      }
+
       SUPPA.api.post("meal_logs", payload).then(function () {
+        saveToRecentMeals(payload.meal_name);
         if (SUPPA.ui) SUPPA.ui.showToast("Makan tercatat ✓");
         setTimeout(function () { window.location.href = "today.html"; }, 2800);
       }).catch(function () {
-        // Allow prototype navigation even if API is down
+        saveToRecentMeals(payload.meal_name);
         if (SUPPA.ui) SUPPA.ui.showToast("Makan tercatat ✓");
         setTimeout(function () { window.location.href = "today.html"; }, 2800);
       });
