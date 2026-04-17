@@ -62,19 +62,19 @@
             <path d="M 24  110 A 86  86  0 0 1 196 110" fill="none" stroke="#e6dcc3" stroke-width="14" stroke-linecap="round"/>
             <path d="M 38  110 A 72  72  0 0 1 182 110" fill="none" stroke="#e6dcc3" stroke-width="14" stroke-linecap="round"/>
             <path d="M 52  110 A 58  58  0 0 1 168 110" fill="none" stroke="#e6dcc3" stroke-width="14" stroke-linecap="round"/>
-            <!-- Progress arcs (filled by JS) -->
-            <path id="arc-energy"  d="M 10 110 A 100 100 0 0 1 210 110" fill="none" stroke="#FFB300" stroke-width="14" stroke-linecap="round" stroke-dasharray="314 314" stroke-dashoffset="314"/>
-            <path id="arc-protein" d="M 24 110 A 86  86  0 0 1 196 110" fill="none" stroke="#176a21" stroke-width="14" stroke-linecap="round" stroke-dasharray="270 270" stroke-dashoffset="270"/>
-            <path id="arc-carbs"   d="M 38 110 A 72  72  0 0 1 182 110" fill="none" stroke="#f97316" stroke-width="14" stroke-linecap="round" stroke-dasharray="226 226" stroke-dashoffset="226"/>
-            <path id="arc-fat"     d="M 52 110 A 58  58  0 0 1 168 110" fill="none" stroke="#605b4c" stroke-width="14" stroke-linecap="round" stroke-dasharray="182 182" stroke-dashoffset="182"/>
+            <!-- Progress arcs: path starts left (M 10…); pathLength + dash 0→100 draws left-to-right along semicircle -->
+            <path id="arc-energy"  pathLength="100" d="M 10 110 A 100 100 0 0 1 210 110" fill="none" stroke="#FFB300" stroke-width="14" stroke-linecap="round" stroke-dasharray="100 100" stroke-dashoffset="100"/>
+            <path id="arc-protein" pathLength="100" d="M 24 110 A 86  86  0 0 1 196 110" fill="none" stroke="#176a21" stroke-width="14" stroke-linecap="round" stroke-dasharray="100 100" stroke-dashoffset="100"/>
+            <path id="arc-carbs"   pathLength="100" d="M 38 110 A 72  72  0 0 1 182 110" fill="none" stroke="#f97316" stroke-width="14" stroke-linecap="round" stroke-dasharray="100 100" stroke-dashoffset="100"/>
+            <path id="arc-fat"     pathLength="100" d="M 52 110 A 58  58  0 0 1 168 110" fill="none" stroke="#605b4c" stroke-width="14" stroke-linecap="round" stroke-dasharray="100 100" stroke-dashoffset="100"/>
           </svg>
         </div>
         <!-- Arc legend -->
         <div class="flex flex-wrap justify-center gap-x-4 gap-y-1 mt-2">
-          <span class="flex items-center gap-1.5 text-xs text-on-surface-variant"><span class="w-2.5 h-2.5 rounded-full flex-shrink-0" style="background:#FFB300"></span>Energi <span id="arc-energy-pct" class="font-semibold text-on-surface">0%</span></span>
-          <span class="flex items-center gap-1.5 text-xs text-on-surface-variant"><span class="w-2.5 h-2.5 rounded-full flex-shrink-0" style="background:#176a21"></span>Protein <span id="arc-protein-pct" class="font-semibold text-on-surface">0%</span></span>
-          <span class="flex items-center gap-1.5 text-xs text-on-surface-variant"><span class="w-2.5 h-2.5 rounded-full flex-shrink-0" style="background:#f97316"></span>Karbo <span id="arc-carbs-pct" class="font-semibold text-on-surface">0%</span></span>
-          <span class="flex items-center gap-1.5 text-xs text-on-surface-variant"><span class="w-2.5 h-2.5 rounded-full flex-shrink-0" style="background:#605b4c"></span>Lemak <span id="arc-fat-pct" class="font-semibold text-on-surface">0%</span></span>
+          <span class="flex items-center gap-1.5 text-xs text-on-surface-variant"><span class="w-2.5 h-2.5 rounded-full flex-shrink-0" style="background:#FFB300"></span>Energi <span id="arc-energy-ratio" class="font-semibold text-on-surface whitespace-nowrap"><span class="text-outline">~</span>0 / 1000 kkal</span></span>
+          <span class="flex items-center gap-1.5 text-xs text-on-surface-variant"><span class="w-2.5 h-2.5 rounded-full flex-shrink-0" style="background:#176a21"></span>Protein <span id="arc-protein-ratio" class="font-semibold text-on-surface whitespace-nowrap"><span class="text-outline">~</span>0 / 20 g</span></span>
+          <span class="flex items-center gap-1.5 text-xs text-on-surface-variant"><span class="w-2.5 h-2.5 rounded-full flex-shrink-0" style="background:#f97316"></span>Karbo <span id="arc-carbs-ratio" class="font-semibold text-on-surface whitespace-nowrap"><span class="text-outline">~</span>0 / 130 g</span></span>
+          <span class="flex items-center gap-1.5 text-xs text-on-surface-variant"><span class="w-2.5 h-2.5 rounded-full flex-shrink-0" style="background:#605b4c"></span>Lemak <span id="arc-fat-ratio" class="font-semibold text-on-surface whitespace-nowrap"><span class="text-outline">~</span>0 / 44 g</span></span>
         </div>
       </div>
     </div>
@@ -253,9 +253,9 @@
   </main>
 </div>
 
-<!-- FAB -->
-<a href="log-add.html" class="fixed right-5 z-40 w-14 h-14 rounded-full bg-primary flex items-center justify-center shadow-[0_4px_16px_rgba(255,179,0,0.45)] active:scale-95 transition-transform" style="bottom:calc(80px + env(safe-area-inset-bottom,0))" aria-label="Catat makan">
-  <span class="material-symbols-outlined text-[28px] text-on-primary">add</span>
+<!-- FAB: opaque fill + ring so + stays visible on cream background -->
+<a href="log-add.html" class="fixed right-5 z-[55] w-14 h-14 rounded-full flex items-center justify-center shadow-[0_6px_20px_rgba(82,55,0,0.35)] ring-2 ring-[#523700]/30 opacity-100 active:scale-95 transition-transform" style="bottom:calc(80px + env(safe-area-inset-bottom,0));background-color:#FFB300" aria-label="Catat makan">
+  <span class="material-symbols-outlined text-[28px] font-bold" style="color:#523700">add</span>
 </a>
 
 <!-- Bottom nav -->
@@ -501,24 +501,23 @@
   var UNITS = { energy: 'kkal', protein: 'g', carbs: 'g', fat: 'g' };
   var MACROS = ['energy', 'protein', 'carbs', 'fat'];
 
-  /* Half-circle arc circumferences (πr for each radius: 100, 86, 72, 58) */
-  var ARC_LENGTHS = { energy: 314, protein: 270, carbs: 226, fat: 182 };
-
   function renderArcs(totals, targets) {
     MACROS.forEach(function (m) {
       var val = Math.round(totals[m]);
       var target = targets[m];
       var pct = Math.min(100, target > 0 ? Math.round((val / target) * 100) : 0);
-      var len = ARC_LENGTHS[m];
-      var offset = len - (len * pct / 100);
+      var offset = 100 - pct;
 
       var arcEl = document.getElementById('arc-' + m);
-      var pctEl = document.getElementById('arc-' + m + '-pct');
+      var ratioEl = document.getElementById('arc-' + m + '-ratio');
       if (arcEl) {
-        arcEl.style.strokeDashoffset = offset;
+        arcEl.style.strokeDasharray = '100 100';
+        arcEl.style.strokeDashoffset = String(offset);
         arcEl.style.transition = 'stroke-dashoffset 0.6s ease';
       }
-      if (pctEl) pctEl.textContent = pct + '%';
+      if (ratioEl) {
+        ratioEl.innerHTML = '<span class="text-outline">~</span>' + val + ' / ' + target + ' ' + UNITS[m];
+      }
     });
   }
 

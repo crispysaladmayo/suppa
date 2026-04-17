@@ -44,67 +44,68 @@
       <p class="text-sm text-on-surface-variant mb-6">Informasi kota akan digunakan untuk rekomendasi bahan baku dan resep</p>
       <input type="hidden" id="country" name="country" value="ID" />
       <div class="mb-6">
-        <label for="city" class="block text-sm font-semibold text-on-surface mb-1.5">Kota / Kabupaten</label>
-        <select id="city" name="city" class="w-full min-h-[48px] px-4 py-3 rounded-2xl bg-surface-container border border-outline-variant/50 text-sm text-on-surface focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 appearance-none bg-[url('data:image/svg+xml,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'%23605b4c\' stroke-width=\'2\'><polyline points=\'6 9 12 15 18 9\'/></svg>')] bg-[right_1rem_center] bg-no-repeat bg-[size:1.125rem]">
+        <label for="city" class="block text-sm font-semibold text-on-surface mb-1.5">Kota / Kabupaten <span class="text-error">*</span></label>
+        <select id="city" name="city" required aria-required="true" aria-describedby="city-error"
+          class="w-full min-h-[48px] px-4 py-3 rounded-2xl bg-surface-container border border-outline-variant/50 text-sm text-on-surface focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 appearance-none bg-[url('data:image/svg+xml,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'%23605b4c\' stroke-width=\'2\'><polyline points=\'6 9 12 15 18 9\'/></svg>')] bg-[right_1rem_center] bg-no-repeat bg-[size:1.125rem]">
           <option value="">Pilih kota…</option>
-          <option>Jakarta Pusat</option>
-          <option>Jakarta Selatan</option>
-          <option>Jakarta Barat</option>
-          <option>Jakarta Timur</option>
-          <option>Jakarta Utara</option>
-          <option>Surabaya</option>
-          <option>Bandung</option>
-          <option>Medan</option>
-          <option>Bekasi</option>
-          <option>Tangerang</option>
-          <option>Depok</option>
-          <option>Semarang</option>
-          <option>Palembang</option>
-          <option>Tangerang Selatan</option>
-          <option>Makassar</option>
-          <option>Batam</option>
-          <option>Pekanbaru</option>
-          <option>Bogor</option>
-          <option>Bandar Lampung</option>
-          <option>Malang</option>
-          <option>Padang</option>
-          <option>Denpasar</option>
-          <option>Samarinda</option>
-          <option>Tasikmalaya</option>
-          <option>Pontianak</option>
-          <option>Jambi</option>
-          <option>Serang</option>
-          <option>Banjarmasin</option>
-          <option>Balikpapan</option>
-          <option>Manado</option>
-          <option>Mataram</option>
-          <option>Cimahi</option>
-          <option>Cirebon</option>
-          <option>Yogyakarta</option>
-          <option>Surakarta</option>
-          <option>Sukabumi</option>
-          <option>Kediri</option>
-          <option>Probolinggo</option>
-          <option>Madiun</option>
-          <option>Blitar</option>
-          <option>Pasuruan</option>
-          <option>Mojokerto</option>
-          <option>Magelang</option>
-          <option>Kupang</option>
-          <option>Ambon</option>
-          <option>Jayapura</option>
-          <option>Palu</option>
-          <option>Kendari</option>
-          <option>Gorontalo</option>
-          <option>Manokwari</option>
-          <option>Ternate</option>
-          <option>Sorong</option>
-          <option>Merauke</option>
+          <option value="Jakarta Pusat">Jakarta Pusat</option>
+          <option value="Jakarta Selatan">Jakarta Selatan</option>
+          <option value="Jakarta Barat">Jakarta Barat</option>
+          <option value="Jakarta Timur">Jakarta Timur</option>
+          <option value="Jakarta Utara">Jakarta Utara</option>
+          <option value="Surabaya">Surabaya</option>
+          <option value="Bandung">Bandung</option>
+          <option value="Medan">Medan</option>
+          <option value="Bekasi">Bekasi</option>
+          <option value="Tangerang">Tangerang</option>
+          <option value="Depok">Depok</option>
+          <option value="Semarang">Semarang</option>
+          <option value="Palembang">Palembang</option>
+          <option value="Tangerang Selatan">Tangerang Selatan</option>
+          <option value="Makassar">Makassar</option>
+          <option value="Batam">Batam</option>
+          <option value="Pekanbaru">Pekanbaru</option>
+          <option value="Bogor">Bogor</option>
+          <option value="Bandar Lampung">Bandar Lampung</option>
+          <option value="Malang">Malang</option>
+          <option value="Padang">Padang</option>
+          <option value="Denpasar">Denpasar</option>
+          <option value="Samarinda">Samarinda</option>
+          <option value="Tasikmalaya">Tasikmalaya</option>
+          <option value="Pontianak">Pontianak</option>
+          <option value="Jambi">Jambi</option>
+          <option value="Serang">Serang</option>
+          <option value="Banjarmasin">Banjarmasin</option>
+          <option value="Balikpapan">Balikpapan</option>
+          <option value="Manado">Manado</option>
+          <option value="Mataram">Mataram</option>
+          <option value="Cimahi">Cimahi</option>
+          <option value="Cirebon">Cirebon</option>
+          <option value="Yogyakarta">Yogyakarta</option>
+          <option value="Surakarta">Surakarta</option>
+          <option value="Sukabumi">Sukabumi</option>
+          <option value="Kediri">Kediri</option>
+          <option value="Probolinggo">Probolinggo</option>
+          <option value="Madiun">Madiun</option>
+          <option value="Blitar">Blitar</option>
+          <option value="Pasuruan">Pasuruan</option>
+          <option value="Mojokerto">Mojokerto</option>
+          <option value="Magelang">Magelang</option>
+          <option value="Kupang">Kupang</option>
+          <option value="Ambon">Ambon</option>
+          <option value="Jayapura">Jayapura</option>
+          <option value="Palu">Palu</option>
+          <option value="Kendari">Kendari</option>
+          <option value="Gorontalo">Gorontalo</option>
+          <option value="Manokwari">Manokwari</option>
+          <option value="Ternate">Ternate</option>
+          <option value="Sorong">Sorong</option>
+          <option value="Merauke">Merauke</option>
         </select>
+        <p class="field__error text-xs" id="city-error" role="alert" aria-live="polite"></p>
       </div>
       <div class="space-y-3">
         <button type="button" id="next-1" class="w-full py-3.5 rounded-full bg-primary text-on-primary font-headline font-bold text-base shadow-[0_4px_16px_rgba(255,179,0,0.4)]">Lanjut</button>
-        <button type="button" id="skip-1" class="w-full py-3.5 rounded-full bg-surface-container-high text-on-surface font-semibold text-sm">Lewati</button>
       </div>
     </div>
 
@@ -305,8 +306,35 @@
 
   function goNext() { if (currentStep < totalSteps) showStep(currentStep + 1); }
 
-  document.getElementById('next-1').addEventListener('click', goNext);
-  document.getElementById('skip-1').addEventListener('click', goNext);
+  function clearCityError() {
+    var cityEl = document.getElementById('city');
+    var cityErr = document.getElementById('city-error');
+    if (cityErr) { cityErr.textContent = ''; cityErr.style.display = ''; cityErr.classList.remove('is-visible'); }
+    if (cityEl) { cityEl.removeAttribute('aria-invalid'); }
+  }
+
+  document.getElementById('next-1').addEventListener('click', function() {
+    var cityEl = document.getElementById('city');
+    var cityErr = document.getElementById('city-error');
+    var city = cityEl ? cityEl.value.trim() : '';
+    clearCityError();
+    if (!city) {
+      if (cityErr) {
+        cityErr.textContent = 'Pilih kota atau kabupaten terlebih dahulu.';
+        cityErr.style.display = 'block';
+        cityErr.classList.add('is-visible');
+      }
+      if (cityEl) {
+        cityEl.setAttribute('aria-invalid', 'true');
+        cityEl.focus();
+      }
+      return;
+    }
+    goNext();
+  });
+
+  var citySelect = document.getElementById('city');
+  if (citySelect) citySelect.addEventListener('change', clearCityError);
 
   document.getElementById('next-2').addEventListener('click', function() {
     var name = document.getElementById('child-name').value.trim();

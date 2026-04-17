@@ -248,10 +248,15 @@
       var ageRadio = document.querySelector('input[name="age"]:checked');
       var allergyChips = document.querySelectorAll('[data-allergy-chip][aria-pressed="true"]');
 
-      var city = cityEl ? cityEl.value : "";
+      var city = cityEl ? cityEl.value.trim() : "";
       var childName = (childNameEl && childNameEl.value.trim()) || "Anak";
       var ageBand = ageRadio ? ageRadio.value : "1-2";
 
+      if (!city) {
+        showError("city-error", "Pilih kota atau kabupaten terlebih dahulu.");
+        if (cityEl) cityEl.focus();
+        return;
+      }
       if (!childName || childName === "Anak") {
         showError("name-error", "Nama anak wajib diisi.");
         document.getElementById("child-name").focus();

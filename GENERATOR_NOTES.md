@@ -25,6 +25,12 @@
 
 9. **Internal console** — standalone HTML served by Express as static at `/`. It uses in-memory seed data and posts to the real API when `SUPPA_API_BASE` matches `localhost:8787`. Falls back to in-memory for design review.
 
+## UX follow-ups (Apr 2026)
+
+- Onboarding step 1: city is mandatory; `Lewati` removed. City `<option>` values are explicit. If a device still forces double-tap on `<select>`, consider a combobox component.
+- Today: nutrition arcs use `pathLength="100"` + dash offset for consistent left-to-right fill; arc legend mirrors macro row format (`~current / target unit`). FAB uses opaque `#FFB300` + ring + `z-[55]`.
+- Log add: photo UI shows upload CTAs first; preview image appears only after a file is chosen (client-side `URL.createObjectURL` only — not sent to API in this prototype).
+
 ## Known Limitations (M2 Prototype)
 
 - Auth is fully simulated — no real JWT
