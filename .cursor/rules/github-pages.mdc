@@ -1,0 +1,27 @@
+---
+description: Suppa GitHub Pages — dual-job deploy; prevents stale crispysaladmayo.github.io/suppa
+alwaysApply: true
+---
+
+# Suppa → GitHub Pages
+
+**Live site:** https://crispysaladmayo.github.io/suppa/
+
+## Deploy (do not simplify without updating Pages settings)
+
+On push to `main`, `.github/workflows/pages.yml` runs **two** jobs:
+
+1. **`publish_gh_pages_branch`** — pushes `./app` to branch `gh-pages` (used when Pages source is **Deploy from a branch** → `gh-pages` / root).
+2. **`publish_github_actions`** — `upload-pages-artifact` + `deploy-pages` (used when Pages source is **GitHub Actions**).
+
+If only (1) runs while Settings still use **GitHub Actions**, the URL keeps serving an **old** artifact. If only (2) runs while Settings use **`gh-pages`**, the branch can drift. **Keep both jobs** unless the repo owner deliberately switches to a single source and changes the workflow to match.
+
+## If the site looks like an “old” design after a commit
+
+1. Check **Settings → Pages → Source** (GitHub Actions vs branch `gh-pages`).
+2. Confirm the latest **Actions** run for `Deploy app to GitHub Pages` succeeded (including any `github-pages` environment approval).
+3. Open https://crispysaladmayo.github.io/suppa/.deploy-info.txt — `sha=` should match the latest `main` commit on `crispysaladmayo/suppa`.
+
+## Verify
+
+After deploy, `index.html` on the live URL should match `app/index.html` on `main` (e.g. Plus Jakarta + Tailwind in the landing head, not legacy Fraunces-only markup).
