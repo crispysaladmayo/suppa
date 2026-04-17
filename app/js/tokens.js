@@ -16,25 +16,25 @@ SUPPA.AGE_BAND_LABELS = {
 };
 
 SUPPA.MACRO_TARGETS = {
-  "0-5":  { energy: 500,  protein: 12, carbs: 60,  fat: 28 },
-  "6-12": { energy: 800,  protein: 18, carbs: 105, fat: 35 },
-  "1-2":  { energy: 1000, protein: 20, carbs: 130, fat: 40 },
-  "3-5":  { energy: 1350, protein: 28, carbs: 175, fat: 50 },
-  "6-8":  { energy: 1600, protein: 35, carbs: 220, fat: 55 },
-  "9-11": { energy: 1850, protein: 42, carbs: 255, fat: 60 },
-  "12":   { energy: 2100, protein: 50, carbs: 290, fat: 70 },
+  "0-5":  { energy: 500,  protein: 12, carbs: 60,  fat: 28, fiber: 2 },
+  "6-12": { energy: 800,  protein: 18, carbs: 105, fat: 35, fiber: 8 },
+  "1-2":  { energy: 1000, protein: 20, carbs: 130, fat: 40, fiber: 15 },
+  "3-5":  { energy: 1350, protein: 28, carbs: 175, fat: 50, fiber: 20 },
+  "6-8":  { energy: 1600, protein: 35, carbs: 220, fat: 55, fiber: 22 },
+  "9-11": { energy: 1850, protein: 42, carbs: 255, fat: 60, fiber: 25 },
+  "12":   { energy: 2100, protein: 50, carbs: 290, fat: 70, fiber: 28 },
 };
 
 SUPPA.FOOD_GROUP_MACROS = {
-  "Serealia & Umbi":     { energy: 140, protein: 3,  carbs: 28, fat: 1 },
-  "Kacang-kacangan":     { energy: 100, protein: 6,  carbs: 12, fat: 4 },
-  "Susu & Produk Susu":  { energy: 80,  protein: 5,  carbs: 8,  fat: 4 },
-  "Daging & Ikan":       { energy: 120, protein: 16, carbs: 0,  fat: 6 },
-  "Telur":               { energy: 80,  protein: 7,  carbs: 1,  fat: 5 },
-  "Sayur Vit A":         { energy: 30,  protein: 2,  carbs: 6,  fat: 0 },
-  "Sayur & Buah":        { energy: 40,  protein: 1,  carbs: 9,  fat: 0 },
-  "Minyak & Lemak":      { energy: 90,  protein: 0,  carbs: 0,  fat: 10 },
-  "Minuman":             { energy: 20,  protein: 0,  carbs: 5,  fat: 0 },
+  "Serealia & Umbi":     { energy: 140, protein: 3,  carbs: 28, fat: 1,  fiber: 2.5 },
+  "Kacang-kacangan":     { energy: 100, protein: 6,  carbs: 12, fat: 4,  fiber: 4 },
+  "Susu & Produk Susu":  { energy: 80,  protein: 5,  carbs: 8,  fat: 4,  fiber: 0 },
+  "Daging & Ikan":       { energy: 120, protein: 16, carbs: 0,  fat: 6,  fiber: 0 },
+  "Telur":               { energy: 80,  protein: 7,  carbs: 1,  fat: 5,  fiber: 0 },
+  "Sayur Vit A":         { energy: 30,  protein: 2,  carbs: 6,  fat: 0,  fiber: 2.5 },
+  "Sayur & Buah":        { energy: 40,  protein: 1,  carbs: 9,  fat: 0,  fiber: 3.5 },
+  "Minyak & Lemak":      { energy: 90,  protein: 0,  carbs: 0,  fat: 10, fiber: 0 },
+  "Minuman":             { energy: 20,  protein: 0,  carbs: 5,  fat: 0,  fiber: 0.3 },
 };
 
 SUPPA.PORTION_MULTIPLIERS = { sedikit: 0.6, sedang: 1.0, banyak: 1.5 };

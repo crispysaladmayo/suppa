@@ -49,46 +49,130 @@
     </div>
 
     <!-- Pelangi Kecukupan Gizi hero -->
-    <div class="text-on-surface rounded-2xl p-5 relative overflow-hidden suppa-card-elevated">
+    <div class="text-on-surface rounded-2xl p-5 relative overflow-x-clip overflow-y-visible suppa-card-elevated">
 
       <p class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider mb-3">Pelangi Kecukupan Gizi hari ini</p>
 
-      <!-- Concentric half-circle arcs (Huawei Activity-ring style) -->
+      <!-- Pelangi hati: siluet penuh + hati kecil sedih → membesar & bahagia saat kecukupan naik -->
       <div class="flex flex-col items-center">
-        <div class="relative" style="width:220px;height:120px">
-          <svg id="nutrition-arcs" viewBox="0 0 220 120" width="220" height="120" aria-hidden="true">
-            <!-- Tracks (outermost → innermost) -->
-            <path d="M 10 110 A 100 100 0 0 1 210 110" fill="none" stroke="#f1e7d1" stroke-width="14" stroke-linecap="round"/>
-            <path d="M 24  110 A 86  86  0 0 1 196 110" fill="none" stroke="#f1e7d1" stroke-width="14" stroke-linecap="round"/>
-            <path d="M 38  110 A 72  72  0 0 1 182 110" fill="none" stroke="#f1e7d1" stroke-width="14" stroke-linecap="round"/>
-            <path d="M 52  110 A 58  58  0 0 1 168 110" fill="none" stroke="#f1e7d1" stroke-width="14" stroke-linecap="round"/>
-            <!-- Progress arcs — rainbow outward→in: red → orange → yellow → green (error, error-container, primary-container, tertiary) -->
-            <path id="arc-energy"  pathLength="100" d="M 10 110 A 100 100 0 0 1 210 110" fill="none" stroke="#b02500" stroke-width="14" stroke-linecap="round" stroke-dasharray="100 100" stroke-dashoffset="100"/>
-            <path id="arc-protein" pathLength="100" d="M 24 110 A 86  86  0 0 1 196 110" fill="none" stroke="#f95630" stroke-width="14" stroke-linecap="round" stroke-dasharray="100 100" stroke-dashoffset="100"/>
-            <path id="arc-carbs"   pathLength="100" d="M 38 110 A 72  72  0 0 1 182 110" fill="none" stroke="#feb300" stroke-width="14" stroke-linecap="round" stroke-dasharray="100 100" stroke-dashoffset="100"/>
-            <path id="arc-fat"     pathLength="100" d="M 52 110 A 58  58  0 0 1 168 110" fill="none" stroke="#176a21" stroke-width="14" stroke-linecap="round" stroke-dasharray="100 100" stroke-dashoffset="100"/>
-            <!-- Progress head nodes: translate set in JS from path.getPointAtLength (moves with bar) -->
-            <g class="arc-node-wrap" id="arc-node-energy-wrap" transform="translate(10,110)" aria-hidden="true">
-              <circle r="6" fill="#b02500" stroke="#b4ad9b" stroke-width="2"/>
+        <div class="relative w-full max-w-[380px]" style="min-height:114px">
+          <svg id="nutrition-hearts" class="nutrient-hearts-svg" viewBox="0 0 372 110" width="100%" height="102" aria-hidden="true">
+            <defs>
+              <!-- Path tanpa fill di defs: isi dari <use fill="…"> (WebKit membutuhkan ini agar warna tampil) -->
+              <path id="nutrient-heart-sketch" d="M0.5,-30.5c-3.1,-6.6,-11.8,-10.1,-18.1,-3.7c-6.8,6.6,-5.4,15.2,-0.2,21.6l18.2,23.4l18.7,-23.1c5.4,-6.4,6.9,-15.4,-0.7,-21.8c-6.9,-6.1,-15.4,-2.5,-17.8,3.6z"/>
+              <filter id="crayon-chalk" x="-22%" y="-22%" width="144%" height="144%" color-interpolation-filters="sRGB">
+                <feTurbulence type="fractalNoise" baseFrequency="0.12" numOctaves="4" seed="17" result="noise"/>
+                <feDisplacementMap in="SourceGraphic" in2="noise" scale="3.1" xChannelSelector="R" yChannelSelector="G"/>
+              </filter>
+            </defs>
+            <!-- Urutan: karbo, protein, lemak, energi, serat — bentuk hati agak “coret” tapi tetap rapi -->
+            <g class="nutrient-heart-col" id="heart-col-carbs" transform="translate(2,5)" data-macro="carbs">
+              <use href="#nutrient-heart-sketch" class="nutrient-heart-ghost" transform="translate(36,44)"/>
+              <g class="nutrient-heart-inner" transform="translate(36,44)">
+                <g class="nutrient-heart-scale">
+                  <use href="#nutrient-heart-sketch" class="nutrient-heart-wax-under nutrient-heart-wax--carbs" transform="translate(0.85,0.55)"/>
+                  <use href="#nutrient-heart-sketch" class="nutrient-heart-body nutrient-heart-body--carbs"/>
+                  <g class="nutrient-face nutrient-face--sad" fill="none" stroke="#4a3200" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="-8" cy="-9" r="1.15" fill="none"/><circle cx="8" cy="-9" r="1.15" fill="none"/><path d="M-9 4 Q0 -0.5 9 4"/>
+                  </g>
+                  <g class="nutrient-face nutrient-face--happy" fill="none" stroke="#4a3200" stroke-width="1.35" stroke-linecap="round" opacity="0.88">
+                    <ellipse cx="-8" cy="-9" rx="2.2" ry="2.6" fill="none"/><ellipse cx="8" cy="-9" rx="2.2" ry="2.6" fill="none"/><path d="M-11 1 Q0 12 11 1"/>
+                  </g>
+                  <g class="nutrient-sparkles" fill="#fffde8" opacity="0">
+                    <circle cx="-20" cy="-30" r="1.8"/><circle cx="18" cy="-28" r="1.4"/><circle cx="2" cy="-36" r="1.1"/>
+                  </g>
+                </g>
+              </g>
             </g>
-            <g class="arc-node-wrap" id="arc-node-protein-wrap" transform="translate(24,110)" aria-hidden="true">
-              <circle r="6" fill="#f95630" stroke="#b4ad9b" stroke-width="2"/>
+            <g class="nutrient-heart-col" id="heart-col-protein" transform="translate(76,5)" data-macro="protein">
+              <use href="#nutrient-heart-sketch" class="nutrient-heart-ghost" transform="translate(36,44)"/>
+              <g class="nutrient-heart-inner" transform="translate(36,44)">
+                <g class="nutrient-heart-scale">
+                  <use href="#nutrient-heart-sketch" class="nutrient-heart-wax-under nutrient-heart-wax--protein" transform="translate(0.85,0.55)"/>
+                  <use href="#nutrient-heart-sketch" class="nutrient-heart-body nutrient-heart-body--protein"/>
+                  <g class="nutrient-face nutrient-face--sad" fill="none" stroke="#5c1808" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="-8" cy="-9" r="1.15" fill="none"/><circle cx="8" cy="-9" r="1.15" fill="none"/><path d="M-9 4 Q0 -0.5 9 4"/>
+                  </g>
+                  <g class="nutrient-face nutrient-face--happy" fill="none" stroke="#fff4f0" stroke-width="1.35" stroke-linecap="round">
+                    <ellipse cx="-8" cy="-9" rx="2.2" ry="2.6" fill="none"/><ellipse cx="8" cy="-9" rx="2.2" ry="2.6" fill="none"/><path d="M-11 1 Q0 12 11 1"/>
+                  </g>
+                  <g class="nutrient-sparkles" fill="#fff8f5" opacity="0">
+                    <circle cx="-20" cy="-30" r="1.8"/><circle cx="18" cy="-28" r="1.4"/><circle cx="2" cy="-36" r="1.1"/>
+                  </g>
+                </g>
+              </g>
             </g>
-            <g class="arc-node-wrap" id="arc-node-carbs-wrap" transform="translate(38,110)" aria-hidden="true">
-              <circle r="6" fill="#feb300" stroke="#b4ad9b" stroke-width="2"/>
+            <g class="nutrient-heart-col" id="heart-col-fat" transform="translate(150,5)" data-macro="fat">
+              <use href="#nutrient-heart-sketch" class="nutrient-heart-ghost" transform="translate(36,44)"/>
+              <g class="nutrient-heart-inner" transform="translate(36,44)">
+                <g class="nutrient-heart-scale">
+                  <use href="#nutrient-heart-sketch" class="nutrient-heart-wax-under nutrient-heart-wax--fat" transform="translate(0.85,0.55)"/>
+                  <use href="#nutrient-heart-sketch" class="nutrient-heart-body nutrient-heart-body--fat"/>
+                  <g class="nutrient-face nutrient-face--sad" fill="none" stroke="#0a3014" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="-8" cy="-9" r="1.15" fill="none"/><circle cx="8" cy="-9" r="1.15" fill="none"/><path d="M-9 4 Q0 -0.5 9 4"/>
+                  </g>
+                  <g class="nutrient-face nutrient-face--happy" fill="none" stroke="#d8ffe0" stroke-width="1.35" stroke-linecap="round">
+                    <ellipse cx="-8" cy="-9" rx="2.2" ry="2.6" fill="none"/><ellipse cx="8" cy="-9" rx="2.2" ry="2.6" fill="none"/><path d="M-11 1 Q0 12 11 1"/>
+                  </g>
+                  <g class="nutrient-sparkles" fill="#d4ffd8" opacity="0">
+                    <circle cx="-20" cy="-30" r="1.8"/><circle cx="18" cy="-28" r="1.4"/><circle cx="2" cy="-36" r="1.1"/>
+                  </g>
+                </g>
+              </g>
             </g>
-            <g class="arc-node-wrap" id="arc-node-fat-wrap" transform="translate(52,110)" aria-hidden="true">
-              <circle r="6" fill="#176a21" stroke="#b4ad9b" stroke-width="2"/>
+            <g class="nutrient-heart-col" id="heart-col-energy" transform="translate(224,5)" data-macro="energy">
+              <use href="#nutrient-heart-sketch" class="nutrient-heart-ghost" transform="translate(36,44)"/>
+              <g class="nutrient-heart-inner" transform="translate(36,44)">
+                <g class="nutrient-heart-scale">
+                  <use href="#nutrient-heart-sketch" class="nutrient-heart-wax-under nutrient-heart-wax--energy" transform="translate(0.85,0.55)"/>
+                  <use href="#nutrient-heart-sketch" class="nutrient-heart-body nutrient-heart-body--energy"/>
+                  <g class="nutrient-face nutrient-face--sad" fill="none" stroke="#3d0f08" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="-8" cy="-9" r="1.15" fill="none"/><circle cx="8" cy="-9" r="1.15" fill="none"/><path d="M-9 4 Q0 -0.5 9 4"/>
+                  </g>
+                  <g class="nutrient-face nutrient-face--happy" fill="none" stroke="#ffe8e0" stroke-width="1.35" stroke-linecap="round">
+                    <ellipse cx="-8" cy="-9" rx="2.2" ry="2.6" fill="none"/><ellipse cx="8" cy="-9" rx="2.2" ry="2.6" fill="none"/><path d="M-11 1 Q0 12 11 1"/>
+                  </g>
+                  <g class="nutrient-sparkles" fill="#fff8f2" opacity="0">
+                    <circle cx="-20" cy="-30" r="1.8"/><circle cx="18" cy="-28" r="1.4"/><circle cx="2" cy="-36" r="1.1"/>
+                  </g>
+                </g>
+              </g>
+            </g>
+            <g class="nutrient-heart-col" id="heart-col-fiber" transform="translate(298,5)" data-macro="fiber">
+              <use href="#nutrient-heart-sketch" class="nutrient-heart-ghost" transform="translate(36,44)"/>
+              <g class="nutrient-heart-inner" transform="translate(36,44)">
+                <g class="nutrient-heart-scale">
+                  <use href="#nutrient-heart-sketch" class="nutrient-heart-wax-under nutrient-heart-wax--fiber" transform="translate(0.85,0.55)"/>
+                  <use href="#nutrient-heart-sketch" class="nutrient-heart-body nutrient-heart-body--fiber"/>
+                  <g class="nutrient-face nutrient-face--sad" fill="none" stroke="#2d1f52" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="-8" cy="-9" r="1.15" fill="none"/><circle cx="8" cy="-9" r="1.15" fill="none"/><path d="M-9 4 Q0 -0.5 9 4"/>
+                  </g>
+                  <g class="nutrient-face nutrient-face--happy" fill="none" stroke="#ebe4ff" stroke-width="1.35" stroke-linecap="round">
+                    <ellipse cx="-8" cy="-9" rx="2.2" ry="2.6" fill="none"/><ellipse cx="8" cy="-9" rx="2.2" ry="2.6" fill="none"/><path d="M-11 1 Q0 12 11 1"/>
+                  </g>
+                  <g class="nutrient-sparkles" fill="#e8ddff" opacity="0">
+                    <circle cx="-20" cy="-30" r="1.8"/><circle cx="18" cy="-28" r="1.4"/><circle cx="2" cy="-36" r="1.1"/>
+                  </g>
+                </g>
+              </g>
             </g>
           </svg>
         </div>
-        <!-- Arc legend -->
-        <div class="flex flex-wrap justify-center gap-x-4 gap-y-1 mt-2">
-          <span class="flex items-center gap-1.5 text-xs text-on-surface-variant"><span class="w-2.5 h-2.5 rounded-full flex-shrink-0" style="background:#b02500"></span>Energi <span id="arc-energy-ratio" class="font-semibold text-on-surface whitespace-nowrap"><span class="text-outline">~</span>0 / 1000 kkal</span></span>
-          <span class="flex items-center gap-1.5 text-xs text-on-surface-variant"><span class="w-2.5 h-2.5 rounded-full flex-shrink-0" style="background:#f95630"></span>Protein <span id="arc-protein-ratio" class="font-semibold text-on-surface whitespace-nowrap"><span class="text-outline">~</span>0 / 20 g</span></span>
-          <span class="flex items-center gap-1.5 text-xs text-on-surface-variant"><span class="w-2.5 h-2.5 rounded-full flex-shrink-0" style="background:#feb300"></span>Karbo <span id="arc-carbs-ratio" class="font-semibold text-on-surface whitespace-nowrap"><span class="text-outline">~</span>0 / 130 g</span></span>
-          <span class="flex items-center gap-1.5 text-xs text-on-surface-variant"><span class="w-2.5 h-2.5 rounded-full flex-shrink-0" style="background:#176a21"></span>Lemak <span id="arc-fat-ratio" class="font-semibold text-on-surface whitespace-nowrap"><span class="text-outline">~</span>0 / 44 g</span></span>
+        <!-- Legend (ids tetap untuk skrip makro) -->
+        <div class="flex flex-wrap justify-center gap-x-3 gap-y-1 mt-2">
+          <span class="flex items-center gap-1.5 text-xs text-on-surface-variant"><span class="w-2.5 h-2.5 rounded-full flex-shrink-0" style="background:#f0b429"></span>Karbo <span id="arc-carbs-ratio" class="font-semibold text-on-surface whitespace-nowrap"><span class="text-outline">~</span>0 / 130 g</span></span>
+          <span class="flex items-center gap-1.5 text-xs text-on-surface-variant"><span class="w-2.5 h-2.5 rounded-full flex-shrink-0" style="background:#f0644a"></span>Protein <span id="arc-protein-ratio" class="font-semibold text-on-surface whitespace-nowrap"><span class="text-outline">~</span>0 / 20 g</span></span>
+          <span class="flex items-center gap-1.5 text-xs text-on-surface-variant"><span class="w-2.5 h-2.5 rounded-full flex-shrink-0" style="background:#2d8a38"></span>Lemak <span id="arc-fat-ratio" class="font-semibold text-on-surface whitespace-nowrap"><span class="text-outline">~</span>0 / 40 g</span></span>
+          <span class="flex items-center gap-1.5 text-xs text-on-surface-variant"><span class="w-2.5 h-2.5 rounded-full flex-shrink-0" style="background:#c43d2e"></span>Energi <span id="arc-energy-ratio" class="font-semibold text-on-surface whitespace-nowrap"><span class="text-outline">~</span>0 / 1000 kkal</span></span>
+          <span class="flex items-center gap-1.5 text-xs text-on-surface-variant"><span class="w-2.5 h-2.5 rounded-full flex-shrink-0" style="background:#6f58b8"></span>Serat <span id="arc-fiber-ratio" class="font-semibold text-on-surface whitespace-nowrap"><span class="text-outline">~</span>0 / 15 g</span></span>
         </div>
+        <a href="nutrition-detail.html" class="mt-4 flex items-center justify-between gap-3 w-full px-4 py-3 rounded-2xl border border-primary/20 bg-primary-container/12 text-on-surface hover:bg-primary-container/22 active:scale-[0.99] transition-all">
+          <span class="flex items-center gap-2.5 min-w-0">
+            <span class="material-symbols-outlined text-primary text-[22px] flex-shrink-0" aria-hidden="true">monitoring</span>
+            <span class="text-sm font-semibold text-left leading-snug">Lihat detail kecukupan makronutrien</span>
+          </span>
+          <span class="material-symbols-outlined text-on-surface-variant text-[22px] flex-shrink-0" aria-hidden="true">chevron_right</span>
+        </a>
       </div>
     </div>
 
@@ -133,14 +217,14 @@
         </div>
       </div>
 
-      <!-- Energy -->
-      <div class="mb-3" role="group" aria-label="Energi hari ini">
+      <!-- Karbo -->
+      <div class="mb-3" role="group" aria-label="Karbohidrat hari ini">
         <div class="flex justify-between items-baseline mb-1">
-          <span class="text-sm font-semibold text-on-surface">Energi</span>
-          <span class="text-sm text-on-surface-variant" id="macro-energy-val"><span class="text-outline">~</span>0 / 1000 kkal</span>
+          <span class="text-sm font-semibold text-on-surface">Karbo</span>
+          <span class="text-sm text-on-surface-variant" id="macro-carbs-val"><span class="text-outline">~</span>0 / 130 g</span>
         </div>
-        <div class="h-2 rounded-full bg-surface-container-high overflow-hidden" aria-hidden="true">
-                   <div class="h-full rounded-full bg-error macro-fill-energy transition-all duration-500" id="macro-energy-fill" style="width:0%"></div>
+        <div class="h-2 rounded-full overflow-hidden suppa-macro-bar-track" aria-hidden="true">
+          <div class="h-full rounded-full suppa-macro-bar-fill--carbs transition-all duration-500" id="macro-carbs-fill" style="width:0%"></div>
         </div>
       </div>
       <!-- Protein -->
@@ -149,30 +233,47 @@
           <span class="text-sm font-semibold text-on-surface">Protein</span>
           <span class="text-sm text-on-surface-variant" id="macro-protein-val"><span class="text-outline">~</span>0 / 20 g</span>
         </div>
-        <div class="h-2 rounded-full bg-surface-container-high overflow-hidden" aria-hidden="true">
-          <div class="h-full rounded-full bg-error-container macro-fill-protein transition-all duration-500" id="macro-protein-fill" style="width:0%"></div>
-        </div>
-      </div>
-      <!-- Karbo -->
-      <div class="mb-3" role="group" aria-label="Karbohidrat hari ini">
-        <div class="flex justify-between items-baseline mb-1">
-          <span class="text-sm font-semibold text-on-surface">Karbo</span>
-          <span class="text-sm text-on-surface-variant" id="macro-carbs-val"><span class="text-outline">~</span>0 / 130 g</span>
-        </div>
-        <div class="h-2 rounded-full bg-surface-container-high overflow-hidden" aria-hidden="true">
-          <div class="h-full rounded-full bg-primary-container macro-fill-carbs transition-all duration-500" id="macro-carbs-fill" style="width:0%"></div>
+        <div class="h-2 rounded-full overflow-hidden suppa-macro-bar-track" aria-hidden="true">
+          <div class="h-full rounded-full suppa-macro-bar-fill--protein transition-all duration-500" id="macro-protein-fill" style="width:0%"></div>
         </div>
       </div>
       <!-- Lemak -->
-      <div class="mb-1" role="group" aria-label="Lemak hari ini">
+      <div class="mb-3" role="group" aria-label="Lemak hari ini">
         <div class="flex justify-between items-baseline mb-1">
           <span class="text-sm font-semibold text-on-surface">Lemak</span>
-          <span class="text-sm text-on-surface-variant" id="macro-fat-val"><span class="text-outline">~</span>0 / 44 g</span>
+          <span class="text-sm text-on-surface-variant" id="macro-fat-val"><span class="text-outline">~</span>0 / 40 g</span>
         </div>
-        <div class="h-2 rounded-full bg-surface-container-high overflow-hidden" aria-hidden="true">
-          <div class="h-full rounded-full bg-tertiary macro-fill-fat transition-all duration-500" id="macro-fat-fill" style="width:0%"></div>
+        <div class="h-2 rounded-full overflow-hidden suppa-macro-bar-track" aria-hidden="true">
+          <div class="h-full rounded-full suppa-macro-bar-fill--fat transition-all duration-500" id="macro-fat-fill" style="width:0%"></div>
         </div>
       </div>
+      <!-- Energi -->
+      <div class="mb-3" role="group" aria-label="Energi hari ini">
+        <div class="flex justify-between items-baseline mb-1">
+          <span class="text-sm font-semibold text-on-surface">Energi</span>
+          <span class="text-sm text-on-surface-variant" id="macro-energy-val"><span class="text-outline">~</span>0 / 1000 kkal</span>
+        </div>
+        <div class="h-2 rounded-full overflow-hidden suppa-macro-bar-track" aria-hidden="true">
+          <div class="h-full rounded-full suppa-macro-bar-fill--energy transition-all duration-500" id="macro-energy-fill" style="width:0%"></div>
+        </div>
+      </div>
+      <!-- Serat -->
+      <div class="mb-3" role="group" aria-label="Serat hari ini">
+        <div class="flex justify-between items-baseline mb-1">
+          <span class="text-sm font-semibold text-on-surface">Serat</span>
+          <span class="text-sm text-on-surface-variant" id="macro-fiber-val"><span class="text-outline">~</span>0 / 15 g</span>
+        </div>
+        <div class="h-2 rounded-full overflow-hidden suppa-macro-bar-track" aria-hidden="true">
+          <div class="h-full rounded-full suppa-macro-bar-fill--fiber transition-all duration-500" id="macro-fiber-fill" style="width:0%"></div>
+        </div>
+      </div>
+      <a href="nutrition-detail.html" class="flex items-center justify-between gap-3 w-full px-4 py-3 rounded-2xl border border-primary/20 bg-primary-container/12 text-on-surface hover:bg-primary-container/22 active:scale-[0.99] transition-all">
+        <span class="flex items-center gap-2.5 min-w-0">
+          <span class="material-symbols-outlined text-primary text-[22px] flex-shrink-0" aria-hidden="true">monitoring</span>
+          <span class="text-sm font-semibold text-left leading-snug">Lihat detail kecukupan makronutrien</span>
+        </span>
+        <span class="material-symbols-outlined text-on-surface-variant text-[22px] flex-shrink-0" aria-hidden="true">chevron_right</span>
+      </a>
       <!-- Weekly footer -->
       <p class="text-xs text-on-surface-variant mt-3 pt-3 border-t border-outline-variant/20">
         🌈 Nara sudah makan 5 dari 8 kelompok minggu ini ·
@@ -275,7 +376,7 @@
 <nav class="fixed bottom-0 inset-x-0 z-50 bg-surface-container-lowest/95 backdrop-blur-md rounded-t-[2rem] shadow-[0_-4px_24px_rgba(51,46,34,0.06)] text-on-surface" aria-label="Navigasi utama">
   <div class="max-w-[480px] mx-auto flex items-start pt-3" style="padding-bottom:calc(0.75rem + env(safe-area-inset-bottom,0))">
     <a href="today.html" class="flex-1 flex flex-col items-center gap-0.5" aria-current="page">
-      <span class="flex items-center justify-center px-5 py-1 rounded-full bg-surface-container-low">
+      <span class="flex items-center justify-center px-5 py-1 rounded-full suppa-nav-pill-active">
         <span class="material-symbols-outlined text-[22px] text-primary" style="font-variation-settings:'FILL' 1">home</span>
       </span>
       <span class="text-[11px] font-semibold text-primary">Beranda</span>
@@ -306,8 +407,9 @@
 <script>
 /* ---------- Macro target editor ---------- */
 (function() {
-  var MACRO_LABELS = { energy: 'Energi (kkal)', protein: 'Protein (g)', carbs: 'Karbo (g)', fat: 'Lemak (g)' };
-  var MACRO_KEYS = ['energy','protein','carbs','fat'];
+  var MACRO_LABELS = { carbs: 'Karbo (g)', protein: 'Protein (g)', fat: 'Lemak (g)', energy: 'Energi (kkal)', fiber: 'Serat (g)' };
+  var MACRO_KEYS = ['carbs','protein','fat','energy','fiber'];
+  var MACRO_FALLBACK = { energy: 1000, protein: 20, carbs: 130, fat: 40, fiber: 15 };
   var STORAGE_KEY = 'suppa_macro_targets_custom';
 
   function getAgeBand() {
@@ -353,7 +455,7 @@
       editBtn.setAttribute('aria-expanded', open ? 'false' : 'true');
       if (!open) {
         var band = getAgeBand();
-        var current = (SUPPA.MACRO_TARGETS || {})[band] || { energy:1000, protein:20, carbs:130, fat:44 };
+        var current = Object.assign({}, MACRO_FALLBACK, (SUPPA.MACRO_TARGETS || {})[band] || {});
         targetsForm.innerHTML = MACRO_KEYS.map(function(k) {
           return '<div class="flex items-center justify-between gap-3">' +
             '<label class="text-sm text-on-surface-variant flex-1" for="mt-' + k + '">' + MACRO_LABELS[k] + '</label>' +
@@ -511,55 +613,60 @@
 </script>
 <script>
 (function () {
-  var UNITS = { energy: 'kkal', protein: 'g', carbs: 'g', fat: 'g' };
-  var MACROS = ['energy', 'protein', 'carbs', 'fat'];
+  var UNITS = { energy: 'kkal', protein: 'g', carbs: 'g', fat: 'g', fiber: 'g' };
+  var MACROS = ['carbs', 'protein', 'fat', 'energy', 'fiber'];
+  var MACRO_FALLBACK = { energy: 1000, protein: 20, carbs: 130, fat: 40, fiber: 15 };
 
-  function renderArcs(totals, targets) {
+  function getMacroTargets(ageBand) {
+    return Object.assign({}, MACRO_FALLBACK, (SUPPA.MACRO_TARGETS || {})[ageBand] || {});
+  }
+
+  function renderHearts(totals, targets) {
     MACROS.forEach(function (m) {
-      var val = Math.round(totals[m]);
-      var target = targets[m];
-      var pct = Math.min(100, target > 0 ? Math.round((val / target) * 100) : 0);
-      var offset = 100 - pct;
+      var raw = totals[m] || 0;
+      var target = targets[m] || 0;
+      var pct = Math.min(100, target > 0 ? Math.round((raw / target) * 100) : 0);
+      var p = pct / 100;
 
-      var arcEl = document.getElementById('arc-' + m);
+      var col = document.getElementById('heart-col-' + m);
       var ratioEl = document.getElementById('arc-' + m + '-ratio');
-      if (arcEl) {
-        arcEl.style.strokeDasharray = '100 100';
-        arcEl.style.strokeDashoffset = String(offset);
-        arcEl.style.transition = 'stroke-dashoffset 0.6s ease';
-        var wrap = document.getElementById('arc-node-' + m + '-wrap');
-        if (wrap && typeof arcEl.getTotalLength === 'function') {
-          if (!wrap.dataset.txInit) {
-            wrap.removeAttribute('transform');
-            wrap.dataset.txInit = '1';
-          }
-          var tl = arcEl.getTotalLength();
-          var dist = Math.max(0, Math.min(tl, (pct / 100) * tl));
-          var pt = arcEl.getPointAtLength(dist);
-          wrap.style.transform = 'translate(' + pt.x + 'px,' + pt.y + 'px)';
+      if (col) {
+        col.style.setProperty('--joy', String(p));
+        var scaleG = col.querySelector('.nutrient-heart-scale');
+        if (scaleG) {
+          var MIN_HEART = 0.28;
+          var s = MIN_HEART + (1 - MIN_HEART) * p;
+          scaleG.style.transform = 'translate(0px, -6px) scale(' + s + ') translate(0px, 6px)';
+        }
+        var sp = col.querySelector('.nutrient-sparkles');
+        if (sp) {
+          var sparkle = pct >= 82 ? Math.min(1, (pct - 82) / 18) : 0;
+          sp.setAttribute('opacity', String(sparkle));
         }
       }
       if (ratioEl) {
-        ratioEl.innerHTML = '<span class="text-outline">~</span>' + val + ' / ' + target + ' ' + UNITS[m];
+        var shown = m === 'fiber' ? Math.round(raw * 10) / 10 : Math.round(raw);
+        ratioEl.innerHTML = '<span class="text-outline">~</span>' + shown + ' / ' + target + ' ' + UNITS[m];
       }
     });
   }
 
   function renderBars(totals, targets) {
     MACROS.forEach(function (m) {
-      var val = Math.round(totals[m]);
-      var target = targets[m];
-      var pct = Math.min(100, target > 0 ? Math.round((val / target) * 100) : 0);
+      var raw = totals[m] || 0;
+      var target = targets[m] || 0;
+      var val = m === 'fiber' ? Math.round(raw * 10) / 10 : Math.round(raw);
+      var pct = Math.min(100, target > 0 ? Math.round((raw / target) * 100) : 0);
       var valEl = document.getElementById('macro-' + m + '-val');
       var fillEl = document.getElementById('macro-' + m + '-fill');
       if (valEl) valEl.innerHTML = '<span class="text-outline">~</span>' + val + ' / ' + target + ' ' + UNITS[m];
       if (fillEl) fillEl.style.width = pct + '%';
     });
-    renderArcs(totals, targets);
+    renderHearts(totals, targets);
   }
 
   function calcFromLogs(logs) {
-    var totals = { energy: 0, protein: 0, carbs: 0, fat: 0 };
+    var totals = { energy: 0, protein: 0, carbs: 0, fat: 0, fiber: 0 };
     logs.forEach(function (log) {
       var mult = (SUPPA.PORTION_MULTIPLIERS || {})[log.portion] || 1.0;
       (log.food_groups_csv || '').split(',').forEach(function (g) {
@@ -569,25 +676,25 @@
           totals.protein += macros.protein * mult;
           totals.carbs   += macros.carbs   * mult;
           totals.fat     += macros.fat     * mult;
+          totals.fiber   += (macros.fiber || 0) * mult;
         }
       });
     });
     return totals;
   }
 
-  var _cachedTotals = { energy: 0, protein: 0, carbs: 0, fat: 0 };
+  var _cachedTotals = { energy: 0, protein: 0, carbs: 0, fat: 0, fiber: 0 };
 
   function refreshDashboard() {
     var ageBand = SUPPA.profile ? SUPPA.profile.getChildAgeBand() : '1-2';
-    var targets = (SUPPA.MACRO_TARGETS || {})[ageBand] || { energy: 1000, protein: 20, carbs: 130, fat: 44 };
-    renderBars(_cachedTotals, targets);
+    renderBars(_cachedTotals, getMacroTargets(ageBand));
   }
 
   window.addEventListener('suppa:targets-updated', refreshDashboard);
 
   document.addEventListener('DOMContentLoaded', function () {
     var ageBand = SUPPA.profile ? SUPPA.profile.getChildAgeBand() : '1-2';
-    var targets = (SUPPA.MACRO_TARGETS || {})[ageBand] || { energy: 1000, protein: 20, carbs: 130, fat: 44 };
+    var targets = getMacroTargets(ageBand);
     var childId = SUPPA.profile ? SUPPA.profile.getChildId() : null;
     var today   = new Date().toISOString().slice(0, 10);
 
