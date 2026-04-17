@@ -33,6 +33,13 @@ body {
     0 2px 8px rgba(123, 84, 0, 0.045);
 }
 
+/* Same surface, dashed primary border (e.g. photo upload) */
+.suppa-card-elevated.suppa-card-elevated--dashed {
+  border-width: 2px;
+  border-style: dashed;
+  border-color: color-mix(in srgb, var(--primary-container) 60%, transparent);
+}
+
 /* ── Nutrition arc “head” nodes (today.html SVG) ───────── */
 .arc-node-wrap {
   transition: transform 0.6s ease;
