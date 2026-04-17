@@ -1,11 +1,10 @@
 name: Deploy app to GitHub Pages
 
-# Publishes ./app to branch `gh-pages`. In the repo, set:
-# Settings → Pages → Build and deployment → Source → Deploy from a branch
-# → Branch: gh-pages, folder: / (root)
+# Two publish paths — use whichever matches repo Settings → Pages → Source:
+# - "Deploy from a branch" → gh-pages / (root): job `publish_gh_pages_branch`
+# - "GitHub Actions": job `publish_github_actions`
 #
-# If Source is left on "GitHub Actions" while the site never updates, switch
-# to the branch source above so these files are what users see.
+# If the live site looks stale, confirm the source matches one of the above.
 
 on:
   push:
@@ -14,13 +13,11 @@ on:
 
 permissions:
   contents: write
-
-concurrency:
-  group: pages-gh
-  cancel-in-progress: true
+  pages: write
+  id-token: write
 
 jobs:
-  deploy:
+  publish_gh_pages_branch:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -38,3 +35,26 @@ jobs:
           publish_dir: ./app
           publish_branch: gh-pages
           force_orphan: true
+
+  publish_github_actions:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Stamp deploy (verify live site)
+        run: |
+          echo "sha=${{ github.sha }}" > app/.deploy-info.txt
+          echo "run=${{ github.run_number }}" >> app/.deploy-info.txt
+          echo "time=$(date -u +%Y-%m-%dT%H:%M:%SZ)" >> app/.deploy-info.txt
+
+      - uses: actions/configure-pages@v4
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: app/
+
+      - uses: actions/deploy-pages@v4
+        id: deployment
