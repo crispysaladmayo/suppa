@@ -1,5 +1,13 @@
 /* Suppa — Tropical Harvest Base & Essential Components */
 
+/*
+ * Tailwind utilities (e.g. .flex) load with equal/higher cascade than the HTML [hidden] rule.
+ * Stepper panels use both — without this, “next” steps stay visible (see onboarding step-2).
+ */
+[hidden]:where(:not([hidden="until-found"])) {
+  display: none !important;
+}
+
 *, *::before, *::after { box-sizing: border-box; }
 html { font-size: 16px; -webkit-text-size-adjust: 100%; }
 body {
@@ -8,6 +16,11 @@ body {
   font-family: "Be Vietnam Pro", sans-serif;
   color: #332e22;
   background: #fff6e2;
+}
+
+/* ── Nutrition arc “head” nodes (today.html SVG) ───────── */
+.arc-node-wrap {
+  transition: transform 0.6s ease;
 }
 
 /* ── App frame (needed by app.js injectVersionBar) ─────── */
