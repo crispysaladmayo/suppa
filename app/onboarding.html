@@ -109,8 +109,9 @@
       </div>
     </div>
 
-    <!-- Step 2: Child profile -->
-    <div hidden id="step-2" class="flex flex-col flex-1 min-h-0">
+    <!-- Step 2: Child profile — outer has no Tailwind display class so [hidden] always wins (flex+hidden was overridden on GH Pages) -->
+    <div id="step-2" hidden class="flex-1 min-h-0">
+      <div class="flex min-h-0 flex-1 flex-col">
       <div class="flex-1 overflow-y-auto pb-4">
         <h1 class="font-headline font-extrabold text-3xl text-on-surface mb-1.5">Tentang si kecil</h1>
         <p class="text-sm text-on-surface-variant mb-6">Suppa akan menyesuaikan saran gizi berdasarkan usia anak.</p>
@@ -150,6 +151,7 @@
       </div>
       <div class="pt-3 bg-background">
         <button type="button" id="next-2" class="w-full py-3.5 rounded-full bg-primary text-on-primary font-headline font-bold text-base shadow-[0_4px_16px_rgba(255,179,0,0.4)]">Lanjut</button>
+      </div>
       </div>
     </div>
 
