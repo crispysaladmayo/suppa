@@ -6,11 +6,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&family=Be+Vietnam+Pro:wght@400;500;600&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
-  <script>tailwind.config={darkMode:"class",theme:{extend:{colors:{background:"#fff6e2",surface:"#ffffff","surface-bright":"#fff6e2","surface-container-low":"#f9f0db","surface-container":"#f1e7d1","surface-container-high":"#ebe2ca","surface-container-highest":"#e6dcc3","surface-dim":"#ded4ba",primary:"#FFB300","primary-container":"#7b5400","on-primary":"#523700","on-primary-container":"#fff1df",secondary:"#b7004d","secondary-container":"#ffc2cc","on-secondary":"#ffeff0",tertiary:"#176a21","tertiary-container":"#9df197","on-tertiary":"#d1ffc8",error:"#b02500","error-container":"#f95630","on-surface":"#332e22","on-surface-variant":"#605b4c",outline:"#7c7666","outline-variant":"#b4ad9b"},borderRadius:{DEFAULT:"1rem",lg:"2rem",xl:"3rem",full:"9999px"},fontFamily:{headline:["Plus Jakarta Sans","sans-serif"],body:["Be Vietnam Pro","sans-serif"]}}}}</script>
+  <script>tailwind.config={darkMode:"class",theme:{extend:{colors:{background:"#FFB300",surface:"#7D7767","surface-bright":"#8B8575","surface-container-low":"#7D7767","surface-container":"#6A6558","surface-container-high":"#5A564C","surface-container-highest":"#4E4A42","surface-dim":"#403C36",primary:"#FFB300","primary-container":"#E6A200","on-primary":"#3E2723","on-primary-container":"#FFF8E7",secondary:"#D81B60","secondary-container":"#F8BBD9","on-secondary":"#FFFFFF",tertiary:"#2E7D32","tertiary-container":"#A5D6A7","on-tertiary":"#E8F5E9",error:"#C62828","error-container":"#FFCDD2","on-surface":"#FFF8E7","on-surface-variant":"#DDD5C8",outline:"#A69F90","outline-variant":"#8E887B","on-background":"#3E2723","on-background-variant":"#5D5347"},borderRadius:{DEFAULT:"1rem",lg:"2rem",xl:"3rem",full:"9999px"},fontFamily:{headline:["Plus Jakarta Sans","sans-serif"],body:["Be Vietnam Pro","sans-serif"]}}}}</script>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="css/tokens.css" /><link rel="stylesheet" href="css/components.css" />
 </head>
-<body class="bg-background font-body text-on-surface min-h-dvh flex flex-col">
+<body class="bg-background font-body text-on-background min-h-dvh flex flex-col">
 
 <div class="app-frame flex-1 flex flex-col max-w-[480px] mx-auto w-full px-6 pb-8" style="padding-top:calc(env(safe-area-inset-top,0) + 1rem)">
   <!-- Top bar -->
@@ -20,39 +20,39 @@
     </a>
     <a href="index.html" class="flex items-center gap-2 no-underline">
       <img src="assets/suppa-logo.svg" alt="" width="28" height="28" aria-hidden="true" class="block" />
-      <span class="font-headline font-black text-xl text-primary tracking-tight">Suppa</span>
+      <span class="font-headline font-black text-xl text-on-background tracking-tight">Suppa</span>
     </a>
     <div class="w-9"></div>
   </div>
 
   <main class="flex-1">
-    <h1 class="font-headline font-bold text-2xl text-on-surface mb-1">Selamat datang kembali</h1>
-    <p class="text-sm text-on-surface-variant mb-6">Masuk untuk melanjutkan pantauan gizi si kecil.</p>
+    <h1 class="font-headline font-bold text-2xl text-on-background mb-1">Selamat datang kembali</h1>
+    <p class="text-sm text-on-background-variant mb-6">Masuk untuk melanjutkan pantauan gizi si kecil.</p>
 
     <form id="login-form" novalidate class="space-y-4">
       <div>
-        <label for="email" class="block text-sm font-semibold text-on-surface mb-1.5">Alamat email</label>
+        <label for="email" class="block text-sm font-semibold text-on-background mb-1.5">Alamat email</label>
         <input type="email" id="email" name="email" autocomplete="email" inputmode="email" aria-required="true" aria-describedby="login-error"
           class="w-full min-h-[48px] px-4 py-3 rounded-2xl bg-surface-container border border-outline-variant/50 text-sm text-on-surface placeholder:text-on-surface-variant/50 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10" />
         <p class="field__error text-xs" id="login-error" role="alert" aria-live="polite"></p>
       </div>
 
       <div>
-        <label for="password" class="block text-sm font-semibold text-on-surface mb-1.5">Kata sandi</label>
+        <label for="password" class="block text-sm font-semibold text-on-background mb-1.5">Kata sandi</label>
         <input type="password" id="password" name="password" autocomplete="current-password" aria-required="true"
           class="w-full min-h-[48px] px-4 py-3 rounded-2xl bg-surface-container border border-outline-variant/50 text-sm text-on-surface focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10" />
         <div class="text-right mt-1.5">
-          <a href="forgot-password.html" class="text-sm font-medium text-primary">Lupa kata sandi?</a>
+          <a href="forgot-password.html" class="text-sm font-medium text-secondary">Lupa kata sandi?</a>
         </div>
       </div>
 
-      <button type="submit" class="w-full py-3.5 rounded-full bg-primary text-on-primary font-headline font-bold text-base shadow-[0_4px_16px_rgba(255,179,0,0.4)] active:scale-[0.98] transition-transform mt-2">
+      <button type="submit" class="w-full py-3.5 rounded-full bg-secondary text-on-secondary font-headline font-bold text-base shadow-[0_4px_16px_rgba(216,27,96,0.35)] active:scale-[0.98] transition-transform mt-2">
         Masuk
       </button>
     </form>
 
-    <p class="text-center text-sm text-on-surface-variant mt-6">
-      Belum punya akun? <a href="signup.html" class="font-semibold text-primary">Daftar</a>
+    <p class="text-center text-sm text-on-background-variant mt-6">
+      Belum punya akun? <a href="signup.html" class="font-semibold text-secondary">Daftar</a>
     </p>
   </main>
 </div>

@@ -8,12 +8,12 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&family=Be+Vietnam+Pro:wght@400;500;600&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
-  <script>tailwind.config={darkMode:"class",theme:{extend:{colors:{background:"#fff6e2",surface:"#ffffff","surface-bright":"#fff6e2","surface-container-low":"#f9f0db","surface-container":"#f1e7d1","surface-container-high":"#ebe2ca","surface-container-highest":"#e6dcc3","surface-dim":"#ded4ba",primary:"#FFB300","primary-container":"#7b5400","on-primary":"#523700","on-primary-container":"#fff1df",secondary:"#b7004d","secondary-container":"#ffc2cc","on-secondary":"#ffeff0",tertiary:"#176a21","tertiary-container":"#9df197","on-tertiary":"#d1ffc8",error:"#b02500","error-container":"#f95630","on-surface":"#332e22","on-surface-variant":"#605b4c",outline:"#7c7666","outline-variant":"#b4ad9b"},borderRadius:{DEFAULT:"1rem",lg:"2rem",xl:"3rem",full:"9999px"},fontFamily:{headline:["Plus Jakarta Sans","sans-serif"],body:["Be Vietnam Pro","sans-serif"]}}}}</script>
+  <script>tailwind.config={darkMode:"class",theme:{extend:{colors:{background:"#FFB300",surface:"#7D7767","surface-bright":"#8B8575","surface-container-low":"#7D7767","surface-container":"#6A6558","surface-container-high":"#5A564C","surface-container-highest":"#4E4A42","surface-dim":"#403C36",primary:"#FFB300","primary-container":"#E6A200","on-primary":"#3E2723","on-primary-container":"#FFF8E7",secondary:"#D81B60","secondary-container":"#F8BBD9","on-secondary":"#FFFFFF",tertiary:"#2E7D32","tertiary-container":"#A5D6A7","on-tertiary":"#E8F5E9",error:"#C62828","error-container":"#FFCDD2","on-surface":"#FFF8E7","on-surface-variant":"#DDD5C8",outline:"#A69F90","outline-variant":"#8E887B","on-background":"#3E2723","on-background-variant":"#5D5347"},borderRadius:{DEFAULT:"1rem",lg:"2rem",xl:"3rem",full:"9999px"},fontFamily:{headline:["Plus Jakarta Sans","sans-serif"],body:["Be Vietnam Pro","sans-serif"]}}}}</script>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="css/tokens.css" />
   <link rel="stylesheet" href="css/components.css" />
 </head>
-<body class="bg-background font-body text-on-surface min-h-dvh">
+<body class="bg-background font-body text-on-background min-h-dvh">
 
 <div class="app-frame min-h-dvh max-w-[480px] mx-auto flex flex-col" style="padding-top:env(safe-area-inset-top,0);padding-bottom:env(safe-area-inset-bottom,0)">
 
@@ -25,14 +25,14 @@
       <div class="w-12 h-12 rounded-2xl flex items-center justify-center" style="background: linear-gradient(135deg, #feb300, #7b5400)">
         <span class="font-headline font-black text-2xl" style="color:#fff1df">S</span>
       </div>
-      <span class="font-headline font-black text-3xl text-primary tracking-tight">Suppa</span>
+      <span class="font-headline font-black text-3xl text-on-background tracking-tight">Suppa</span>
     </div>
 
     <!-- Headline -->
-    <h1 class="font-headline font-black text-[2rem] leading-tight text-on-surface mb-4">
-      Gizi hari ini,<br><span class="text-primary">lebih jelas.</span>
+    <h1 class="font-headline font-black text-[2rem] leading-tight text-on-background mb-4">
+      Gizi hari ini,<br><span class="text-secondary">lebih jelas.</span>
     </h1>
-    <p class="text-base text-on-surface-variant leading-relaxed max-w-[22rem] mb-8">
+    <p class="text-base text-on-background-variant leading-relaxed max-w-[22rem] mb-8">
       Suppa membantu nutrisi anak terlihat dan bisa ditindaklanjuti — perencanaan dan ketenangan, bukan pengobatan klinis.
     </p>
 
@@ -40,7 +40,7 @@
 
   <!-- CTA area -->
   <div class="px-6 pb-8 space-y-3">
-    <a href="signup.html" class="w-full py-4 rounded-full bg-primary text-on-primary font-headline font-bold text-base shadow-[0_4px_20px_rgba(255,179,0,0.45)] active:scale-[0.98] transition-transform flex items-center justify-center gap-2">
+    <a href="signup.html" class="w-full py-4 rounded-full bg-secondary text-on-secondary font-headline font-bold text-base shadow-[0_4px_20px_rgba(216,27,96,0.35)] active:scale-[0.98] transition-transform flex items-center justify-center gap-2">
       <span class="material-symbols-outlined text-[20px]">person_add</span>
       Buat akun gratis
     </a>
@@ -50,8 +50,8 @@
 
     <!-- Legal links -->
     <nav class="flex justify-center gap-5 pt-1" aria-label="Legal">
-      <a href="privacy.html" class="text-xs text-on-surface-variant underline underline-offset-2">Privasi</a>
-      <a href="terms.html" class="text-xs text-on-surface-variant underline underline-offset-2">Syarat</a>
+      <a href="privacy.html" class="text-xs text-on-background-variant underline underline-offset-2">Privasi</a>
+      <a href="terms.html" class="text-xs text-on-background-variant underline underline-offset-2">Syarat</a>
     </nav>
   </div>
 

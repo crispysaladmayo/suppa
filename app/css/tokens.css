@@ -1,77 +1,75 @@
-/* Suppa — Tropical Harvest Design Tokens */
+/* Suppa — Primary backdrop + neutral cards palette */
 :root {
-  /* Semantic color tokens */
-  --background: #fff6e2;
-  --surface: #ffffff;
-  --surface-bright: #fff6e2;
-  --surface-container-low: #f9f0db;
-  --surface-container: #f1e7d1;
-  --surface-container-high: #ebe2ca;
-  --surface-container-highest: #e6dcc3;
-  --surface-dim: #ded4ba;
-    --primary: #FFB300;
-    --primary-container: #7b5400;
-    --on-primary: #523700;
-    --on-primary-container: #fff1df;
-  --secondary: #b7004d;
-  --secondary-container: #ffc2cc;
-  --on-secondary: #ffeff0;
-  --on-secondary-container: #91003c;
-  --tertiary: #176a21;
-  --tertiary-container: #9df197;
-  --on-tertiary: #d1ffc8;
-  --on-tertiary-container: #005c15;
-  --error: #b02500;
-  --error-container: #f95630;
-  --on-surface: #332e22;
-  --on-surface-variant: #605b4c;
-  --outline: #7c7666;
-  --outline-variant: #b4ad9b;
+  /* Page backdrop = primary amber; cards = neutral */
+  --background: #FFB300;
+  --surface: #7D7767;
+  --surface-bright: #8B8575;
+  --surface-container-low: #7D7767;
+  --surface-container: #6A6558;
+  --surface-container-high: #5A564C;
+  --surface-container-highest: #4E4A42;
+  --surface-dim: #403C36;
+  --primary: #FFB300;
+  --primary-container: #E6A200;
+  --on-primary: #3E2723;
+  --on-primary-container: #FFF8E7;
+  --secondary: #D81B60;
+  --secondary-container: #F8BBD9;
+  --on-secondary: #FFFFFF;
+  --on-secondary-container: #880E4F;
+  --tertiary: #2E7D32;
+  --tertiary-container: #A5D6A7;
+  --on-tertiary: #E8F5E9;
+  --on-tertiary-container: #1B5E20;
+  --error: #C62828;
+  --error-container: #FFCDD2;
+  /* Light text on neutral surfaces */
+  --on-surface: #FFF8E7;
+  --on-surface-variant: #DDD5C8;
+  /* Dark text on amber page */
+  --on-background: #3E2723;
+  --on-background-variant: #5D5347;
+  --outline: #A69F90;
+  --outline-variant: #8E887B;
 
-  /* Legacy alias tokens (used in inline styles across app) */
-    --accent: #FFB300;
-    --accent-hover: #e0a000;
-    --accent-tint: #fff3cc;
-    --accent-light: #ffe680;
-  --text-primary: #332e22;
-  --text-secondary: #605b4c;
-  --text-muted: #7c7666;
-  --bg-page: #fff6e2;
-  --border-subtle: #b4ad9b;
-  --surface-color: #ffffff;
-  --success-soft-bg: #d1ffc8;
-  --success-soft-text: #176a21;
-  --info-soft-bg: #f9f0db;
-  --info-soft-text: #523700;
-  --warning-soft-bg: #ffc2cc;
-  --warning-soft-text: #91003c;
-  --error-text: #b02500;
-    --focus-ring: #FFB300;
-    --shadow-card: 0 2px 12px rgba(51,46,34,0.06);
-    --shadow-sheet: 0 -4px 24px rgba(51,46,34,0.12);
-    --shadow-modal: 0 8px 32px rgba(51,46,34,0.16);
+  --accent: #FFB300;
+  --accent-hover: #e0a000;
+  --accent-tint: #fff3cc;
+  --accent-light: #ffe680;
+  --text-primary: #3E2723;
+  --text-secondary: #5D5347;
+  --text-muted: #6d6558;
+  --bg-page: #FFB300;
+  --border-subtle: #8E887B;
+  --surface-color: #7D7767;
+  --success-soft-bg: #A5D6A7;
+  --success-soft-text: #1B5E20;
+  --info-soft-bg: #6A6558;
+  --info-soft-text: #FFF8E7;
+  --warning-soft-bg: #F8BBD9;
+  --warning-soft-text: #880E4F;
+  --error-text: #C62828;
+  --focus-ring: #D81B60;
+  --shadow-card: 0 2px 12px rgba(0, 0, 0, 0.18);
+  --shadow-sheet: 0 -4px 24px rgba(0, 0, 0, 0.22);
+  --shadow-modal: 0 8px 32px rgba(0, 0, 0, 0.25);
 
-  /* Spacing */
   --space-1: 4px;  --space-2: 8px;  --space-3: 12px; --space-4: 16px;
   --space-5: 20px; --space-6: 24px; --space-8: 32px; --space-10: 40px;
   --space-page: 16px;
 
-  /* Radius */
   --radius-card: 16px;
   --radius-input: 12px;
   --radius-btn: 9999px;
   --radius-chip: 9999px;
   --radius-pill: 9999px;
 
-  /* Layout */
   --max-width: 480px;
   --max-width-recipe: 720px;
 
-  /* Typography */
   --font-display: "Plus Jakarta Sans", sans-serif;
   --font-body:    "Be Vietnam Pro", sans-serif;
 
-  /* Transition */
   --transition-fast: 150ms ease;
   --transition-base: 200ms ease;
 }

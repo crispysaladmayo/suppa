@@ -6,13 +6,13 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&family=Be+Vietnam+Pro:wght@400;500;600&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
-  <script>tailwind.config={darkMode:"class",theme:{extend:{colors:{background:"#fff6e2",surface:"#ffffff","surface-bright":"#fff6e2","surface-container-low":"#f9f0db","surface-container":"#f1e7d1","surface-container-high":"#ebe2ca","surface-container-highest":"#e6dcc3","surface-dim":"#ded4ba",primary:"#FFB300","primary-container":"#7b5400","on-primary":"#523700","on-primary-container":"#fff1df",secondary:"#b7004d","secondary-container":"#ffc2cc","on-secondary":"#ffeff0",tertiary:"#176a21","tertiary-container":"#9df197","on-tertiary":"#d1ffc8",error:"#b02500","error-container":"#f95630","on-surface":"#332e22","on-surface-variant":"#605b4c",outline:"#7c7666","outline-variant":"#b4ad9b"},borderRadius:{DEFAULT:"1rem",lg:"2rem",xl:"3rem",full:"9999px"},fontFamily:{headline:["Plus Jakarta Sans","sans-serif"],body:["Be Vietnam Pro","sans-serif"]}}}}</script>
+  <script>tailwind.config={darkMode:"class",theme:{extend:{colors:{background:"#FFB300",surface:"#7D7767","surface-bright":"#8B8575","surface-container-low":"#7D7767","surface-container":"#6A6558","surface-container-high":"#5A564C","surface-container-highest":"#4E4A42","surface-dim":"#403C36",primary:"#FFB300","primary-container":"#E6A200","on-primary":"#3E2723","on-primary-container":"#FFF8E7",secondary:"#D81B60","secondary-container":"#F8BBD9","on-secondary":"#FFFFFF",tertiary:"#2E7D32","tertiary-container":"#A5D6A7","on-tertiary":"#E8F5E9",error:"#C62828","error-container":"#FFCDD2","on-surface":"#FFF8E7","on-surface-variant":"#DDD5C8",outline:"#A69F90","outline-variant":"#8E887B","on-background":"#3E2723","on-background-variant":"#5D5347"},borderRadius:{DEFAULT:"1rem",lg:"2rem",xl:"3rem",full:"9999px"},fontFamily:{headline:["Plus Jakarta Sans","sans-serif"],body:["Be Vietnam Pro","sans-serif"]}}}}</script>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="css/tokens.css" /><link rel="stylesheet" href="css/components.css" />
 </head>
-<body class="bg-background font-body text-on-surface">
+<body class="bg-background font-body text-on-background">
 
-<header class="fixed top-0 inset-x-0 z-40 bg-surface-bright/80 backdrop-blur-md shadow-[0_1px_0_rgba(51,46,34,0.06)]">
+<header class="fixed top-0 inset-x-0 z-40 bg-surface-bright/80 backdrop-blur-md shadow-[0_1px_0_rgba(0,0,0,0.12)]">
   <div class="max-w-[480px] mx-auto flex items-center gap-3 px-4 h-16" style="padding-top:env(safe-area-inset-top,0)">
     <a href="settings.html" class="w-9 h-9 flex items-center justify-center rounded-full bg-surface-container-low flex-shrink-0" aria-label="Kembali">
       <span class="material-symbols-outlined text-[20px] text-on-surface">arrow_back</span>
@@ -87,7 +87,7 @@
 </div>
 
 <!-- Bottom nav -->
-<nav class="fixed bottom-0 inset-x-0 z-50 bg-white/95 backdrop-blur-md rounded-t-[2rem] shadow-[0_-2px_20px_rgba(51,46,34,0.08)]" aria-label="Navigasi utama">
+<nav class="fixed bottom-0 inset-x-0 z-50 bg-surface-container-high/95 backdrop-blur-md rounded-t-[2rem] shadow-[0_-2px_20px_rgba(0,0,0,0.18)]" aria-label="Navigasi utama">
   <div class="max-w-[480px] mx-auto flex items-start pt-3" style="padding-bottom:calc(0.75rem + env(safe-area-inset-bottom,0))">
     <a href="today.html" class="flex-1 flex flex-col items-center gap-0.5"><span class="flex items-center justify-center px-5 py-1"><span class="material-symbols-outlined text-[22px] text-on-surface-variant">home</span></span><span class="text-[11px] font-medium text-on-surface-variant">Beranda</span></a>
     <a href="log-add.html" class="flex-1 flex flex-col items-center gap-0.5"><span class="flex items-center justify-center px-5 py-1"><span class="material-symbols-outlined text-[22px] text-on-surface-variant">edit_note</span></span><span class="text-[11px] font-medium text-on-surface-variant">Catat</span></a>
