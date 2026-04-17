@@ -1,0 +1,457 @@
+/* Suppa — Tropical Harvest Base & Essential Components */
+
+/*
+ * Tailwind utilities (e.g. .flex) load with equal/higher cascade than the HTML [hidden] rule.
+ * Stepper panels use both — without this, “next” steps stay visible (see onboarding step-2).
+ */
+[hidden]:where(:not([hidden="until-found"])) {
+  display: none !important;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { font-size: 16px; -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  min-height: 100dvh;
+  font-family: "Be Vietnam Pro", sans-serif;
+  color: var(--on-background);
+  background: var(--background);
+}
+
+/* ── Elevated surface: soft blush + warmth (cards, strips — use with rounded-2xl / rounded-xl) */
+.suppa-card-elevated {
+  background-color: #fff7f5;
+  background: linear-gradient(
+    155deg,
+    #ffffff 0%,
+    color-mix(in srgb, var(--secondary-container) 22%, #ffffff) 40%,
+    color-mix(in srgb, var(--primary-container) 11%, #ffffff) 100%
+  );
+  border: 1px solid color-mix(in srgb, var(--secondary) 13%, var(--outline-variant));
+  box-shadow:
+    0 6px 28px color-mix(in srgb, var(--secondary) 7%, transparent),
+    0 2px 8px rgba(123, 84, 0, 0.045);
+}
+
+/* Same surface, dashed primary border (e.g. photo upload) */
+.suppa-card-elevated.suppa-card-elevated--dashed {
+  border-width: 2px;
+  border-style: dashed;
+  border-color: color-mix(in srgb, var(--primary-container) 60%, transparent);
+}
+
+/* Bottom nav — active tab icon chip (matches suppa-card-elevated; lighter shadow for bar) */
+.suppa-nav-pill-active {
+  background-color: #fff7f5;
+  background: linear-gradient(
+    155deg,
+    #ffffff 0%,
+    color-mix(in srgb, var(--secondary-container) 22%, #ffffff) 40%,
+    color-mix(in srgb, var(--primary-container) 11%, #ffffff) 100%
+  );
+  border: 1px solid color-mix(in srgb, var(--secondary) 13%, var(--outline-variant));
+  box-shadow:
+    0 4px 16px color-mix(in srgb, var(--secondary) 5%, transparent),
+    0 1px 4px rgba(123, 84, 0, 0.04);
+}
+
+/* ── Pelangi hati (today.html #nutrition-hearts) ─────────── */
+.nutrient-hearts-svg {
+  overflow: visible;
+  display: block;
+  margin: 0 auto;
+}
+.nutrient-heart-ghost,
+#nutrition-hearts use.nutrient-heart-ghost {
+  fill: color-mix(in srgb, var(--surface-container-high) 78%, #ffffff);
+  stroke: color-mix(in srgb, var(--outline-variant) 70%, var(--primary-container));
+  stroke-width: 1.35;
+  stroke-dasharray: 5 4;
+  stroke-linejoin: round;
+  opacity: 0.92;
+}
+/* Lapisan bayangan lilin + tepi krayon (stroke lebih tebal, warna gelap per nutrien) */
+#nutrition-hearts use.nutrient-heart-wax-under {
+  pointer-events: none;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  paint-order: normal;
+  filter: url(#crayon-chalk);
+}
+#nutrition-hearts use.nutrient-heart-wax--carbs {
+  stroke: #8a6400;
+  stroke-opacity: 0.35;
+  stroke-width: 2.85;
+}
+#nutrition-hearts use.nutrient-heart-wax--protein {
+  stroke: #8f2a18;
+  stroke-opacity: 0.35;
+  stroke-width: 2.85;
+}
+#nutrition-hearts use.nutrient-heart-wax--fat {
+  stroke: #134a1c;
+  stroke-opacity: 0.35;
+  stroke-width: 2.85;
+}
+#nutrition-hearts use.nutrient-heart-wax--energy {
+  stroke: #6b1f16;
+  stroke-opacity: 0.35;
+  stroke-width: 2.85;
+}
+#nutrition-hearts use.nutrient-heart-wax--fiber {
+  stroke: #3d2a6e;
+  stroke-opacity: 0.35;
+  stroke-width: 2.85;
+}
+#nutrition-hearts use.nutrient-heart-body {
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  paint-order: stroke fill;
+  filter: url(#crayon-chalk);
+}
+#nutrition-hearts use.nutrient-heart-body--carbs {
+  fill: #f0b429;
+  stroke: #a86f00;
+  stroke-width: 2.2;
+}
+#nutrition-hearts use.nutrient-heart-body--protein {
+  fill: #f0644a;
+  stroke: #9c3018;
+  stroke-width: 2.2;
+}
+#nutrition-hearts use.nutrient-heart-body--fat {
+  fill: #2d8a38;
+  stroke: #145522;
+  stroke-width: 2.2;
+}
+#nutrition-hearts use.nutrient-heart-body--energy {
+  fill: #c43d2e;
+  stroke: #7a2218;
+  stroke-width: 2.2;
+}
+#nutrition-hearts use.nutrient-heart-body--fiber {
+  fill: #6f58b8;
+  stroke: #453084;
+  stroke-width: 2.2;
+}
+.nutrient-heart-inner {
+  pointer-events: none;
+}
+.nutrient-heart-scale {
+  /* Must match JS MIN_HEART_SCALE — tiny at 0% intake, never zero */
+  transform: translate(0px, -6px) scale(0.28) translate(0px, 6px);
+  transform-box: fill-box;
+  transform-origin: center center;
+  transition: transform 0.75s cubic-bezier(0.33, 1.18, 0.48, 1);
+}
+.nutrient-heart-col {
+  --joy: 0;
+}
+.nutrient-face {
+  transition: opacity 0.6s ease;
+}
+.nutrient-face--sad {
+  opacity: calc(1 - var(--joy));
+}
+.nutrient-face--happy {
+  opacity: var(--joy);
+}
+.nutrient-sparkles {
+  transition: opacity 0.45s ease;
+  pointer-events: none;
+}
+
+/* Makronutrien: trek abu = kapasitas penuh, isi = warna sama seperti hati */
+.suppa-macro-bar-track {
+  background: #d4cfc3;
+  border: 1px solid color-mix(in srgb, var(--outline-variant) 55%, transparent);
+  box-shadow: inset 0 1px 2px rgba(51, 46, 34, 0.06);
+}
+.suppa-macro-bar-fill--carbs {
+  background-color: #f0b429;
+}
+.suppa-macro-bar-fill--protein {
+  background-color: #f0644a;
+}
+.suppa-macro-bar-fill--fat {
+  background-color: #2d8a38;
+}
+.suppa-macro-bar-fill--energy {
+  background-color: #c43d2e;
+}
+.suppa-macro-bar-fill--fiber {
+  background-color: #6f58b8;
+}
+/* Alias lama (serat) — sama dengan hati ungu */
+.macro-fill-fiber {
+  background-color: #6f58b8;
+}
+
+/* ── App frame (needed by app.js injectVersionBar) ─────── */
+.app-frame { position: relative; }
+
+/* ── Version bar (injected by app.js) ─────────────────── */
+.version-bar {
+  text-align: center;
+  font-size: 0.6875rem;
+  color: var(--on-background-variant);
+  padding: 1.25rem 0 0.5rem;
+  letter-spacing: 0.03em;
+  user-select: none;
+}
+
+/* ── Toast ─────────────────────────────────────────────── */
+.toast {
+  position: fixed;
+  bottom: calc(80px + env(safe-area-inset-bottom, 0));
+  left: 50%;
+  transform: translateX(-50%) translateY(12px);
+  background: #332e22;
+  color: #fff;
+  padding: 0.6rem 1.25rem;
+  border-radius: 9999px;
+  font-family: "Be Vietnam Pro", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 500;
+  transition: opacity 200ms ease, transform 200ms ease;
+}
+.toast--show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+  pointer-events: auto;
+}
+
+/* ── Bottom Sheet ───────────────────────────────────────── */
+.sheet-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(51, 46, 34, 0.35);
+  z-index: 300;
+  display: flex;
+  align-items: flex-end;
+}
+.sheet-overlay[hidden] { display: none; }
+.sheet {
+  background: var(--surface-container);
+  color: var(--on-surface);
+  border-radius: 2rem 2rem 0 0;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 1.25rem;
+  box-shadow: var(--shadow-sheet);
+  max-height: 90dvh;
+  overflow-y: auto;
+}
+.sheet__handle {
+  width: 36px;
+  height: 4px;
+  background: var(--outline-variant);
+  border-radius: 9999px;
+  margin: 0 auto 1rem;
+}
+.sheet__title {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  margin: 0 0 1rem;
+  color: var(--on-surface);
+}
+.sheet__action {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  padding: 0.875rem 0;
+  border-bottom: 1px solid var(--surface-container-high);
+  font-size: 0.9375rem;
+  color: var(--on-surface);
+  cursor: pointer;
+  background: none;
+  border-left: none; border-right: none; border-top: none;
+  width: 100%;
+  text-align: left;
+  font-family: "Be Vietnam Pro", sans-serif;
+}
+.sheet__action:hover { color: var(--primary); }
+.sheet__action:last-of-type { border-bottom: none; }
+
+/* ── Modal Overlay ─────────────────────────────────────── */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(51, 46, 34, 0.35);
+  z-index: 400;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+.modal-overlay[hidden] { display: none; }
+.modal {
+  background: var(--surface-container);
+  color: var(--on-surface);
+  border-radius: 1.5rem;
+  padding: 1.5rem;
+  max-width: 360px;
+  width: 100%;
+  box-shadow: var(--shadow-modal);
+}
+
+/* ── Field errors (used by app.js showError/clearError) ── */
+.field__error {
+  font-size: 0.875rem;
+  color: var(--error);
+  margin-top: 0.35rem;
+  display: none;
+}
+.field__error.is-visible { display: block; }
+
+/* ── Disclaimer ────────────────────────────────────────── */
+[data-disclaimer] {
+  font-size: 0.8125rem;
+  color: var(--on-surface-variant);
+  padding: 0.625rem 1rem;
+  background: var(--surface-container-low);
+  border-radius: 0.75rem;
+  margin-bottom: 0.875rem;
+  line-height: 1.4;
+}
+[data-disclaimer-expand] {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 0.8125rem;
+  color: var(--primary);
+  cursor: pointer;
+  text-decoration: underline;
+  min-height: 0;
+  width: auto;
+}
+
+/* ── Onboarding steps ──────────────────────────────────── */
+.step { display: none; }
+.step.is-active { display: block; }
+
+/* ── Tab panels ────────────────────────────────────────── */
+[role="tabpanel"][hidden] { display: none; }
+
+/* ── Chip (allergy chips, fridge tags — styled by JS) ──── */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  min-height: 36px;
+  padding: 0.375rem 0.875rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border: 1.5px solid var(--outline-variant);
+  border-radius: 9999px;
+  background: var(--surface-container-high);
+  color: var(--on-surface);
+  cursor: pointer;
+  transition: all 150ms ease;
+  user-select: none;
+  font-family: "Be Vietnam Pro", sans-serif;
+}
+.chip:hover { background: var(--surface-dim); border-color: var(--primary); color: var(--on-surface); }
+.chip.is-active { background: var(--surface-dim); border-color: var(--primary); color: var(--on-surface); }
+
+/* Topic chips (edukasi) */
+.topic-chip.is-active {
+  background: var(--secondary) !important;
+  color: var(--on-secondary) !important;
+  border-color: var(--secondary) !important;
+}
+
+/* ── Food group buttons (JS uses aria-pressed) ─────────── */
+.food-group-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.375rem;
+  background: var(--surface-container-high);
+  border: 3px solid var(--outline);
+  border-radius: 1rem;
+  padding: 0.875rem 0.5rem;
+  cursor: pointer;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  font-family: "Be Vietnam Pro", sans-serif;
+  color: var(--on-surface);
+  transition: all 150ms ease;
+  min-height: 72px;
+  width: 100%;
+}
+.food-group-btn:hover { border-color: var(--primary); color: var(--on-surface); background: var(--surface-container); }
+.food-group-btn[aria-pressed="true"] {
+  background: var(--surface-dim);
+  border-color: var(--primary);
+  color: var(--on-surface);
+}
+
+/* ── Portion buttons (JS uses aria-pressed) ────────────── */
+.portion-btn {
+  flex: 1;
+  background: var(--surface-container-high);
+  border: 3px solid var(--outline);
+  border-radius: 9999px;
+  padding: 0.75rem 0.5rem;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  font-family: "Be Vietnam Pro", sans-serif;
+  cursor: pointer;
+  color: var(--on-surface);
+  transition: all 150ms ease;
+  min-height: 52px;
+  text-align: center;
+}
+.portion-btn:hover { border-color: var(--primary); color: var(--on-surface); }
+.portion-btn[aria-pressed="true"] {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: var(--on-primary);
+}
+
+/* ── Tab bar (recipes/edukasi) ─────────────────────────── */
+.tab-btn {
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-family: "Be Vietnam Pro", sans-serif;
+  color: var(--on-surface-variant);
+  cursor: pointer;
+  border-radius: 9999px;
+  min-height: 36px;
+  white-space: nowrap;
+  transition: all 150ms ease;
+}
+.tab-btn[aria-selected="true"] { background: var(--secondary); color: var(--on-secondary); }
+.tab-btn:hover:not([aria-selected="true"]) { background: var(--surface-container-high); color: var(--on-surface); }
+
+/* ── Macro bar fills (updated via JS) ──────────────────── */
+.macro-fill-energy  { background: #feb300; }
+.macro-fill-protein { background: #f95630; }
+.macro-fill-carbs   { background: #b7004d; }
+.macro-fill-fat     { background: #7c7666; }
+
+/* ── Print ──────────────────────────────────────────────── */
+@media print {
+  .toast, .sheet-overlay, .modal-overlay, nav { display: none !important; }
+  body { background: #fff !important; }
+}
+
+/* ── Reduced motion ─────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

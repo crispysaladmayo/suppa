@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Beranda — Suppa</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&family=Be+Vietnam+Pro:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
+  <script>tailwind.config={darkMode:"class",theme:{extend:{colors:{background:"#fff6e2",surface:"#fff6e2","surface-bright":"#fff6e2","surface-container-low":"#f9f0db","surface-container":"#f1e7d1","surface-container-high":"#ebe2ca","surface-container-highest":"#e6dcc3","surface-dim":"#ded4ba","surface-container-lowest":"#ffffff","surface-variant":"#e6dcc3","surface-tint":"#7b5400",primary:"#7b5400","primary-dim":"#6b4900","primary-container":"#feb300","primary-fixed":"#feb300","primary-fixed-dim":"#eda600","inverse-primary":"#feb300","on-primary":"#fff1df","on-primary-container":"#523700","on-primary-fixed":"#382400","on-primary-fixed-variant":"#5e4000",secondary:"#b7004d","secondary-dim":"#a00043","secondary-container":"#ffc2cc","secondary-fixed":"#ffc2cc","secondary-fixed-dim":"#ffadbc","on-secondary":"#ffeff0","on-secondary-container":"#91003c","on-secondary-fixed":"#6d002b","on-secondary-fixed-variant":"#a20044",tertiary:"#176a21","tertiary-dim":"#025d16","tertiary-container":"#9df197","tertiary-fixed":"#9df197","tertiary-fixed-dim":"#90e28a","on-tertiary":"#d1ffc8","on-tertiary-container":"#005c15","on-tertiary-fixed":"#00460e","on-tertiary-fixed-variant":"#12661e",error:"#b02500","error-dim":"#b92902","error-container":"#f95630","on-error":"#ffefec","on-error-container":"#520c00","on-surface":"#332e22","on-surface-variant":"#605b4c","inverse-surface":"#110e04","inverse-on-surface":"#a39c8b",outline:"#7c7666","outline-variant":"#b4ad9b","on-background":"#332e22","on-background-variant":"#605b4c"},borderRadius:{DEFAULT:"1rem",lg:"2rem",xl:"3rem",full:"9999px"},fontFamily:{headline:["Plus Jakarta Sans","sans-serif"],body:["Be Vietnam Pro","sans-serif"]}}}}</script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/tokens.css" /><link rel="stylesheet" href="css/components.css" />
+</head>
+<body class="bg-background font-body text-on-background">
+
+<!-- Fixed top bar -->
+<header class="fixed top-0 inset-x-0 z-40 bg-surface-bright/80 backdrop-blur-[20px] shadow-[0_0_24px_rgba(51,46,34,0.06)]">
+  <div class="max-w-[480px] mx-auto flex items-center justify-between px-4 h-16" style="padding-top:env(safe-area-inset-top,0)">
+    <button id="child-switch-btn" class="flex items-center gap-2 min-h-[40px] px-3 py-1.5 rounded-full bg-surface-container-low border border-outline-variant/40" aria-label="Ganti profil anak">
+      <div class="w-7 h-7 rounded-full bg-primary-container flex items-center justify-center flex-shrink-0">
+        <span class="font-headline font-bold text-xs text-on-primary-container">N</span>
+      </div>
+      <span class="text-sm font-medium text-on-surface" id="today-greeting" data-child-first="Nara">Selamat pagi, Mama Nara</span>
+      <span class="material-symbols-outlined text-[16px] text-on-surface-variant">expand_more</span>
+    </button>
+    <a href="settings.html" class="w-9 h-9 flex items-center justify-center rounded-full bg-surface-container-low" aria-label="Pengaturan">
+      <span class="material-symbols-outlined text-[20px] text-on-surface-variant">settings</span>
+    </a>
+  </div>
+</header>
+
+<div class="app-frame min-h-dvh max-w-[480px] mx-auto">
+  <main class="pt-20 pb-28 px-4 space-y-4 text-on-background">
+
+    <!-- Disclaimer -->
+    <div data-disclaimer class="text-xs text-on-surface px-3 py-2 rounded-xl suppa-card-elevated">
+      Suppa membagikan ide makanan umum, bukan saran medis.
+      <button type="button" data-disclaimer-expand aria-expanded="false">Baca selengkapnya</button>
+      <div data-disclaimer-full hidden class="mt-1">Suppa tidak mendiagnosis atau mengobati kondisi medis. Untuk kekhawatiran MPASI atau alergi, diskusikan dengan dokter anak atau ahli gizi terdaftar.</div>
+    </div>
+
+    <!-- Mode hint (shown 17–19h by JS) -->
+    <div id="mode-hint" class="text-on-surface flex items-center gap-2 rounded-xl px-4 py-3 text-sm suppa-card-elevated" hidden>
+      <span class="material-symbols-outlined text-[18px] text-primary flex-shrink-0">restaurant</span>
+      <span class="flex-1 text-on-surface">Mau masak apa malam ini?</span>
+      <a href="fridge.html" class="font-semibold text-primary whitespace-nowrap underline underline-offset-2 decoration-primary/40">Mode Masak →</a>
+      <button type="button" id="mode-hint-dismiss" class="ml-1 text-on-surface-variant" aria-label="Tutup saran">
+        <span class="material-symbols-outlined text-[18px]">close</span>
+      </button>
+    </div>
+
+    <!-- Pelangi Kecukupan Gizi hero -->
+    <div class="text-on-surface rounded-2xl p-5 relative overflow-x-clip overflow-y-visible suppa-card-elevated">
+
+      <p class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider mb-3">Pelangi Kecukupan Gizi hari ini</p>
+
+      <!-- Pelangi hati: siluet penuh + hati kecil sedih → membesar & bahagia saat kecukupan naik -->
+      <div class="flex flex-col items-center">
+        <div class="relative w-full max-w-[380px]" style="min-height:114px">
+          <svg id="nutrition-hearts" class="nutrient-hearts-svg" viewBox="0 0 372 110" width="100%" height="102" aria-hidden="true">
+            <defs>
+              <!-- Path tanpa fill di defs: isi dari <use fill="…"> (WebKit membutuhkan ini agar warna tampil) -->
+              <path id="nutrient-heart-sketch" d="M0.5,-30.5c-3.1,-6.6,-11.8,-10.1,-18.1,-3.7c-6.8,6.6,-5.4,15.2,-0.2,21.6l18.2,23.4l18.7,-23.1c5.4,-6.4,6.9,-15.4,-0.7,-21.8c-6.9,-6.1,-15.4,-2.5,-17.8,3.6z"/>
+              <filter id="crayon-chalk" x="-22%" y="-22%" width="144%" height="144%" color-interpolation-filters="sRGB">
+                <feTurbulence type="fractalNoise" baseFrequency="0.12" numOctaves="4" seed="17" result="noise"/>
+                <feDisplacementMap in="SourceGraphic" in2="noise" scale="3.1" xChannelSelector="R" yChannelSelector="G"/>
+              </filter>
+            </defs>
+            <!-- Urutan: karbo, protein, lemak, energi, serat — bentuk hati agak “coret” tapi tetap rapi -->
+            <g class="nutrient-heart-col" id="heart-col-carbs" transform="translate(2,5)" data-macro="carbs">
+              <use href="#nutrient-heart-sketch" class="nutrient-heart-ghost" transform="translate(36,44)"/>
+              <g class="nutrient-heart-inner" transform="translate(36,44)">
+                <g class="nutrient-heart-scale">
+                  <use href="#nutrient-heart-sketch" class="nutrient-heart-wax-under nutrient-heart-wax--carbs" transform="translate(0.85,0.55)"/>
+                  <use href="#nutrient-heart-sketch" class="nutrient-heart-body nutrient-heart-body--carbs"/>
+                  <g class="nutrient-face nutrient-face--sad" fill="none" stroke="#4a3200" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="-8" cy="-9" r="1.15" fill="none"/><circle cx="8" cy="-9" r="1.15" fill="none"/><path d="M-9 4 Q0 -0.5 9 4"/>
+                  </g>
+                  <g class="nutrient-face nutrient-face--happy" fill="none" stroke="#4a3200" stroke-width="1.35" stroke-linecap="round" opacity="0.88">
+                    <ellipse cx="-8" cy="-9" rx="2.2" ry="2.6" fill="none"/><ellipse cx="8" cy="-9" rx="2.2" ry="2.6" fill="none"/><path d="M-11 1 Q0 12 11 1"/>
+                  </g>
+                  <g class="nutrient-sparkles" fill="#fffde8" opacity="0">
+                    <circle cx="-20" cy="-30" r="1.8"/><circle cx="18" cy="-28" r="1.4"/><circle cx="2" cy="-36" r="1.1"/>
+                  </g>
+                </g>
+              </g>
+            </g>
+            <g class="nutrient-heart-col" id="heart-col-protein" transform="translate(76,5)" data-macro="protein">
+              <use href="#nutrient-heart-sketch" class="nutrient-heart-ghost" transform="translate(36,44)"/>
+              <g class="nutrient-heart-inner" transform="translate(36,44)">
+                <g class="nutrient-heart-scale">
+                  <use href="#nutrient-heart-sketch" class="nutrient-heart-wax-under nutrient-heart-wax--protein" transform="translate(0.85,0.55)"/>
+                  <use href="#nutrient-heart-sketch" class="nutrient-heart-body nutrient-heart-body--protein"/>
+                  <g class="nutrient-face nutrient-face--sad" fill="none" stroke="#5c1808" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="-8" cy="-9" r="1.15" fill="none"/><circle cx="8" cy="-9" r="1.15" fill="none"/><path d="M-9 4 Q0 -0.5 9 4"/>
+                  </g>
+                  <g class="nutrient-face nutrient-face--happy" fill="none" stroke="#fff4f0" stroke-width="1.35" stroke-linecap="round">
+                    <ellipse cx="-8" cy="-9" rx="2.2" ry="2.6" fill="none"/><ellipse cx="8" cy="-9" rx="2.2" ry="2.6" fill="none"/><path d="M-11 1 Q0 12 11 1"/>
+                  </g>
+                  <g class="nutrient-sparkles" fill="#fff8f5" opacity="0">
+                    <circle cx="-20" cy="-30" r="1.8"/><circle cx="18" cy="-28" r="1.4"/><circle cx="2" cy="-36" r="1.1"/>
+                  </g>
+                </g>
+              </g>
+            </g>
+            <g class="nutrient-heart-col" id="heart-col-fat" transform="translate(150,5)" data-macro="fat">
+              <use href="#nutrient-heart-sketch" class="nutrient-heart-ghost" transform="translate(36,44)"/>
+              <g class="nutrient-heart-inner" transform="translate(36,44)">
+                <g class="nutrient-heart-scale">
+                  <use href="#nutrient-heart-sketch" class="nutrient-heart-wax-under nutrient-heart-wax--fat" transform="translate(0.85,0.55)"/>
+                  <use href="#nutrient-heart-sketch" class="nutrient-heart-body nutrient-heart-body--fat"/>
+                  <g class="nutrient-face nutrient-face--sad" fill="none" stroke="#0a3014" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="-8" cy="-9" r="1.15" fill="none"/><circle cx="8" cy="-9" r="1.15" fill="none"/><path d="M-9 4 Q0 -0.5 9 4"/>
+                  </g>
+                  <g class="nutrient-face nutrient-face--happy" fill="none" stroke="#d8ffe0" stroke-width="1.35" stroke-linecap="round">
+                    <ellipse cx="-8" cy="-9" rx="2.2" ry="2.6" fill="none"/><ellipse cx="8" cy="-9" rx="2.2" ry="2.6" fill="none"/><path d="M-11 1 Q0 12 11 1"/>
+                  </g>
+                  <g class="nutrient-sparkles" fill="#d4ffd8" opacity="0">
+                    <circle cx="-20" cy="-30" r="1.8"/><circle cx="18" cy="-28" r="1.4"/><circle cx="2" cy="-36" r="1.1"/>
+                  </g>
+                </g>
+              </g>
+            </g>
+            <g class="nutrient-heart-col" id="heart-col-energy" transform="translate(224,5)" data-macro="energy">
+              <use href="#nutrient-heart-sketch" class="nutrient-heart-ghost" transform="translate(36,44)"/>
+              <g class="nutrient-heart-inner" transform="translate(36,44)">
+                <g class="nutrient-heart-scale">
+                  <use href="#nutrient-heart-sketch" class="nutrient-heart-wax-under nutrient-heart-wax--energy" transform="translate(0.85,0.55)"/>
+                  <use href="#nutrient-heart-sketch" class="nutrient-heart-body nutrient-heart-body--energy"/>
+                  <g class="nutrient-face nutrient-face--sad" fill="none" stroke="#3d0f08" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="-8" cy="-9" r="1.15" fill="none"/><circle cx="8" cy="-9" r="1.15" fill="none"/><path d="M-9 4 Q0 -0.5 9 4"/>
+                  </g>
+                  <g class="nutrient-face nutrient-face--happy" fill="none" stroke="#ffe8e0" stroke-width="1.35" stroke-linecap="round">
+                    <ellipse cx="-8" cy="-9" rx="2.2" ry="2.6" fill="none"/><ellipse cx="8" cy="-9" rx="2.2" ry="2.6" fill="none"/><path d="M-11 1 Q0 12 11 1"/>
+                  </g>
+                  <g class="nutrient-sparkles" fill="#fff8f2" opacity="0">
+                    <circle cx="-20" cy="-30" r="1.8"/><circle cx="18" cy="-28" r="1.4"/><circle cx="2" cy="-36" r="1.1"/>
+                  </g>
+                </g>
+              </g>
+            </g>
+            <g class="nutrient-heart-col" id="heart-col-fiber" transform="translate(298,5)" data-macro="fiber">
+              <use href="#nutrient-heart-sketch" class="nutrient-heart-ghost" transform="translate(36,44)"/>
+              <g class="nutrient-heart-inner" transform="translate(36,44)">
+                <g class="nutrient-heart-scale">
+                  <use href="#nutrient-heart-sketch" class="nutrient-heart-wax-under nutrient-heart-wax--fiber" transform="translate(0.85,0.55)"/>
+                  <use href="#nutrient-heart-sketch" class="nutrient-heart-body nutrient-heart-body--fiber"/>
+                  <g class="nutrient-face nutrient-face--sad" fill="none" stroke="#2d1f52" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="-8" cy="-9" r="1.15" fill="none"/><circle cx="8" cy="-9" r="1.15" fill="none"/><path d="M-9 4 Q0 -0.5 9 4"/>
+                  </g>
+                  <g class="nutrient-face nutrient-face--happy" fill="none" stroke="#ebe4ff" stroke-width="1.35" stroke-linecap="round">
+                    <ellipse cx="-8" cy="-9" rx="2.2" ry="2.6" fill="none"/><ellipse cx="8" cy="-9" rx="2.2" ry="2.6" fill="none"/><path d="M-11 1 Q0 12 11 1"/>
+                  </g>
+                  <g class="nutrient-sparkles" fill="#e8ddff" opacity="0">
+                    <circle cx="-20" cy="-30" r="1.8"/><circle cx="18" cy="-28" r="1.4"/><circle cx="2" cy="-36" r="1.1"/>
+                  </g>
+                </g>
+              </g>
+            </g>
+          </svg>
+        </div>
+        <!-- Legend (ids tetap untuk skrip makro) -->
+        <div class="flex flex-wrap justify-center gap-x-3 gap-y-1 mt-2">
+          <span class="flex items-center gap-1.5 text-xs text-on-surface-variant"><span class="w-2.5 h-2.5 rounded-full flex-shrink-0" style="background:#f0b429"></span>Karbo <span id="arc-carbs-ratio" class="font-semibold text-on-surface whitespace-nowrap"><span class="text-outline">~</span>0 / 130 g</span></span>
+          <span class="flex items-center gap-1.5 text-xs text-on-surface-variant"><span class="w-2.5 h-2.5 rounded-full flex-shrink-0" style="background:#f0644a"></span>Protein <span id="arc-protein-ratio" class="font-semibold text-on-surface whitespace-nowrap"><span class="text-outline">~</span>0 / 20 g</span></span>
+          <span class="flex items-center gap-1.5 text-xs text-on-surface-variant"><span class="w-2.5 h-2.5 rounded-full flex-shrink-0" style="background:#2d8a38"></span>Lemak <span id="arc-fat-ratio" class="font-semibold text-on-surface whitespace-nowrap"><span class="text-outline">~</span>0 / 40 g</span></span>
+          <span class="flex items-center gap-1.5 text-xs text-on-surface-variant"><span class="w-2.5 h-2.5 rounded-full flex-shrink-0" style="background:#c43d2e"></span>Energi <span id="arc-energy-ratio" class="font-semibold text-on-surface whitespace-nowrap"><span class="text-outline">~</span>0 / 1000 kkal</span></span>
+          <span class="flex items-center gap-1.5 text-xs text-on-surface-variant"><span class="w-2.5 h-2.5 rounded-full flex-shrink-0" style="background:#6f58b8"></span>Serat <span id="arc-fiber-ratio" class="font-semibold text-on-surface whitespace-nowrap"><span class="text-outline">~</span>0 / 15 g</span></span>
+        </div>
+        <a href="nutrition-detail.html" class="mt-4 flex items-center justify-between gap-3 w-full px-4 py-3 rounded-2xl border border-primary/20 bg-primary-container/12 text-on-surface hover:bg-primary-container/22 active:scale-[0.99] transition-all">
+          <span class="flex items-center gap-2.5 min-w-0">
+            <span class="material-symbols-outlined text-primary text-[22px] flex-shrink-0" aria-hidden="true">monitoring</span>
+            <span class="text-sm font-semibold text-left leading-snug">Lihat detail kecukupan makronutrien</span>
+          </span>
+          <span class="material-symbols-outlined text-on-surface-variant text-[22px] flex-shrink-0" aria-hidden="true">chevron_right</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Daily To-Do List -->
+    <div class="text-on-surface rounded-2xl p-5 suppa-card-elevated" id="todo-card">
+      <div class="flex items-center justify-between mb-4">
+        <h2 class="font-headline font-bold text-base text-on-surface tracking-tight">Rencana hari ini</h2>
+        <button type="button" id="todo-edit-btn" class="w-8 h-8 flex items-center justify-center rounded-full text-primary hover:bg-primary-container/25" aria-label="Edit to-do list">
+          <span class="material-symbols-outlined text-[18px]">edit</span>
+        </button>
+      </div>
+      <ul class="divide-y divide-outline-variant/20" id="todo-list" aria-label="Daftar rencana hari ini"></ul>
+      <!-- Add custom to-do -->
+      <div class="flex items-center gap-2 mt-3" id="todo-add-row" hidden>
+        <input type="text" id="todo-custom-input" placeholder="Tambah rencana…" maxlength="80"
+          class="flex-1 min-h-[40px] px-3 py-2 rounded-full bg-surface border border-outline-variant/50 text-sm text-on-surface placeholder:text-on-surface-variant/50 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10" />
+        <button type="button" id="todo-custom-add" class="w-9 h-9 flex items-center justify-center rounded-full bg-primary text-on-primary flex-shrink-0" aria-label="Tambah">
+          <span class="material-symbols-outlined text-[18px]">add</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Macro progress card -->
+    <div class="text-on-surface rounded-2xl p-5 suppa-card-elevated" id="macro-card" aria-labelledby="today-heading">
+      <div class="flex items-start justify-between mb-0.5">
+        <h2 id="today-heading" class="font-headline font-bold text-base text-on-surface">Gizi Hari Ini untuk Nara</h2>
+        <button type="button" id="macro-edit-btn" class="w-8 h-8 flex items-center justify-center rounded-full text-on-surface-variant hover:bg-surface-container flex-shrink-0 -mt-0.5" aria-label="Edit target nutrisi" aria-expanded="false">
+          <span class="material-symbols-outlined text-[18px]">tune</span>
+        </button>
+      </div>
+      <p class="text-xs text-on-surface-variant italic mb-4">Perkiraan dari catatan cepat — bukan asupan pasti.</p>
+
+      <!-- Inline nutrient editor panel -->
+      <div id="macro-edit-panel" hidden class="mb-4 p-4 rounded-2xl suppa-card-elevated">
+        <p class="text-xs font-semibold text-on-surface-variant mb-3">Sesuaikan target harian</p>
+        <div class="space-y-3" id="macro-targets-form">
+          <!-- Fields injected by JS -->
+        </div>
+        <div class="flex gap-2 mt-3">
+          <button type="button" id="macro-edit-save" class="flex-1 py-2 rounded-full bg-primary text-on-primary text-sm font-semibold">Simpan</button>
+          <button type="button" id="macro-edit-cancel" class="flex-1 py-2 rounded-full bg-surface-container-high text-on-surface text-sm font-semibold">Batal</button>
+        </div>
+      </div>
+
+      <!-- Karbo -->
+      <div class="mb-3" role="group" aria-label="Karbohidrat hari ini">
+        <div class="flex justify-between items-baseline mb-1">
+          <span class="text-sm font-semibold text-on-surface">Karbo</span>
+          <span class="text-sm text-on-surface-variant" id="macro-carbs-val"><span class="text-outline">~</span>0 / 130 g</span>
+        </div>
+        <div class="h-2 rounded-full overflow-hidden suppa-macro-bar-track" aria-hidden="true">
+          <div class="h-full rounded-full suppa-macro-bar-fill--carbs transition-all duration-500" id="macro-carbs-fill" style="width:0%"></div>
+        </div>
+      </div>
+      <!-- Protein -->
+      <div class="mb-3" role="group" aria-label="Protein hari ini">
+        <div class="flex justify-between items-baseline mb-1">
+          <span class="text-sm font-semibold text-on-surface">Protein</span>
+          <span class="text-sm text-on-surface-variant" id="macro-protein-val"><span class="text-outline">~</span>0 / 20 g</span>
+        </div>
+        <div class="h-2 rounded-full overflow-hidden suppa-macro-bar-track" aria-hidden="true">
+          <div class="h-full rounded-full suppa-macro-bar-fill--protein transition-all duration-500" id="macro-protein-fill" style="width:0%"></div>
+        </div>
+      </div>
+      <!-- Lemak -->
+      <div class="mb-3" role="group" aria-label="Lemak hari ini">
+        <div class="flex justify-between items-baseline mb-1">
+          <span class="text-sm font-semibold text-on-surface">Lemak</span>
+          <span class="text-sm text-on-surface-variant" id="macro-fat-val"><span class="text-outline">~</span>0 / 40 g</span>
+        </div>
+        <div class="h-2 rounded-full overflow-hidden suppa-macro-bar-track" aria-hidden="true">
+          <div class="h-full rounded-full suppa-macro-bar-fill--fat transition-all duration-500" id="macro-fat-fill" style="width:0%"></div>
+        </div>
+      </div>
+      <!-- Energi -->
+      <div class="mb-3" role="group" aria-label="Energi hari ini">
+        <div class="flex justify-between items-baseline mb-1">
+          <span class="text-sm font-semibold text-on-surface">Energi</span>
+          <span class="text-sm text-on-surface-variant" id="macro-energy-val"><span class="text-outline">~</span>0 / 1000 kkal</span>
+        </div>
+        <div class="h-2 rounded-full overflow-hidden suppa-macro-bar-track" aria-hidden="true">
+          <div class="h-full rounded-full suppa-macro-bar-fill--energy transition-all duration-500" id="macro-energy-fill" style="width:0%"></div>
+        </div>
+      </div>
+      <!-- Serat -->
+      <div class="mb-3" role="group" aria-label="Serat hari ini">
+        <div class="flex justify-between items-baseline mb-1">
+          <span class="text-sm font-semibold text-on-surface">Serat</span>
+          <span class="text-sm text-on-surface-variant" id="macro-fiber-val"><span class="text-outline">~</span>0 / 15 g</span>
+        </div>
+        <div class="h-2 rounded-full overflow-hidden suppa-macro-bar-track" aria-hidden="true">
+          <div class="h-full rounded-full suppa-macro-bar-fill--fiber transition-all duration-500" id="macro-fiber-fill" style="width:0%"></div>
+        </div>
+      </div>
+      <a href="nutrition-detail.html" class="flex items-center justify-between gap-3 w-full px-4 py-3 rounded-2xl border border-primary/20 bg-primary-container/12 text-on-surface hover:bg-primary-container/22 active:scale-[0.99] transition-all">
+        <span class="flex items-center gap-2.5 min-w-0">
+          <span class="material-symbols-outlined text-primary text-[22px] flex-shrink-0" aria-hidden="true">monitoring</span>
+          <span class="text-sm font-semibold text-left leading-snug">Lihat detail kecukupan makronutrien</span>
+        </span>
+        <span class="material-symbols-outlined text-on-surface-variant text-[22px] flex-shrink-0" aria-hidden="true">chevron_right</span>
+      </a>
+      <!-- Weekly footer -->
+      <p class="text-xs text-on-surface-variant mt-3 pt-3 border-t border-outline-variant/20">
+        🌈 Nara sudah makan 5 dari 8 kelompok minggu ini ·
+        <a href="log-week.html" class="text-primary font-medium underline underline-offset-2 decoration-primary/40">Lihat detail</a>
+      </p>
+    </div>
+
+    <!-- Zinc gap nudge -->
+    <div id="gap-nudge" class="text-on-surface gap-hint flex items-center gap-3 rounded-xl px-4 py-3 suppa-card-elevated" role="status" aria-label="Saran gizi minggu ini">
+      <span class="material-symbols-outlined text-[18px] text-primary flex-shrink-0">info</span>
+      <span class="flex-1 text-sm text-on-surface-variant">Zinc minggu ini rendah · coba tempe atau daging sapi</span>
+      <button type="button" class="text-on-surface-variant flex-shrink-0" data-dismiss="gap-nudge" aria-label="Tutup saran">
+        <span class="material-symbols-outlined text-[18px]">close</span>
+      </button>
+    </div>
+
+    <!-- Bunda's Tip -->
+    <div class="text-on-surface rounded-2xl p-5 suppa-card-elevated">
+      <div class="flex items-start gap-3">
+        <div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center flex-shrink-0">
+          <span class="material-symbols-outlined text-[20px] text-on-primary-container" style="font-variation-settings:'FILL' 1">lightbulb</span>
+        </div>
+        <div>
+          <p class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider mb-1">✨ Bunda's Tip</p>
+          <p class="text-sm font-semibold text-on-surface mb-1">Variasikan warna di piring Nara!</p>
+          <p class="text-sm text-on-surface-variant leading-relaxed">Semakin banyak warna yang ada di piring, semakin bervariasi nutrisinya. Coba tambah buah berwarna cerah atau sayuran hijau hari ini.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recent Meals -->
+    <div>
+      <div class="flex items-center justify-between mb-3">
+        <h3 class="font-headline font-bold text-base text-on-background">Makanan Terbaru</h3>
+        <a href="log-week.html" class="text-xs font-semibold text-secondary underline underline-offset-2 decoration-secondary/50">Lihat semua</a>
+      </div>
+      <div class="flex gap-3 overflow-x-auto pb-1 scrollbar-hide" style="-webkit-overflow-scrolling:touch;scrollbar-width:none;">
+        <a href="recipe-detail.html" class="text-on-surface flex-shrink-0 w-36 rounded-2xl overflow-hidden suppa-card-elevated">
+          <div class="h-20 bg-surface-container flex items-center justify-center text-3xl">🍲</div>
+          <div class="px-3 py-2">
+            <p class="text-xs font-semibold text-on-surface leading-tight">Bubur Ayam</p>
+            <p class="text-[10px] text-on-surface-variant mt-0.5">Sarapan · 07:30</p>
+          </div>
+        </a>
+        <a href="recipe-detail.html" class="text-on-surface flex-shrink-0 w-36 rounded-2xl overflow-hidden suppa-card-elevated">
+          <div class="h-20 bg-surface-container flex items-center justify-center text-3xl">🍌</div>
+          <div class="px-3 py-2">
+            <p class="text-xs font-semibold text-on-surface leading-tight">Pisang</p>
+            <p class="text-[10px] text-on-surface-variant mt-0.5">Selingan · 10:00</p>
+          </div>
+        </a>
+        <a href="recipe-detail.html" class="text-on-surface flex-shrink-0 w-36 rounded-2xl overflow-hidden suppa-card-elevated">
+          <div class="h-20 bg-surface-container flex items-center justify-center text-3xl">🥘</div>
+          <div class="px-3 py-2">
+            <p class="text-xs font-semibold text-on-surface leading-tight">Nasi Campur</p>
+            <p class="text-[10px] text-on-surface-variant mt-0.5">Makan siang · 12:30</p>
+          </div>
+        </a>
+        <a href="log-add.html" class="text-on-surface flex-shrink-0 w-36 rounded-2xl flex flex-col items-center justify-center gap-2 suppa-card-elevated" style="min-height:96px;">
+          <span class="material-symbols-outlined text-[28px] text-on-surface-variant">add_circle</span>
+          <p class="text-xs font-medium text-on-surface-variant text-center px-2">Catat makan baru</p>
+        </a>
+      </div>
+    </div>
+
+    <!-- Isi Celah Nutrisi -->
+    <div>
+      <div class="flex items-center justify-between mb-3">
+        <h3 class="font-headline font-bold text-base text-on-background">Isi Celah Nutrisi</h3>
+      </div>
+      <div class="space-y-2">
+        <a href="recipe-detail.html" class="text-on-surface flex items-center gap-3 rounded-2xl px-4 py-3 suppa-card-elevated">
+          <div class="w-11 h-11 rounded-xl bg-surface flex items-center justify-center text-2xl flex-shrink-0">🫘</div>
+          <div class="flex-1 min-w-0">
+            <p class="text-sm font-semibold text-on-surface">Tempe Orek</p>
+            <p class="text-xs text-on-surface-variant">Tinggi Zinc &amp; Protein</p>
+          </div>
+          <span class="material-symbols-outlined text-[22px] text-tertiary" style="font-variation-settings:'FILL' 1">add_circle</span>
+        </a>
+        <a href="recipe-detail.html" class="text-on-surface flex items-center gap-3 rounded-2xl px-4 py-3 suppa-card-elevated">
+          <div class="w-11 h-11 rounded-xl bg-surface flex items-center justify-center text-2xl flex-shrink-0">🐉</div>
+          <div class="flex-1 min-w-0">
+            <p class="text-sm font-semibold text-on-surface">Buah Naga</p>
+            <p class="text-xs text-on-surface-variant">Kaya Vitamin C &amp; Serat</p>
+          </div>
+          <span class="material-symbols-outlined text-[22px] text-secondary" style="font-variation-settings:'FILL' 1">add_circle</span>
+        </a>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<!-- FAB: secondary accent on primary backdrop -->
+<a href="log-add.html" class="fixed right-5 z-[55] w-14 h-14 rounded-full bg-primary text-on-primary flex items-center justify-center shadow-[0_8px_24px_rgba(123,84,0,0.3)] ring-2 ring-surface-container-lowest/90 active:scale-95 transition-transform" style="bottom:calc(80px + env(safe-area-inset-bottom,0))" aria-label="Catat makan">
+  <span class="material-symbols-outlined text-[28px] font-bold">add</span>
+</a>
+
+<!-- Bottom nav -->
+<nav class="fixed bottom-0 inset-x-0 z-50 bg-surface-container-lowest/95 backdrop-blur-md rounded-t-[2rem] shadow-[0_-4px_24px_rgba(51,46,34,0.06)] text-on-surface" aria-label="Navigasi utama">
+  <div class="max-w-[480px] mx-auto flex items-start pt-3" style="padding-bottom:calc(0.75rem + env(safe-area-inset-bottom,0))">
+    <a href="today.html" class="flex-1 flex flex-col items-center gap-0.5" aria-current="page">
+      <span class="flex items-center justify-center px-5 py-1 rounded-full suppa-nav-pill-active">
+        <span class="material-symbols-outlined text-[22px] text-primary" style="font-variation-settings:'FILL' 1">home</span>
+      </span>
+      <span class="text-[11px] font-semibold text-primary">Beranda</span>
+    </a>
+    <a href="log-add.html" class="flex-1 flex flex-col items-center gap-0.5">
+      <span class="flex items-center justify-center px-5 py-1">
+        <span class="material-symbols-outlined text-[22px] text-on-surface-variant">edit_note</span>
+      </span>
+      <span class="text-[11px] font-medium text-on-surface-variant">Catat</span>
+    </a>
+    <a href="edukasi.html" class="flex-1 flex flex-col items-center gap-0.5">
+      <span class="flex items-center justify-center px-5 py-1">
+        <span class="material-symbols-outlined text-[22px] text-on-surface-variant">menu_book</span>
+      </span>
+      <span class="text-[11px] font-medium text-on-surface-variant">Panduan</span>
+    </a>
+    <a href="settings.html" class="flex-1 flex flex-col items-center gap-0.5">
+      <span class="flex items-center justify-center px-5 py-1">
+        <span class="material-symbols-outlined text-[22px] text-on-surface-variant">person</span>
+      </span>
+      <span class="text-[11px] font-medium text-on-surface-variant">Profil</span>
+    </a>
+  </div>
+</nav>
+
+<div id="toast" class="toast" aria-live="polite"></div>
+<script src="js/tokens.js"></script><script src="js/profile.js"></script><script src="js/api.js"></script><script src="js/ui.js"></script><script src="js/app.js"></script>
+<script>
+/* ---------- Macro target editor ---------- */
+(function() {
+  var MACRO_LABELS = { carbs: 'Karbo (g)', protein: 'Protein (g)', fat: 'Lemak (g)', energy: 'Energi (kkal)', fiber: 'Serat (g)' };
+  var MACRO_KEYS = ['carbs','protein','fat','energy','fiber'];
+  var MACRO_FALLBACK = { energy: 1000, protein: 20, carbs: 130, fat: 40, fiber: 15 };
+  var STORAGE_KEY = 'suppa_macro_targets_custom';
+
+  function getAgeBand() {
+    return SUPPA.profile ? SUPPA.profile.getChildAgeBand() : '1-2';
+  }
+
+  function getTargets() {
+    try {
+      var saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+      var band = getAgeBand();
+      return saved[band] || null;
+    } catch (e) { return null; }
+  }
+
+  function saveTargets(targets) {
+    try {
+      var saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+      saved[getAgeBand()] = targets;
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(saved));
+    } catch (e) {}
+  }
+
+  function patchGlobalTargets(targets) {
+    var band = getAgeBand();
+    if (SUPPA.MACRO_TARGETS) SUPPA.MACRO_TARGETS[band] = Object.assign({}, SUPPA.MACRO_TARGETS[band], targets);
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var editBtn    = document.getElementById('macro-edit-btn');
+    var editPanel  = document.getElementById('macro-edit-panel');
+    var saveBtn    = document.getElementById('macro-edit-save');
+    var cancelBtn  = document.getElementById('macro-edit-cancel');
+    var targetsForm = document.getElementById('macro-targets-form');
+    if (!editBtn || !editPanel) return;
+
+    /* Apply any saved custom targets */
+    var saved = getTargets();
+    if (saved) patchGlobalTargets(saved);
+
+    editBtn.addEventListener('click', function() {
+      var open = !editPanel.hidden;
+      editPanel.hidden = open;
+      editBtn.setAttribute('aria-expanded', open ? 'false' : 'true');
+      if (!open) {
+        var band = getAgeBand();
+        var current = Object.assign({}, MACRO_FALLBACK, (SUPPA.MACRO_TARGETS || {})[band] || {});
+        targetsForm.innerHTML = MACRO_KEYS.map(function(k) {
+          return '<div class="flex items-center justify-between gap-3">' +
+            '<label class="text-sm text-on-surface-variant flex-1" for="mt-' + k + '">' + MACRO_LABELS[k] + '</label>' +
+            '<input type="number" id="mt-' + k + '" value="' + (current[k] || 0) + '" min="0" max="9999" ' +
+            'class="w-24 min-h-[36px] px-3 py-1.5 rounded-xl bg-surface border border-outline-variant/50 text-sm text-on-surface text-right focus:outline-none focus:border-primary" />' +
+            '</div>';
+        }).join('');
+      }
+    });
+
+    saveBtn.addEventListener('click', function() {
+      var newTargets = {};
+      MACRO_KEYS.forEach(function(k) {
+        var el = document.getElementById('mt-' + k);
+        newTargets[k] = el ? (parseFloat(el.value) || 0) : 0;
+      });
+      saveTargets(newTargets);
+      patchGlobalTargets(newTargets);
+      editPanel.hidden = true;
+      editBtn.setAttribute('aria-expanded', 'false');
+      /* Trigger re-render of bars */
+      window.dispatchEvent(new Event('suppa:targets-updated'));
+    });
+
+    cancelBtn.addEventListener('click', function() {
+      editPanel.hidden = true;
+      editBtn.setAttribute('aria-expanded', 'false');
+    });
+  });
+})();
+
+/* ---------- Daily To-Do List ---------- */
+(function() {
+  var TODAY_KEY = 'suppa_todo_' + new Date().toISOString().slice(0, 10);
+  var isEditing = false;
+
+  var PREDEFINED = [
+    { id: 'sarapan',     label: 'Catat sarapan',    href: 'log-add.html?meal=sarapan',     fixed: true },
+    { id: 'makan-siang', label: 'Catat makan siang', href: 'log-add.html?meal=makan-siang', fixed: true },
+    { id: 'makan-malam', label: 'Catat makan malam', href: 'log-add.html?meal=makan-malam', fixed: true },
+    { id: 'camilan',     label: 'Catat camilan',     href: 'log-add.html?meal=camilan',     fixed: true },
+    { id: 'artikel',     label: 'Baca 1 artikel',    href: 'edukasi.html',                  fixed: true },
+  ];
+
+  function loadState() {
+    try { return JSON.parse(localStorage.getItem(TODAY_KEY) || '{}'); } catch (e) { return {}; }
+  }
+
+  function saveState(state) {
+    localStorage.setItem(TODAY_KEY, JSON.stringify(state));
+  }
+
+  function loadCustom() {
+    try { return JSON.parse(localStorage.getItem('suppa_todo_custom') || '[]'); } catch (e) { return []; }
+  }
+
+  function saveCustom(items) {
+    localStorage.setItem('suppa_todo_custom', JSON.stringify(items));
+  }
+
+  function buildItems() {
+    var custom = loadCustom().map(function(c) {
+      return { id: 'custom_' + c.id, label: c.label, href: null, fixed: false };
+    });
+    return PREDEFINED.concat(custom);
+  }
+
+  function renderTodos() {
+    var state = loadState();
+    var items = buildItems();
+    var list = document.getElementById('todo-list');
+    if (!list) return;
+    list.innerHTML = '';
+    items.forEach(function(item) {
+      var done = !!state[item.id];
+      var li = document.createElement('li');
+      li.className = 'flex items-center gap-3 group py-3 first:pt-0 last:pb-0';
+
+      var checkbox = document.createElement('button');
+      checkbox.type = 'button';
+      checkbox.setAttribute('role', 'checkbox');
+      checkbox.setAttribute('aria-checked', done ? 'true' : 'false');
+      checkbox.setAttribute('aria-label', item.label);
+      checkbox.className = 'w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 transition-colors ' +
+        (done ? 'bg-tertiary border-tertiary' : 'border-primary/45 bg-surface');
+      checkbox.innerHTML = done ? '<span class="material-symbols-outlined text-[12px] text-on-tertiary" style="font-variation-settings:\'FILL\' 1">check</span>' : '';
+      checkbox.addEventListener('click', function() {
+        var s = loadState();
+        if (s[item.id]) { delete s[item.id]; } else {
+          s[item.id] = true;
+          if (item.href) { saveState(s); window.location.href = item.href; return; }
+        }
+        saveState(s);
+        renderTodos();
+      });
+
+      var labelEl = document.createElement('span');
+      labelEl.className = 'flex-1 text-sm leading-relaxed ' + (done ? 'line-through text-on-surface-variant' : 'text-on-surface');
+      labelEl.textContent = item.label;
+
+      li.appendChild(checkbox);
+      li.appendChild(labelEl);
+
+      if (!item.fixed && isEditing) {
+        var delBtn = document.createElement('button');
+        delBtn.type = 'button';
+        delBtn.className = 'w-6 h-6 flex items-center justify-center rounded-full text-error/60 hover:text-error flex-shrink-0';
+        delBtn.setAttribute('aria-label', 'Hapus ' + item.label);
+        delBtn.innerHTML = '<span class="material-symbols-outlined text-[16px]">close</span>';
+        delBtn.addEventListener('click', function() {
+          var rawId = item.id.replace('custom_', '');
+          var custom = loadCustom().filter(function(c) { return c.id !== rawId; });
+          saveCustom(custom);
+          renderTodos();
+        });
+        li.appendChild(delBtn);
+      }
+
+      list.appendChild(li);
+    });
+  }
+
+  var editBtn = document.getElementById('todo-edit-btn');
+  var addRow  = document.getElementById('todo-add-row');
+  var addInput = document.getElementById('todo-custom-input');
+  var addBtn   = document.getElementById('todo-custom-add');
+
+  if (editBtn) {
+    editBtn.addEventListener('click', function() {
+      isEditing = !isEditing;
+      if (addRow) addRow.hidden = !isEditing;
+      editBtn.innerHTML = isEditing
+        ? '<span class="material-symbols-outlined text-[18px] text-primary">check</span>'
+        : '<span class="material-symbols-outlined text-[18px]">edit</span>';
+      renderTodos();
+    });
+  }
+
+  if (addBtn && addInput) {
+    function addCustom() {
+      var val = (addInput.value || '').trim();
+      if (!val) return;
+      var custom = loadCustom();
+      custom.push({ id: Date.now().toString(36), label: val });
+      saveCustom(custom);
+      addInput.value = '';
+      renderTodos();
+    }
+    addBtn.addEventListener('click', addCustom);
+    addInput.addEventListener('keydown', function(e) { if (e.key === 'Enter') { e.preventDefault(); addCustom(); } });
+  }
+
+  document.addEventListener('DOMContentLoaded', renderTodos);
+})();
+</script>
+<script>
+(function () {
+  var UNITS = { energy: 'kkal', protein: 'g', carbs: 'g', fat: 'g', fiber: 'g' };
+  var MACROS = ['carbs', 'protein', 'fat', 'energy', 'fiber'];
+  var MACRO_FALLBACK = { energy: 1000, protein: 20, carbs: 130, fat: 40, fiber: 15 };
+
+  function getMacroTargets(ageBand) {
+    return Object.assign({}, MACRO_FALLBACK, (SUPPA.MACRO_TARGETS || {})[ageBand] || {});
+  }
+
+  function renderHearts(totals, targets) {
+    MACROS.forEach(function (m) {
+      var raw = totals[m] || 0;
+      var target = targets[m] || 0;
+      var pct = Math.min(100, target > 0 ? Math.round((raw / target) * 100) : 0);
+      var p = pct / 100;
+
+      var col = document.getElementById('heart-col-' + m);
+      var ratioEl = document.getElementById('arc-' + m + '-ratio');
+      if (col) {
+        col.style.setProperty('--joy', String(p));
+        var scaleG = col.querySelector('.nutrient-heart-scale');
+        if (scaleG) {
+          var MIN_HEART = 0.28;
+          var s = MIN_HEART + (1 - MIN_HEART) * p;
+          scaleG.style.transform = 'translate(0px, -6px) scale(' + s + ') translate(0px, 6px)';
+        }
+        var sp = col.querySelector('.nutrient-sparkles');
+        if (sp) {
+          var sparkle = pct >= 82 ? Math.min(1, (pct - 82) / 18) : 0;
+          sp.setAttribute('opacity', String(sparkle));
+        }
+      }
+      if (ratioEl) {
+        var shown = m === 'fiber' ? Math.round(raw * 10) / 10 : Math.round(raw);
+        ratioEl.innerHTML = '<span class="text-outline">~</span>' + shown + ' / ' + target + ' ' + UNITS[m];
+      }
+    });
+  }
+
+  function renderBars(totals, targets) {
+    MACROS.forEach(function (m) {
+      var raw = totals[m] || 0;
+      var target = targets[m] || 0;
+      var val = m === 'fiber' ? Math.round(raw * 10) / 10 : Math.round(raw);
+      var pct = Math.min(100, target > 0 ? Math.round((raw / target) * 100) : 0);
+      var valEl = document.getElementById('macro-' + m + '-val');
+      var fillEl = document.getElementById('macro-' + m + '-fill');
+      if (valEl) valEl.innerHTML = '<span class="text-outline">~</span>' + val + ' / ' + target + ' ' + UNITS[m];
+      if (fillEl) fillEl.style.width = pct + '%';
+    });
+    renderHearts(totals, targets);
+  }
+
+  function calcFromLogs(logs) {
+    var totals = { energy: 0, protein: 0, carbs: 0, fat: 0, fiber: 0 };
+    logs.forEach(function (log) {
+      var mult = (SUPPA.PORTION_MULTIPLIERS || {})[log.portion] || 1.0;
+      (log.food_groups_csv || '').split(',').forEach(function (g) {
+        var macros = (SUPPA.FOOD_GROUP_MACROS || {})[g.trim()];
+        if (macros) {
+          totals.energy  += macros.energy  * mult;
+          totals.protein += macros.protein * mult;
+          totals.carbs   += macros.carbs   * mult;
+          totals.fat     += macros.fat     * mult;
+          totals.fiber   += (macros.fiber || 0) * mult;
+        }
+      });
+    });
+    return totals;
+  }
+
+  var _cachedTotals = { energy: 0, protein: 0, carbs: 0, fat: 0, fiber: 0 };
+
+  function refreshDashboard() {
+    var ageBand = SUPPA.profile ? SUPPA.profile.getChildAgeBand() : '1-2';
+    renderBars(_cachedTotals, getMacroTargets(ageBand));
+  }
+
+  window.addEventListener('suppa:targets-updated', refreshDashboard);
+
+  document.addEventListener('DOMContentLoaded', function () {
+    var ageBand = SUPPA.profile ? SUPPA.profile.getChildAgeBand() : '1-2';
+    var targets = getMacroTargets(ageBand);
+    var childId = SUPPA.profile ? SUPPA.profile.getChildId() : null;
+    var today   = new Date().toISOString().slice(0, 10);
+
+    renderBars(_cachedTotals, targets);
+
+    if (!childId || !SUPPA.api) return;
+
+    SUPPA.api.get('meal_logs').then(function (res) {
+      var todayLogs = (res.data || []).filter(function (l) {
+        return l.child_id === childId && (l.logged_at || '').slice(0, 10) === today;
+      });
+      _cachedTotals = calcFromLogs(todayLogs);
+      renderBars(_cachedTotals, targets);
+    }).catch(function () {});
+  });
+})();
+</script>
+</body>
+</html>

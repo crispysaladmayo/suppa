@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Profil — Suppa</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&family=Be+Vietnam+Pro:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
+  <script>tailwind.config={darkMode:"class",theme:{extend:{colors:{background:"#fff6e2",surface:"#fff6e2","surface-bright":"#fff6e2","surface-container-low":"#f9f0db","surface-container":"#f1e7d1","surface-container-high":"#ebe2ca","surface-container-highest":"#e6dcc3","surface-dim":"#ded4ba","surface-container-lowest":"#ffffff",primary:"#7b5400","primary-container":"#feb300","on-primary":"#fff1df","on-primary-container":"#523700",secondary:"#b7004d","secondary-container":"#ffc2cc","on-secondary":"#ffeff0","on-secondary-container":"#91003c",tertiary:"#176a21","tertiary-container":"#9df197","on-tertiary":"#d1ffc8","on-tertiary-container":"#005c15",error:"#b02500","error-container":"#f95630","on-surface":"#332e22","on-surface-variant":"#605b4c",outline:"#7c7666","outline-variant":"#b4ad9b","on-background":"#332e22","on-background-variant":"#605b4c"},borderRadius:{DEFAULT:"1rem",lg:"2rem",xl:"3rem",full:"9999px"},fontFamily:{headline:["Plus Jakarta Sans","sans-serif"],body:["Be Vietnam Pro","sans-serif"]}}}}</script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/tokens.css" /><link rel="stylesheet" href="css/components.css" />
+</head>
+<body class="bg-background font-body text-on-background">
+
+<!-- Fixed top bar -->
+<header class="fixed top-0 inset-x-0 z-40 bg-surface-bright/80 backdrop-blur-md shadow-[0_0_24px_rgba(51,46,34,0.06)]">
+  <div class="max-w-[480px] mx-auto flex items-center justify-between px-4 h-16" style="padding-top:env(safe-area-inset-top,0)">
+    <div class="w-9 h-9 rounded-full bg-primary-container flex items-center justify-center flex-shrink-0">
+      <span class="font-headline font-bold text-xs text-on-primary-container">N</span>
+    </div>
+    <span class="font-headline font-black text-2xl text-primary tracking-tight">Suppa</span>
+    <button class="w-9 h-9 flex items-center justify-center rounded-full bg-surface-container-low" aria-label="Notifikasi">
+      <span class="material-symbols-outlined text-[20px] text-on-surface-variant">notifications</span>
+    </button>
+  </div>
+</header>
+
+<div class="app-frame min-h-dvh max-w-[480px] mx-auto">
+  <main class="pt-20 pb-28 px-4 space-y-5">
+
+    <!-- Profile hero card (Si Kecil's Profile) -->
+    <div class="rounded-2xl p-5 relative overflow-hidden suppa-card-elevated">
+      <!-- Decorative blob -->
+      <div class="absolute top-0 right-0 w-32 h-32 rounded-full bg-primary-container/20 -translate-y-8 translate-x-8 blur-2xl pointer-events-none" aria-hidden="true"></div>
+
+      <p class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider mb-4">Si Kecil's Profile</p>
+
+      <div class="flex items-center gap-4 mb-4">
+        <!-- Child photo -->
+        <div class="relative flex-shrink-0">
+          <div class="w-20 h-20 rounded-full bg-secondary-container ring-4 ring-secondary-container/40 flex items-center justify-center">
+            <span class="font-headline font-black text-3xl text-secondary">N</span>
+          </div>
+          <button class="absolute -bottom-1 -right-1 w-7 h-7 rounded-full bg-secondary flex items-center justify-center shadow-md" aria-label="Edit profil">
+            <span class="material-symbols-outlined text-[14px] text-on-secondary">edit</span>
+          </button>
+        </div>
+        <div>
+          <h1 class="font-headline font-extrabold text-3xl text-primary leading-none">Nara</h1>
+          <p class="text-sm text-on-surface-variant flex items-center gap-1 mt-1">
+            <span class="material-symbols-outlined text-[14px]">cake</span>
+            1–2 tahun
+          </p>
+          <div class="flex flex-wrap gap-1.5 mt-2">
+            <span class="px-2.5 py-0.5 rounded-full bg-tertiary-container/60 text-tertiary text-[11px] font-semibold">Level 3: Explorer</span>
+            <span class="px-2.5 py-0.5 rounded-full bg-secondary-container/60 text-secondary text-[11px] font-semibold">Happy Eater</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Weekly Variety bar chart -->
+    <div class="rounded-2xl p-5 suppa-card-elevated">
+      <div class="flex items-center gap-2 mb-4">
+        <span class="material-symbols-outlined text-[18px] text-primary" style="font-variation-settings:'FILL' 1">auto_awesome</span>
+        <h2 class="font-headline font-bold text-base text-on-surface">Variasi Minggu Ini</h2>
+      </div>
+      <!-- Bar chart -->
+      <div class="bg-surface-container rounded-xl p-4">
+        <div class="flex items-end gap-1.5 justify-between h-16">
+          <div class="flex-1 flex flex-col items-center gap-1">
+            <div class="w-full rounded-t-full bg-secondary-container" style="height:70%"></div>
+            <span class="text-[10px] text-on-surface-variant">Sen</span>
+          </div>
+          <div class="flex-1 flex flex-col items-center gap-1">
+            <div class="w-full rounded-t-full bg-primary-container/60" style="height:50%"></div>
+            <span class="text-[10px] text-on-surface-variant">Sel</span>
+          </div>
+          <div class="flex-1 flex flex-col items-center gap-1">
+            <div class="w-full rounded-t-full bg-tertiary-container" style="height:75%"></div>
+            <span class="text-[10px] text-on-surface-variant">Rab</span>
+          </div>
+          <div class="flex-1 flex flex-col items-center gap-1">
+            <div class="w-full rounded-t-full bg-error-container/60" style="height:40%"></div>
+            <span class="text-[10px] text-on-surface-variant">Kam</span>
+          </div>
+          <div class="flex-1 flex flex-col items-center gap-1">
+            <div class="w-full rounded-t-full bg-primary-container" style="height:65%"></div>
+            <span class="text-[10px] text-on-surface-variant">Jum</span>
+          </div>
+          <div class="flex-1 flex flex-col items-center gap-1">
+            <div class="w-full rounded-t-full bg-secondary-container/60" style="height:55%"></div>
+            <span class="text-[10px] text-on-surface-variant">Sab</span>
+          </div>
+          <div class="flex-1 flex flex-col items-center gap-1">
+            <div class="w-full rounded-t-full bg-surface-container-high" style="height:25%"></div>
+            <span class="text-[10px] text-on-surface-variant">Min</span>
+          </div>
+        </div>
+      </div>
+      <!-- Insight row -->
+      <div class="flex items-center gap-2 mt-3 bg-tertiary-container/20 rounded-xl px-3 py-2">
+        <div class="w-8 h-8 rounded-full bg-tertiary-container flex items-center justify-center flex-shrink-0">
+          <span class="material-symbols-outlined text-[16px] text-tertiary" style="font-variation-settings:'FILL' 1">restaurant_menu</span>
+        </div>
+        <p class="text-xs font-semibold text-on-surface">5 Hari Pelangi! 🌈 Tetap semangat, Mama!</p>
+      </div>
+    </div>
+
+    <!-- Loves / Dislikes -->
+    <div class="grid grid-cols-2 gap-3">
+      <div class="rounded-2xl p-4 suppa-card-elevated">
+        <p class="text-xs font-semibold text-on-surface-variant mb-2">❤️ Loves to Eat</p>
+        <div class="flex flex-wrap gap-1.5">
+          <span class="px-2.5 py-1 rounded-full bg-tertiary-container/40 text-tertiary text-xs font-medium">🍚 Nasi</span>
+          <span class="px-2.5 py-1 rounded-full bg-tertiary-container/40 text-tertiary text-xs font-medium">🥚 Telur</span>
+          <span class="px-2.5 py-1 rounded-full bg-tertiary-container/40 text-tertiary text-xs font-medium">🍌 Pisang</span>
+        </div>
+      </div>
+      <div class="rounded-2xl p-4 suppa-card-elevated">
+        <p class="text-xs font-semibold text-on-surface-variant mb-2">😅 Not a Fan (Yet)</p>
+        <div class="flex flex-wrap gap-1.5">
+          <span class="px-2.5 py-1 rounded-full bg-error-container/20 text-error text-xs font-medium">🥦 Brokoli</span>
+          <span class="px-2.5 py-1 rounded-full bg-error-container/20 text-error text-xs font-medium">🥕 Wortel</span>
+        </div>
+        <p class="text-[10px] italic text-on-surface-variant mt-2">Coba lagi dalam beberapa minggu!</p>
+      </div>
+    </div>
+
+    <!-- Action buttons -->
+    <div class="space-y-2">
+      <button type="button" class="w-full flex items-center justify-center gap-2 py-3.5 rounded-full bg-primary text-on-primary font-headline font-bold text-sm shadow-[0_4px_16px_rgba(255,179,0,0.4)]">
+        <span class="material-symbols-outlined text-[20px]">child_care</span>
+        Tambah Anak Lain
+      </button>
+      <a href="growth.html" class="w-full flex items-center justify-center gap-2 py-3.5 rounded-full bg-surface-container-highest text-on-surface font-semibold text-sm">
+        <span class="material-symbols-outlined text-[18px] text-on-surface-variant">monitoring</span>
+        Tumbuh Kembang
+      </a>
+    </div>
+
+    <!-- Settings sections -->
+    <div class="space-y-4">
+      <div>
+        <p class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider mb-2 px-1">Profil &amp; Rumah Tangga</p>
+        <div class="rounded-2xl overflow-hidden suppa-card-elevated">
+          <a href="onboarding.html" class="flex items-center gap-3 px-4 py-3.5 border-b border-outline-variant/20">
+            <span class="material-symbols-outlined text-[20px] text-on-surface-variant flex-shrink-0">group</span>
+            <span class="flex-1 text-sm font-medium text-on-surface">Profil anak</span>
+            <span class="text-xs text-on-surface-variant mr-1">Nara, 1–2 thn</span>
+            <span class="material-symbols-outlined text-[18px] text-on-surface-variant">chevron_right</span>
+          </a>
+          <a href="onboarding.html" class="flex items-center gap-3 px-4 py-3.5 border-b border-outline-variant/20">
+            <span class="material-symbols-outlined text-[20px] text-on-surface-variant flex-shrink-0">home</span>
+            <span class="flex-1 text-sm font-medium text-on-surface">Profil rumah tangga</span>
+            <span class="text-xs text-on-surface-variant mr-1">Keluarga Nanda</span>
+            <span class="material-symbols-outlined text-[18px] text-on-surface-variant">chevron_right</span>
+          </a>
+          <a href="onboarding.html" class="flex items-center gap-3 px-4 py-3.5">
+            <span class="material-symbols-outlined text-[20px] text-on-surface-variant flex-shrink-0">favorite</span>
+            <span class="flex-1 text-sm font-medium text-on-surface">Alergi &amp; pantangan</span>
+            <span class="text-xs text-on-surface-variant mr-1">Kacang, Telur</span>
+            <span class="material-symbols-outlined text-[18px] text-on-surface-variant">chevron_right</span>
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <p class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider mb-2 px-1">Pemantauan</p>
+        <div class="rounded-2xl overflow-hidden suppa-card-elevated">
+          <a href="growth.html" class="flex items-center gap-3 px-4 py-3.5 border-b border-outline-variant/20">
+            <span class="material-symbols-outlined text-[20px] text-on-surface-variant flex-shrink-0">monitoring</span>
+            <span class="flex-1 text-sm font-medium text-on-surface">Tumbuh kembang</span>
+            <span class="material-symbols-outlined text-[18px] text-on-surface-variant">chevron_right</span>
+          </a>
+          <a href="log-week.html" class="flex items-center gap-3 px-4 py-3.5">
+            <span class="material-symbols-outlined text-[20px] text-on-surface-variant flex-shrink-0">calendar_month</span>
+            <span class="flex-1 text-sm font-medium text-on-surface">Riwayat mingguan</span>
+            <span class="material-symbols-outlined text-[18px] text-on-surface-variant">chevron_right</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Mindful eating -->
+      <div class="rounded-2xl p-5 suppa-card-elevated">
+        <h3 class="font-headline font-bold text-base text-on-surface mb-1">Panduan Makan Bijak</h3>
+        <p class="text-xs text-on-surface-variant mb-4">Suppa akan menandai resep yang melebihi batas ini dengan catatan lembut.</p>
+        <div class="flex items-center justify-between py-3 border-b border-outline-variant/20">
+          <div>
+            <p class="text-sm font-medium text-on-surface">Natrium maks.</p>
+            <p class="text-xs text-on-surface-variant">mg per hari</p>
+          </div>
+          <input type="number" class="w-20 text-right px-3 py-2 rounded-xl bg-surface border border-outline-variant/50 text-sm font-medium text-on-surface focus:outline-none focus:border-primary" id="sodium-val" value="800" min="0" max="9999" aria-label="Natrium maksimum per hari dalam mg" />
+        </div>
+        <div class="flex items-center justify-between py-3">
+          <div>
+            <p class="text-sm font-medium text-on-surface">Gula tambahan maks.</p>
+            <p class="text-xs text-on-surface-variant">g per hari</p>
+          </div>
+          <input type="number" class="w-20 text-right px-3 py-2 rounded-xl bg-surface border border-outline-variant/50 text-sm font-medium text-on-surface focus:outline-none focus:border-primary" id="sugar-val" value="12" min="0" max="999" aria-label="Gula tambahan maksimum per hari dalam gram" />
+        </div>
+        <button type="button" id="reset-mindful" class="text-sm font-semibold text-primary mt-2">Reset ke default</button>
+      </div>
+
+      <div>
+        <p class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider mb-2 px-1">Akun</p>
+        <div class="rounded-2xl overflow-hidden suppa-card-elevated">
+          <a href="forgot-password.html" class="flex items-center gap-3 px-4 py-3.5 border-b border-outline-variant/20">
+            <span class="material-symbols-outlined text-[20px] text-on-surface-variant flex-shrink-0">lock</span>
+            <span class="flex-1 text-sm font-medium text-on-surface">Ubah kata sandi</span>
+            <span class="material-symbols-outlined text-[18px] text-on-surface-variant">chevron_right</span>
+          </a>
+          <a href="privacy.html" class="flex items-center gap-3 px-4 py-3.5 border-b border-outline-variant/20">
+            <span class="material-symbols-outlined text-[20px] text-on-surface-variant flex-shrink-0">shield</span>
+            <span class="flex-1 text-sm font-medium text-on-surface">Kebijakan privasi</span>
+            <span class="material-symbols-outlined text-[18px] text-on-surface-variant">chevron_right</span>
+          </a>
+          <a href="terms.html" class="flex items-center gap-3 px-4 py-3.5">
+            <span class="material-symbols-outlined text-[20px] text-on-surface-variant flex-shrink-0">description</span>
+            <span class="flex-1 text-sm font-medium text-on-surface">Syarat layanan</span>
+            <span class="material-symbols-outlined text-[18px] text-on-surface-variant">chevron_right</span>
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <p class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider mb-2 px-1">Sesi</p>
+        <div class="rounded-2xl overflow-hidden suppa-card-elevated">
+          <button type="button" id="signout-btn" class="w-full flex items-center gap-3 px-4 py-3.5 text-error text-left font-body">
+            <span class="material-symbols-outlined text-[20px] flex-shrink-0">logout</span>
+            <span class="text-sm font-medium">Keluar</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <p class="text-center text-xs text-on-surface-variant pb-2">Suppa M2 · v1.0.0 · April 2026</p>
+  </main>
+</div>
+
+<!-- Bottom nav -->
+<nav class="fixed bottom-0 inset-x-0 z-50 bg-surface-container-lowest/95 backdrop-blur-md rounded-t-[2rem] shadow-[0_-4px_24px_rgba(51,46,34,0.06)]" aria-label="Navigasi utama">
+  <div class="max-w-[480px] mx-auto flex items-start pt-3" style="padding-bottom:calc(0.75rem + env(safe-area-inset-bottom,0))">
+    <a href="today.html" class="flex-1 flex flex-col items-center gap-0.5">
+      <span class="flex items-center justify-center px-5 py-1">
+        <span class="material-symbols-outlined text-[22px] text-on-surface-variant">home</span>
+      </span>
+      <span class="text-[11px] font-medium text-on-surface-variant">Beranda</span>
+    </a>
+    <a href="log-add.html" class="flex-1 flex flex-col items-center gap-0.5">
+      <span class="flex items-center justify-center px-5 py-1">
+        <span class="material-symbols-outlined text-[22px] text-on-surface-variant">edit_note</span>
+      </span>
+      <span class="text-[11px] font-medium text-on-surface-variant">Catat</span>
+    </a>
+    <a href="edukasi.html" class="flex-1 flex flex-col items-center gap-0.5">
+      <span class="flex items-center justify-center px-5 py-1">
+        <span class="material-symbols-outlined text-[22px] text-on-surface-variant">menu_book</span>
+      </span>
+      <span class="text-[11px] font-medium text-on-surface-variant">Panduan</span>
+    </a>
+    <a href="settings.html" class="flex-1 flex flex-col items-center gap-0.5" aria-current="page">
+      <span class="flex items-center justify-center px-5 py-1 rounded-full bg-surface-container-low">
+        <span class="material-symbols-outlined text-[22px] text-primary" style="font-variation-settings:'FILL' 1">person</span>
+      </span>
+      <span class="text-[11px] font-semibold text-primary">Profil</span>
+    </a>
+  </div>
+</nav>
+
+<!-- Sign out modal -->
+<div class="modal-overlay" id="signout-modal" hidden>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <p class="text-4xl mb-3">👋</p>
+    <h2 class="font-headline font-bold text-lg text-on-surface mb-2" id="modal-title">Keluar dari Suppa?</h2>
+    <p class="text-sm text-on-surface-variant mb-5">Kamu bisa masuk lagi kapan saja dengan email dan kata sandimu.</p>
+    <div class="flex gap-3">
+      <button type="button" id="cancel-signout" class="flex-1 py-3 rounded-full bg-surface-container-high text-on-surface font-semibold text-sm">Batal</button>
+      <button type="button" id="confirm-signout" class="flex-1 py-3 rounded-full border-2 border-error text-error font-semibold text-sm">Keluar</button>
+    </div>
+  </div>
+</div>
+
+<div id="toast" class="toast" aria-live="polite"></div>
+<script src="js/tokens.js"></script><script src="js/profile.js"></script><script src="js/api.js"></script><script src="js/ui.js"></script><script src="js/app.js"></script>
+</body>
+</html>

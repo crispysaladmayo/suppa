@@ -1,0 +1,90 @@
+/* Suppa — Stitch "Nurturing Canvas" / Tropical Harvest (design/stitch_suppa_indonesian_nutrition_tracker) */
+:root {
+  /* Base & surfaces */
+  --background: #fff6e2;
+  --surface: #fff6e2;
+  --surface-bright: #fff6e2;
+  --surface-container-low: #f9f0db;
+  --surface-container: #f1e7d1;
+  --surface-container-high: #ebe2ca;
+  --surface-container-highest: #e6dcc3;
+  --surface-container-lowest: #ffffff;
+  --surface-dim: #ded4ba;
+  --surface-variant: #e6dcc3;
+
+  /* Brand */
+  --primary: #7b5400;
+  --primary-container: #feb300;
+  --primary-dim: #6b4900;
+  --on-primary: #fff1df;
+  --on-primary-container: #523700;
+
+  --secondary: #b7004d;
+  --secondary-container: #ffc2cc;
+  --on-secondary: #ffeff0;
+  --on-secondary-container: #91003c;
+
+  --tertiary: #176a21;
+  --tertiary-container: #9df197;
+  --on-tertiary: #d1ffc8;
+  --on-tertiary-container: #005c15;
+
+  --error: #b02500;
+  --error-container: #f95630;
+  --on-error: #ffefec;
+  --on-error-container: #520c00;
+
+  /* Content */
+  --on-surface: #332e22;
+  --on-surface-variant: #605b4c;
+  --on-background: #332e22;
+  --on-background-variant: #605b4c;
+
+  --outline: #7c7666;
+  --outline-variant: #b4ad9b;
+
+  /* Legacy semantic aliases (components / prose) */
+  --accent: #7b5400;
+  --accent-hover: #6b4900;
+  --accent-tint: #f9f0db;
+  --accent-light: #feb300;
+  --text-primary: #332e22;
+  --text-secondary: #605b4c;
+  --text-muted: #605b4c;
+  --bg-page: #fff6e2;
+  --border-subtle: #b4ad9b;
+  --surface-color: #f9f0db;
+  --success-soft-bg: rgba(23, 106, 33, 0.12);
+  --success-soft-text: #005c15;
+  --info-soft-bg: #ebe2ca;
+  --info-soft-text: #332e22;
+  --warning-soft-bg: #ffc2cc;
+  --warning-soft-text: #91003c;
+  --error-text: #b02500;
+  --focus-ring: #7b5400;
+
+  /* Ambient shadows (tinted on-surface, not pure black — DESIGN.md) */
+  --shadow-card: 0 4px 24px rgba(51, 46, 34, 0.06);
+  --shadow-sheet: 0 -4px 24px rgba(51, 46, 34, 0.06);
+  --shadow-modal: 0 8px 32px rgba(51, 46, 34, 0.08);
+  --shadow-fab: 0 8px 24px rgba(123, 84, 0, 0.3);
+
+  --space-1: 4px;  --space-2: 8px;  --space-3: 12px; --space-4: 16px;
+  --space-5: 20px; --space-6: 24px; --space-8: 32px; --space-10: 40px;
+  --space-page: 16px;
+
+  --radius-card: 16px;
+  --radius-input: 12px;
+  --radius-btn: 9999px;
+  --radius-chip: 9999px;
+  --radius-pill: 9999px;
+
+  --max-width: 480px;
+  --max-width-recipe: 720px;
+
+  --font-display: "Plus Jakarta Sans", sans-serif;
+  --font-body:    "Be Vietnam Pro", sans-serif;
+
+  --transition-fast: 150ms ease;
+  --transition-base: 200ms ease;
+}

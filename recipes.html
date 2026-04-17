@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Resep — Suppa</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&family=Be+Vietnam+Pro:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
+  <script>tailwind.config={darkMode:"class",theme:{extend:{colors:{background:"#fff6e2",surface:"#fff6e2","surface-bright":"#fff6e2","surface-container-low":"#f9f0db","surface-container":"#f1e7d1","surface-container-high":"#ebe2ca","surface-container-highest":"#e6dcc3","surface-dim":"#ded4ba","surface-container-lowest":"#ffffff",primary:"#7b5400","primary-container":"#feb300","on-primary":"#fff1df","on-primary-container":"#523700",secondary:"#b7004d","secondary-container":"#ffc2cc","on-secondary":"#ffeff0","on-secondary-container":"#91003c",tertiary:"#176a21","tertiary-container":"#9df197","on-tertiary":"#d1ffc8","on-tertiary-container":"#005c15",error:"#b02500","error-container":"#f95630","on-surface":"#332e22","on-surface-variant":"#605b4c",outline:"#7c7666","outline-variant":"#b4ad9b","on-background":"#332e22","on-background-variant":"#605b4c"},borderRadius:{DEFAULT:"1rem",lg:"2rem",xl:"3rem",full:"9999px"},fontFamily:{headline:["Plus Jakarta Sans","sans-serif"],body:["Be Vietnam Pro","sans-serif"]}}}}</script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/tokens.css" /><link rel="stylesheet" href="css/components.css" />
+</head>
+<body class="bg-background font-body text-on-background">
+
+<!-- Fixed header -->
+<header class="fixed top-0 inset-x-0 z-40 bg-surface-bright/80 backdrop-blur-md shadow-[0_0_24px_rgba(51,46,34,0.06)]">
+  <div class="max-w-[480px] mx-auto flex items-center justify-between px-4 h-16" style="padding-top:env(safe-area-inset-top,0)">
+    <h1 class="font-headline font-bold text-xl text-on-surface">Resep</h1>
+    <a href="add-recipe.html" class="w-9 h-9 flex items-center justify-center rounded-full bg-primary" aria-label="Tambah resep">
+      <span class="material-symbols-outlined text-[20px] text-on-primary">add</span>
+    </a>
+  </div>
+</header>
+
+<div class="app-frame min-h-dvh max-w-[480px] mx-auto">
+  <!-- Search -->
+  <div class="fixed z-30 inset-x-0 top-16" style="max-width:480px;margin:0 auto;">
+    <div class="mx-4 mt-2">
+      <div class="relative">
+        <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-[20px] text-on-surface-variant pointer-events-none">search</span>
+        <input type="search" id="recipe-search" placeholder="Cari resep…" aria-label="Cari resep"
+          class="w-full h-11 pl-11 pr-4 rounded-full bg-surface-container border border-outline-variant/40 text-sm text-on-surface placeholder:text-on-surface-variant/60 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10" />
+      </div>
+    </div>
+  </div>
+
+  <main class="pt-32 pb-28 px-4 space-y-4">
+
+    <!-- Tab bar -->
+    <div class="flex gap-1 rounded-full p-1 overflow-x-auto suppa-card-elevated" role="tablist" aria-label="Filter resep" style="scrollbar-width:none;">
+      <button class="tab-btn flex-shrink-0" role="tab" aria-selected="true" aria-controls="panel-all" id="tab-all">Semua</button>
+      <button class="tab-btn flex-shrink-0" role="tab" aria-selected="false" aria-controls="panel-iron" id="tab-iron">Kaya Iron</button>
+      <button class="tab-btn flex-shrink-0" role="tab" aria-selected="false" aria-controls="panel-zinc" id="tab-zinc">Kaya Zinc</button>
+      <button class="tab-btn flex-shrink-0" role="tab" aria-selected="false" aria-controls="panel-protein" id="tab-protein">Protein</button>
+      <button class="tab-btn flex-shrink-0" role="tab" aria-selected="false" aria-controls="panel-mine" id="tab-mine">Milikku</button>
+    </div>
+
+    <div id="panel-all" role="tabpanel" aria-labelledby="tab-all" class="space-y-3">
+      <a href="recipe-detail.html" class="flex items-center gap-3 rounded-2xl px-4 py-3.5 suppa-card-elevated">
+        <div class="w-14 h-14 rounded-xl bg-surface-container flex items-center justify-center text-3xl flex-shrink-0">🍲</div>
+        <div class="flex-1 min-w-0">
+          <h3 class="font-semibold text-on-surface text-sm leading-tight">Nasi Tim Hati Ayam</h3>
+          <p class="text-xs text-on-surface-variant mt-0.5">25 menit · 6–12 bln</p>
+          <div class="flex gap-1.5 mt-1.5 flex-wrap">
+            <span class="px-2 py-0.5 rounded-full bg-error-container/30 text-error text-[10px] font-semibold">Kaya iron</span>
+            <span class="px-2 py-0.5 rounded-full bg-tertiary-container/40 text-tertiary text-[10px] font-semibold">Aman Nara</span>
+          </div>
+        </div>
+        <span class="material-symbols-outlined text-[20px] text-on-surface-variant flex-shrink-0">chevron_right</span>
+      </a>
+      <a href="recipe-detail.html" class="flex items-center gap-3 rounded-2xl px-4 py-3.5 suppa-card-elevated">
+        <div class="w-14 h-14 rounded-xl bg-surface-container flex items-center justify-center text-3xl flex-shrink-0">🥘</div>
+        <div class="flex-1 min-w-0">
+          <h3 class="font-semibold text-on-surface text-sm leading-tight">Bubur Tempe Sapi Cincang</h3>
+          <p class="text-xs text-on-surface-variant mt-0.5">30 menit · 1–3 tahun</p>
+          <div class="flex gap-1.5 mt-1.5 flex-wrap">
+            <span class="px-2 py-0.5 rounded-full bg-primary-container/40 text-on-primary-container text-[10px] font-semibold">Kaya zinc</span>
+            <span class="px-2 py-0.5 rounded-full bg-tertiary-container/40 text-tertiary text-[10px] font-semibold">Aman Nara</span>
+          </div>
+        </div>
+        <span class="material-symbols-outlined text-[20px] text-on-surface-variant flex-shrink-0">chevron_right</span>
+      </a>
+      <a href="recipe-detail.html" class="flex items-center gap-3 rounded-2xl px-4 py-3.5 suppa-card-elevated">
+        <div class="w-14 h-14 rounded-xl bg-surface-container flex items-center justify-center text-3xl flex-shrink-0">🥬</div>
+        <div class="flex-1 min-w-0">
+          <h3 class="font-semibold text-on-surface text-sm leading-tight">Sup Bayam Ikan Teri</h3>
+          <p class="text-xs text-on-surface-variant mt-0.5">20 menit · 6 bln+</p>
+          <div class="flex gap-1.5 mt-1.5 flex-wrap">
+            <span class="px-2 py-0.5 rounded-full bg-error-container/30 text-error text-[10px] font-semibold">Kaya iron</span>
+            <span class="px-2 py-0.5 rounded-full bg-tertiary-container/40 text-tertiary text-[10px] font-semibold">Aman Nara</span>
+          </div>
+        </div>
+        <span class="material-symbols-outlined text-[20px] text-on-surface-variant flex-shrink-0">chevron_right</span>
+      </a>
+      <a href="recipe-detail.html" class="flex items-center gap-3 rounded-2xl px-4 py-3.5 suppa-card-elevated">
+        <div class="w-14 h-14 rounded-xl bg-surface-container flex items-center justify-center text-3xl flex-shrink-0">🌽</div>
+        <div class="flex-1 min-w-0">
+          <h3 class="font-semibold text-on-surface text-sm leading-tight">Tim Ayam Wortel Jagung</h3>
+          <p class="text-xs text-on-surface-variant mt-0.5">25 menit · 1–5 tahun</p>
+          <div class="flex gap-1.5 mt-1.5 flex-wrap">
+            <span class="px-2 py-0.5 rounded-full bg-secondary-container/50 text-secondary text-[10px] font-semibold">Protein</span>
+            <span class="px-2 py-0.5 rounded-full bg-tertiary-container/40 text-tertiary text-[10px] font-semibold">Aman Nara</span>
+          </div>
+        </div>
+        <span class="material-symbols-outlined text-[20px] text-on-surface-variant flex-shrink-0">chevron_right</span>
+      </a>
+      <a href="recipe-detail.html" class="flex items-center gap-3 rounded-2xl px-4 py-3.5 suppa-card-elevated">
+        <div class="w-14 h-14 rounded-xl bg-surface-container flex items-center justify-center text-3xl flex-shrink-0">🥚</div>
+        <div class="flex-1 min-w-0">
+          <h3 class="font-semibold text-on-surface text-sm leading-tight">Orak-arik Telur Brokoli</h3>
+          <p class="text-xs text-on-surface-variant mt-0.5">15 menit · 8 bln+</p>
+          <div class="flex gap-1.5 mt-1.5 flex-wrap">
+            <span class="px-2 py-0.5 rounded-full bg-secondary-container/50 text-secondary text-[10px] font-semibold">Protein</span>
+            <span class="px-2 py-0.5 rounded-full bg-tertiary-container/40 text-tertiary text-[10px] font-semibold">Aman Nara</span>
+          </div>
+        </div>
+        <span class="material-symbols-outlined text-[20px] text-on-surface-variant flex-shrink-0">chevron_right</span>
+      </a>
+    </div>
+
+    <div id="panel-iron" role="tabpanel" aria-labelledby="tab-iron" hidden class="space-y-3">
+      <a href="recipe-detail.html" class="flex items-center gap-3 rounded-2xl px-4 py-3.5 suppa-card-elevated">
+        <div class="w-14 h-14 rounded-xl bg-surface-container flex items-center justify-center text-3xl flex-shrink-0">🍲</div>
+        <div class="flex-1 min-w-0"><h3 class="font-semibold text-on-surface text-sm">Nasi Tim Hati Ayam</h3><p class="text-xs text-on-surface-variant mt-0.5">25 menit</p></div>
+        <span class="material-symbols-outlined text-[20px] text-on-surface-variant flex-shrink-0">chevron_right</span>
+      </a>
+      <a href="recipe-detail.html" class="flex items-center gap-3 rounded-2xl px-4 py-3.5 suppa-card-elevated">
+        <div class="w-14 h-14 rounded-xl bg-surface-container flex items-center justify-center text-3xl flex-shrink-0">🥬</div>
+        <div class="flex-1 min-w-0"><h3 class="font-semibold text-on-surface text-sm">Sup Bayam Ikan Teri</h3><p class="text-xs text-on-surface-variant mt-0.5">20 menit</p></div>
+        <span class="material-symbols-outlined text-[20px] text-on-surface-variant flex-shrink-0">chevron_right</span>
+      </a>
+    </div>
+
+    <div id="panel-zinc" role="tabpanel" aria-labelledby="tab-zinc" hidden class="space-y-3">
+      <a href="recipe-detail.html" class="flex items-center gap-3 rounded-2xl px-4 py-3.5 suppa-card-elevated">
+        <div class="w-14 h-14 rounded-xl bg-surface-container flex items-center justify-center text-3xl flex-shrink-0">🥘</div>
+        <div class="flex-1 min-w-0"><h3 class="font-semibold text-on-surface text-sm">Bubur Tempe Sapi Cincang</h3><p class="text-xs text-on-surface-variant mt-0.5">30 menit</p></div>
+        <span class="material-symbols-outlined text-[20px] text-on-surface-variant flex-shrink-0">chevron_right</span>
+      </a>
+    </div>
+
+    <div id="panel-protein" role="tabpanel" aria-labelledby="tab-protein" hidden class="space-y-3">
+      <a href="recipe-detail.html" class="flex items-center gap-3 rounded-2xl px-4 py-3.5 suppa-card-elevated">
+        <div class="w-14 h-14 rounded-xl bg-surface-container flex items-center justify-center text-3xl flex-shrink-0">🌽</div>
+        <div class="flex-1 min-w-0"><h3 class="font-semibold text-on-surface text-sm">Tim Ayam Wortel Jagung</h3><p class="text-xs text-on-surface-variant mt-0.5">25 menit</p></div>
+        <span class="material-symbols-outlined text-[20px] text-on-surface-variant flex-shrink-0">chevron_right</span>
+      </a>
+    </div>
+
+    <div id="panel-mine" role="tabpanel" aria-labelledby="tab-mine" hidden>
+      <div class="rounded-2xl p-8 text-center suppa-card-elevated">
+        <span class="text-5xl block mb-3">📝</span>
+        <p class="font-headline font-bold text-base text-on-surface mb-2">Belum ada resep milikmu</p>
+        <p class="text-sm text-on-surface-variant mb-5">Simpan resep favoritmu di sini.</p>
+        <a href="add-recipe.html" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary text-on-primary font-semibold text-sm shadow-[0_4px_16px_rgba(255,179,0,0.4)]">
+          <span class="material-symbols-outlined text-[18px]">add</span>Tambah resep
+        </a>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<!-- Bottom nav -->
+<nav class="fixed bottom-0 inset-x-0 z-50 bg-surface-container-lowest/95 backdrop-blur-md rounded-t-[2rem] shadow-[0_-4px_24px_rgba(51,46,34,0.06)]" aria-label="Navigasi utama">
+  <div class="max-w-[480px] mx-auto flex items-start pt-3" style="padding-bottom:calc(0.75rem + env(safe-area-inset-bottom,0))">
+    <a href="today.html" class="flex-1 flex flex-col items-center gap-0.5">
+      <span class="flex items-center justify-center px-5 py-1"><span class="material-symbols-outlined text-[22px] text-on-surface-variant">home</span></span>
+      <span class="text-[11px] font-medium text-on-surface-variant">Beranda</span>
+    </a>
+    <a href="log-add.html" class="flex-1 flex flex-col items-center gap-0.5">
+      <span class="flex items-center justify-center px-5 py-1"><span class="material-symbols-outlined text-[22px] text-on-surface-variant">edit_note</span></span>
+      <span class="text-[11px] font-medium text-on-surface-variant">Catat</span>
+    </a>
+    <a href="edukasi.html" class="flex-1 flex flex-col items-center gap-0.5">
+      <span class="flex items-center justify-center px-5 py-1"><span class="material-symbols-outlined text-[22px] text-on-surface-variant">menu_book</span></span>
+      <span class="text-[11px] font-medium text-on-surface-variant">Panduan</span>
+    </a>
+    <a href="settings.html" class="flex-1 flex flex-col items-center gap-0.5">
+      <span class="flex items-center justify-center px-5 py-1"><span class="material-symbols-outlined text-[22px] text-on-surface-variant">person</span></span>
+      <span class="text-[11px] font-medium text-on-surface-variant">Profil</span>
+    </a>
+  </div>
+</nav>
+
+<div id="toast" class="toast" aria-live="polite"></div>
+<script src="js/tokens.js"></script><script src="js/profile.js"></script><script src="js/api.js"></script><script src="js/ui.js"></script><script src="js/app.js"></script>
+</body>
+</html>

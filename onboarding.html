@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pengaturan awal — Suppa</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&family=Be+Vietnam+Pro:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
+  <script>tailwind.config={darkMode:"class",theme:{extend:{colors:{background:"#fff6e2",surface:"#fff6e2","surface-bright":"#fff6e2","surface-container-low":"#f9f0db","surface-container":"#f1e7d1","surface-container-high":"#ebe2ca","surface-container-highest":"#e6dcc3","surface-dim":"#ded4ba","surface-container-lowest":"#ffffff",primary:"#7b5400","primary-container":"#feb300","on-primary":"#fff1df","on-primary-container":"#523700",secondary:"#b7004d","secondary-container":"#ffc2cc","on-secondary":"#ffeff0","on-secondary-container":"#91003c",tertiary:"#176a21","tertiary-container":"#9df197","on-tertiary":"#d1ffc8","on-tertiary-container":"#005c15",error:"#b02500","error-container":"#f95630","on-surface":"#332e22","on-surface-variant":"#605b4c",outline:"#7c7666","outline-variant":"#b4ad9b","on-background":"#332e22","on-background-variant":"#605b4c"},borderRadius:{DEFAULT:"1rem",lg:"2rem",xl:"3rem",full:"9999px"},fontFamily:{headline:["Plus Jakarta Sans","sans-serif"],body:["Be Vietnam Pro","sans-serif"]}}}}</script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/tokens.css" /><link rel="stylesheet" href="css/components.css" />
+</head>
+<body class="bg-background font-body text-on-background min-h-dvh">
+
+<div class="app-frame min-h-dvh max-w-[480px] mx-auto flex flex-col px-6" style="padding-top:calc(env(safe-area-inset-top,0) + 1rem);padding-bottom:calc(env(safe-area-inset-bottom,0) + 1.5rem)">
+  <!-- Top bar -->
+  <div class="flex items-center justify-between mb-5">
+    <button class="w-9 h-9 flex items-center justify-center rounded-full bg-surface-container-low" id="back-btn" aria-label="Kembali ke langkah sebelumnya">
+      <span class="material-symbols-outlined text-[20px] text-on-surface">arrow_back</span>
+    </button>
+    <span class="text-sm font-semibold text-on-background-variant" id="step-label">Langkah 1 dari 5</span>
+    <div class="w-9"></div>
+  </div>
+
+  <!-- Pill progress bar -->
+  <div class="flex gap-1.5 mb-7" role="progressbar" aria-valuenow="1" aria-valuemin="1" aria-valuemax="5" aria-label="Langkah pengaturan awal" id="progress-bar">
+    <div class="h-1.5 flex-1 rounded-full onboarding-step is-active" id="s1"></div>
+    <div class="h-1.5 flex-1 rounded-full bg-surface-container-high onboarding-step" style="opacity:1" id="s2"></div>
+    <div class="h-1.5 flex-1 rounded-full bg-surface-container-high onboarding-step" style="opacity:1" id="s3"></div>
+    <div class="h-1.5 flex-1 rounded-full bg-surface-container-high onboarding-step" style="opacity:1" id="s4"></div>
+    <div class="h-1.5 flex-1 rounded-full bg-surface-container-high onboarding-step" style="opacity:1" id="s5"></div>
+  </div>
+  <style>
+    .onboarding-step { transition: background-color 200ms ease; }
+    .onboarding-step.is-done { background-color: #feb300; opacity: 0.55; }
+    .onboarding-step.is-active { background-color: #feb300; opacity: 1; }
+  </style>
+
+  <form id="onboarding-form" novalidate class="flex-1 flex flex-col min-h-0">
+
+    <!-- Step 1: Location -->
+    <div id="step-1">
+      <h1 class="font-headline font-extrabold text-3xl text-on-background mb-1.5">Di mana kamu tinggal?</h1>
+      <p class="text-sm text-on-background-variant mb-6">Informasi kota akan digunakan untuk rekomendasi bahan baku dan resep</p>
+      <input type="hidden" id="country" name="country" value="ID" />
+      <div class="mb-6">
+        <label for="city" class="block text-sm font-semibold text-on-background mb-1.5">Kota / Kabupaten <span class="text-error">*</span></label>
+        <select id="city" name="city" required aria-required="true" aria-describedby="city-error"
+          class="w-full min-h-[48px] px-4 py-3 rounded-2xl bg-surface-container border border-outline-variant/50 text-sm text-on-surface focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 appearance-none bg-[url('data:image/svg+xml,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'%23605b4c\' stroke-width=\'2\'><polyline points=\'6 9 12 15 18 9\'/></svg>')] bg-[right_1rem_center] bg-no-repeat bg-[size:1.125rem]">
+          <option value="">Pilih kota…</option>
+          <option value="Jakarta Pusat">Jakarta Pusat</option>
+          <option value="Jakarta Selatan">Jakarta Selatan</option>
+          <option value="Jakarta Barat">Jakarta Barat</option>
+          <option value="Jakarta Timur">Jakarta Timur</option>
+          <option value="Jakarta Utara">Jakarta Utara</option>
+          <option value="Surabaya">Surabaya</option>
+          <option value="Bandung">Bandung</option>
+          <option value="Medan">Medan</option>
+          <option value="Bekasi">Bekasi</option>
+          <option value="Tangerang">Tangerang</option>
+          <option value="Depok">Depok</option>
+          <option value="Semarang">Semarang</option>
+          <option value="Palembang">Palembang</option>
+          <option value="Tangerang Selatan">Tangerang Selatan</option>
+          <option value="Makassar">Makassar</option>
+          <option value="Batam">Batam</option>
+          <option value="Pekanbaru">Pekanbaru</option>
+          <option value="Bogor">Bogor</option>
+          <option value="Bandar Lampung">Bandar Lampung</option>
+          <option value="Malang">Malang</option>
+          <option value="Padang">Padang</option>
+          <option value="Denpasar">Denpasar</option>
+          <option value="Samarinda">Samarinda</option>
+          <option value="Tasikmalaya">Tasikmalaya</option>
+          <option value="Pontianak">Pontianak</option>
+          <option value="Jambi">Jambi</option>
+          <option value="Serang">Serang</option>
+          <option value="Banjarmasin">Banjarmasin</option>
+          <option value="Balikpapan">Balikpapan</option>
+          <option value="Manado">Manado</option>
+          <option value="Mataram">Mataram</option>
+          <option value="Cimahi">Cimahi</option>
+          <option value="Cirebon">Cirebon</option>
+          <option value="Yogyakarta">Yogyakarta</option>
+          <option value="Surakarta">Surakarta</option>
+          <option value="Sukabumi">Sukabumi</option>
+          <option value="Kediri">Kediri</option>
+          <option value="Probolinggo">Probolinggo</option>
+          <option value="Madiun">Madiun</option>
+          <option value="Blitar">Blitar</option>
+          <option value="Pasuruan">Pasuruan</option>
+          <option value="Mojokerto">Mojokerto</option>
+          <option value="Magelang">Magelang</option>
+          <option value="Kupang">Kupang</option>
+          <option value="Ambon">Ambon</option>
+          <option value="Jayapura">Jayapura</option>
+          <option value="Palu">Palu</option>
+          <option value="Kendari">Kendari</option>
+          <option value="Gorontalo">Gorontalo</option>
+          <option value="Manokwari">Manokwari</option>
+          <option value="Ternate">Ternate</option>
+          <option value="Sorong">Sorong</option>
+          <option value="Merauke">Merauke</option>
+        </select>
+        <p class="field__error text-xs" id="city-error" role="alert" aria-live="polite"></p>
+      </div>
+      <div class="space-y-3">
+        <button type="button" id="next-1" class="w-full py-3.5 rounded-full bg-primary text-on-primary font-headline font-bold text-base shadow-[0_8px_24px_rgba(123,84,0,0.3)]">Lanjut</button>
+      </div>
+    </div>
+
+    <!-- Step 2: Child profile — outer has no Tailwind display class so [hidden] always wins (flex+hidden was overridden on GH Pages) -->
+    <div id="step-2" hidden class="flex-1 min-h-0">
+      <div class="flex min-h-0 flex-1 flex-col">
+      <div class="flex-1 overflow-y-auto pb-4">
+        <h1 class="font-headline font-extrabold text-3xl text-on-background mb-1.5">Tentang si kecil</h1>
+        <p class="text-sm text-on-background-variant mb-6">Suppa akan menyesuaikan saran gizi berdasarkan usia anak.</p>
+        <div class="mb-4">
+          <label for="child-name" class="block text-sm font-semibold text-on-background mb-1.5">Nama anak <span class="text-error">*</span></label>
+          <input type="text" id="child-name" name="child-name" autocomplete="off" placeholder="cth. Nara" aria-required="true" aria-describedby="name-error"
+            class="w-full min-h-[48px] px-4 py-3 rounded-2xl bg-surface-container border border-outline-variant/50 text-sm text-on-surface placeholder:text-on-surface-variant/50 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10" />
+          <p class="field__error text-xs" id="name-error" role="alert" aria-live="polite"></p>
+        </div>
+        <div class="mb-4">
+          <label class="block text-sm font-semibold text-on-background mb-2">Usia anak <span class="text-error">*</span></label>
+          <div class="flex flex-col gap-2" role="radiogroup" aria-required="true" aria-describedby="age-error">
+            <label class="flex items-center gap-3 px-4 py-3 rounded-2xl suppa-card-elevated cursor-pointer has-[:checked]:ring-2 has-[:checked]:ring-primary/35">
+              <input type="radio" name="age" value="0-5" class="accent-primary w-4 h-4" /> <span class="text-sm font-medium text-on-surface">0–5 bulan</span>
+            </label>
+            <label class="flex items-center gap-3 px-4 py-3 rounded-2xl suppa-card-elevated cursor-pointer has-[:checked]:ring-2 has-[:checked]:ring-primary/35">
+              <input type="radio" name="age" value="6-12" class="accent-primary w-4 h-4" /> <span class="text-sm font-medium text-on-surface">6–12 bulan</span>
+            </label>
+            <label class="flex items-center gap-3 px-4 py-3 rounded-2xl suppa-card-elevated cursor-pointer has-[:checked]:ring-2 has-[:checked]:ring-primary/35">
+              <input type="radio" name="age" value="1-2" checked class="accent-primary w-4 h-4" /> <span class="text-sm font-medium text-on-surface">1–2 tahun</span>
+            </label>
+            <label class="flex items-center gap-3 px-4 py-3 rounded-2xl suppa-card-elevated cursor-pointer has-[:checked]:ring-2 has-[:checked]:ring-primary/35">
+              <input type="radio" name="age" value="3-5" class="accent-primary w-4 h-4" /> <span class="text-sm font-medium text-on-surface">3–5 tahun</span>
+            </label>
+            <label class="flex items-center gap-3 px-4 py-3 rounded-2xl suppa-card-elevated cursor-pointer has-[:checked]:ring-2 has-[:checked]:ring-primary/35">
+              <input type="radio" name="age" value="6-8" class="accent-primary w-4 h-4" /> <span class="text-sm font-medium text-on-surface">6–8 tahun</span>
+            </label>
+            <label class="flex items-center gap-3 px-4 py-3 rounded-2xl suppa-card-elevated cursor-pointer has-[:checked]:ring-2 has-[:checked]:ring-primary/35">
+              <input type="radio" name="age" value="9-11" class="accent-primary w-4 h-4" /> <span class="text-sm font-medium text-on-surface">9–11 tahun</span>
+            </label>
+            <label class="flex items-center gap-3 px-4 py-3 rounded-2xl suppa-card-elevated cursor-pointer has-[:checked]:ring-2 has-[:checked]:ring-primary/35">
+              <input type="radio" name="age" value="12" class="accent-primary w-4 h-4" /> <span class="text-sm font-medium text-on-surface">12 tahun</span>
+            </label>
+          </div>
+          <p class="field__error text-xs" id="age-error" role="alert" aria-live="polite"></p>
+        </div>
+      </div>
+      <div class="pt-3 bg-background">
+        <button type="button" id="next-2" class="w-full py-3.5 rounded-full bg-primary text-on-primary font-headline font-bold text-base shadow-[0_8px_24px_rgba(123,84,0,0.3)]">Lanjut</button>
+      </div>
+      </div>
+    </div>
+
+    <!-- Step 3: Allergies -->
+    <div hidden id="step-3">
+      <h1 class="font-headline font-extrabold text-3xl text-on-background mb-1.5">Ada alergi atau pantangan?</h1>
+      <p class="text-sm text-on-background-variant mb-6">Suppa akan menandai resep yang mengandung bahan-bahan ini.</p>
+      <div class="flex flex-wrap gap-2 mb-5" id="allergy-chips-container" role="group" aria-label="Pilih alergi">
+        <!-- Chips loaded dynamically from API; fallback below is rendered by JS -->
+      </div>
+      <div class="mb-5">
+        <label for="allergy-other" class="block text-sm font-semibold text-on-background mb-1.5">Alergi lainnya (opsional)</label>
+        <input type="text" id="allergy-other" name="allergy-other" placeholder="cth. Wijen"
+          class="w-full min-h-[44px] px-4 py-2.5 rounded-2xl bg-surface-container border border-outline-variant/50 text-sm text-on-surface placeholder:text-on-surface-variant/50 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10" />
+      </div>
+      <div class="space-y-3">
+        <button type="button" id="next-3" class="w-full py-3.5 rounded-full bg-primary text-on-primary font-headline font-bold text-base shadow-[0_8px_24px_rgba(123,84,0,0.3)]">Lanjut</button>
+        <button type="button" id="skip-3" class="w-full py-3.5 rounded-full bg-surface-container-high text-on-surface font-semibold text-sm">Lewati</button>
+      </div>
+    </div>
+
+    <!-- Step 4: Mindful eating -->
+    <div hidden id="step-4">
+      <h1 class="font-headline font-extrabold text-3xl text-on-background mb-1.5">Panduan makan bijak</h1>
+      <p class="text-sm text-on-background-variant mb-6">Suppa akan menandai resep dengan catatan lembut jika melebihi batas ini. Bisa diubah kapan saja di Pengaturan.</p>
+      <div class="mb-4">
+        <label for="sodium-val" class="block text-sm font-semibold text-on-background mb-1.5">Natrium maks. per hari (mg)</label>
+        <input type="number" id="sodium-val" name="sodium" value="800" min="0" max="9999"
+          class="w-full min-h-[48px] px-4 py-3 rounded-2xl bg-surface-container border border-outline-variant/50 text-sm text-on-surface focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10" />
+        <p class="text-xs text-on-background-variant mt-1.5" id="sodium-idai-hint"></p>
+      </div>
+      <div class="mb-6">
+        <label for="sugar-val" class="block text-sm font-semibold text-on-background mb-1.5">Gula tambahan maks. per hari (g)</label>
+        <input type="number" id="sugar-val" name="sugar" value="12" min="0" max="999"
+          class="w-full min-h-[48px] px-4 py-3 rounded-2xl bg-surface-container border border-outline-variant/50 text-sm text-on-surface focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10" />
+        <p class="text-xs text-on-background-variant mt-1.5" id="sugar-idai-hint"></p>
+      </div>
+      <div class="space-y-3">
+        <button type="button" id="next-4" class="w-full py-3.5 rounded-full bg-primary text-on-primary font-headline font-bold text-base shadow-[0_8px_24px_rgba(123,84,0,0.3)]">Lanjut</button>
+        <button type="button" id="skip-4" class="w-full py-3.5 rounded-full bg-surface-container-high text-on-surface font-semibold text-sm">Lewati</button>
+      </div>
+    </div>
+
+    <!-- Step 5: Confirm -->
+    <div hidden id="step-5">
+      <div class="text-center py-6">
+        <div class="w-20 h-20 rounded-full bg-primary-container flex items-center justify-center mx-auto mb-5">
+          <span class="text-4xl">🎉</span>
+        </div>
+        <h1 class="font-headline font-extrabold text-3xl text-on-background mb-2">Siap memulai!</h1>
+        <p class="text-sm text-on-background-variant mb-6" id="confirm-text">
+          Profil si kecil sudah tersimpan. Mari pantau gizi hariannya bersama Suppa.
+        </p>
+        <div data-disclaimer class="text-left mb-6">
+          <span>
+            Suppa membagikan ide makanan umum, bukan saran medis.
+            <button type="button" data-disclaimer-expand aria-expanded="false">Baca selengkapnya</button>
+          </span>
+          <div data-disclaimer-full hidden class="mt-1">
+            Suppa tidak mendiagnosis atau mengobati kondisi medis. Untuk kekhawatiran MPASI atau alergi, diskusikan dengan dokter anak atau ahli gizi terdaftar.
+          </div>
+        </div>
+        <button type="submit" class="w-full py-3.5 rounded-full bg-primary text-on-primary font-headline font-bold text-base shadow-[0_8px_24px_rgba(123,84,0,0.3)]">Mulai pantau gizi</button>
+      </div>
+    </div>
+
+  </form>
+</div>
+
+<script src="js/tokens.js"></script><script src="js/profile.js"></script><script src="js/api.js"></script><script src="js/ui.js"></script><script src="js/app.js"></script>
+<script>
+(function() {
+  /* ---------- Allergen chip loading ---------- */
+  var FALLBACK_ALLERGENS = ['Kacang tanah','Telur','Susu sapi','Kedelai','Gandum','Ikan','Udang / seafood','Kacang pohon'];
+
+  function renderAllergenChips(names) {
+    var container = document.getElementById('allergy-chips-container');
+    if (!container) return;
+    container.innerHTML = '';
+    names.forEach(function(name) {
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'chip';
+      btn.setAttribute('data-allergy-chip', '');
+      btn.setAttribute('aria-pressed', 'false');
+      btn.textContent = name;
+      btn.addEventListener('click', function() {
+        var pressed = btn.getAttribute('aria-pressed') === 'true';
+        btn.setAttribute('aria-pressed', pressed ? 'false' : 'true');
+        if (pressed) btn.classList.remove('is-selected'); else btn.classList.add('is-selected');
+      });
+      container.appendChild(btn);
+    });
+  }
+
+  (SUPPA.api ? SUPPA.api.get('allergens') : Promise.reject())
+    .then(function(res) {
+      var names = (res.data || []).map(function(a) { return a.name; }).filter(Boolean);
+      renderAllergenChips(names.length ? names : FALLBACK_ALLERGENS);
+    })
+    .catch(function() { renderAllergenChips(FALLBACK_ALLERGENS); });
+})();
+
+(function() {
+  var currentStep = 1;
+  var totalSteps = 5;
+
+  function updateIdaiHints() {
+    var ageRadio = document.querySelector('input[name="age"]:checked');
+    var ageBand = ageRadio ? ageRadio.value : '1-2';
+    var limits = (SUPPA.IDAI_LIMITS || {})[ageBand] || { sodium: 800, sugar: 12 };
+    var sodiumHint = document.getElementById('sodium-idai-hint');
+    var sugarHint = document.getElementById('sugar-idai-hint');
+    if (sodiumHint) sodiumHint.textContent = 'Rekomendasi IDAI untuk usia ini: maks. ' + limits.sodium + ' mg / hari';
+    if (sugarHint) sugarHint.textContent = limits.sugar === 0
+      ? 'Rekomendasi IDAI untuk usia ini: hindari gula tambahan'
+      : 'Rekomendasi IDAI untuk usia ini: maks. ' + limits.sugar + ' g / hari';
+    var sodiumInput = document.getElementById('sodium-val');
+    var sugarInput = document.getElementById('sugar-val');
+    if (sodiumInput && !sodiumInput.dataset.touched) sodiumInput.value = limits.sodium;
+    if (sugarInput && !sugarInput.dataset.touched) sugarInput.value = limits.sugar;
+  }
+
+  function showStep(n) {
+    for (var i = 1; i <= totalSteps; i++) {
+      var s = document.getElementById('step-' + i);
+      if (s) s.hidden = (i !== n);
+    }
+    var el = document.getElementById('step-' + n);
+    document.getElementById('step-label').textContent = 'Langkah ' + n + ' dari ' + totalSteps;
+    document.getElementById('progress-bar').setAttribute('aria-valuenow', n);
+    if (n === 4) updateIdaiHints();
+    for (var i = 1; i <= totalSteps; i++) {
+      var dot = document.getElementById('s' + i);
+      if (!dot) continue;
+      if (i < n) {
+        dot.className = 'h-1.5 flex-1 rounded-full onboarding-step is-done';
+        dot.style.opacity = '';
+      } else if (i === n) {
+        dot.className = 'h-1.5 flex-1 rounded-full onboarding-step is-active';
+        dot.style.opacity = '';
+      } else {
+        dot.className = 'h-1.5 flex-1 rounded-full bg-surface-container-high onboarding-step';
+        dot.style.opacity = '1';
+      }
+    }
+    currentStep = n;
+    document.getElementById('back-btn').style.visibility = n === 1 ? 'hidden' : 'visible';
+    if (n === 5) {
+      var name = document.getElementById('child-name').value.trim() || 'si kecil';
+      document.getElementById('confirm-text').textContent = 'Profil ' + name + ' sudah tersimpan. Mari pantau gizi hariannya bersama Suppa.';
+    }
+  }
+
+  function goNext() { if (currentStep < totalSteps) showStep(currentStep + 1); }
+
+  function clearCityError() {
+    var cityEl = document.getElementById('city');
+    var cityErr = document.getElementById('city-error');
+    if (cityErr) { cityErr.textContent = ''; cityErr.style.display = ''; cityErr.classList.remove('is-visible'); }
+    if (cityEl) { cityEl.removeAttribute('aria-invalid'); }
+  }
+
+  document.getElementById('next-1').addEventListener('click', function() {
+    var cityEl = document.getElementById('city');
+    var cityErr = document.getElementById('city-error');
+    var city = cityEl ? cityEl.value.trim() : '';
+    clearCityError();
+    if (!city) {
+      if (cityErr) {
+        cityErr.textContent = 'Pilih kota atau kabupaten terlebih dahulu.';
+        cityErr.style.display = 'block';
+        cityErr.classList.add('is-visible');
+      }
+      if (cityEl) {
+        cityEl.setAttribute('aria-invalid', 'true');
+        cityEl.focus();
+      }
+      return;
+    }
+    goNext();
+  });
+
+  var citySelect = document.getElementById('city');
+  if (citySelect) citySelect.addEventListener('change', clearCityError);
+
+  document.getElementById('next-2').addEventListener('click', function() {
+    var name = document.getElementById('child-name').value.trim();
+    var ageRadio = document.querySelector('input[name="age"]:checked');
+    var nameErr = document.getElementById('name-error');
+    var ageErr = document.getElementById('age-error');
+    nameErr.textContent = ''; nameErr.style.display = ''; ageErr.textContent = ''; ageErr.style.display = '';
+    if (!name) { nameErr.textContent = 'Nama anak wajib diisi.'; nameErr.style.display = 'block'; nameErr.classList.add('is-visible'); document.getElementById('child-name').focus(); return; }
+    if (!ageRadio) { ageErr.textContent = 'Pilih rentang usia anak.'; ageErr.style.display = 'block'; ageErr.classList.add('is-visible'); return; }
+    goNext();
+  });
+
+  document.getElementById('next-3').addEventListener('click', goNext);
+  document.getElementById('skip-3').addEventListener('click', goNext);
+  document.getElementById('next-4').addEventListener('click', goNext);
+  document.getElementById('skip-4').addEventListener('click', goNext);
+  ['sodium-val','sugar-val'].forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) el.addEventListener('input', function() { el.dataset.touched = '1'; });
+  });
+
+  document.getElementById('back-btn').addEventListener('click', function() {
+    if (currentStep > 1) showStep(currentStep - 1);
+    else window.location.href = 'signup.html';
+  });
+
+  showStep(1);
+})();
+</script>
+</body>
+</html>

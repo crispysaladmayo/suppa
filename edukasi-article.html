@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Makanan Kaya Zat Besi — Suppa</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&family=Be+Vietnam+Pro:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
+  <script>tailwind.config={darkMode:"class",theme:{extend:{colors:{background:"#fff6e2",surface:"#fff6e2","surface-bright":"#fff6e2","surface-container-low":"#f9f0db","surface-container":"#f1e7d1","surface-container-high":"#ebe2ca","surface-container-highest":"#e6dcc3","surface-dim":"#ded4ba","surface-container-lowest":"#ffffff",primary:"#7b5400","primary-container":"#feb300","on-primary":"#fff1df","on-primary-container":"#523700",secondary:"#b7004d","secondary-container":"#ffc2cc","on-secondary":"#ffeff0","on-secondary-container":"#91003c",tertiary:"#176a21","tertiary-container":"#9df197","on-tertiary":"#d1ffc8","on-tertiary-container":"#005c15",error:"#b02500","error-container":"#f95630","on-surface":"#332e22","on-surface-variant":"#605b4c",outline:"#7c7666","outline-variant":"#b4ad9b","on-background":"#332e22","on-background-variant":"#605b4c"},borderRadius:{DEFAULT:"1rem",lg:"2rem",xl:"3rem",full:"9999px"},fontFamily:{headline:["Plus Jakarta Sans","sans-serif"],body:["Be Vietnam Pro","sans-serif"]}}}}</script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/tokens.css" /><link rel="stylesheet" href="css/components.css" />
+  <style>
+    .article-body h2 { font-family: "Plus Jakarta Sans", sans-serif; font-size: 1.0625rem; font-weight: 700; color: #332e22; margin: 1.25rem 0 0.5rem; }
+    .article-body p { font-size: 0.9375rem; line-height: 1.7; color: #332e22; margin-bottom: 0.875rem; }
+    .article-body ul { padding-left: 1.25rem; margin-bottom: 0.875rem; }
+    .article-body li { font-size: 0.9375rem; line-height: 1.7; color: #332e22; margin-bottom: 0.375rem; }
+    .quiz-option {
+      display: block; width: 100%; text-align: left;
+      padding: 0.75rem 1rem; margin-bottom: 0.5rem;
+      border-radius: 12px; border: 1.5px solid #b4ad9b;
+      background: #fff; font-size: 0.9375rem; font-family: "Be Vietnam Pro", sans-serif;
+      color: #332e22; cursor: pointer; transition: all 150ms ease;
+    }
+    .quiz-option:hover:not(:disabled) { border-color: #7b5400; background: #f9f0db; }
+    .quiz-option.correct { border-color: #176a21; background: #d1ffc8; color: #005c15; }
+    .quiz-option.wrong   { border-color: #b02500; background: #fee2e2; color: #b02500; }
+  </style>
+</head>
+<body class="bg-background font-body text-on-background">
+
+<header class="fixed top-0 inset-x-0 z-40 bg-surface-bright/80 backdrop-blur-md shadow-[0_0_24px_rgba(51,46,34,0.06)]">
+  <div class="max-w-[480px] mx-auto flex items-center gap-3 px-4 h-16" style="padding-top:env(safe-area-inset-top,0)">
+    <a href="edukasi.html" class="w-9 h-9 flex items-center justify-center rounded-full bg-surface-container-low flex-shrink-0" aria-label="Kembali">
+      <span class="material-symbols-outlined text-[20px] text-on-surface">arrow_back</span>
+    </a>
+    <p class="flex-1 font-semibold text-sm text-on-surface">Edukasi</p>
+    <button type="button" id="share-article" aria-label="Bagikan artikel" class="w-9 h-9 flex items-center justify-center rounded-full bg-surface-container-low">
+      <span class="material-symbols-outlined text-[20px] text-on-surface">share</span>
+    </button>
+  </div>
+</header>
+
+<div class="app-frame min-h-dvh max-w-[480px] mx-auto">
+  <main class="pt-20 pb-28 px-4 space-y-5">
+
+    <!-- Article meta -->
+    <div>
+      <p class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider mb-1.5">Nutrisi · 4 menit baca</p>
+      <h1 class="font-headline font-bold text-[1.375rem] leading-tight text-on-surface">Makanan Kaya Zat Besi untuk Bayi dan Anak</h1>
+    </div>
+
+    <!-- Callout -->
+    <div class="bg-primary-container/30 border-l-4 border-primary rounded-r-2xl px-4 py-3">
+      <p class="text-sm text-on-surface leading-relaxed"><strong>Ingat:</strong> Semua angka dalam artikel ini adalah perkiraan. Selalu diskusikan dengan dokter anak untuk kebutuhan spesifik si kecil.</p>
+    </div>
+
+    <!-- Body -->
+    <div class="article-body">
+      <p>Zat besi adalah salah satu mineral paling penting untuk tumbuh kembang anak. Kekurangan zat besi dapat mempengaruhi perkembangan otak dan kemampuan belajar. Kabar baiknya, banyak makanan sehari-hari yang kaya zat besi dan mudah disiapkan.</p>
+      <h2>Makanan kaya zat besi</h2>
+      <ul>
+        <li><strong>Daging merah dan ayam:</strong> Sumber zat besi heme yang mudah diserap tubuh</li>
+        <li><strong>Hati ayam atau hati sapi:</strong> Sangat kaya zat besi, bagus untuk MPASI</li>
+        <li><strong>Ikan teri:</strong> Mudah didapat, bisa ditambahkan ke berbagai masakan</li>
+        <li><strong>Bayam dan sayuran hijau:</strong> Zat besi non-heme, serap lebih baik dengan vitamin C</li>
+        <li><strong>Tempe dan tahu:</strong> Sumber zat besi nabati yang ekonomis</li>
+        <li><strong>Kacang merah dan kacang hitam:</strong> Bagus untuk anak yang tidak makan daging</li>
+      </ul>
+      <h2>Tips menyerap zat besi lebih baik</h2>
+      <p>Kombinasikan makanan kaya zat besi dengan sumber vitamin C seperti tomat, paprika, atau jeruk nipis. Hindari memberikan susu atau teh berbarengan dengan makanan kaya zat besi karena dapat menghambat penyerapan.</p>
+    </div>
+
+    <!-- Quiz -->
+    <div class="rounded-2xl p-4 space-y-3 suppa-card-elevated" aria-label="Kuis singkat">
+      <h2 class="font-headline font-bold text-base text-on-surface">Cek pemahaman kamu</h2>
+      <p class="text-sm text-on-surface">Makanan apa yang mengandung zat besi heme yang mudah diserap?</p>
+      <div id="quiz-options">
+        <button type="button" class="quiz-option" data-correct="true">🥩 Daging ayam cincang</button>
+        <button type="button" class="quiz-option">🥦 Brokoli</button>
+        <button type="button" class="quiz-option">🍚 Nasi putih</button>
+      </div>
+      <p id="quiz-feedback" aria-live="polite" class="text-sm text-on-surface" style="display:none;"></p>
+    </div>
+
+    <!-- Share WhatsApp -->
+    <button type="button" id="share-wa" class="w-full py-3.5 rounded-full font-headline font-bold text-base active:scale-[0.98] transition-transform flex items-center justify-center gap-2" style="background:#25d366;color:#fff;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.999 1C5.926 1 1 5.925 1 12c0 1.914.506 3.71 1.392 5.258L1 23l5.896-1.391A10.954 10.954 0 0012 23c6.075 0 11-4.925 11-11S18.075 1 12 1zm0 20a9 9 0 01-4.621-1.278l-.332-.197-3.494.823.836-3.421-.216-.353A8.98 8.98 0 013 12c0-4.962 4.037-9 9-9s9 4.038 9 9-4.037 9-9 9z"/></svg>
+      Bagikan ke WhatsApp
+    </button>
+
+    <p class="text-xs text-on-surface-variant text-center pb-4">Sumber: IDAI (Ikatan Dokter Anak Indonesia) · Konten bersifat edukatif, bukan saran medis.</p>
+
+  </main>
+</div>
+
+<!-- Bottom nav -->
+<nav class="fixed bottom-0 inset-x-0 z-50 bg-surface-container-lowest/95 backdrop-blur-md rounded-t-[2rem] shadow-[0_-4px_24px_rgba(51,46,34,0.06)]" aria-label="Navigasi utama">
+  <div class="max-w-[480px] mx-auto flex items-start pt-3" style="padding-bottom:calc(0.75rem + env(safe-area-inset-bottom,0))">
+    <a href="today.html" class="flex-1 flex flex-col items-center gap-0.5"><span class="flex items-center justify-center px-5 py-1"><span class="material-symbols-outlined text-[22px] text-on-surface-variant">home</span></span><span class="text-[11px] font-medium text-on-surface-variant">Beranda</span></a>
+    <a href="log-add.html" class="flex-1 flex flex-col items-center gap-0.5"><span class="flex items-center justify-center px-5 py-1"><span class="material-symbols-outlined text-[22px] text-on-surface-variant">edit_note</span></span><span class="text-[11px] font-medium text-on-surface-variant">Catat</span></a>
+    <a href="edukasi.html" class="flex-1 flex flex-col items-center gap-0.5"><span class="flex items-center justify-center px-5 py-1 rounded-full bg-surface-container"><span class="material-symbols-outlined text-[22px] text-primary" style="font-variation-settings:'FILL' 1">menu_book</span></span><span class="text-[11px] font-semibold text-primary">Panduan</span></a>
+    <a href="settings.html" class="flex-1 flex flex-col items-center gap-0.5"><span class="flex items-center justify-center px-5 py-1"><span class="material-symbols-outlined text-[22px] text-on-surface-variant">person</span></span><span class="text-[11px] font-medium text-on-surface-variant">Profil</span></a>
+  </div>
+</nav>
+
+<div id="toast" class="toast" aria-live="polite"></div>
+<script src="js/tokens.js"></script><script src="js/profile.js"></script><script src="js/api.js"></script><script src="js/ui.js"></script><script src="js/app.js"></script>
+<script>
+document.querySelectorAll('.quiz-option').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    document.querySelectorAll('.quiz-option').forEach(function(b) { b.disabled = true; });
+    var fb = document.getElementById('quiz-feedback');
+    if (btn.dataset.correct === 'true') {
+      btn.classList.add('correct');
+      fb.textContent = '✓ Benar! Daging mengandung zat besi heme yang lebih mudah diserap daripada zat besi dari nabati.';
+    } else {
+      btn.classList.add('wrong');
+      document.querySelector('[data-correct="true"]').classList.add('correct');
+      fb.textContent = 'Belum tepat — jawaban yang benar adalah daging ayam cincang, yang mengandung zat besi heme.';
+    }
+    fb.style.display = 'block';
+  });
+});
+
+document.getElementById('share-wa').addEventListener('click', function() {
+  window.open('https://wa.me/?text=' + encodeURIComponent('Baca artikel gizi ini dari Suppa: ' + window.location.href));
+});
+
+document.getElementById('share-article').addEventListener('click', function() {
+  if (navigator.share) {
+    navigator.share({ title: document.title, url: window.location.href });
+  } else {
+    window.open('https://wa.me/?text=' + encodeURIComponent('Baca artikel gizi ini dari Suppa: ' + window.location.href));
+  }
+});
+</script>
+</body>
+</html>

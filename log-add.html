@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Catat makan — Suppa</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&family=Be+Vietnam+Pro:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
+  <script>tailwind.config={darkMode:"class",theme:{extend:{colors:{background:"#fff6e2",surface:"#fff6e2","surface-bright":"#fff6e2","surface-container-low":"#f9f0db","surface-container":"#f1e7d1","surface-container-high":"#ebe2ca","surface-container-highest":"#e6dcc3","surface-dim":"#ded4ba","surface-container-lowest":"#ffffff",primary:"#7b5400","primary-container":"#feb300","on-primary":"#fff1df","on-primary-container":"#523700",secondary:"#b7004d","secondary-container":"#ffc2cc","on-secondary":"#ffeff0","on-secondary-container":"#91003c",tertiary:"#176a21","tertiary-container":"#9df197","on-tertiary":"#d1ffc8","on-tertiary-container":"#005c15",error:"#b02500","error-container":"#f95630","on-surface":"#332e22","on-surface-variant":"#605b4c",outline:"#7c7666","outline-variant":"#b4ad9b","on-background":"#332e22","on-background-variant":"#605b4c"},borderRadius:{DEFAULT:"1rem",lg:"2rem",xl:"3rem",full:"9999px"},fontFamily:{headline:["Plus Jakarta Sans","sans-serif"],body:["Be Vietnam Pro","sans-serif"]}}}}</script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/tokens.css" /><link rel="stylesheet" href="css/components.css" />
+</head>
+<body class="bg-background font-body text-on-background">
+
+<!-- Fixed header (back navigation) -->
+<header class="fixed top-0 inset-x-0 z-40 bg-surface-bright/80 backdrop-blur-md shadow-[0_0_24px_rgba(51,46,34,0.06)]">
+  <div class="max-w-[480px] mx-auto flex items-center gap-3 px-4 h-16" style="padding-top:env(safe-area-inset-top,0)">
+    <a href="today.html" class="w-9 h-9 flex items-center justify-center rounded-full bg-surface-container-low flex-shrink-0" aria-label="Kembali">
+      <span class="material-symbols-outlined text-[20px] text-on-surface">arrow_back</span>
+    </a>
+    <h1 class="flex-1 font-headline font-bold text-lg text-on-surface">Catat makan</h1>
+  </div>
+</header>
+
+<div class="app-frame min-h-dvh max-w-[480px] mx-auto">
+  <main class="pt-20 pb-28 px-4 space-y-4">
+
+    <!-- Foto makanan: upload dulu, baru tampil gambar -->
+    <div class="rounded-2xl overflow-hidden suppa-card-elevated suppa-card-elevated--dashed">
+      <div id="meal-photo-empty" class="p-6 flex flex-col items-center gap-3 text-center">
+        <div class="w-16 h-16 rounded-full bg-primary-container flex items-center justify-center">
+          <span class="material-symbols-outlined text-[32px] text-on-primary-container" style="font-variation-settings:'FILL' 1">photo_camera</span>
+        </div>
+        <div>
+          <p class="font-headline font-bold text-base text-on-surface">Foto makanan</p>
+          <p class="text-xs text-on-surface-variant mt-0.5">Ambil foto atau pilih dari galeri — tampil setelah diunggah</p>
+        </div>
+        <input type="file" id="meal-photo-camera" accept="image/*" capture="environment" class="sr-only" aria-hidden="true" />
+        <input type="file" id="meal-photo-gallery" accept="image/*" class="sr-only" aria-hidden="true" />
+        <button type="button" id="meal-photo-camera-btn" class="px-6 py-2.5 rounded-full bg-primary text-on-primary text-sm font-semibold min-h-[44px]">Kamera</button>
+        <button type="button" id="meal-photo-gallery-btn" class="w-full max-w-[280px] flex items-center justify-center gap-2 bg-surface-container-high rounded-full px-4 py-3 text-sm font-semibold text-on-surface min-h-[44px]">
+          <span class="material-symbols-outlined text-[20px] text-on-surface-variant">photo_library</span>
+          Upload dari Galeri
+        </button>
+      </div>
+      <div id="meal-photo-result" hidden class="p-4">
+        <img id="meal-photo-preview" src="" alt="Foto makanan yang diunggah" class="w-full aspect-video object-cover rounded-xl bg-surface-container" />
+        <button type="button" id="meal-photo-replace-btn" class="mt-3 w-full py-2.5 rounded-full border-2 border-outline-variant text-sm font-semibold text-on-surface min-h-[44px]">
+          Ganti foto
+        </button>
+      </div>
+    </div>
+
+    <p class="text-xs font-medium text-on-surface-variant text-center">— atau —</p>
+
+    <!-- Manual form (the actual functional part) -->
+    <div class="rounded-2xl p-4 suppa-card-elevated">
+      <p class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider mb-3">Pilih jenis makanan</p>
+
+      <!-- Info note -->
+      <div class="flex items-start gap-2 bg-primary-container/20 rounded-xl p-3 mb-4 text-xs text-on-surface-variant">
+        <span class="material-symbols-outlined text-[15px] text-primary flex-shrink-0 mt-0.5">info</span>
+        <p>Pilih kelompok makanan yang dimakan si kecil. Suppa akan menghitung perkiraan makro dari kelompok &amp; porsi.</p>
+      </div>
+
+      <!-- Selected groups display -->
+      <p class="text-xs font-semibold text-on-surface mb-1.5">Dipilih:</p>
+      <div class="min-h-10 flex flex-wrap gap-1.5 bg-surface-container rounded-xl p-2 mb-4 selected-groups" id="selected-groups" role="list" aria-label="Kelompok makanan dipilih" aria-live="polite">
+        <span class="text-xs text-on-surface-variant self-center italic pl-1">Belum ada kelompok dipilih</span>
+      </div>
+
+      <form id="log-form" novalidate>
+        <!-- Food group grid -->
+        <p class="text-xs font-semibold text-on-surface mb-2">Pilih jenis makanan:</p>
+        <div class="grid grid-cols-3 gap-2 mb-4" role="group" aria-label="Kelompok makanan">
+          <button type="button" class="food-group-btn" aria-pressed="false" data-group="Serealia &amp; Umbi">
+            <span class="text-2xl">🌾</span>Serealia &amp; Umbi
+          </button>
+          <button type="button" class="food-group-btn" aria-pressed="false" data-group="Kacang-kacangan">
+            <span class="text-2xl">🫘</span>Kacang-kacangan
+          </button>
+          <button type="button" class="food-group-btn" aria-pressed="false" data-group="Susu &amp; Produk Susu">
+            <span class="text-2xl">🥛</span>Susu &amp; Produk Susu
+          </button>
+          <button type="button" class="food-group-btn" aria-pressed="false" data-group="Daging &amp; Ikan">
+            <span class="text-2xl">🍗</span>Daging &amp; Ikan
+          </button>
+          <button type="button" class="food-group-btn" aria-pressed="false" data-group="Telur">
+            <span class="text-2xl">🥚</span>Telur
+          </button>
+          <button type="button" class="food-group-btn" aria-pressed="false" data-group="Sayur Vit A">
+            <span class="text-2xl">🥕</span>Sayur Vit A
+          </button>
+          <button type="button" class="food-group-btn" aria-pressed="false" data-group="Sayur &amp; Buah">
+            <span class="text-2xl">🍎</span>Sayur &amp; Buah
+          </button>
+          <button type="button" class="food-group-btn" aria-pressed="false" data-group="Minyak &amp; Lemak">
+            <span class="text-2xl">🫒</span>Minyak &amp; Lemak
+          </button>
+          <button type="button" class="food-group-btn" aria-pressed="false" data-group="Minuman">
+            <span class="text-2xl">🥤</span>Minuman
+          </button>
+        </div>
+
+        <!-- Cepat Pilih — 8 most recently logged meal names -->
+        <p class="text-xs font-semibold text-on-surface mb-2">Cepat Pilih:</p>
+        <div class="flex flex-wrap gap-2 mb-4" id="quick-pick-chips">
+          <!-- Chips injected by JS from recent meal_logs -->
+        </div>
+
+        <!-- Portion -->
+        <p class="text-xs font-semibold text-on-surface mb-2">Porsi:</p>
+        <div class="flex gap-2 mb-4" role="group" aria-label="Pilih porsi">
+          <button type="button" class="portion-btn" aria-pressed="false" data-portion="sedikit">
+            Sedikit<br><span class="text-[11px] font-normal opacity-70">¼–½ mangkuk</span>
+          </button>
+          <button type="button" class="portion-btn" aria-pressed="true" data-portion="sedang">
+            Sedang<br><span class="text-[11px] font-normal opacity-70">½–1 mangkuk</span>
+          </button>
+          <button type="button" class="portion-btn" aria-pressed="false" data-portion="banyak">
+            Banyak<br><span class="text-[11px] font-normal opacity-70">&gt;1 mangkuk</span>
+          </button>
+        </div>
+
+        <!-- Meal name (required) -->
+        <div class="mb-4">
+          <label for="meal-name" class="block text-sm font-medium text-on-surface mb-1.5">Nama makan <span class="text-error">*</span></label>
+          <input type="text" id="meal-name" placeholder="cth. Sarapan bubur nasi" autocomplete="off" aria-required="true"
+            class="w-full min-h-[44px] px-4 py-2.5 rounded-full bg-surface border border-outline-variant/50 text-sm text-on-surface placeholder:text-on-surface-variant/50 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10" />
+        </div>
+
+        <p class="field__error text-xs" id="log-error" role="alert" aria-live="polite"></p>
+
+        <!-- Save button -->
+        <button type="submit" class="w-full py-3.5 rounded-full bg-secondary text-on-secondary font-headline font-bold text-base shadow-[0_4px_16px_rgba(183,0,77,0.3)] active:scale-[0.98] transition-transform">
+          <span class="flex items-center justify-center gap-2">
+            <span class="material-symbols-outlined text-[20px]">check_circle</span>
+            Simpan Jurnal Makan
+          </span>
+        </button>
+      </form>
+    </div>
+
+  </main>
+</div>
+
+<!-- Bottom nav -->
+<nav class="fixed bottom-0 inset-x-0 z-50 bg-surface-container-lowest/95 backdrop-blur-md rounded-t-[2rem] shadow-[0_-4px_24px_rgba(51,46,34,0.06)]" aria-label="Navigasi utama">
+  <div class="max-w-[480px] mx-auto flex items-start pt-3" style="padding-bottom:calc(0.75rem + env(safe-area-inset-bottom,0))">
+    <a href="today.html" class="flex-1 flex flex-col items-center gap-0.5">
+      <span class="flex items-center justify-center px-5 py-1">
+        <span class="material-symbols-outlined text-[22px] text-on-surface-variant">home</span>
+      </span>
+      <span class="text-[11px] font-medium text-on-surface-variant">Beranda</span>
+    </a>
+    <a href="log-add.html" class="flex-1 flex flex-col items-center gap-0.5" aria-current="page">
+      <span class="flex items-center justify-center px-5 py-1 rounded-full bg-surface-container-low">
+        <span class="material-symbols-outlined text-[22px] text-primary" style="font-variation-settings:'FILL' 1">edit_note</span>
+      </span>
+      <span class="text-[11px] font-semibold text-primary">Catat</span>
+    </a>
+    <a href="edukasi.html" class="flex-1 flex flex-col items-center gap-0.5">
+      <span class="flex items-center justify-center px-5 py-1">
+        <span class="material-symbols-outlined text-[22px] text-on-surface-variant">menu_book</span>
+      </span>
+      <span class="text-[11px] font-medium text-on-surface-variant">Panduan</span>
+    </a>
+    <a href="settings.html" class="flex-1 flex flex-col items-center gap-0.5">
+      <span class="flex items-center justify-center px-5 py-1">
+        <span class="material-symbols-outlined text-[22px] text-on-surface-variant">person</span>
+      </span>
+      <span class="text-[11px] font-medium text-on-surface-variant">Profil</span>
+    </a>
+  </div>
+</nav>
+
+<div id="toast" class="toast" aria-live="polite"></div>
+<script src="js/tokens.js"></script><script src="js/profile.js"></script><script src="js/api.js"></script><script src="js/ui.js"></script><script src="js/app.js"></script>
+<script>
+/* ---------- Meal photo: show image only after file chosen ---------- */
+(function() {
+  var emptyEl = document.getElementById('meal-photo-empty');
+  var resultEl = document.getElementById('meal-photo-result');
+  var previewImg = document.getElementById('meal-photo-preview');
+  var cameraInput = document.getElementById('meal-photo-camera');
+  var galleryInput = document.getElementById('meal-photo-gallery');
+  var cameraBtn = document.getElementById('meal-photo-camera-btn');
+  var galleryBtn = document.getElementById('meal-photo-gallery-btn');
+  var replaceBtn = document.getElementById('meal-photo-replace-btn');
+  var objectUrl = null;
+
+  function revoke() {
+    if (objectUrl) {
+      try { URL.revokeObjectURL(objectUrl); } catch (e) {}
+      objectUrl = null;
+    }
+  }
+
+  function showPhoto(file) {
+    if (!file || !previewImg || !emptyEl || !resultEl) return;
+    revoke();
+    objectUrl = URL.createObjectURL(file);
+    previewImg.src = objectUrl;
+    emptyEl.hidden = true;
+    resultEl.hidden = false;
+  }
+
+  function resetPhoto() {
+    revoke();
+    if (previewImg) previewImg.removeAttribute('src');
+    if (emptyEl) emptyEl.hidden = false;
+    if (resultEl) resultEl.hidden = true;
+    if (cameraInput) cameraInput.value = '';
+    if (galleryInput) galleryInput.value = '';
+  }
+
+  function onFileInputChange(e) {
+    var f = e.target.files && e.target.files[0];
+    if (f) showPhoto(f);
+    e.target.value = '';
+  }
+
+  if (cameraBtn && cameraInput) {
+    cameraBtn.addEventListener('click', function() { cameraInput.click(); });
+    cameraInput.addEventListener('change', onFileInputChange);
+  }
+  if (galleryBtn && galleryInput) {
+    galleryBtn.addEventListener('click', function() { galleryInput.click(); });
+    galleryInput.addEventListener('change', onFileInputChange);
+  }
+  if (replaceBtn) replaceBtn.addEventListener('click', resetPhoto);
+  window.addEventListener('pagehide', revoke);
+})();
+
+/* ---------- Pre-fill meal name from URL param ---------- */
+(function() {
+  var params = new URLSearchParams(window.location.search);
+  var meal = params.get('meal');
+  if (meal) {
+    var labels = { sarapan: 'Sarapan', 'makan-siang': 'Makan siang', 'makan-malam': 'Makan malam', camilan: 'Camilan' };
+    var input = document.getElementById('meal-name');
+    if (input && labels[meal]) input.value = labels[meal];
+  }
+})();
+
+/* ---------- Cepat Pilih: load 8 recent meal names ---------- */
+(function() {
+  var RECENT_KEY = 'suppa_recent_meals';
+
+  function getRecentFromStorage() {
+    try { return JSON.parse(localStorage.getItem(RECENT_KEY) || '[]'); } catch(e) { return []; }
+  }
+
+  function renderQuickPick(names) {
+    var container = document.getElementById('quick-pick-chips');
+    if (!container) return;
+    container.innerHTML = '';
+    if (!names.length) {
+      container.innerHTML = '<span class="text-xs text-on-surface-variant italic">Belum ada riwayat makan</span>';
+      return;
+    }
+    names.slice(0, 8).forEach(function(name) {
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'chip';
+      btn.textContent = name;
+      btn.addEventListener('click', function() {
+        var mealInput = document.getElementById('meal-name');
+        if (mealInput) { mealInput.value = name; mealInput.focus(); }
+      });
+      container.appendChild(btn);
+    });
+  }
+
+  function loadAndRender() {
+    var local = getRecentFromStorage();
+    if (local.length) { renderQuickPick(local); }
+
+    if (SUPPA.api) {
+      var childId = SUPPA.profile ? SUPPA.profile.getChildId() : null;
+      SUPPA.api.get('meal_logs').then(function(res) {
+        var logs = (res.data || []);
+        if (childId) logs = logs.filter(function(l) { return l.child_id === childId; });
+        var seen = new Set();
+        var names = [];
+        logs.slice().reverse().forEach(function(l) {
+          var n = (l.meal_name || '').trim();
+          if (n && !seen.has(n)) { seen.add(n); names.push(n); }
+        });
+        if (names.length) {
+          localStorage.setItem(RECENT_KEY, JSON.stringify(names.slice(0, 20)));
+          renderQuickPick(names);
+        } else if (!local.length) {
+          renderQuickPick([]);
+        }
+      }).catch(function() { if (!local.length) renderQuickPick([]); });
+    } else if (!local.length) {
+      renderQuickPick([]);
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', loadAndRender);
+})();
+
+/* ---------- Food log form ---------- */
+(function() {
+  var selectedGroups = new Set();
+  var container = document.getElementById('selected-groups');
+
+  function renderTags() {
+    container.innerHTML = '';
+    if (!selectedGroups.size) {
+      container.innerHTML = '<span class="text-xs text-on-surface-variant self-center italic pl-1">Belum ada kelompok dipilih</span>';
+      return;
+    }
+    selectedGroups.forEach(function(g) {
+      var tag = document.createElement('div');
+      tag.className = 'inline-flex items-center gap-1 px-3 py-1 rounded-full bg-primary text-on-primary text-xs font-semibold';
+      tag.setAttribute('role', 'listitem');
+      tag.innerHTML = g + '<button type="button" aria-label="Hapus ' + g + '" class="ml-0.5 opacity-80 hover:opacity-100 flex items-center"><span style="font-size:14px;line-height:1;font-family:sans-serif">&times;</span></button>';
+      tag.querySelector('button').addEventListener('click', function() {
+        selectedGroups.delete(g);
+        var btn = document.querySelector('[data-group="' + g.replace(/&amp;/g,'&') + '"]') || document.querySelector('[data-group="' + g + '"]');
+        if (btn) btn.setAttribute('aria-pressed', 'false');
+        renderTags();
+      });
+      container.appendChild(tag);
+    });
+  }
+
+  document.querySelectorAll('.food-group-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var group = btn.dataset.group;
+      var pressed = btn.getAttribute('aria-pressed') === 'true';
+      btn.setAttribute('aria-pressed', pressed ? 'false' : 'true');
+      if (pressed) selectedGroups.delete(group); else selectedGroups.add(group);
+      var errEl = document.getElementById('log-error');
+      if (errEl) { errEl.textContent = ''; errEl.style.display = 'none'; }
+      renderTags();
+    });
+  });
+
+  renderTags();
+})();
+</script>
+</body>
+</html>
