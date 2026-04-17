@@ -6,7 +6,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&family=Be+Vietnam+Pro:wght@400;500;600&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
-  <script>tailwind.config={darkMode:"class",theme:{extend:{colors:{background:"#fff6e2",surface:"#ffffff","surface-bright":"#fff6e2","surface-container-low":"#f9f0db","surface-container":"#f1e7d1","surface-container-high":"#ebe2ca","surface-container-highest":"#e6dcc3","surface-dim":"#ded4ba",primary:"#7b5400","primary-container":"#feb300","on-primary":"#fff1df","on-primary-container":"#523700",secondary:"#b7004d","secondary-container":"#ffc2cc","on-secondary":"#ffeff0",tertiary:"#176a21","tertiary-container":"#9df197","on-tertiary":"#d1ffc8",error:"#b02500","error-container":"#f95630","on-surface":"#332e22","on-surface-variant":"#605b4c",outline:"#7c7666","outline-variant":"#b4ad9b"},borderRadius:{DEFAULT:"1rem",lg:"2rem",xl:"3rem",full:"9999px"},fontFamily:{headline:["Plus Jakarta Sans","sans-serif"],body:["Be Vietnam Pro","sans-serif"]}}}}</script>
+  <script>tailwind.config={darkMode:"class",theme:{extend:{colors:{background:"#fff6e2",surface:"#ffffff","surface-bright":"#fff6e2","surface-container-low":"#f9f0db","surface-container":"#f1e7d1","surface-container-high":"#ebe2ca","surface-container-highest":"#e6dcc3","surface-dim":"#ded4ba",primary:"#FFB300","primary-container":"#7b5400","on-primary":"#523700","on-primary-container":"#fff1df",secondary:"#b7004d","secondary-container":"#ffc2cc","on-secondary":"#ffeff0",tertiary:"#176a21","tertiary-container":"#9df197","on-tertiary":"#d1ffc8",error:"#b02500","error-container":"#f95630","on-surface":"#332e22","on-surface-variant":"#605b4c",outline:"#7c7666","outline-variant":"#b4ad9b"},borderRadius:{DEFAULT:"1rem",lg:"2rem",xl:"3rem",full:"9999px"},fontFamily:{headline:["Plus Jakarta Sans","sans-serif"],body:["Be Vietnam Pro","sans-serif"]}}}}</script>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="css/tokens.css" /><link rel="stylesheet" href="css/components.css" />
 </head>
@@ -42,55 +42,83 @@
     <div id="mode-hint" class="flex items-center gap-2 bg-surface-container-low rounded-xl px-4 py-3 text-sm" hidden>
       <span class="material-symbols-outlined text-[18px] text-primary flex-shrink-0">restaurant</span>
       <span class="flex-1 text-on-surface">Mau masak apa malam ini?</span>
-      <a href="fridge.html" class="font-semibold text-primary whitespace-nowrap">Mode Masak →</a>
+      <a href="fridge.html" class="font-semibold text-primary whitespace-nowrap underline underline-offset-2 decoration-primary/40">Mode Masak →</a>
       <button type="button" id="mode-hint-dismiss" class="ml-1 text-on-surface-variant" aria-label="Tutup saran">
         <span class="material-symbols-outlined text-[18px]">close</span>
       </button>
     </div>
 
-    <!-- Rainbow "Makan Pelangi" hero -->
+    <!-- Pelangi Kecukupan Gizi hero -->
     <div class="bg-surface-container-low rounded-2xl p-5 relative overflow-hidden shadow-[0_2px_12px_rgba(51,46,34,0.06)]">
-      <!-- Decorative restaurant icon -->
-      <span class="material-symbols-outlined absolute bottom-3 right-4 text-[64px] text-on-surface/5 select-none pointer-events-none" aria-hidden="true" style="font-variation-settings:'FILL' 1">restaurant</span>
 
-      <p class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider mb-3">✨ Makan Pelangi Hari Ini</p>
+      <p class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider mb-3">Pelangi Kecukupan Gizi hari ini</p>
 
-      <!-- Semicircle arc -->
+      <!-- Concentric half-circle arcs (Huawei Activity-ring style) -->
       <div class="flex flex-col items-center">
-        <div class="relative w-52" style="height:115px">
-          <svg viewBox="0 0 200 112" width="100%" height="100%" aria-hidden="true">
-            <!-- Track -->
-            <path d="M 20 100 A 80 80 0 0 0 180 100" fill="none" stroke="#e6dcc3" stroke-width="20" stroke-linecap="butt"/>
-            <!-- Buah (magenta) -->
-            <path d="M 21 99 A 80 80 0 0 0 43 43" fill="none" stroke="#ffc2cc" stroke-width="20" stroke-linecap="round"/>
-            <!-- Karbo (gold) -->
-            <path d="M 47 40 A 80 80 0 0 0 100 20" fill="none" stroke="#feb300" stroke-width="20" stroke-linecap="round"/>
-            <!-- Sayur (green) -->
-            <path d="M 103 20 A 80 80 0 0 0 155 40" fill="none" stroke="#9df197" stroke-width="20" stroke-linecap="round"/>
-            <!-- Protein (coral) -->
-            <path d="M 157 43 A 80 80 0 0 0 179 99" fill="none" stroke="#f95630" stroke-width="20" stroke-linecap="round"/>
+        <div class="relative" style="width:220px;height:120px">
+          <svg id="nutrition-arcs" viewBox="0 0 220 120" width="220" height="120" aria-hidden="true">
+            <!-- Tracks (outermost → innermost) -->
+            <path d="M 10 110 A 100 100 0 0 1 210 110" fill="none" stroke="#e6dcc3" stroke-width="14" stroke-linecap="round"/>
+            <path d="M 24  110 A 86  86  0 0 1 196 110" fill="none" stroke="#e6dcc3" stroke-width="14" stroke-linecap="round"/>
+            <path d="M 38  110 A 72  72  0 0 1 182 110" fill="none" stroke="#e6dcc3" stroke-width="14" stroke-linecap="round"/>
+            <path d="M 52  110 A 58  58  0 0 1 168 110" fill="none" stroke="#e6dcc3" stroke-width="14" stroke-linecap="round"/>
+            <!-- Progress arcs (filled by JS) -->
+            <path id="arc-energy"  d="M 10 110 A 100 100 0 0 1 210 110" fill="none" stroke="#FFB300" stroke-width="14" stroke-linecap="round" stroke-dasharray="314 314" stroke-dashoffset="314"/>
+            <path id="arc-protein" d="M 24 110 A 86  86  0 0 1 196 110" fill="none" stroke="#176a21" stroke-width="14" stroke-linecap="round" stroke-dasharray="270 270" stroke-dashoffset="270"/>
+            <path id="arc-carbs"   d="M 38 110 A 72  72  0 0 1 182 110" fill="none" stroke="#f97316" stroke-width="14" stroke-linecap="round" stroke-dasharray="226 226" stroke-dashoffset="226"/>
+            <path id="arc-fat"     d="M 52 110 A 58  58  0 0 1 168 110" fill="none" stroke="#605b4c" stroke-width="14" stroke-linecap="round" stroke-dasharray="182 182" stroke-dashoffset="182"/>
           </svg>
-          <!-- Center overlay -->
-          <div class="absolute inset-0 flex flex-col items-center justify-end pb-1">
-            <span class="font-headline font-black text-4xl text-primary leading-none" id="rainbow-pct">5</span>
-            <span class="text-xs text-on-surface-variant mt-0.5">dari 8 kelompok</span>
-          </div>
+        </div>
+        <!-- Arc legend -->
+        <div class="flex flex-wrap justify-center gap-x-4 gap-y-1 mt-2">
+          <span class="flex items-center gap-1.5 text-xs text-on-surface-variant"><span class="w-2.5 h-2.5 rounded-full flex-shrink-0" style="background:#FFB300"></span>Energi <span id="arc-energy-pct" class="font-semibold text-on-surface">0%</span></span>
+          <span class="flex items-center gap-1.5 text-xs text-on-surface-variant"><span class="w-2.5 h-2.5 rounded-full flex-shrink-0" style="background:#176a21"></span>Protein <span id="arc-protein-pct" class="font-semibold text-on-surface">0%</span></span>
+          <span class="flex items-center gap-1.5 text-xs text-on-surface-variant"><span class="w-2.5 h-2.5 rounded-full flex-shrink-0" style="background:#f97316"></span>Karbo <span id="arc-carbs-pct" class="font-semibold text-on-surface">0%</span></span>
+          <span class="flex items-center gap-1.5 text-xs text-on-surface-variant"><span class="w-2.5 h-2.5 rounded-full flex-shrink-0" style="background:#605b4c"></span>Lemak <span id="arc-fat-pct" class="font-semibold text-on-surface">0%</span></span>
         </div>
       </div>
+    </div>
 
-      <!-- Group chips -->
-      <div class="flex flex-wrap justify-center gap-2 mt-3">
-        <span class="px-3 py-1 rounded-full text-xs font-semibold bg-secondary-container/60 text-on-surface">🍓 Buah</span>
-        <span class="px-3 py-1 rounded-full text-xs font-semibold bg-primary-container/40 text-on-surface">🌾 Karbo</span>
-        <span class="px-3 py-1 rounded-full text-xs font-semibold bg-tertiary-container/50 text-on-surface">🥬 Sayur</span>
-        <span class="px-3 py-1 rounded-full text-xs font-semibold bg-error-container/30 text-on-surface">🥩 Protein</span>
+    <!-- Daily To-Do List -->
+    <div class="bg-surface-container-low rounded-2xl p-5 shadow-[0_2px_12px_rgba(51,46,34,0.06)]" id="todo-card">
+      <div class="flex items-center justify-between mb-3">
+        <h2 class="font-headline font-bold text-base text-on-surface">Rencana hari ini</h2>
+        <button type="button" id="todo-edit-btn" class="w-8 h-8 flex items-center justify-center rounded-full text-on-surface-variant hover:bg-surface-container" aria-label="Edit to-do list">
+          <span class="material-symbols-outlined text-[18px]">edit</span>
+        </button>
+      </div>
+      <ul class="space-y-2" id="todo-list" aria-label="Daftar rencana hari ini"></ul>
+      <!-- Add custom to-do -->
+      <div class="flex items-center gap-2 mt-3" id="todo-add-row" hidden>
+        <input type="text" id="todo-custom-input" placeholder="Tambah rencana…" maxlength="80"
+          class="flex-1 min-h-[40px] px-3 py-2 rounded-full bg-surface border border-outline-variant/50 text-sm text-on-surface placeholder:text-on-surface-variant/50 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10" />
+        <button type="button" id="todo-custom-add" class="w-9 h-9 flex items-center justify-center rounded-full bg-primary text-on-primary flex-shrink-0" aria-label="Tambah">
+          <span class="material-symbols-outlined text-[18px]">add</span>
+        </button>
       </div>
     </div>
 
     <!-- Macro progress card -->
-    <div class="bg-surface-container-low rounded-2xl p-5 shadow-[0_2px_12px_rgba(51,46,34,0.06)]" aria-labelledby="today-heading">
-      <h2 id="today-heading" class="font-headline font-bold text-base text-on-surface mb-0.5">Gizi Hari Ini untuk Nara</h2>
+    <div class="bg-surface-container-low rounded-2xl p-5 shadow-[0_2px_12px_rgba(51,46,34,0.06)]" id="macro-card" aria-labelledby="today-heading">
+      <div class="flex items-start justify-between mb-0.5">
+        <h2 id="today-heading" class="font-headline font-bold text-base text-on-surface">Gizi Hari Ini untuk Nara</h2>
+        <button type="button" id="macro-edit-btn" class="w-8 h-8 flex items-center justify-center rounded-full text-on-surface-variant hover:bg-surface-container flex-shrink-0 -mt-0.5" aria-label="Edit target nutrisi" aria-expanded="false">
+          <span class="material-symbols-outlined text-[18px]">tune</span>
+        </button>
+      </div>
       <p class="text-xs text-on-surface-variant italic mb-4">Perkiraan dari catatan cepat — bukan asupan pasti.</p>
+
+      <!-- Inline nutrient editor panel -->
+      <div id="macro-edit-panel" hidden class="mb-4 p-4 bg-surface-container rounded-2xl border border-outline-variant/30">
+        <p class="text-xs font-semibold text-on-surface-variant mb-3">Sesuaikan target harian</p>
+        <div class="space-y-3" id="macro-targets-form">
+          <!-- Fields injected by JS -->
+        </div>
+        <div class="flex gap-2 mt-3">
+          <button type="button" id="macro-edit-save" class="flex-1 py-2 rounded-full bg-primary text-on-primary text-sm font-semibold">Simpan</button>
+          <button type="button" id="macro-edit-cancel" class="flex-1 py-2 rounded-full bg-surface-container-high text-on-surface text-sm font-semibold">Batal</button>
+        </div>
+      </div>
 
       <!-- Energy -->
       <div class="mb-3" role="group" aria-label="Energi hari ini">
@@ -135,7 +163,7 @@
       <!-- Weekly footer -->
       <p class="text-xs text-on-surface-variant mt-3 pt-3 border-t border-outline-variant/20">
         🌈 Nara sudah makan 5 dari 8 kelompok minggu ini ·
-        <a href="log-week.html" class="text-primary font-medium">Lihat detail</a>
+        <a href="log-week.html" class="text-primary font-medium underline underline-offset-2 decoration-primary/40">Lihat detail</a>
       </p>
     </div>
 
@@ -166,7 +194,7 @@
     <div>
       <div class="flex items-center justify-between mb-3">
         <h3 class="font-headline font-bold text-base text-on-surface">Makanan Terbaru</h3>
-        <a href="log-week.html" class="text-xs font-semibold text-primary">Lihat semua</a>
+        <a href="log-week.html" class="text-xs font-semibold text-primary underline underline-offset-2 decoration-primary/40">Lihat semua</a>
       </div>
       <div class="flex gap-3 overflow-x-auto pb-1 scrollbar-hide" style="-webkit-overflow-scrolling:touch;scrollbar-width:none;">
         <a href="recipe-detail.html" class="flex-shrink-0 w-36 bg-surface-container-low rounded-2xl overflow-hidden shadow-[0_2px_8px_rgba(51,46,34,0.06)]">
@@ -226,7 +254,7 @@
 </div>
 
 <!-- FAB -->
-<a href="log-add.html" class="fixed right-5 z-40 w-14 h-14 rounded-full bg-primary flex items-center justify-center shadow-[0_4px_16px_rgba(123,84,0,0.4)] active:scale-95 transition-transform" style="bottom:calc(80px + env(safe-area-inset-bottom,0))" aria-label="Catat makan">
+<a href="log-add.html" class="fixed right-5 z-40 w-14 h-14 rounded-full bg-primary flex items-center justify-center shadow-[0_4px_16px_rgba(255,179,0,0.45)] active:scale-95 transition-transform" style="bottom:calc(80px + env(safe-area-inset-bottom,0))" aria-label="Catat makan">
   <span class="material-symbols-outlined text-[28px] text-on-primary">add</span>
 </a>
 
@@ -263,9 +291,236 @@
 <div id="toast" class="toast" aria-live="polite"></div>
 <script src="js/tokens.js"></script><script src="js/profile.js"></script><script src="js/api.js"></script><script src="js/ui.js"></script><script src="js/app.js"></script>
 <script>
+/* ---------- Macro target editor ---------- */
+(function() {
+  var MACRO_LABELS = { energy: 'Energi (kkal)', protein: 'Protein (g)', carbs: 'Karbo (g)', fat: 'Lemak (g)' };
+  var MACRO_KEYS = ['energy','protein','carbs','fat'];
+  var STORAGE_KEY = 'suppa_macro_targets_custom';
+
+  function getAgeBand() {
+    return SUPPA.profile ? SUPPA.profile.getChildAgeBand() : '1-2';
+  }
+
+  function getTargets() {
+    try {
+      var saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+      var band = getAgeBand();
+      return saved[band] || null;
+    } catch (e) { return null; }
+  }
+
+  function saveTargets(targets) {
+    try {
+      var saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+      saved[getAgeBand()] = targets;
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(saved));
+    } catch (e) {}
+  }
+
+  function patchGlobalTargets(targets) {
+    var band = getAgeBand();
+    if (SUPPA.MACRO_TARGETS) SUPPA.MACRO_TARGETS[band] = Object.assign({}, SUPPA.MACRO_TARGETS[band], targets);
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var editBtn    = document.getElementById('macro-edit-btn');
+    var editPanel  = document.getElementById('macro-edit-panel');
+    var saveBtn    = document.getElementById('macro-edit-save');
+    var cancelBtn  = document.getElementById('macro-edit-cancel');
+    var targetsForm = document.getElementById('macro-targets-form');
+    if (!editBtn || !editPanel) return;
+
+    /* Apply any saved custom targets */
+    var saved = getTargets();
+    if (saved) patchGlobalTargets(saved);
+
+    editBtn.addEventListener('click', function() {
+      var open = !editPanel.hidden;
+      editPanel.hidden = open;
+      editBtn.setAttribute('aria-expanded', open ? 'false' : 'true');
+      if (!open) {
+        var band = getAgeBand();
+        var current = (SUPPA.MACRO_TARGETS || {})[band] || { energy:1000, protein:20, carbs:130, fat:44 };
+        targetsForm.innerHTML = MACRO_KEYS.map(function(k) {
+          return '<div class="flex items-center justify-between gap-3">' +
+            '<label class="text-sm text-on-surface-variant flex-1" for="mt-' + k + '">' + MACRO_LABELS[k] + '</label>' +
+            '<input type="number" id="mt-' + k + '" value="' + (current[k] || 0) + '" min="0" max="9999" ' +
+            'class="w-24 min-h-[36px] px-3 py-1.5 rounded-xl bg-surface border border-outline-variant/50 text-sm text-on-surface text-right focus:outline-none focus:border-primary" />' +
+            '</div>';
+        }).join('');
+      }
+    });
+
+    saveBtn.addEventListener('click', function() {
+      var newTargets = {};
+      MACRO_KEYS.forEach(function(k) {
+        var el = document.getElementById('mt-' + k);
+        newTargets[k] = el ? (parseFloat(el.value) || 0) : 0;
+      });
+      saveTargets(newTargets);
+      patchGlobalTargets(newTargets);
+      editPanel.hidden = true;
+      editBtn.setAttribute('aria-expanded', 'false');
+      /* Trigger re-render of bars */
+      window.dispatchEvent(new Event('suppa:targets-updated'));
+    });
+
+    cancelBtn.addEventListener('click', function() {
+      editPanel.hidden = true;
+      editBtn.setAttribute('aria-expanded', 'false');
+    });
+  });
+})();
+
+/* ---------- Daily To-Do List ---------- */
+(function() {
+  var TODAY_KEY = 'suppa_todo_' + new Date().toISOString().slice(0, 10);
+  var isEditing = false;
+
+  var PREDEFINED = [
+    { id: 'sarapan',     label: 'Catat sarapan',    href: 'log-add.html?meal=sarapan',     fixed: true },
+    { id: 'makan-siang', label: 'Catat makan siang', href: 'log-add.html?meal=makan-siang', fixed: true },
+    { id: 'makan-malam', label: 'Catat makan malam', href: 'log-add.html?meal=makan-malam', fixed: true },
+    { id: 'camilan',     label: 'Catat camilan',     href: 'log-add.html?meal=camilan',     fixed: true },
+    { id: 'artikel',     label: 'Baca 1 artikel',    href: 'edukasi.html',                  fixed: true },
+  ];
+
+  function loadState() {
+    try { return JSON.parse(localStorage.getItem(TODAY_KEY) || '{}'); } catch (e) { return {}; }
+  }
+
+  function saveState(state) {
+    localStorage.setItem(TODAY_KEY, JSON.stringify(state));
+  }
+
+  function loadCustom() {
+    try { return JSON.parse(localStorage.getItem('suppa_todo_custom') || '[]'); } catch (e) { return []; }
+  }
+
+  function saveCustom(items) {
+    localStorage.setItem('suppa_todo_custom', JSON.stringify(items));
+  }
+
+  function buildItems() {
+    var custom = loadCustom().map(function(c) {
+      return { id: 'custom_' + c.id, label: c.label, href: null, fixed: false };
+    });
+    return PREDEFINED.concat(custom);
+  }
+
+  function renderTodos() {
+    var state = loadState();
+    var items = buildItems();
+    var list = document.getElementById('todo-list');
+    if (!list) return;
+    list.innerHTML = '';
+    items.forEach(function(item) {
+      var done = !!state[item.id];
+      var li = document.createElement('li');
+      li.className = 'flex items-center gap-3 group';
+
+      var checkbox = document.createElement('button');
+      checkbox.type = 'button';
+      checkbox.setAttribute('role', 'checkbox');
+      checkbox.setAttribute('aria-checked', done ? 'true' : 'false');
+      checkbox.setAttribute('aria-label', item.label);
+      checkbox.className = 'w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 transition-colors ' +
+        (done ? 'bg-tertiary border-tertiary' : 'border-outline-variant/60 bg-surface');
+      checkbox.innerHTML = done ? '<span class="material-symbols-outlined text-[12px] text-on-tertiary" style="font-variation-settings:\'FILL\' 1">check</span>' : '';
+      checkbox.addEventListener('click', function() {
+        var s = loadState();
+        if (s[item.id]) { delete s[item.id]; } else {
+          s[item.id] = true;
+          if (item.href) { saveState(s); window.location.href = item.href; return; }
+        }
+        saveState(s);
+        renderTodos();
+      });
+
+      var labelEl = document.createElement('span');
+      labelEl.className = 'flex-1 text-sm ' + (done ? 'line-through text-on-surface-variant' : 'text-on-surface');
+      labelEl.textContent = item.label;
+
+      li.appendChild(checkbox);
+      li.appendChild(labelEl);
+
+      if (!item.fixed && isEditing) {
+        var delBtn = document.createElement('button');
+        delBtn.type = 'button';
+        delBtn.className = 'w-6 h-6 flex items-center justify-center rounded-full text-error/60 hover:text-error flex-shrink-0';
+        delBtn.setAttribute('aria-label', 'Hapus ' + item.label);
+        delBtn.innerHTML = '<span class="material-symbols-outlined text-[16px]">close</span>';
+        delBtn.addEventListener('click', function() {
+          var rawId = item.id.replace('custom_', '');
+          var custom = loadCustom().filter(function(c) { return c.id !== rawId; });
+          saveCustom(custom);
+          renderTodos();
+        });
+        li.appendChild(delBtn);
+      }
+
+      list.appendChild(li);
+    });
+  }
+
+  var editBtn = document.getElementById('todo-edit-btn');
+  var addRow  = document.getElementById('todo-add-row');
+  var addInput = document.getElementById('todo-custom-input');
+  var addBtn   = document.getElementById('todo-custom-add');
+
+  if (editBtn) {
+    editBtn.addEventListener('click', function() {
+      isEditing = !isEditing;
+      if (addRow) addRow.hidden = !isEditing;
+      editBtn.innerHTML = isEditing
+        ? '<span class="material-symbols-outlined text-[18px] text-primary">check</span>'
+        : '<span class="material-symbols-outlined text-[18px]">edit</span>';
+      renderTodos();
+    });
+  }
+
+  if (addBtn && addInput) {
+    function addCustom() {
+      var val = (addInput.value || '').trim();
+      if (!val) return;
+      var custom = loadCustom();
+      custom.push({ id: Date.now().toString(36), label: val });
+      saveCustom(custom);
+      addInput.value = '';
+      renderTodos();
+    }
+    addBtn.addEventListener('click', addCustom);
+    addInput.addEventListener('keydown', function(e) { if (e.key === 'Enter') { e.preventDefault(); addCustom(); } });
+  }
+
+  document.addEventListener('DOMContentLoaded', renderTodos);
+})();
+</script>
+<script>
 (function () {
   var UNITS = { energy: 'kkal', protein: 'g', carbs: 'g', fat: 'g' };
   var MACROS = ['energy', 'protein', 'carbs', 'fat'];
+
+  /* Half-circle arc circumferences (πr for each radius: 100, 86, 72, 58) */
+  var ARC_LENGTHS = { energy: 314, protein: 270, carbs: 226, fat: 182 };
+
+  function renderArcs(totals, targets) {
+    MACROS.forEach(function (m) {
+      var val = Math.round(totals[m]);
+      var target = targets[m];
+      var pct = Math.min(100, target > 0 ? Math.round((val / target) * 100) : 0);
+      var len = ARC_LENGTHS[m];
+      var offset = len - (len * pct / 100);
+
+      var arcEl = document.getElementById('arc-' + m);
+      var pctEl = document.getElementById('arc-' + m + '-pct');
+      if (arcEl) {
+        arcEl.style.strokeDashoffset = offset;
+        arcEl.style.transition = 'stroke-dashoffset 0.6s ease';
+      }
+      if (pctEl) pctEl.textContent = pct + '%';
+    });
+  }
 
   function renderBars(totals, targets) {
     MACROS.forEach(function (m) {
@@ -277,6 +532,7 @@
       if (valEl) valEl.innerHTML = '<span class="text-outline">~</span>' + val + ' / ' + target + ' ' + UNITS[m];
       if (fillEl) fillEl.style.width = pct + '%';
     });
+    renderArcs(totals, targets);
   }
 
   function calcFromLogs(logs) {
@@ -296,13 +552,23 @@
     return totals;
   }
 
+  var _cachedTotals = { energy: 0, protein: 0, carbs: 0, fat: 0 };
+
+  function refreshDashboard() {
+    var ageBand = SUPPA.profile ? SUPPA.profile.getChildAgeBand() : '1-2';
+    var targets = (SUPPA.MACRO_TARGETS || {})[ageBand] || { energy: 1000, protein: 20, carbs: 130, fat: 44 };
+    renderBars(_cachedTotals, targets);
+  }
+
+  window.addEventListener('suppa:targets-updated', refreshDashboard);
+
   document.addEventListener('DOMContentLoaded', function () {
     var ageBand = SUPPA.profile ? SUPPA.profile.getChildAgeBand() : '1-2';
     var targets = (SUPPA.MACRO_TARGETS || {})[ageBand] || { energy: 1000, protein: 20, carbs: 130, fat: 44 };
     var childId = SUPPA.profile ? SUPPA.profile.getChildId() : null;
     var today   = new Date().toISOString().slice(0, 10);
 
-    renderBars({ energy: 0, protein: 0, carbs: 0, fat: 0 }, targets);
+    renderBars(_cachedTotals, targets);
 
     if (!childId || !SUPPA.api) return;
 
@@ -310,15 +576,8 @@
       var todayLogs = (res.data || []).filter(function (l) {
         return l.child_id === childId && (l.logged_at || '').slice(0, 10) === today;
       });
-      renderBars(calcFromLogs(todayLogs), targets);
-
-      // Update rainbow count
-      var uniqueGroups = new Set();
-      todayLogs.forEach(function(l) {
-        (l.food_groups_csv || '').split(',').forEach(function(g) { if (g.trim()) uniqueGroups.add(g.trim()); });
-      });
-      var pctEl = document.getElementById('rainbow-pct');
-      if (pctEl) pctEl.textContent = uniqueGroups.size;
+      _cachedTotals = calcFromLogs(todayLogs);
+      renderBars(_cachedTotals, targets);
     }).catch(function () {});
   });
 })();

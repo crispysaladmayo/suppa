@@ -9,10 +9,10 @@
   --surface-container-high: #ebe2ca;
   --surface-container-highest: #e6dcc3;
   --surface-dim: #ded4ba;
-  --primary: #7b5400;
-  --primary-container: #feb300;
-  --on-primary: #fff1df;
-  --on-primary-container: #523700;
+    --primary: #FFB300;
+    --primary-container: #7b5400;
+    --on-primary: #523700;
+    --on-primary-container: #fff1df;
   --secondary: #b7004d;
   --secondary-container: #ffc2cc;
   --on-secondary: #ffeff0;
@@ -29,10 +29,10 @@
   --outline-variant: #b4ad9b;
 
   /* Legacy alias tokens (used in inline styles across app) */
-  --accent: #7b5400;
-  --accent-hover: #5e3f00;
-  --accent-tint: #f9f0db;
-  --accent-light: #f1e7d1;
+    --accent: #FFB300;
+    --accent-hover: #e0a000;
+    --accent-tint: #fff3cc;
+    --accent-light: #ffe680;
   --text-primary: #332e22;
   --text-secondary: #605b4c;
   --text-muted: #7c7666;
@@ -46,10 +46,10 @@
   --warning-soft-bg: #ffc2cc;
   --warning-soft-text: #91003c;
   --error-text: #b02500;
-  --focus-ring: #7b5400;
-  --shadow-card: 0 2px 12px rgba(51,46,34,0.06);
-  --shadow-sheet: 0 -4px 24px rgba(51,46,34,0.12);
-  --shadow-modal: 0 8px 32px rgba(51,46,34,0.16);
+    --focus-ring: #FFB300;
+    --shadow-card: 0 2px 12px rgba(51,46,34,0.06);
+    --shadow-sheet: 0 -4px 24px rgba(51,46,34,0.12);
+    --shadow-modal: 0 8px 32px rgba(51,46,34,0.16);
 
   /* Spacing */
   --space-1: 4px;  --space-2: 8px;  --space-3: 12px; --space-4: 16px;

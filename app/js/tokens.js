@@ -39,6 +39,17 @@ SUPPA.FOOD_GROUP_MACROS = {
 
 SUPPA.PORTION_MULTIPLIERS = { sedikit: 0.6, sedang: 1.0, banyak: 1.5 };
 
+/* IDAI-based daily sodium (mg) and added sugar (g) limits by age band */
+SUPPA.IDAI_LIMITS = {
+  "0-5":  { sodium: 120,  sugar: 0  },
+  "6-12": { sodium: 200,  sugar: 0  },
+  "1-2":  { sodium: 800,  sugar: 12 },
+  "3-5":  { sodium: 1000, sugar: 15 },
+  "6-8":  { sodium: 1200, sugar: 20 },
+  "9-11": { sodium: 1500, sugar: 25 },
+  "12":   { sodium: 1500, sugar: 25 },
+};
+
 SUPPA.PROTO_VERSION = "M2 · v1.0.0 · 2026-04-15";
 
 window.SUPPA = SUPPA;
