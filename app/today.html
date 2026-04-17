@@ -6,7 +6,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&family=Be+Vietnam+Pro:wght@400;500;600&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
-  <script>tailwind.config={darkMode:"class",theme:{extend:{colors:{background:"#fff6e2",surface:"#fff6e2","surface-bright":"#fff6e2","surface-container-low":"#f9f0db","surface-container":"#f1e7d1","surface-container-high":"#ebe2ca","surface-container-highest":"#e6dcc3","surface-dim":"#ded4ba","surface-container-lowest":"#ffffff",primary:"#7b5400","primary-container":"#feb300","on-primary":"#fff1df","on-primary-container":"#523700",secondary:"#b7004d","secondary-container":"#ffc2cc","on-secondary":"#ffeff0","on-secondary-container":"#91003c",tertiary:"#176a21","tertiary-container":"#9df197","on-tertiary":"#d1ffc8","on-tertiary-container":"#005c15",error:"#b02500","error-container":"#f95630","on-surface":"#332e22","on-surface-variant":"#605b4c",outline:"#7c7666","outline-variant":"#b4ad9b","on-background":"#332e22","on-background-variant":"#605b4c"},borderRadius:{DEFAULT:"1rem",lg:"2rem",xl:"3rem",full:"9999px"},fontFamily:{headline:["Plus Jakarta Sans","sans-serif"],body:["Be Vietnam Pro","sans-serif"]}}}}</script>
+  <script>tailwind.config={darkMode:"class",theme:{extend:{colors:{background:"#fff6e2",surface:"#fff6e2","surface-bright":"#fff6e2","surface-container-low":"#f9f0db","surface-container":"#f1e7d1","surface-container-high":"#ebe2ca","surface-container-highest":"#e6dcc3","surface-dim":"#ded4ba","surface-container-lowest":"#ffffff","surface-variant":"#e6dcc3","surface-tint":"#7b5400",primary:"#7b5400","primary-dim":"#6b4900","primary-container":"#feb300","primary-fixed":"#feb300","primary-fixed-dim":"#eda600","inverse-primary":"#feb300","on-primary":"#fff1df","on-primary-container":"#523700","on-primary-fixed":"#382400","on-primary-fixed-variant":"#5e4000",secondary:"#b7004d","secondary-dim":"#a00043","secondary-container":"#ffc2cc","secondary-fixed":"#ffc2cc","secondary-fixed-dim":"#ffadbc","on-secondary":"#ffeff0","on-secondary-container":"#91003c","on-secondary-fixed":"#6d002b","on-secondary-fixed-variant":"#a20044",tertiary:"#176a21","tertiary-dim":"#025d16","tertiary-container":"#9df197","tertiary-fixed":"#9df197","tertiary-fixed-dim":"#90e28a","on-tertiary":"#d1ffc8","on-tertiary-container":"#005c15","on-tertiary-fixed":"#00460e","on-tertiary-fixed-variant":"#12661e",error:"#b02500","error-dim":"#b92902","error-container":"#f95630","on-error":"#ffefec","on-error-container":"#520c00","on-surface":"#332e22","on-surface-variant":"#605b4c","inverse-surface":"#110e04","inverse-on-surface":"#a39c8b",outline:"#7c7666","outline-variant":"#b4ad9b","on-background":"#332e22","on-background-variant":"#605b4c"},borderRadius:{DEFAULT:"1rem",lg:"2rem",xl:"3rem",full:"9999px"},fontFamily:{headline:["Plus Jakarta Sans","sans-serif"],body:["Be Vietnam Pro","sans-serif"]}}}}</script>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="css/tokens.css" /><link rel="stylesheet" href="css/components.css" />
 </head>
@@ -62,45 +62,45 @@
             <path d="M 24  110 A 86  86  0 0 1 196 110" fill="none" stroke="#f1e7d1" stroke-width="14" stroke-linecap="round"/>
             <path d="M 38  110 A 72  72  0 0 1 182 110" fill="none" stroke="#f1e7d1" stroke-width="14" stroke-linecap="round"/>
             <path d="M 52  110 A 58  58  0 0 1 168 110" fill="none" stroke="#f1e7d1" stroke-width="14" stroke-linecap="round"/>
-            <!-- Progress arcs: path starts left (M 10…); pathLength + dash 0→100 draws left-to-right along semicircle -->
-            <path id="arc-energy"  pathLength="100" d="M 10 110 A 100 100 0 0 1 210 110" fill="none" stroke="#feb300" stroke-width="14" stroke-linecap="round" stroke-dasharray="100 100" stroke-dashoffset="100"/>
+            <!-- Progress arcs — rainbow outward→in: red → orange → yellow → green (error, error-container, primary-container, tertiary) -->
+            <path id="arc-energy"  pathLength="100" d="M 10 110 A 100 100 0 0 1 210 110" fill="none" stroke="#b02500" stroke-width="14" stroke-linecap="round" stroke-dasharray="100 100" stroke-dashoffset="100"/>
             <path id="arc-protein" pathLength="100" d="M 24 110 A 86  86  0 0 1 196 110" fill="none" stroke="#f95630" stroke-width="14" stroke-linecap="round" stroke-dasharray="100 100" stroke-dashoffset="100"/>
-            <path id="arc-carbs"   pathLength="100" d="M 38 110 A 72  72  0 0 1 182 110" fill="none" stroke="#b7004d" stroke-width="14" stroke-linecap="round" stroke-dasharray="100 100" stroke-dashoffset="100"/>
-            <path id="arc-fat"     pathLength="100" d="M 52 110 A 58  58  0 0 1 168 110" fill="none" stroke="#7c7666" stroke-width="14" stroke-linecap="round" stroke-dasharray="100 100" stroke-dashoffset="100"/>
+            <path id="arc-carbs"   pathLength="100" d="M 38 110 A 72  72  0 0 1 182 110" fill="none" stroke="#feb300" stroke-width="14" stroke-linecap="round" stroke-dasharray="100 100" stroke-dashoffset="100"/>
+            <path id="arc-fat"     pathLength="100" d="M 52 110 A 58  58  0 0 1 168 110" fill="none" stroke="#176a21" stroke-width="14" stroke-linecap="round" stroke-dasharray="100 100" stroke-dashoffset="100"/>
             <!-- Progress head nodes: translate set in JS from path.getPointAtLength (moves with bar) -->
             <g class="arc-node-wrap" id="arc-node-energy-wrap" transform="translate(10,110)" aria-hidden="true">
-              <circle r="6" fill="#feb300" stroke="#b4ad9b" stroke-width="2"/>
+              <circle r="6" fill="#b02500" stroke="#b4ad9b" stroke-width="2"/>
             </g>
             <g class="arc-node-wrap" id="arc-node-protein-wrap" transform="translate(24,110)" aria-hidden="true">
               <circle r="6" fill="#f95630" stroke="#b4ad9b" stroke-width="2"/>
             </g>
             <g class="arc-node-wrap" id="arc-node-carbs-wrap" transform="translate(38,110)" aria-hidden="true">
-              <circle r="6" fill="#b7004d" stroke="#b4ad9b" stroke-width="2"/>
+              <circle r="6" fill="#feb300" stroke="#b4ad9b" stroke-width="2"/>
             </g>
             <g class="arc-node-wrap" id="arc-node-fat-wrap" transform="translate(52,110)" aria-hidden="true">
-              <circle r="6" fill="#7c7666" stroke="#b4ad9b" stroke-width="2"/>
+              <circle r="6" fill="#176a21" stroke="#b4ad9b" stroke-width="2"/>
             </g>
           </svg>
         </div>
         <!-- Arc legend -->
         <div class="flex flex-wrap justify-center gap-x-4 gap-y-1 mt-2">
-          <span class="flex items-center gap-1.5 text-xs text-on-surface-variant"><span class="w-2.5 h-2.5 rounded-full flex-shrink-0" style="background:#feb300"></span>Energi <span id="arc-energy-ratio" class="font-semibold text-on-surface whitespace-nowrap"><span class="text-outline">~</span>0 / 1000 kkal</span></span>
+          <span class="flex items-center gap-1.5 text-xs text-on-surface-variant"><span class="w-2.5 h-2.5 rounded-full flex-shrink-0" style="background:#b02500"></span>Energi <span id="arc-energy-ratio" class="font-semibold text-on-surface whitespace-nowrap"><span class="text-outline">~</span>0 / 1000 kkal</span></span>
           <span class="flex items-center gap-1.5 text-xs text-on-surface-variant"><span class="w-2.5 h-2.5 rounded-full flex-shrink-0" style="background:#f95630"></span>Protein <span id="arc-protein-ratio" class="font-semibold text-on-surface whitespace-nowrap"><span class="text-outline">~</span>0 / 20 g</span></span>
-          <span class="flex items-center gap-1.5 text-xs text-on-surface-variant"><span class="w-2.5 h-2.5 rounded-full flex-shrink-0" style="background:#b7004d"></span>Karbo <span id="arc-carbs-ratio" class="font-semibold text-on-surface whitespace-nowrap"><span class="text-outline">~</span>0 / 130 g</span></span>
-          <span class="flex items-center gap-1.5 text-xs text-on-surface-variant"><span class="w-2.5 h-2.5 rounded-full flex-shrink-0" style="background:#7c7666"></span>Lemak <span id="arc-fat-ratio" class="font-semibold text-on-surface whitespace-nowrap"><span class="text-outline">~</span>0 / 44 g</span></span>
+          <span class="flex items-center gap-1.5 text-xs text-on-surface-variant"><span class="w-2.5 h-2.5 rounded-full flex-shrink-0" style="background:#feb300"></span>Karbo <span id="arc-carbs-ratio" class="font-semibold text-on-surface whitespace-nowrap"><span class="text-outline">~</span>0 / 130 g</span></span>
+          <span class="flex items-center gap-1.5 text-xs text-on-surface-variant"><span class="w-2.5 h-2.5 rounded-full flex-shrink-0" style="background:#176a21"></span>Lemak <span id="arc-fat-ratio" class="font-semibold text-on-surface whitespace-nowrap"><span class="text-outline">~</span>0 / 44 g</span></span>
         </div>
       </div>
     </div>
 
     <!-- Daily To-Do List -->
-    <div class="text-on-surface bg-surface-container-low rounded-2xl p-5 shadow-[0_4px_24px_rgba(51,46,34,0.06)]" id="todo-card">
-      <div class="flex items-center justify-between mb-3">
-        <h2 class="font-headline font-bold text-base text-on-surface">Rencana hari ini</h2>
-        <button type="button" id="todo-edit-btn" class="w-8 h-8 flex items-center justify-center rounded-full text-on-surface-variant hover:bg-surface-container" aria-label="Edit to-do list">
+    <div class="text-on-surface bg-surface-container-low rounded-2xl p-5 shadow-[0_4px_24px_rgba(51,46,34,0.06)] border border-outline-variant/25" id="todo-card">
+      <div class="flex items-center justify-between mb-4">
+        <h2 class="font-headline font-bold text-base text-on-surface tracking-tight">Rencana hari ini</h2>
+        <button type="button" id="todo-edit-btn" class="w-8 h-8 flex items-center justify-center rounded-full text-primary hover:bg-primary-container/25" aria-label="Edit to-do list">
           <span class="material-symbols-outlined text-[18px]">edit</span>
         </button>
       </div>
-      <ul class="space-y-2" id="todo-list" aria-label="Daftar rencana hari ini"></ul>
+      <ul class="divide-y divide-outline-variant/20" id="todo-list" aria-label="Daftar rencana hari ini"></ul>
       <!-- Add custom to-do -->
       <div class="flex items-center gap-2 mt-3" id="todo-add-row" hidden>
         <input type="text" id="todo-custom-input" placeholder="Tambah rencana…" maxlength="80"
@@ -140,7 +140,7 @@
           <span class="text-sm text-on-surface-variant" id="macro-energy-val"><span class="text-outline">~</span>0 / 1000 kkal</span>
         </div>
         <div class="h-2 rounded-full bg-surface-container-high overflow-hidden" aria-hidden="true">
-          <div class="h-full rounded-full bg-primary-container macro-fill-energy transition-all duration-500" id="macro-energy-fill" style="width:0%"></div>
+                   <div class="h-full rounded-full bg-error macro-fill-energy transition-all duration-500" id="macro-energy-fill" style="width:0%"></div>
         </div>
       </div>
       <!-- Protein -->
@@ -160,7 +160,7 @@
           <span class="text-sm text-on-surface-variant" id="macro-carbs-val"><span class="text-outline">~</span>0 / 130 g</span>
         </div>
         <div class="h-2 rounded-full bg-surface-container-high overflow-hidden" aria-hidden="true">
-          <div class="h-full rounded-full bg-secondary macro-fill-carbs transition-all duration-500" id="macro-carbs-fill" style="width:0%"></div>
+          <div class="h-full rounded-full bg-primary-container macro-fill-carbs transition-all duration-500" id="macro-carbs-fill" style="width:0%"></div>
         </div>
       </div>
       <!-- Lemak -->
@@ -170,7 +170,7 @@
           <span class="text-sm text-on-surface-variant" id="macro-fat-val"><span class="text-outline">~</span>0 / 44 g</span>
         </div>
         <div class="h-2 rounded-full bg-surface-container-high overflow-hidden" aria-hidden="true">
-          <div class="h-full rounded-full bg-outline macro-fill-fat transition-all duration-500" id="macro-fat-fill" style="width:0%"></div>
+          <div class="h-full rounded-full bg-tertiary macro-fill-fat transition-all duration-500" id="macro-fat-fill" style="width:0%"></div>
         </div>
       </div>
       <!-- Weekly footer -->
@@ -430,7 +430,7 @@
     items.forEach(function(item) {
       var done = !!state[item.id];
       var li = document.createElement('li');
-      li.className = 'flex items-center gap-3 group';
+      li.className = 'flex items-center gap-3 group py-3 first:pt-0 last:pb-0';
 
       var checkbox = document.createElement('button');
       checkbox.type = 'button';
@@ -438,7 +438,7 @@
       checkbox.setAttribute('aria-checked', done ? 'true' : 'false');
       checkbox.setAttribute('aria-label', item.label);
       checkbox.className = 'w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 transition-colors ' +
-        (done ? 'bg-tertiary border-tertiary' : 'border-outline-variant/60 bg-surface');
+        (done ? 'bg-tertiary border-tertiary' : 'border-primary/45 bg-surface-container-lowest');
       checkbox.innerHTML = done ? '<span class="material-symbols-outlined text-[12px] text-on-tertiary" style="font-variation-settings:\'FILL\' 1">check</span>' : '';
       checkbox.addEventListener('click', function() {
         var s = loadState();
@@ -451,7 +451,7 @@
       });
 
       var labelEl = document.createElement('span');
-      labelEl.className = 'flex-1 text-sm ' + (done ? 'line-through text-on-surface-variant' : 'text-on-surface');
+      labelEl.className = 'flex-1 text-sm leading-relaxed ' + (done ? 'line-through text-on-surface-variant' : 'text-on-surface');
       labelEl.textContent = item.label;
 
       li.appendChild(checkbox);
